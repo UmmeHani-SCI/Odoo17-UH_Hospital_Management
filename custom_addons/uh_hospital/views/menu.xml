@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Root Menu -->
+    <menuitem id="menu_hospital_root"
+              name="UH-HMS"
+              sequence="1"/>
+
+    <!-- Front Desk Submenu -->
+    <menuitem id="menu_frontDesk"
+              name="Front Desk"
+              parent="menu_hospital_root"
+              sequence="10"/>
+    <!-- Patients Submenu -->
+    <menuitem id="menu_patients"
+              name="Patients"
+              parent="menu_frontDesk"
+              action="action_hospital_patient"
+              sequence="1"/>
+
+    <!-- Action for Patients -->
+    <record id="action_hospital_patient" model="ir.actions.act_window">
+        <field name="name">Patients</field>
+        <field name="res_model">hospital.patient</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="oe_view_content_create">
+                Click to create a new patient record.
+            </p>
+        </field>
+    </record>
+
+
+</odoo>
