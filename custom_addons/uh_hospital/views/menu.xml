@@ -10,6 +10,7 @@
               name="Front Desk"
               parent="menu_hospital_root"
               sequence="10"/>
+
     <!-- Patients Submenu -->
     <menuitem id="menu_patients"
               name="Patients"
@@ -17,13 +18,53 @@
               action="action_hospital_patient"
               sequence="1"/>
 
-    <!-- Action for Patients -->
+
+    <!-- Patient Form View -->
+    <record id="view_form_hospital_patient" model="ir.ui.view">
+        <field name="name">hospital.patient.form</field>
+        <field name="model">hospital.patient</field>
+        <field name="arch" type="xml">
+            <form string="Patient">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name" string="Full Name" required="1"/>
+                            <field name="gender" required="1"/>
+                            <field name="date_of_birth"/>
+                        </group>
+                        <group>
+                            <field name="phone" string="Phone Number"/>
+                            <field name="email" string="Email"/>
+                            <field name="address" widget="text"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Patient Tree View -->
+    <record id="view_tree_hospital_patient" model="ir.ui.view">
+        <field name="name">hospital.patient.tree</field>
+        <field name="model">hospital.patient</field>
+        <field name="arch" type="xml">
+            <tree string="Patients">
+                <field name="name"/>
+                <field name="age"/>
+                <field name="gender"/>
+                <field name="phone"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Action for Patient Views -->
     <record id="action_hospital_patient" model="ir.actions.act_window">
         <field name="name">Patients</field>
         <field name="res_model">hospital.patient</field>
         <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="view_tree_hospital_patient"/>
         <field name="help" type="html">
-            <p class="oe_view_content_create">
+            <p class="oe_view_nocontent_create">
                 Click to create a new patient record.
             </p>
         </field>
