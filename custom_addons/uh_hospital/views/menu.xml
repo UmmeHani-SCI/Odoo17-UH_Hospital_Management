@@ -3,6 +3,7 @@
     <!-- Root Menu -->
     <menuitem id="menu_hospital_root"
               name="UH-HMS"
+              web_icon="uh_hospital,static\description\icon.png"
               sequence="1"/>
 
     <!-- Front Desk Submenu -->
