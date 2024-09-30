@@ -2,7 +2,13 @@
 [![Tech Doc](https://img.shields.io/badge/master-docs-875A7B.svg?style=flat&colorA=8F8F8F)](https://www.odoo.com/documentation/17.0)
 [![Help](https://img.shields.io/badge/master-help-875A7B.svg?style=flat&colorA=8F8F8F)](https://www.odoo.com/forum/help-1)
 [![Nightly Builds](https://img.shields.io/badge/master-nightly-875A7B.svg?style=flat&colorA=8F8F8F)](https://nightly.odoo.com/)
-
+----
+This is odoo17 basic operations. 
+----
+Follow This link for installation: 
+[ https://www.envertis.com/how-to-install-odoo-17-on-windows-a-step-by-step-guide/ ] 
+Youtube playlist : [ https://www.youtube.com/playlist?list=PLqRRLx0cl0hq0T4SV-BHhCicWOpzyWcHd ]
+----
 Odoo
 ----
 
