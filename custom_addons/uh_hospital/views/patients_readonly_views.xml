@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+        <!--ReadOnly Patient Form View -->
+    <record id="view_form_hospital_readonly_patient" model="ir.ui.view">
+        <field name="name">hospital.patient.readonly.form</field>
+        <field name="model">hospital.patient</field>
+        <field name="arch" type="xml">
+            <form string="View Patient">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name" string="Full Name" required="1"/>
+                            <field name="gender" required="1"/>
+                            <field name="date_of_admitted_to_hospital"/>
+                            <field name="dob"/>
+                            <field name="age" readonly="1"/>
+                            <field name="phone" string="Phone Number"/>
+                            <field name="email" string="Email" />
+                            <field name="address" widget="text"/>
+                        </group>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                  <field name="message_follower_ids" groups="base.group_user"/>
+                  <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <!--ReadOnly Patient Tree View -->
+    <record id="view_tree_hospital_readonly_patient" model="ir.ui.view">
+        <field name="name">hospital.patient.readonly.tree</field>
+        <field name="model">hospital.patient</field>
+        <field name="arch" type="xml">
+            <tree string="View Patients" create="0">
+                <field name="name" />
+                <field name="gender"/>
+                <field name="phone"/>
+            </tree>
+        </field>
+    </record>
+
+    <!--ReadOnly Action for Patient Views -->
+    <record id="action_hospital_readonly_patient" model="ir.actions.act_window">
+        <field name="name">View Patients</field>
+        <field name="res_model">hospital.patient</field>
+        <field name="view_mode">tree,form,kanban</field>
+        <field name="view_id" ref="view_tree_hospital_readonly_patient"/>
+
+    </record>
+
+</odoo>
