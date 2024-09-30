@@ -1,5 +1,5 @@
 {
-    "name" : "Hospital Management System",
+    'name' : "Hospital Management System",
     "author" : "Umme Hani",
     'description': """
         Module for managing hospital patients and records.
@@ -12,8 +12,11 @@
         'demo/demo.xml',
     ],
     'data': ['security/ir.model.access.csv',  # Access control file
+             'data/sequence.xml',
              'views/patients_views.xml',
              'views/patients_readonly_views.xml',
+             'views/appoinment_views.xml',
+
              'views/menu.xml',
 
 
@@ -26,6 +29,6 @@
         'web.assets_backend': [
 
                ],
-},
+    },
 
 }

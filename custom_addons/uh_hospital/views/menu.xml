@@ -24,6 +24,12 @@
               action="action_hospital_readonly_patient"
               sequence="1"/>
 
+    <menuitem id="menu_appointment"
+              name="Appointments"
+              parent="menu_frontDesk"
+              action="action_hospital_appointment"
+              sequence="1"/>
+
 
 
 </odoo>

@@ -12,9 +12,9 @@
                         <group>
                             <field name="name" string="Full Name" required="1"/>
                             <field name="gender" required="1"/>
-                            <field name="date_of_admitted_to_hospital"/>
                             <field name="dob"/>
                             <field name="age" readonly="1"/>
+                            <field name="date_of_admitted_to_hospital"/>
                             <field name="phone" string="Phone Number"/>
                             <field name="email" string="Email" />
                             <field name="address" widget="text"/>

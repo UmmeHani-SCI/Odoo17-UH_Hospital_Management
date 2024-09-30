@@ -16,7 +16,8 @@ class HospitalPatient(models.Model):
         ('female', 'Female'),
         ('other', 'Other'),
     ], string='Gender', required=True , tracking=True)
-    date_of_admitted_to_hospital = fields.Date(string='Date of Admitted To Hospital / Checkup', tracking=True)
+    date_of_admitted_to_hospital = fields.Date(string='Date of Admitted To Hospital / Checkup',
+                                               tracking=True, optional='show')
     phone = fields.Char(string='Phone Number',  tracking=True)
     email = fields.Char(string='Email' , tracking=True)
     address = fields.Text(string='Address' , tracking=True)

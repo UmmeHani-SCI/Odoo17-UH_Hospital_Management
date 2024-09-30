@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Appointment Form View -->
+    <record id="view_form_hospital_appointment" model="ir.ui.view">
+        <field name="name">hospital.appointment.form</field>
+        <field name="model">hospital.appointment</field>
+        <field name="arch" type="xml">
+            <form string="Appointment">
+                <header>
+                    <button name="action_confirm" type="object" string="Confirm"
+                            invisible="state != 'draft'" class="oe_highlight"/>
+                    <button name="action_ongoing" type="object" string="Ongoing"
+                            invisible="state != 'confirmed'" class="oe_highlight"/>
+                    <button name="action_done" type="object" string="Done"
+                            invisible="state != 'ongoing'" class="oe_highlight"/>
+                    <button name="action_cancel" type="object" string="Cancelled"
+                            invisible="state == 'done'" />
+
+                    <field name= "state"  widget="statusbar" statusbar_visible="draft,confirmed,ongoing,done" />
+                </header>
+
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="reference" readonly="True"/>
+                            <field name="patient_id"/>
+                            <field name="date_appointment"/>
+                        </group>
+                        <group>
+                            <field name="note"/>
+                        </group>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                  <field name="message_follower_ids" groups="base.group_user"/>
+                  <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <!-- Patient Tree View -->
+    <record id="view_tree_hospital_appointment" model="ir.ui.view">
+        <field name="name">hospital.appointment.tree</field>
+        <field name="model">hospital.appointment</field>
+        <field name="arch" type="xml">
+            <tree string="Appointments">
+                 <field name="reference"/>
+                <field name="patient_id"/>
+                <field name="date_appointment" optional="show"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Action for Patient Views -->
+    <record id="action_hospital_appointment" model="ir.actions.act_window">
+        <field name="name">Appointments</field>
+        <field name="res_model">hospital.appointment</field>
+        <field name="view_mode">tree,form,kanban</field>
+        <field name="view_id" ref="view_tree_hospital_appointment"/>
+
+    </record>
+
+</odoo>
