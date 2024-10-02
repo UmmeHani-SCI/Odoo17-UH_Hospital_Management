@@ -25,6 +25,9 @@ class HospitalAppointment(models.Model):
         default='draft'
         , tracking=True
     )
+    appointment_line_ids = (fields.One2many
+                            ('hospital.appointment_line', 'appointment_id', string='Lines')
+                            )
 
     @api.model_create_multi
     def create(self, vals_list):
@@ -51,4 +54,11 @@ class HospitalAppointment(models.Model):
             rec.state='cancel'
 
 
+class HospitalAppointmentLine(models.Model):
+    _name = 'hospital.appointment_line'
+    _description = 'Hospital Appointment Line'
+
+    appointment_id = fields.Many2one('hospital.appointment', string='Appointment')
+    product_id = fields.Many2one('product.product', string='Product')
+    qty = fields.Float(string='Quantity')
 

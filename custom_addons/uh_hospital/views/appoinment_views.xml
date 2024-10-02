@@ -15,11 +15,10 @@
                     <button name="action_done" type="object" string="Done"
                             invisible="state != 'ongoing'" class="oe_highlight"/>
                     <button name="action_cancel" type="object" string="Cancelled"
-                            invisible="state == 'done'" />
+                            invisible="state in ('done', 'cancel')"/>
 
                     <field name= "state"  widget="statusbar" statusbar_visible="draft,confirmed,ongoing,done" />
                 </header>
-
                 <sheet>
                     <group>
                         <group>
@@ -30,6 +29,29 @@
                         <group>
                             <field name="note"/>
                         </group>
+                        <notebook>
+                            <page name="appointment_line" string="Lines">
+                                <field name="appointment_line_ids">
+                                  <tree editable="bottom">
+                                         <field name="appointment_id"/>
+                                         <field name="product_id"/>
+                                         <field name="qty" optional="show"/>
+                                  </tree>
+                              <form >
+                                  <sheet>
+                                      <group>
+                                          <field name="appointment_id"/>
+                                          <field name="product_id"/>
+                                          <field name="qty" />
+                                      </group>
+                                  </sheet>
+
+                              </form>
+                          </field>
+                            </page>
+                            <page name="appointment_line" string="Other Info.">
+                            </page>
+                        </notebook>
                     </group>
                 </sheet>
                 <div class="oe_chatter">

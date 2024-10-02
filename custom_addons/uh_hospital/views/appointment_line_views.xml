@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Appointment List Tree View -->
+    <record id="view_tree_hospital_appointment_line" model="ir.ui.view">
+        <field name="name">hospital.appointment_line.tree</field>
+        <field name="model">hospital.appointment_line</field>
+        <field name="arch" type="xml">
+            <tree editable="bottom" string="Appointment List">
+                 <field name="appointment_id"/>
+                 <field name="product_id"/>
+                 <field name="qty" optional="show"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_hospital_appointment_line" model="ir.actions.act_window">
+        <field name="name">Appointment List</field>
+        <field name="res_model">hospital.appointment_line</field>
+        <field name="view_mode">tree,form,kanban</field>
+        <field name="view_id" ref="view_tree_hospital_appointment_line"/>
+
+    </record>
+
+
+
+</odoo>

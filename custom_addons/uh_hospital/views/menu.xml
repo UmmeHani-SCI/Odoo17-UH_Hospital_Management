@@ -30,6 +30,11 @@
               parent="menu_frontDesk"
               action="action_hospital_appointment"
               sequence="1"/>
+    <menuitem id="menu_appointment_line"
+              name="Appointment Lines"
+              parent="menu_frontDesk"
+              action="action_hospital_appointment_line"
+              sequence="1"/>
 
 
 
