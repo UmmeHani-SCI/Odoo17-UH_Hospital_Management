@@ -434,7 +434,7 @@ class HrContract(models.Model):
                 if we_to_remove:
                     contract.date_generated_to = date_end
                     all_we_to_unlink |= we_to_remove
-        all_we_to_unlink.unlink()
+        all_we_to_unlink.unlink
 
     def _cancel_work_entries(self):
         if not self:
@@ -452,7 +452,7 @@ class HrContract(models.Model):
             domain = expression.AND([domain, contract_domain])
         work_entries = self.env['hr.work.entry'].sudo().search(domain)
         if work_entries:
-            work_entries.sudo().unlink()
+            work_entries.sudo().unlink
 
     def write(self, vals):
         result = super(HrContract, self).write(vals)

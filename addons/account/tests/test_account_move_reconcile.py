@@ -4791,7 +4791,7 @@ class TestAccountMoveReconcile(AccountTestInvoicingCommon):
         })
         payment.action_post()
         # unlink the rate to simulate a custom rate on the payment
-        self.env['res.currency.rate'].search([('currency_id', '=', foreign_currency.id)]).unlink()
+        self.env['res.currency.rate'].search([('currency_id', '=', foreign_currency.id)]).unlink
 
         lines_to_reconcile = (invoice + payment.move_id).line_ids.filtered(lambda x: x.account_id.account_type == 'asset_receivable')
         lines_to_reconcile.reconcile()

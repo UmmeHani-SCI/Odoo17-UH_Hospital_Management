@@ -31,7 +31,7 @@ class TestHrAttendance(TransactionCase):
     def setUp(self):
         super().setUp()
         # Cache error if not done during setup
-        (self.test_employee | self.employee_kiosk).last_attendance_id.unlink()
+        (self.test_employee | self.employee_kiosk).last_attendance_id.unlink
 
     def test_employee_state(self):
         # Make sure the attendance of the employee will display correctly

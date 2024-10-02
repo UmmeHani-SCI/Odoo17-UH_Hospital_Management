@@ -483,9 +483,9 @@ class TestSaleTimesheetProjectProfitability(TestCommonSaleTimesheet):
         )
 
         # Cancel the milestone timesheets
-        task2_timesheet.unlink()
-        task2_foreign_timesheet.unlink()
-        task3_timesheet.unlink()
+        task2_timesheet.unlink
+        task2_foreign_timesheet.unlink
+        task3_timesheet.unlink
         profitability_items = self.project_task_rate._get_profitability_items(False)
         self.assertFalse([data for data in profitability_items['revenues']['data'] if data['id'] == 'billable_milestones'])
         self.assertFalse([data for data in profitability_items['costs']['data'] if data['id'] == 'billable_milestones'])

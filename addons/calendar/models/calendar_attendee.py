@@ -73,7 +73,7 @@ class Attendee(models.Model):
 
     def unlink(self):
         self._unsubscribe_partner()
-        return super().unlink()
+        return super().unlink
 
     @api.returns('self', lambda value: value.id)
     def copy(self, default=None):

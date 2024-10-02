@@ -52,7 +52,7 @@ class LunchController(http.Controller):
         lines = self._get_current_lines(user)
         lines = lines.filtered_domain([('state', 'not in', ['sent', 'confirmed'])])
         lines.action_cancel()
-        lines.unlink()
+        lines.unlink
 
     @http.route('/lunch/pay', type='json', auth='user')
     def pay(self, user_id=None, context=None):

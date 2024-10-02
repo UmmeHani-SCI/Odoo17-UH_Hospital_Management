@@ -60,7 +60,7 @@ class LinkPreview(models.Model):
             ) for link_preview in self
         ]
         self.env['bus.bus']._sendmany(notifications)
-        self.unlink()
+        self.unlink
 
     @api.model
     def _is_link_preview_enabled(self):

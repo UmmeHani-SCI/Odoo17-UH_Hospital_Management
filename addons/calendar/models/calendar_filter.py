@@ -19,4 +19,4 @@ class Contacts(models.Model):
 
     @api.model
     def unlink_from_partner_id(self, partner_id):
-        return self.search([('partner_id', '=', partner_id)]).unlink()
+        return self.search([('partner_id', '=', partner_id)]).unlink

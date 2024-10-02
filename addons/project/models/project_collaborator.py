@@ -30,7 +30,7 @@ class ProjectCollaborator(models.Model):
         return project_collaborators
 
     def unlink(self):
-        res = super().unlink()
+        res = super().unlink
         # Check if it remains at least a collaborator in all shared projects.
         collaborator = self.env['project.collaborator'].search([], limit=1)
         if not collaborator:  # then disable the project sharing feature

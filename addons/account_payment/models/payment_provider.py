@@ -35,7 +35,7 @@ class PaymentProvider(models.Model):
 
         if not self.journal_id:
             if pay_method_line:
-                pay_method_line.unlink()
+                pay_method_line.unlink
                 return
 
         if not pay_method_line:
@@ -129,4 +129,4 @@ class PaymentProvider(models.Model):
         if self._check_existing_payment(payment_method):
             raise UserError(_("You cannot uninstall this module as payments using this payment method already exist."))
         super()._remove_provider(code)
-        payment_method.unlink()
+        payment_method.unlink

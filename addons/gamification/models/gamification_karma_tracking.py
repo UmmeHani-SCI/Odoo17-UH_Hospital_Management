@@ -134,6 +134,6 @@ class KarmaTracking(models.Model):
         )
         # HACK: the unlink() AND the flush_all() must have that key in their context!
         trackings = trackings.with_context(skip_karma_computation=True)
-        trackings.unlink()
+        trackings.unlink
         trackings.env.flush_all()
         return True

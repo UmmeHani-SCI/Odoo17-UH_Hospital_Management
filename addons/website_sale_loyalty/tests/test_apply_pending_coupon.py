@@ -42,7 +42,7 @@ class TestSaleCouponApplyPending(HttpCase, TestSaleCouponNumbersCommon):
 
     def test_01_activate_coupon_with_existing_program(self):
         order = self.empty_order
-        self.env['product.pricelist.item'].search([]).unlink()
+        self.env['product.pricelist.item'].search([]).unlink
 
         with MockRequest(self.env, website=self.website, sale_order_id=order.id, website_sale_current_pl=1) as request:
             self.WebsiteSaleController.cart_update_json(self.largeCabinet.id, set_qty=2)
@@ -58,7 +58,7 @@ class TestSaleCouponApplyPending(HttpCase, TestSaleCouponNumbersCommon):
 
     def test_02_pending_coupon_with_existing_program(self):
         order = self.empty_order
-        self.env['product.pricelist.item'].search([]).unlink()
+        self.env['product.pricelist.item'].search([]).unlink
 
         with MockRequest(self.env, website=self.website, sale_order_id=order.id, website_sale_current_pl=1) as request:
             self.WebsiteSaleController.cart_update_json(self.largeCabinet.id, set_qty=1)

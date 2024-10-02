@@ -335,7 +335,7 @@ class Module(models.Model):
 
     def unlink(self):
         self.env.registry.clear_cache()
-        return super(Module, self).unlink()
+        return super(Module, self).unlink
 
     def _get_modules_to_load_domain(self):
         """ Domain to retrieve the modules that should be loaded by the registry. """
@@ -493,7 +493,7 @@ class Module(models.Model):
         """
         domain = expression.OR([[('key', '=like', m.name + '.%')] for m in self])
         orphans = self.env['ir.ui.view'].with_context(**{'active_test': False, MODULE_UNINSTALL_FLAG: True}).search(domain)
-        orphans.unlink()
+        orphans.unlink
 
     @api.returns('self')
     def downstream_dependencies(self, known_deps=None,

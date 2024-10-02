@@ -262,7 +262,7 @@ class TestTimesheetHolidays(TestCommonTimesheet):
         ])
 
         # timesheet should be unlinked to the timeoff, and be able to delete it
-        timesheets.with_user(SUPERUSER_ID).unlink()
+        timesheets.with_user(SUPERUSER_ID).unlink
         self.assertFalse(timesheets.exists(), 'Timesheet should be deleted')
 
     @freeze_time('2018-02-01 08:00:00')

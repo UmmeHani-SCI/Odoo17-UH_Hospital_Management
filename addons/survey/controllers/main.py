@@ -670,7 +670,7 @@ class Survey(http.Controller):
 
         fake_user_input = survey._create_answer(user=request.env.user, test_entry=True)
         response = self._generate_report(fake_user_input, download=False)
-        fake_user_input.sudo().unlink()
+        fake_user_input.sudo().unlink
         return response
 
     @http.route(['/survey/<int:survey_id>/get_certification'], type='http', auth='user', methods=['GET'], website=True)

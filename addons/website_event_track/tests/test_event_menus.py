@@ -54,16 +54,16 @@ class TestEventWebsiteTrack(OnlineEventCase):
         self._assert_website_menus(event, self._get_menus())
 
         introduction_menu = event.menu_id.child_id.filtered(lambda menu: menu.name == 'Introduction')
-        introduction_menu.unlink()
+        introduction_menu.unlink
         self._assert_website_menus(event, ['Location', 'Register', 'Community', 'Talks', 'Agenda', 'Talk Proposals'], menus_out=["Introduction"])
 
         menus = event.menu_id.child_id.filtered(lambda menu: menu.name in ['Agenda', 'Talk Proposals'])
-        menus.unlink()
+        menus.unlink
         self.assertTrue(event.website_track)
         self.assertFalse(event.website_track_proposal)
 
         menus = event.menu_id.child_id.filtered(lambda menu: menu.name in ['Talks'])
-        menus.unlink()
+        menus.unlink
         self.assertFalse(event.website_track)
         self.assertFalse(event.website_track_proposal)
 

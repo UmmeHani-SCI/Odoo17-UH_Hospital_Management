@@ -437,7 +437,7 @@ class BaseAutomation(models.Model):
         return res
 
     def unlink(self):
-        res = super(BaseAutomation, self).unlink()
+        res = super(BaseAutomation, self).unlink
         self._update_cron()
         self._update_registry()
         return res

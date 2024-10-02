@@ -722,7 +722,7 @@ class TestAccountEarlyPaymentDiscount(AccountTestInvoicingCommon):
             'invoice_payment_term_id': self.early_pay_10_percents_10_days.id,
         })
         self.assertEqual(len(inv.line_ids), 10) # 2 prod, 2 tax, 3 epd, 2 epd tax discount, 1 payment terms
-        inv.invoice_line_ids[1].unlink()
+        inv.invoice_line_ids[1].unlink
         self.assertEqual(len(inv.line_ids), 6) # 1 prod, 1 tax, 2 epd, 1 epd tax discount, 1 payment terms
         self.assertEqual(inv.amount_tax, 9.00) # $100.0 @ 10% tax (-10% epd)
 

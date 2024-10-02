@@ -38,7 +38,7 @@ class CRMRevealView(models.Model):
         domain = []
         domain.append(('reveal_state', '=', 'not_found'))
         domain.append(('create_date', '<', fields.Datetime.to_string(datetime.date.today() - relativedelta(weeks=weeks_valid))))
-        self.search(domain).unlink()
+        self.search(domain).unlink
 
     def _create_reveal_view(self, website_id, url, ip_address, country_code, state_code, rules_excluded):
         # we are avoiding reveal if reveal_view already created for this IP

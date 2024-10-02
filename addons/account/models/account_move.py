@@ -2117,7 +2117,7 @@ class AccountMove(models.Model):
 
         # The cash rounding has been removed.
         if not self.invoice_cash_rounding_id:
-            existing_cash_rounding_line.unlink()
+            existing_cash_rounding_line.unlink
             # self.line_ids -= existing_cash_rounding_line
             return
 
@@ -2127,7 +2127,7 @@ class AccountMove(models.Model):
             old_strategy = 'biggest_tax' if existing_cash_rounding_line.tax_line_id else 'add_invoice_line'
             if strategy != old_strategy:
                 # self.line_ids -= existing_cash_rounding_line
-                existing_cash_rounding_line.unlink()
+                existing_cash_rounding_line.unlink
                 existing_cash_rounding_line = self.env['account.move.line']
 
         others_lines = self.line_ids.filtered(lambda line: line.account_id.account_type not in ('asset_receivable', 'liability_payable'))
@@ -2138,7 +2138,7 @@ class AccountMove(models.Model):
 
         # The invoice is already rounded.
         if self.currency_id.is_zero(diff_balance) and self.currency_id.is_zero(diff_amount_currency):
-            existing_cash_rounding_line.unlink()
+            existing_cash_rounding_line.unlink
             # self.line_ids -= existing_cash_rounding_line
             return
 
@@ -2163,7 +2163,7 @@ class AccountMove(models.Model):
                 # a smooth process for tax deletion
                 if not invoice.line_ids.filtered('tax_line_id'):
                     continue
-                invoice.line_ids.filtered('tax_line_id').unlink()
+                invoice.line_ids.filtered('tax_line_id').unlink
 
             # Set the balancing line's balance and amount_currency to zero,
             # so that it does not interfere with _get_unbalanced_moves() below.
@@ -2313,7 +2313,7 @@ class AccountMove(models.Model):
                 {**key, **values, 'display_type': line_type}
             )
         if to_delete:
-            self.env['account.move.line'].browse(to_delete).with_context(dynamic_unlink=True).unlink()
+            self.env['account.move.line'].browse(to_delete).with_context(dynamic_unlink=True).unlink
         if to_create:
             self.env['account.move.line'].create([
                 {**key, **values, 'display_type': line_type}
@@ -2587,8 +2587,8 @@ class AccountMove(models.Model):
 
     def unlink(self):
         self = self.with_context(skip_invoice_sync=True, dynamic_unlink=True)  # no need to sync to delete everything
-        self.line_ids.unlink()
-        return super().unlink()
+        self.line_ids.unlink
+        return super().unlink
 
     @api.depends('partner_id', 'date', 'state', 'move_type')
     @api.depends_context('input_full_display_name')
@@ -3800,7 +3800,7 @@ class AccountMove(models.Model):
             else:
                 to_reverse += move
         to_unlink.filtered(lambda m: m.state in ('posted', 'cancel')).button_draft()
-        to_unlink.filtered(lambda m: m.state == 'draft').unlink()
+        to_unlink.filtered(lambda m: m.state == 'draft').unlink
         return to_reverse._reverse_moves(cancel=True)
 
     def _post(self, soft=True):
@@ -4142,7 +4142,7 @@ class AccountMove(models.Model):
         '''
         self.ensure_one()
         partial = self.env['account.partial.reconcile'].browse(partial_id)
-        return partial.unlink()
+        return partial.unlink
 
     def button_set_checked(self):
         for move in self:
@@ -4803,7 +4803,7 @@ class AccountMove(models.Model):
         for attachment in move_per_decodable_attachment:
             attachments_in_invoices += attachment
         # Unlink the unused attachments
-        (attachments - attachments_in_invoices).unlink()
+        (attachments - attachments_in_invoices).unlink
         return move_per_decodable_attachment
 
     def _creation_subtype(self):

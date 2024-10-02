@@ -108,7 +108,7 @@ class RecurrenceRule(models.Model):
             # We archive the old events to recompute the recurrence. These events are already deleted on Microsoft side.
             # We can't call _cancel because events without user_id would not be deleted
             (self.calendar_event_ids - base_event_id).microsoft_id = False
-            (self.calendar_event_ids - base_event_id).unlink()
+            (self.calendar_event_ids - base_event_id).unlink
             base_event_id.with_context(dont_notify=True).write(dict(
                 new_event_values, microsoft_id=False, need_sync_m=False
             ))
@@ -133,7 +133,7 @@ class RecurrenceRule(models.Model):
         if self.rrule != current_rrule:
             detached_events = self._apply_recurrence()
             detached_events.microsoft_id = False
-            detached_events.unlink()
+            detached_events.unlink
 
     def _get_microsoft_sync_domain(self):
         # Do not sync Odoo recurrences with Outlook Calendar anymore.

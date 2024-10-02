@@ -336,7 +336,7 @@ class TestWebsiteSaleCoupon(HttpCase):
         self.assertEqual(len(order.applied_coupon_ids), 1, "The coupon shouldn't have been removed from the order the order is 4 days old but icp validity is 5 days")
 
         # 5. Test order with no ICP and older then 4 default days -> Should be removed
-        icp_validity.unlink()
+        icp_validity.unlink
         order._gc_abandoned_coupons()
 
         self.assertEqual(len(order.applied_coupon_ids), 0, "The coupon should've been removed from the order as more than 4 days")

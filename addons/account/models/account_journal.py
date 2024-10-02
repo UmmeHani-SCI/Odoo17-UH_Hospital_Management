@@ -573,8 +573,8 @@ class AccountJournal(models.Model):
             accounts = self.search([('bank_account_id', '=', bank_account.id)])
             if accounts <= self:
                 bank_accounts += bank_account
-        ret = super(AccountJournal, self).unlink()
-        bank_accounts.unlink()
+        ret = super(AccountJournal, self).unlink
+        bank_accounts.unlink
         return ret
 
     @api.returns('self', lambda value: value.id)

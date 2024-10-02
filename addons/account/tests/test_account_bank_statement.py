@@ -842,7 +842,7 @@ class TestAccountBankStatementLine(AccountTestInvoicingCommon):
             ],
         )
 
-        line7.unlink()
+        line7.unlink
 
         self.env['account.bank.statement.line'].invalidate_model(fnames=['running_balance'])
         self.assertRecordValues(
@@ -946,7 +946,7 @@ class TestAccountBankStatementLine(AccountTestInvoicingCommon):
         )
 
         # Split on a line with a gap to another statement
-        statement1.unlink()
+        statement1.unlink
         statement3 = self.env['account.bank.statement'].with_context({'split_line_id': line3.id}).create({})
         self.assertRecordValues(statement3, [{
             'balance_start': 21.0,

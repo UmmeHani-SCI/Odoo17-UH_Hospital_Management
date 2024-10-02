@@ -36,14 +36,14 @@ class TestCRUDVisibilityFollowers(TestAccessRights):
 
     @users('Internal user', 'Portal user')
     def test_project_no_unlink(self):
-        self.project_pigs.task_ids.unlink()
+        self.project_pigs.task_ids.unlink
         with self.assertRaises(AccessError, msg="%s should not be able to unlink the project" % self.env.user.name):
-            self.project_pigs.with_user(self.env.user).unlink()
+            self.project_pigs.with_user(self.env.user).unlink
 
         self.project_pigs.message_subscribe(partner_ids=[self.env.user.partner_id.id])
-        self.project_pigs.task_ids.unlink()
+        self.project_pigs.task_ids.unlink
         with self.assertRaises(AccessError, msg="%s should not be able to unlink the project" % self.env.user.name):
-            self.project_pigs.with_user(self.env.user).unlink()
+            self.project_pigs.with_user(self.env.user).unlink
 
     @users('Internal user', 'Portal user')
     def test_project_no_read(self):
@@ -106,11 +106,11 @@ class TestCRUDVisibilityFollowers(TestAccessRights):
     @users('Internal user', 'Portal user')
     def test_task_no_unlink(self):
         with self.assertRaises(AccessError, msg="%s should not be able to unlink the task" % self.env.user.name):
-            self.task.with_user(self.env.user).unlink()
+            self.task.with_user(self.env.user).unlink
 
         self.project_pigs.message_subscribe(partner_ids=[self.env.user.partner_id.id])
         with self.assertRaises(AccessError, msg="%s should not be able to unlink the task" % self.env.user.name):
-            self.task.with_user(self.env.user).unlink()
+            self.task.with_user(self.env.user).unlink
 
 class TestCRUDVisibilityPortal(TestAccessRights):
 
@@ -275,7 +275,7 @@ class TestPortalProject(TestProjectPortalCommon):
         tmp_task = self.env['project.task'].with_user(self.user_projectuser).with_context({'mail_create_nolog': True}).create({
             'name': 'Pigs task',
             'project_id': pigs.id})
-        tmp_task.with_user(self.user_projectuser).unlink()
+        tmp_task.with_user(self.user_projectuser).unlink
 
     @mute_logger('odoo.addons.base.models.ir_model')
     def test_favorite_project_access_rights(self):
@@ -351,7 +351,7 @@ class TestAccessRightsPrivateTask(TestAccessRights):
             self.private_task.with_user(self.env.user).write({'name': 'Test write'})
 
         with self.assertRaises(AccessError):
-            self.private_task.with_user(self.env.user).unlink()
+            self.private_task.with_user(self.env.user).unlink
 
         with self.assertRaises(AccessError):
             self.private_task.with_user(self.env.user).read(['name'])
@@ -411,4 +411,4 @@ class TestAccessRightsPrivateTask(TestAccessRights):
     @users('Project user')
     def test_project_user_cannot_unlink_private_task_of_another_user(self):
         with self.assertRaises(AccessError):
-            self.private_task.with_user(self.env.user).unlink()
+            self.private_task.with_user(self.env.user).unlink

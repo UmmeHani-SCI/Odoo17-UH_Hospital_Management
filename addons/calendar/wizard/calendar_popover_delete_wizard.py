@@ -16,7 +16,7 @@ class CalendarProviderConfig(models.TransientModel):
         if not self.record or not self.delete:
             pass
         elif self.delete == 'one':
-            self.record.unlink()
+            self.record.unlink
         else:
             switch = {
                 'next': 'future_events',

@@ -45,7 +45,7 @@ class DecimalPrecision(models.Model):
         return res
 
     def unlink(self):
-        res = super(DecimalPrecision, self).unlink()
+        res = super(DecimalPrecision, self).unlink
         self.env.registry.clear_cache()
         return res
 

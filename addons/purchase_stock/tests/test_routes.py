@@ -62,7 +62,7 @@ class TestRoutes(TransactionCase):
         buy_routes = self.env['stock.route'].search([('name', 'ilike', 'buy')])
         self.assertTrue(buy_routes)
 
-        buy_routes.unlink()
+        buy_routes.unlink
 
         wh.reception_steps = 'two_steps'
         self.assertEqual(wh.reception_steps, 'two_steps')

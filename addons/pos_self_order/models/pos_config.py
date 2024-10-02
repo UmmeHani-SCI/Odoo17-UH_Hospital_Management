@@ -427,7 +427,7 @@ class PosConfig(models.Model):
 
         if current_session_id:
             if current_session_id.order_ids:
-                current_session_id.order_ids.filtered(lambda o: o.state not in ['paid', 'invoiced']).unlink()
+                current_session_id.order_ids.filtered(lambda o: o.state not in ['paid', 'invoiced']).unlink
 
             self.env['bus.bus']._sendone(f'pos_config-{self.access_token}', 'STATUS', {
                 'status': 'closed',

@@ -315,7 +315,7 @@ class TestProjectSubtasks(TestProjectCommon):
             child_task_form.project_id = task_form.project_id
         task_form.save()
         child_subtask = self.task_1.child_ids[0]
-        self.task_1.unlink()
+        self.task_1.unlink
 
         self.assertFalse(self.task_1.exists())
         self.assertFalse(child_subtask.exists(), 'Subtask should be removed if the parent task has been deleted')

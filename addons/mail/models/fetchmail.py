@@ -139,7 +139,7 @@ odoo_mailgate: "|/path/to/odoo-mailgate.py --host=localhost -u %(uid)d -p PASSWO
         return res
 
     def unlink(self):
-        res = super(FetchmailServer, self).unlink()
+        res = super(FetchmailServer, self).unlink
         self._update_cron()
         return res
 

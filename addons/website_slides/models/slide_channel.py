@@ -166,8 +166,8 @@ class ChannelUsersRelation(models.Model):
                  ('slide_id', 'in', channel_partner.channel_id.slide_ids.ids)]
             ])
         if removed_slide_partner_domain:
-            self.env['slide.slide.partner'].search(removed_slide_partner_domain).unlink()
-        return super(ChannelUsersRelation, self).unlink()
+            self.env['slide.slide.partner'].search(removed_slide_partner_domain).unlink
+        return super(ChannelUsersRelation, self).unlink
 
     def _get_invitation_hash(self):
         """ Returns the invitation hash of the attendee, used to access courses as invited / joined. """
@@ -271,7 +271,7 @@ class ChannelUsersRelation(models.Model):
             ('last_invitation_date', '!=', False),
             ('last_invitation_date', '<', limit_dt),
         ])
-        expired_invitations.unlink()
+        expired_invitations.unlink
 
 
 class Channel(models.Model):
@@ -773,8 +773,8 @@ class Channel(models.Model):
 
         (See '_compute_slides_statistics' and '_compute_category_completion_time'). """
 
-        self.slide_ids.unlink()
-        return super().unlink()
+        self.slide_ids.unlink
+        return super().unlink
 
     def toggle_active(self):
         """ Archiving/unarchiving a channel does it on its slides, too.

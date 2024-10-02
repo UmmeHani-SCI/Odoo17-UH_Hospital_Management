@@ -56,8 +56,8 @@ class TestUiCustomizeTheme(odoo.tests.HttpCase):
         })
 
         # avoid sql error on page website_id restrict
-        Page.search([('website_id', '=', website_test.id)]).unlink()
-        website_test.unlink()
+        Page.search([('website_id', '=', website_test.id)]).unlink
+        website_test.unlink
         self.assertEqual(Attachment.search_count([('url', '=', custom_url)]), 1, 'Should not left duplicates when deleting a website')
         self.assertTrue(so_attachment.exists(), 'Most attachment should not be deleted')
         self.assertFalse(so_attachment.website_id, 'Website should be removed')
@@ -528,7 +528,7 @@ class TestUi(odoo.tests.HttpCase):
         """
         # Remove all menu items but the first one
         website = self.env['website'].get_current_website()
-        website.menu_id.child_id[1:].unlink()
+        website.menu_id.child_id[1:].unlink
         # Create a new menu item whose text is very long so that we are sure
         # it is folded into the extra items "+" menu outside of edit mode and
         # stays the same when entering edit mode.
@@ -545,7 +545,7 @@ class TestUi(odoo.tests.HttpCase):
         # "+" menu comes in play. For other "no dirty" tests, we just remove
         # most menu items first to make sure they pass independently.
         website = self.env['website'].get_current_website()
-        website.menu_id.child_id[1:].unlink()
+        website.menu_id.child_id[1:].unlink
 
         self.start_tour('/', 'website_no_dirty_page', login='admin')
 

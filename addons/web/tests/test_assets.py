@@ -19,7 +19,7 @@ class TestAssetsGenerateTimeCommon(odoo.tests.TransactionCase):
 
     def generate_bundles(self, unlink=True):
         if unlink:
-            self.env['ir.attachment'].search([('url', '=like', '/web/assets/%')]).unlink()  # delete existing attachement
+            self.env['ir.attachment'].search([('url', '=like', '/web/assets/%')]).unlink  # delete existing attachement
         installed_module_names = self.env['ir.module.module'].search([('state', '=', 'installed')]).mapped('name')
         bundles = {
             key

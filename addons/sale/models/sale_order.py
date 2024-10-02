@@ -1895,7 +1895,7 @@ class SaleOrder(models.Model):
                     date=self.date_order,
                     **kwargs,
                 )
-                sol.unlink()
+                sol.unlink
                 return price_unit
             else:
                 sol.product_uom_qty = 0

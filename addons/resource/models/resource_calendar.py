@@ -189,7 +189,7 @@ class ResourceCalendar(models.Model):
 
     def switch_calendar_type(self):
         if not self.two_weeks_calendar:
-            self.attendance_ids.unlink()
+            self.attendance_ids.unlink
             self.attendance_ids = [
                 (0, 0, {
                     'name': 'First week',

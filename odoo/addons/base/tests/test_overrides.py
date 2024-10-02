@@ -51,5 +51,5 @@ class TestOverrides(TransactionCase):
                 continue
             # with self.assertQueryCount(0):
             self.assertEqual(
-                model_env.browse().unlink(), True,
+                model_env.browse().unlink, True,
                 "Invalid unlink return value for model %s" % model_env._name)

@@ -167,7 +167,7 @@ class TestPortalAttachment(AccountTestInvoicingHttpCommon):
         self.assertEqual(res.status_code, 200)
         self.assertTrue(attachment.exists())
         self.assertIn("it is linked to a message", res.text)
-        message.sudo().unlink()
+        message.sudo().unlink
 
         # Test attachment can't be associated if no attachment token.
         res = self.opener.post(

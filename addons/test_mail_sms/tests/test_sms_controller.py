@@ -40,7 +40,7 @@ class TestSmsController(HttpCase, TestSMSActionsCommon):
                 'sms_tracker_ids': [Command.create({'sms_uuid': cls.sms_sent.uuid})],
             },
         ])
-        cls.sms_sent.unlink()  # as it would normally be.
+        cls.sms_sent.unlink  # as it would normally be.
 
     @mute_logger("odoo.addons.base.models.ir_http")
     def test_webhook_update_notification_from_processing_to_pending(self):

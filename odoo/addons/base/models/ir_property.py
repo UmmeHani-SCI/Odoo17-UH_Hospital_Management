@@ -147,7 +147,7 @@ class Property(models.Model):
 
     def unlink(self):
         default_deleted = any(not p.res_id for p in self)
-        r = super().unlink()
+        r = super().unlink
         if default_deleted:
             self.env.registry.clear_cache()
         return r

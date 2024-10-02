@@ -27,7 +27,7 @@ def environment():
 def drop_sequence(code):
     with environment() as env:
         seq = env['ir.sequence'].search([('code', '=', code)])
-        seq.unlink()
+        seq.unlink
 
 
 class TestIrSequenceStandard(BaseCase):
@@ -136,7 +136,7 @@ class TestIrSequenceChangeImplementation(BaseCase):
         with environment() as env:
             domain = [('code', 'in', ['test_sequence_type_3', 'test_sequence_type_4'])]
             seqs = env['ir.sequence'].search(domain)
-            seqs.unlink()
+            seqs.unlink
 
     @classmethod
     def tearDownClass(cls):

@@ -98,7 +98,7 @@ class CRMRevealRule(models.Model):
 
     def unlink(self):
         self.env.registry.clear_cache() # Clear the cache in order to recompute _get_active_rules
-        return super(CRMRevealRule, self).unlink()
+        return super(CRMRevealRule, self).unlink
 
     def action_get_lead_tree_view(self):
         action = self.env["ir.actions.actions"]._for_xml_id("crm.crm_lead_all_leads")
@@ -239,7 +239,7 @@ class CRMRevealRule(models.Model):
         domain.append(('reveal_ip', '!=', False))
         domain.append(('create_date', '>', fields.Datetime.to_string(datetime.date.today() - relativedelta(months=months_valid))))
         leads = self.env['crm.lead'].with_context(active_test=False).search(domain)
-        self.env['crm.reveal.view'].search([('reveal_ip', 'in', [lead.reveal_ip for lead in leads])]).unlink()
+        self.env['crm.reveal.view'].search([('reveal_ip', 'in', [lead.reveal_ip for lead in leads])]).unlink
 
     @api.model
     def _get_reveal_views_to_process(self):
@@ -327,7 +327,7 @@ class CRMRevealRule(models.Model):
             done_ips.append(res['ip'])
             if not res.get('not_found'):
                 lead = self._create_lead_from_response(res)
-                self.env['crm.reveal.view'].search([('reveal_ip', '=', res['ip'])]).unlink()
+                self.env['crm.reveal.view'].search([('reveal_ip', '=', res['ip'])]).unlink
             else:
                 views = self.env['crm.reveal.view'].search([('reveal_ip', '=', res['ip'])])
                 views.write({'reveal_state': 'not_found'})

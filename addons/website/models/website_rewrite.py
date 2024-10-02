@@ -46,7 +46,7 @@ class WebsiteRoute(models.Model):
         if paths:
             find = self.search([('path', 'in', list(paths.keys()))])
             _logger.info("Delete %d website.route" % len(find))
-            find.unlink()
+            find.unlink
 
 
 class WebsiteRewrite(models.Model):
@@ -139,7 +139,7 @@ class WebsiteRewrite(models.Model):
 
     def unlink(self):
         need_invalidate = set(self.mapped('redirect_type')) & {'308', '404'}
-        res = super(WebsiteRewrite, self).unlink()
+        res = super(WebsiteRewrite, self).unlink
         if need_invalidate:
             self._invalidate_routing()
         return res

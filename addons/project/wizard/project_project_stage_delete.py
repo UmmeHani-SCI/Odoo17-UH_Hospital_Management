@@ -33,7 +33,7 @@ class ProjectStageDelete(models.TransientModel):
         inactive_projects.action_unarchive()
 
     def action_unlink(self):
-        self.stage_ids.unlink()
+        self.stage_ids.unlink
         return self._get_action()
 
     def _get_action(self):

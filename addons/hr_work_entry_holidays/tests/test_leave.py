@@ -161,7 +161,7 @@ class TestWorkEntryLeave(TestWorkEntryHolidaysBase):
         existing_leaves = self.env['hr.leave'].search([])
         existing_leaves.action_refuse()
         existing_leaves.action_draft()
-        existing_leaves.unlink()
+        existing_leaves.unlink
         start = date(2022, 8, 1)
         end = date(2022, 8, 31)
         self.contract_cdi.generate_work_entries(start, end)

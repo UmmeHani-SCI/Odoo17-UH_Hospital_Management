@@ -280,7 +280,7 @@ class TestAPI(SavepointCaseWithUserDemo):
         self.env.cache.check(self.env)
 
         # delete it
-        child.unlink()
+        child.unlink
         self.env.cache.check(self.env)
 
         # check recordsets

@@ -12,7 +12,7 @@ class TestLivechatChatbotUI(TestLivechatCommon, ChatbotCase):
         super().setUp()
         self.env['im_livechat.channel'].search([
             ('id', '!=', self.livechat_channel.id)
-        ]).unlink()  # delete other channels to avoid them messing with the URL rules
+        ]).unlink  # delete other channels to avoid them messing with the URL rules
 
         self.livechat_channel.write({
             'is_published': True,

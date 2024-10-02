@@ -64,7 +64,7 @@ class TestPointOfSaleCommon(ValuationReconciliationTestCommon):
             'available_in_pos': True,
             'list_price': 1.28,
         })
-        cls.company_data['default_journal_cash'].pos_payment_method_ids.unlink()
+        cls.company_data['default_journal_cash'].pos_payment_method_ids.unlink
         cls.cash_payment_method = cls.env['pos.payment.method'].create({
             'name': 'Cash',
             'receivable_account_id': cls.company_data['default_account_receivable'].id,
@@ -249,7 +249,7 @@ class TestPoSCommon(ValuationReconciliationTestCommon):
             'available_pricelist_ids': cls.currency_pricelist.ids,
             'pricelist_id': cls.currency_pricelist.id,
         })
-        cls.company_data['default_journal_cash'].pos_payment_method_ids.unlink()
+        cls.company_data['default_journal_cash'].pos_payment_method_ids.unlink
         cls.cash_pm1 = cls.env['pos.payment.method'].create({
             'name': 'Cash',
             'journal_id': cls.company_data['default_journal_cash'].id,
@@ -282,7 +282,7 @@ class TestPoSCommon(ValuationReconciliationTestCommon):
 
     @classmethod
     def _create_other_currency_config(cls):
-        (cls.other_currency.rate_ids | cls.company_currency.rate_ids).unlink()
+        (cls.other_currency.rate_ids | cls.company_currency.rate_ids).unlink
         cls.env['res.currency.rate'].create({
             'rate': 0.5,
             'currency_id': cls.other_currency.id,

@@ -252,7 +252,7 @@ class TestAnalyticAccount(TestMrpAnalyticAccount):
         self.assertTrue(mo_no_company.workorder_ids)
         self.assertEqual(wo.production_id.analytic_account_ids, analytic_account_no_company)
         self.assertEqual(len(analytic_account_no_company.line_ids), 1)
-        mo_no_company.workorder_ids.unlink()
+        mo_no_company.workorder_ids.unlink
         self.assertEqual(len(analytic_account_no_company.line_ids), 0)
 
     def test_update_components_qty_to_0(self):

@@ -599,7 +599,7 @@ class HrExpense(models.Model):
                             'res_model': 'hr.expense.sheet',
                             'res_id': vals['sheet_id'],
                         })
-            attachments_to_unlink.with_context(sync_attachment=False).unlink()
+            attachments_to_unlink.with_context(sync_attachment=False).unlink
         return res
 
     def unlink(self):
@@ -607,8 +607,8 @@ class HrExpense(models.Model):
         for sheet in self.sheet_id:
             checksums = set((sheet.expense_line_ids.attachment_ids & self.attachment_ids).mapped('checksum'))
             attachments_to_unlink += sheet.attachment_ids.filtered(lambda att: att.checksum in checksums)
-        attachments_to_unlink.with_context(sync_attachment=False).unlink()
-        return super().unlink()
+        attachments_to_unlink.with_context(sync_attachment=False).unlink
+        return super().unlink
 
     @api.model
     def get_empty_list_help(self, help_message):

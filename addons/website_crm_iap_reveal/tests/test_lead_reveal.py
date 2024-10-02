@@ -50,7 +50,7 @@ class TestLeadMine(TestCrmCommon, MockIAPReveal):
             'team_id':  cls.sales_team_1.id,
             'user_id': cls.user_admin.id,
         })
-        cls.env['crm.reveal.view'].search([]).unlink()
+        cls.env['crm.reveal.view'].search([]).unlink
         cls.test_views = cls.env['crm.reveal.view'].create([
             {'reveal_ip': '90.80.70.60',
              'reveal_rule_id': cls.test_request_1.id,

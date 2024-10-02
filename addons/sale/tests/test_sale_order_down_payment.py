@@ -131,7 +131,7 @@ class TestSaleOrderDownPayment(TestSaleCommon):
     def test_tax_with_diff_tax_on_invoice_breakdown(self):
         # if a generated invoice has it's taxes changed, this should not affect the next downpayment on an SO
         self.sale_order.order_line[0].tax_id = self.tax_15
-        (self.sale_order.order_line - self.sale_order.order_line[0]).unlink()
+        (self.sale_order.order_line - self.sale_order.order_line[0]).unlink
         self.make_downpayment(amount=25)
         first_invoice = self.sale_order.invoice_ids
         first_invoice.invoice_line_ids.tax_ids = None
@@ -532,7 +532,7 @@ class TestSaleOrderDownPayment(TestSaleCommon):
         self.sale_order.order_line[2].product_uom_qty = 4
         self.sale_order.order_line[2].tax_id = tax_21
 
-        self.sale_order.order_line[3].unlink()
+        self.sale_order.order_line[3].unlink
         self.sale_order.action_confirm()
 
         so_context = {
@@ -585,7 +585,7 @@ class TestSaleOrderDownPayment(TestSaleCommon):
         self.sale_order.order_line[1].tax_id = tax_21_b
         self.sale_order.order_line[1].price_unit = 1000
 
-        self.sale_order.order_line[2:].unlink()
+        self.sale_order.order_line[2:].unlink
 
         self.sale_order.action_confirm()
 
@@ -647,7 +647,7 @@ class TestSaleOrderDownPayment(TestSaleCommon):
         self.assertEqual(downpayment.amount_invoiced, 200.0, "Amount invoiced is not equal to downpayment amount")
 
         # final invoice with all products delivered
-        invoice.unlink()
+        invoice.unlink
         self.sale_order.order_line[0].qty_delivered = 1
         self.sale_order.order_line[1].qty_delivered = 1
         downpayment = self.env['sale.advance.payment.inv'].with_context(so_context).create(payment_params)
@@ -693,7 +693,7 @@ class TestSaleOrderDownPayment(TestSaleCommon):
         self.sale_order.order_line[1].tax_id = tax_24_b
         self.sale_order.order_line[1].price_unit = 1000
 
-        self.sale_order.order_line[2:].unlink()
+        self.sale_order.order_line[2:].unlink
 
         self.sale_order.action_confirm()
 
@@ -755,7 +755,7 @@ class TestSaleOrderDownPayment(TestSaleCommon):
         self.assertEqual(downpayment.amount_invoiced, 200.0, "Amount invoiced is not equal to downpayment amount")
 
         # final invoice with all products delivered
-        invoice.unlink()
+        invoice.unlink
         self.sale_order.order_line[0].qty_delivered = 1
         self.sale_order.order_line[1].qty_delivered = 1
         downpayment = self.env['sale.advance.payment.inv'].with_context(so_context).create(payment_params)

@@ -27,7 +27,7 @@ class TestMailSchedule(EventCase, MockEmail, CronMixinCase):
         cls.event_cron_id = cls.env.ref('event.event_mail_scheduler')
 
         # deactivate other schedulers to avoid messing with crons
-        cls.env['event.mail'].search([]).unlink()
+        cls.env['event.mail'].search([]).unlink
         # consider asynchronous sending as default sending
         cls.env["ir.config_parameter"].set_param("event.event_mail_async", False)
 
@@ -342,7 +342,7 @@ class TestMailSchedule(EventCase, MockEmail, CronMixinCase):
         # remove on subscription, to create hanging registrations
         schedulers = self.env['event.mail'].search([('event_id', '=', test_event.id)])
         _sub_scheduler = schedulers.filtered(lambda s: s.interval_type == 'after_sub' and s.interval_unit == 'now')
-        _sub_scheduler.unlink()
+        _sub_scheduler.unlink
 
         # consider having hanging registrations, still not processed (e.g. adding
         # a new scheduler after)
@@ -486,7 +486,7 @@ class TestMailSchedule(EventCase, MockEmail, CronMixinCase):
         event_cron_id = self.env.ref('event.event_mail_scheduler')
 
         # deactivate other schedulers to avoid messing with crons
-        self.env['event.mail'].search([]).unlink()
+        self.env['event.mail'].search([]).unlink
 
         # freeze some datetimes, and ensure more than 1D+1H before event starts
         # to ease time-based scheduler check

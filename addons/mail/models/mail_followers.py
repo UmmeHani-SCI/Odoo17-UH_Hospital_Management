@@ -64,7 +64,7 @@ class Followers(models.Model):
 
     def unlink(self):
         self._invalidate_documents()
-        return super(Followers, self).unlink()
+        return super(Followers, self).unlink
 
     _sql_constraints = [
         ('mail_followers_res_partner_res_model_id_uniq', 'unique(res_model,res_id,partner_id)', 'Error, a partner cannot follow twice the same object.'),
@@ -486,7 +486,7 @@ GROUP BY fol.id%s%s""" % (
                 data_fols[fid] = (rid, pid, sids)
 
             if existing_policy == 'force':
-                self.sudo().browse(data_fols.keys()).unlink()
+                self.sudo().browse(data_fols.keys()).unlink
 
         new, update = dict(), dict()
         for res_id in _res_ids:

@@ -247,8 +247,8 @@ class AccountAnalyticPlan(models.Model):
 
     def unlink(self):
         # Remove the dynamic field created with the plan (see `_inverse_name`)
-        self._find_plan_column().unlink()
-        return super().unlink()
+        self._find_plan_column().unlink
+        return super().unlink
 
     def _find_plan_column(self):
         return self.env['ir.model.fields'].sudo().search([
@@ -261,7 +261,7 @@ class AccountAnalyticPlan(models.Model):
         for plan in self:
             prev = plan._find_plan_column()
             if plan.parent_id and prev:
-                prev.unlink()
+                prev.unlink
             elif prev:
                 prev.field_description = plan.name
             elif not plan.parent_id:

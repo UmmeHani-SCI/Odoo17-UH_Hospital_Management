@@ -47,4 +47,4 @@ def _uninstall_hook(env):
     if project_ids:
         project_ids.write({'active': False})
 
-    env['ir.model.data'].search([('name', 'ilike', 'internal_project_default_stage')]).unlink()
+    env['ir.model.data'].search([('name', 'ilike', 'internal_project_default_stage')]).unlink

@@ -292,7 +292,7 @@ class TestVirtualAvailable(TestStockCommon):
             'location_id': main_loc.id,
         } for i in range(3)])
 
-        self.env['stock.quant'].search([('product_id', '=', self.product_3.id)]).unlink()
+        self.env['stock.quant'].search([('product_id', '=', self.product_3.id)]).unlink
         self.env['stock.quant']._update_available_quantity(self.product_3, other_loc, 1000)
         self.env['stock.quant']._update_available_quantity(self.product_3, main_loc, 100)
         self.env['stock.quant']._update_available_quantity(self.product_3, sub_loc01, 10)

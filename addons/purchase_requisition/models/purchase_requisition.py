@@ -108,7 +108,7 @@ class PurchaseRequisition(models.Model):
         # try to set all associated quotations to cancel state
         for requisition in self:
             for requisition_line in requisition.line_ids:
-                requisition_line.supplier_info_ids.sudo().unlink()
+                requisition_line.supplier_info_ids.sudo().unlink
             requisition.purchase_ids.button_cancel()
             for po in requisition.purchase_ids:
                 po.message_post(body=_('Cancelled by the agreement associated to this quotation.'))
@@ -148,7 +148,7 @@ class PurchaseRequisition(models.Model):
                 "Imagine the mess if someone confirms these duplicates: double the order, double the trouble :)"))
         for requisition in self:
             for requisition_line in requisition.line_ids:
-                requisition_line.supplier_info_ids.sudo().unlink()
+                requisition_line.supplier_info_ids.sudo().unlink
         self.write({'state': 'done'})
 
     @api.ondelete(at_uninstall=False)
@@ -159,7 +159,7 @@ class PurchaseRequisition(models.Model):
     def unlink(self):
         # Draft requisitions could have some requisition lines.
         self.mapped('line_ids').unlink()
-        return super(PurchaseRequisition, self).unlink()
+        return super(PurchaseRequisition, self).unlink
 
 
 class PurchaseRequisitionLine(models.Model):
@@ -211,8 +211,8 @@ class PurchaseRequisitionLine(models.Model):
 
     def unlink(self):
         to_unlink = self.filtered(lambda r: r.requisition_id.state not in ['draft', 'cancel', 'done'])
-        to_unlink.mapped('supplier_info_ids').unlink()
-        return super(PurchaseRequisitionLine, self).unlink()
+        to_unlink.mapped('supplier_info_ids').unlink
+        return super(PurchaseRequisitionLine, self).unlink
 
     def create_supplier_info(self):
         purchase_requisition = self.requisition_id

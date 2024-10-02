@@ -47,7 +47,7 @@ class TestDiscussChannelMember(MailCommon):
             'group_public_id': cls.secret_group.id,
         })
         cls.public_channel = cls.env['discuss.channel'].channel_create(group_id=None, name='Public channel of user 1')
-        (cls.group | cls.group_restricted_channel | cls.public_channel).channel_member_ids.unlink()
+        (cls.group | cls.group_restricted_channel | cls.public_channel).channel_member_ids.unlink
 
     # ------------------------------------------------------------
     # GROUP
@@ -151,11 +151,11 @@ class TestDiscussChannelMember(MailCommon):
 
         # User 2 is not in the group, they can not kick user 1
         with self.assertRaises(AccessError):
-            channel_members.with_user(self.user_2).unlink()
+            channel_members.with_user(self.user_2).unlink
 
         # User 3 is in the group, but not admin/owner, they can not kick user 1
         with self.assertRaises(AccessError):
-            channel_members.with_user(self.user_portal).unlink()
+            channel_members.with_user(self.user_portal).unlink
 
     # ------------------------------------------------------------
     # GROUP BASED CHANNELS

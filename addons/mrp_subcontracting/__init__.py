@@ -20,7 +20,7 @@ def uninstall_hook(env):
     # we don't try to do anything.
     try:
         with env.cr.savepoint():
-            subcontracting_routes.unlink()
-            operations_type_to_remove.unlink()
+            subcontracting_routes.unlink
+            operations_type_to_remove.unlink
     except:
         pass

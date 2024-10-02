@@ -733,7 +733,7 @@ class Message(models.Model):
         self.check_access_rule('unlink')
         self.mapped('attachment_ids').filtered(
             lambda attach: attach.res_model == self._name and (attach.res_id in self.ids or attach.res_id == 0)
-        ).unlink()
+        ).unlink
         messages_by_partner = defaultdict(lambda: self.env['mail.message'])
         partners_with_user = self.partner_ids.filtered('user_ids')
         for elem in self:
@@ -747,7 +747,7 @@ class Message(models.Model):
                 for partner, messages in messages_by_partner.items()
             ])
 
-        return super(Message, self).unlink()
+        return super(Message, self).unlink
 
     def export_data(self, fields_to_export):
         if not self.env.is_admin():
@@ -867,7 +867,7 @@ class Message(models.Model):
             }
             self.env["mail.message.reaction"].create(create_values)
         if action == "remove" and reaction:
-            reaction.unlink()
+            reaction.unlink
         # format result
         group_domain = [("message_id", "=", self.id), ("content", "=", content)]
         count = self.env["mail.message.reaction"].search_count(group_domain)

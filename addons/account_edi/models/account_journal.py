@@ -38,7 +38,7 @@ class AccountJournal(models.Model):
                 raise UserError(_('Cannot deactivate (%s) on this journal because not all documents are synchronized', ', '.join(documents.edi_format_id.mapped('display_name'))))
             # remove these documents which: do not need a web service & are linked to the edi formats we are unchecking
             if documents:
-                documents.unlink()
+                documents.unlink
             return res
         else:
             return super().write(vals)

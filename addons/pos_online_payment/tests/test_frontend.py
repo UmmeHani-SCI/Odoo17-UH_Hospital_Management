@@ -310,7 +310,7 @@ class TestUi(AccountTestInvoicingCommon, OnlinePaymentCommon):
         # The online payment method cannot be deleted because it is used by a payment in the database.
         # It would require to delete the paid orders of the tests, the corresponding accounting, the session data...
         cls.pos_config.payment_method_ids = [Command.unlink(cls.online_payment_method.id)]
-        cls.cash_payment_method.unlink()
-        cls.receivable_cash_account.unlink()
-        cls.cash_journal.unlink()
-        cls.account_default_pos_receivable_account_id.unlink()
+        cls.cash_payment_method.unlink
+        cls.receivable_cash_account.unlink
+        cls.cash_journal.unlink
+        cls.account_default_pos_receivable_account_id.unlink

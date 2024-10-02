@@ -50,10 +50,10 @@ class TestAccessRights(BaseUsersCommon, SaleCommon):
         sale_order.action_confirm()
         # Manager can not delete confirmed SO
         with self.assertRaises(UserError), mute_logger('odoo.models.unlink'):
-            sale_order.unlink()
+            sale_order.unlink
 
         # Manager can delete the SO of other salesperson if SO is in 'draft' or 'cancel' state
-        so_as_sale_manager.unlink()
+        so_as_sale_manager.unlink
         self.assertNotIn(
             so_as_sale_manager.id, SaleOrder.search([]).ids,
             'Sales manager should be able to delete the SO')
@@ -86,7 +86,7 @@ class TestAccessRights(BaseUsersCommon, SaleCommon):
 
         # Salesperson can't delete Sale Orders
         with self.assertRaises(AccessError):
-            so_as_salesperson.unlink()
+            so_as_salesperson.unlink
 
         # Salesperson can confirm the SO
         so_as_salesperson.action_confirm()
@@ -114,7 +114,7 @@ class TestAccessRights(BaseUsersCommon, SaleCommon):
         # Portal user can't delete the SO which is in 'draft' or 'cancel' state
         self.sale_order.action_cancel()
         with self.assertRaises(AccessError):
-            so_as_portal_user.unlink()
+            so_as_portal_user.unlink
 
     @mute_logger('odoo.addons.base.models.ir_model')
     def test_access_employee(self):
@@ -135,4 +135,4 @@ class TestAccessRights(BaseUsersCommon, SaleCommon):
             })
         # Employee can't delete the SO
         with self.assertRaises(AccessError):
-            so_as_internal_user.unlink()
+            so_as_internal_user.unlink

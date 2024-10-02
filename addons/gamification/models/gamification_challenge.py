@@ -341,7 +341,7 @@ class Challenge(models.Model):
         self.env['gamification.goal'].search([
             ('challenge_id', 'in', self.ids),
             ('state', '=', 'inprogress')
-        ]).unlink()
+        ]).unlink
 
         return self._update_all()
 
@@ -400,7 +400,7 @@ class Challenge(models.Model):
                     Goals.search([
                         ('challenge_id', '=', challenge.id),
                         ('user_id', 'in', list(user_squating_challenge_ids))
-                    ]).unlink()
+                    ]).unlink
 
                 values = {
                     'definition_id': line.definition_id.id,

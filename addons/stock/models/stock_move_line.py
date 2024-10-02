@@ -507,10 +507,10 @@ class StockMoveLine(models.Model):
                 self.env['stock.quant']._update_reserved_quantity(ml.product_id, ml.location_id, -ml.quantity_product_uom, lot_id=ml.lot_id, package_id=ml.package_id, owner_id=ml.owner_id, strict=True)
         moves = self.mapped('move_id')
         package_levels = self.package_level_id
-        res = super().unlink()
+        res = super().unlink
         package_levels = package_levels.filtered(lambda pl: not (pl.move_line_ids or pl.move_ids))
         if package_levels:
-            package_levels.unlink()
+            package_levels.unlink
         if moves:
             # Add with_prefetch() to set the _prefecht_ids = _ids
             # because _prefecht_ids generator look lazily on the cache of move_id
@@ -602,7 +602,7 @@ class StockMoveLine(models.Model):
             ml_to_create_lot.with_context(bypass_reservation_update=True)._create_and_assign_production_lot()
 
         mls_to_delete = self.env['stock.move.line'].browse(ml_ids_to_delete)
-        mls_to_delete.unlink()
+        mls_to_delete.unlink
 
         mls_todo = (self - mls_to_delete)
         mls_todo._check_company()
@@ -772,7 +772,7 @@ class StockMoveLine(models.Model):
                     'procure_method': 'make_to_stock',
                     'move_orig_ids': [Command.clear()]
                 })
-        move_line_to_unlink.unlink()
+        move_line_to_unlink.unlink
         move_to_reassign._action_assign()
 
     def _get_aggregated_properties(self, move_line=False, move=False):

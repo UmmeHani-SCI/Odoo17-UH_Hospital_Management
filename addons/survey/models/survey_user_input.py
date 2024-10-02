@@ -328,7 +328,7 @@ class SurveyUserInput(models.Model):
         if comment:
             vals_list.append(self._get_line_comment_values(question, comment))
 
-        old_answers.sudo().unlink()
+        old_answers.sudo().unlink
         return self.env['survey.user_input.line'].create(vals_list)
 
     def _save_line_matrix(self, question, old_answers, answers, comment):
@@ -349,7 +349,7 @@ class SurveyUserInput(models.Model):
         if comment:
             vals_list.append(self._get_line_comment_values(question, comment))
 
-        old_answers.sudo().unlink()
+        old_answers.sudo().unlink
         return self.env['survey.user_input.line'].create(vals_list)
 
     def _get_line_answer_values(self, question, answer, answer_type):
@@ -589,7 +589,7 @@ class SurveyUserInput(models.Model):
 
         # delete user.input.line on question that should not be answered.
         answers_to_delete = self.user_input_line_ids.filtered(lambda answer: answer.question_id in inactive_questions)
-        answers_to_delete.unlink()
+        answers_to_delete.unlink
 
     def _get_inactive_conditional_questions(self):
         triggering_answers_by_question, _, selected_answers = self._get_conditional_values()

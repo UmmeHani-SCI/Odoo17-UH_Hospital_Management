@@ -19,4 +19,4 @@ def uninstall_hook(env):
     env['account.payment.method'].search([
         ('code', 'in', installed_providers.mapped('code')),
         ('payment_type', '=', 'inbound'),
-    ]).unlink()
+    ]).unlink

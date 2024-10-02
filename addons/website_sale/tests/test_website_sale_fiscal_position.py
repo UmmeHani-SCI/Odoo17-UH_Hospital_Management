@@ -77,7 +77,7 @@ class TestWebsiteSaleFiscalPosition(ProductCommon, HttpCaseWithUserPortal):
             'website_published': True,
         })
         # Create a conversion rate (1 USD <=> 2 EUR)
-        self.env['res.currency.rate'].search([]).unlink()
+        self.env['res.currency.rate'].search([]).unlink
         self.env['res.currency.rate'].create({
             'company_id': self.env.company.id,
             'currency_id': self.env.ref('base.EUR').id,

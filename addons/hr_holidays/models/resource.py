@@ -147,7 +147,7 @@ class CalendarLeaves(models.Model):
 
     def unlink(self):
         time_domain_dict = self._get_time_domain_dict()
-        res = super().unlink()
+        res = super().unlink
         self._reevaluate_leaves(time_domain_dict)
 
         return res

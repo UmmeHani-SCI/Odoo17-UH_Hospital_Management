@@ -80,8 +80,8 @@ class DataRecycleRecord(models.Model):
         for model_name, ids in record_ids_to_archive.items():
             self.env[model_name].sudo().browse(ids).toggle_active()
         for model_name, ids in record_ids_to_unlink.items():
-            self.env[model_name].sudo().browse(ids).unlink()
-        records_done.unlink()
+            self.env[model_name].sudo().browse(ids).unlink
+        records_done.unlink
 
     def action_discard(self):
         self.write({'active': False})

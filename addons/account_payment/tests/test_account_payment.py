@@ -184,7 +184,7 @@ class TestAccountPayment(AccountPaymentCommon):
         """
         self.assertEqual(self.dummy_provider.state, 'test')
         with self.assertRaises(UserError):
-            self.dummy_provider.journal_id.inbound_payment_method_line_ids.unlink()
+            self.dummy_provider.journal_id.inbound_payment_method_line_ids.unlink
 
     def test_provider_journal_assignation(self):
         """ Test the computation of the 'journal_id' field and so, the link with the accounting side. """

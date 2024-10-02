@@ -22,7 +22,7 @@ class TestMailingControllersCommon(MassMailCommon, HttpCase):
         super(TestMailingControllersCommon, cls).setUpClass()
 
         # cleanup lists
-        cls.env['mailing.list'].search([]).unlink()
+        cls.env['mailing.list'].search([]).unlink
 
         cls._create_mailing_list()
         cls.test_mailing_on_contacts = cls.env['mailing.mailing'].create({
@@ -681,7 +681,7 @@ class TestMailingTracking(TestMailingControllersCommon):
         self.assertEqual(len(mailing_trace), 1)
         self.assertFalse(mailing_trace.open_datetime)
         self.assertEqual(mailing_trace.trace_status, 'sent')
-        mail.unlink()  # the mail might be removed during the email sending
+        mail.unlink  # the mail might be removed during the email sending
         self.env.flush_all()
 
         with freeze_time(self._reference_now):

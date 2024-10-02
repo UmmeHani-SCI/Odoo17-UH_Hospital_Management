@@ -208,7 +208,7 @@ class NewLeadNotification(TestCrmCommon):
 
                 # Check that the creation of the contact won't fail
                 partner = self.env['res.partner'].create(create_vals)
-                partner.unlink()
+                partner.unlink
 
     def test_new_lead_notification(self):
         """ Test newly create leads like from the website. People and channels

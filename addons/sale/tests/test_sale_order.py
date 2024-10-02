@@ -135,8 +135,8 @@ class TestSaleOrder(SaleCommon):
         # SO in state 'draft' can be deleted
         so_copy = self.sale_order.copy()
         with self.assertRaises(AccessError):
-            so_copy.with_user(self.sale_user).unlink()
-        self.assertTrue(so_copy.unlink(), 'Sale: deleting a quotation should be possible')
+            so_copy.with_user(self.sale_user).unlink
+        self.assertTrue(so_copy.unlink, 'Sale: deleting a quotation should be possible')
 
         # SO in state 'cancel' can be deleted
         so_copy = self.sale_order.copy()
@@ -145,20 +145,20 @@ class TestSaleOrder(SaleCommon):
         so_copy._action_cancel()
         self.assertTrue(so_copy.state == 'cancel', 'Sale: SO should be in state "cancel"')
         with self.assertRaises(AccessError):
-            so_copy.with_user(self.sale_user).unlink()
-        self.assertTrue(so_copy.unlink(), 'Sale: deleting a cancelled SO should be possible')
+            so_copy.with_user(self.sale_user).unlink
+        self.assertTrue(so_copy.unlink, 'Sale: deleting a cancelled SO should be possible')
 
         # SO in state 'sale' cannot be deleted
         self.sale_order.action_confirm()
         self.assertTrue(self.sale_order.state == 'sale', 'Sale: SO should be in state "sale"')
         with self.assertRaises(UserError):
-            self.sale_order.unlink()
+            self.sale_order.unlink
 
         self.sale_order.action_lock()
         self.assertTrue(self.sale_order.state == 'sale')
         self.assertTrue(self.sale_order.locked)
         with self.assertRaises(UserError):
-            self.sale_order.unlink()
+            self.sale_order.unlink
 
     def test_compute_packaging_00(self):
         """Create a SO and use packaging. Check we suggested suitable packaging

@@ -175,9 +175,9 @@ class MailMail(models.Model):
     def unlink(self):
         # cascade-delete the parent message for all mails that are not created for a notification
         mail_msg_cascade_ids = [mail.mail_message_id.id for mail in self if not mail.is_notification]
-        res = super(MailMail, self).unlink()
+        res = super(MailMail, self).unlink
         if mail_msg_cascade_ids:
-            self.env['mail.message'].browse(mail_msg_cascade_ids).unlink()
+            self.env['mail.message'].browse(mail_msg_cascade_ids).unlink
         return res
 
     @api.model
@@ -292,7 +292,7 @@ class MailMail(models.Model):
                     # TDE TODO: could be great to notify message-based, not notifications-based, to lessen number of notifs
                     messages._notify_message_notification_update()  # notify user that we have a failure
         if not failure_type or failure_type in ['mail_email_invalid', 'mail_email_missing']:  # if we have another error, we want to keep the mail.
-            self.sudo().filtered(lambda mail: mail.auto_delete).unlink()
+            self.sudo().filtered(lambda mail: mail.auto_delete).unlink
 
         return True
 

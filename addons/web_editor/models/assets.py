@@ -31,8 +31,8 @@ class Assets(models.AbstractModel):
 
         # Simply delete the attachement which contains the modified scss/js file
         # and the xpath view which links it
-        self._get_custom_attachment(custom_url).unlink()
-        self._get_custom_asset(custom_url).unlink()
+        self._get_custom_attachment(custom_url).unlink
+        self._get_custom_asset(custom_url).unlink
 
     @api.model
     def save_asset(self, url, bundle, content, file_type):

@@ -139,7 +139,7 @@ class IapAccount(models.Model):
                 self.env.flush_all()
                 IapAccount = self.with_env(self.env(cr=cr))
                 # Need to use sudo because regular users do not have delete right
-                IapAccount.search(domain + [('account_token', '=', False)]).sudo().unlink()
+                IapAccount.search(domain + [('account_token', '=', False)]).sudo().unlink
                 accounts = accounts - accounts_without_token
         if not accounts:
             if hasattr(threading.current_thread(), 'testing') and threading.current_thread().testing:

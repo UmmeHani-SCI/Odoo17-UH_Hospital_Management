@@ -82,7 +82,7 @@ class TestIrCron(TransactionCase, CronMixinCase):
         self.cron.write(self._get_cron_data(self.env))
         self.env['ir.cron.trigger'].search(
             [('cron_id', '=', self.cron.id)]
-        ).unlink()
+        ).unlink
 
     def test_cron_direct_trigger(self):
         self.cron.code = textwrap.dedent(f"""\
@@ -290,8 +290,8 @@ class TestIrCronConcurrent(BaseCase, CronMixinCase):
 
         with self.registry.cursor() as cr:
             env = api.Environment(cr, odoo.SUPERUSER_ID, {})
-            env['ir.cron'].search([]).unlink()
-            env['ir.cron.trigger'].search([]).unlink()
+            env['ir.cron'].search([]).unlink
+            env['ir.cron.trigger'].search([]).unlink
 
             self.cron1_data = env['ir.cron'].create(self._get_cron_data(env, priority=1)).read(load=None)[0]
             self.cron2_data = env['ir.cron'].create(self._get_cron_data(env, priority=2)).read(load=None)[0]

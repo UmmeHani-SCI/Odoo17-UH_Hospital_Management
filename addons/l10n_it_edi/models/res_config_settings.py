@@ -88,5 +88,5 @@ class ResConfigSettings(models.TransientModel):
                         ('company_id', '=', config.company_id.id),
                         ('proxy_type', '=', 'l10n_it_edi'),
                         ('id_client', '=like', 'demo%'),
-                    ]).sudo().unlink()
+                    ]).sudo().unlink
                     self._create_proxy_user(config.company_id, edi_mode)

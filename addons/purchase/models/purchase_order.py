@@ -1021,7 +1021,7 @@ class PurchaseOrder(models.Model):
                 pol.product_qty = quantity
             elif self.state in ['draft', 'sent']:
                 price_unit = self._get_product_price_and_data(pol.product_id)['price']
-                pol.unlink()
+                pol.unlink
                 return price_unit
             else:
                 pol.product_qty = 0

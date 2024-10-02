@@ -95,8 +95,8 @@ def _mock_deregister_participant(func, self, *args, **kwargs):
         'peppol_message_uuid': None,
         'peppol_move_state': None,
     })
-    demo_moves.message_main_attachment_id.unlink()
-    demo_moves.ubl_cii_xml_id.unlink()
+    demo_moves.message_main_attachment_id.unlink
+    demo_moves.ubl_cii_xml_id.unlink
     log_message = _('The peppol status of the documents has been reset when switching from Demo to Live.')
     demo_moves._message_log_batch(bodies=dict((move.id, log_message) for move in demo_moves))
 
@@ -104,10 +104,10 @@ def _mock_deregister_participant(func, self, *args, **kwargs):
     self.env['account.move'].search([
         ('company_id', '=', self.company_id.id),
         ('peppol_message_uuid', '=', f'{self.company_id.id}_demo_vendor_bill'),
-    ]).unlink()
+    ]).unlink
 
     mode_constraint = self.env['ir.config_parameter'].get_param('account_peppol.mode_constraint')
-    self.account_peppol_edi_user.unlink()
+    self.account_peppol_edi_user.unlink
     self.account_peppol_proxy_state = 'not_registered'
     self.account_peppol_edi_mode = mode_constraint
 

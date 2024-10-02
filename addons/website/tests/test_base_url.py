@@ -137,7 +137,7 @@ class TestGetBaseUrl(odoo.tests.TransactionCase):
         website_1.company_id = company_2.id
         # .. on `company_id` write..
         self.assertEqual(attach.get_base_url(), website_2_domain, "Cache should be recomputed, only website_1 remains for company_2.")
-        website_2.unlink()
+        website_2.unlink
         # .. on unlink ..
         self.assertEqual(attach.get_base_url(), web_base_url, "Cache should be recomputed, no more website for company_1.")
 

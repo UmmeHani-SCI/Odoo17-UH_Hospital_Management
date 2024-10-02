@@ -34,7 +34,7 @@ class ProductTemplateAttributeExclusion(models.Model):
     def unlink(self):
         # Keep a reference to the related templates before the deletion.
         templates = self.product_tmpl_id
-        res = super().unlink()
+        res = super().unlink
         templates._create_variant_ids()
         return res
 

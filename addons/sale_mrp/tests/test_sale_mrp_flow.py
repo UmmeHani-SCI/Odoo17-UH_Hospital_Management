@@ -2442,7 +2442,7 @@ class TestSaleMrpFlow(TestSaleMrpFlowCommon):
         with self.assertRaises(UserError):
             self.bom_kit_1.toggle_active()
         with self.assertRaises(UserError):
-            self.bom_kit_1.unlink()
+            self.bom_kit_1.unlink
 
         for move in so.order_line.move_ids:
             move.write({'quantity': move.product_uom_qty, 'picked': True})
@@ -2454,7 +2454,7 @@ class TestSaleMrpFlow(TestSaleMrpFlowCommon):
         with self.assertRaises(UserError):
             self.bom_kit_1.toggle_active()
         with self.assertRaises(UserError):
-            self.bom_kit_1.unlink()
+            self.bom_kit_1.unlink
 
         invoice = so._create_invoices()
         invoice.action_post()
@@ -2464,4 +2464,4 @@ class TestSaleMrpFlow(TestSaleMrpFlowCommon):
         self.bom_kit_1.toggle_active()
         self.bom_kit_1.write({'type': 'normal'})
         self.bom_kit_1.write({'type': 'phantom'})
-        self.bom_kit_1.unlink()
+        self.bom_kit_1.unlink

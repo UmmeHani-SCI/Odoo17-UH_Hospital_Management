@@ -179,5 +179,5 @@ class PosOrderLine(models.Model):
         orders = self.mapped('order_id')
         for order in orders:
             for line in order.lines:
-                line.sale_order_line_id.move_ids.mapped("move_line_ids").unlink()
+                line.sale_order_line_id.move_ids.mapped("move_line_ids").unlink
         return super()._launch_stock_rule_from_pos_order_lines()

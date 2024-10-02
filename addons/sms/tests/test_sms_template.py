@@ -49,7 +49,7 @@ class TestSmsTemplateAccessRights(TransactionCase):
                     'model_id': sms_template.model_id.id,
                 })
             with self.assertRaises(AccessError):
-                sms_template.unlink()
+                sms_template.unlink
 
     @users('user_system')
     @mute_logger('odoo.models.unlink', 'odoo.addons.base.models.ir_model')
@@ -68,7 +68,7 @@ class TestSmsTemplateAccessRights(TransactionCase):
             # other groups applying restrictions based on the model
             self.assertTrue(bool(self.env['sms.template'].with_user(admin).browse(sms_template.ids).name))
 
-            sms_template.unlink()
+            sms_template.unlink
 
     @users('user_employee')
     def test_sms_template_rendering_restricted(self):

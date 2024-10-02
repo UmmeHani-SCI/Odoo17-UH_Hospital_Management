@@ -95,7 +95,7 @@ class IrConfigParameter(models.Model):
                 if str(value) != old:
                     param.write({'value': value})
             else:
-                param.unlink()
+                param.unlink
             return old
         else:
             if value is not False and value is not None:
@@ -117,7 +117,7 @@ class IrConfigParameter(models.Model):
 
     def unlink(self):
         self.env.registry.clear_cache()
-        return super(IrConfigParameter, self).unlink()
+        return super(IrConfigParameter, self).unlink
 
     @api.ondelete(at_uninstall=False)
     def unlink_default_parameters(self):

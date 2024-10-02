@@ -138,7 +138,7 @@ class StockPickingBatch(models.Model):
             picking.move_line_ids = new_move_lines.filtered(lambda ml: ml.picking_id.id == picking.id)
             move_lines_to_unlink = old_move_lines - new_move_lines
             if move_lines_to_unlink:
-                move_lines_to_unlink.unlink()
+                move_lines_to_unlink.unlink
 
     # -------------------------------------------------------------------------
     # CRUD

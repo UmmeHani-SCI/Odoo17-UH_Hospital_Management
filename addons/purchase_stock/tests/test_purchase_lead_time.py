@@ -362,14 +362,14 @@ class TestPurchaseLeadTime(PurchaseTestCommon):
 
     def test_supplier_lead_time(self):
         """ Basic stock configuration and a supplier with a minimum qty and a lead time """
-        self.env['stock.warehouse.orderpoint'].search([]).unlink()
+        self.env['stock.warehouse.orderpoint'].search([]).unlink
         orderpoint_form = Form(self.env['stock.warehouse.orderpoint'])
         orderpoint_form.product_id = self.product_1
         orderpoint_form.product_min_qty = 10
         orderpoint_form.product_max_qty = 50
         orderpoint_form.save()
 
-        self.env['product.supplierinfo'].search([('product_tmpl_id', '=', self.product_1.product_tmpl_id.id)]).unlink()
+        self.env['product.supplierinfo'].search([('product_tmpl_id', '=', self.product_1.product_tmpl_id.id)]).unlink
         self.env['product.supplierinfo'].create({
             'partner_id': self.partner_1.id,
             'min_qty': 1,

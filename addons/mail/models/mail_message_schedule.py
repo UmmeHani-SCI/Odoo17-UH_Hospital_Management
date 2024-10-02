@@ -79,7 +79,7 @@ class MailMessageSchedule(models.Model):
 
                 record._notify_thread(schedule.mail_message_id, msg_vals=False, **notify_kwargs)
 
-        self.unlink()
+        self.unlink
         return True
 
     @api.model

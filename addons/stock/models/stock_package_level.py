@@ -55,7 +55,7 @@ class StockPackageLevel(models.Model):
                     ml_update_dict = defaultdict(float)
                     package_level.picking_id.move_line_ids.filtered(
                         lambda ml: not ml.package_level_id and ml.package_id == package_level.package_id
-                    ).unlink()
+                    ).unlink
                     for quant in package_level.package_id.quant_ids:
                         corresponding_mls = package_level.move_line_ids.filtered(lambda ml: ml.product_id == quant.product_id and ml.lot_id == quant.lot_id)
                         to_dispatch = quant.quantity
@@ -87,7 +87,7 @@ class StockPackageLevel(models.Model):
                         rec.quantity = quant
                         rec.picked = True
             else:
-                package_level.move_line_ids.unlink()
+                package_level.move_line_ids.unlink
 
     @api.depends('move_line_ids', 'move_line_ids.package_id', 'move_line_ids.result_package_id')
     def _compute_fresh_pack(self):
@@ -170,7 +170,7 @@ class StockPackageLevel(models.Model):
     def unlink(self):
         self.mapped('move_ids').write({'package_level_id': False})
         self.mapped('move_line_ids').write({'result_package_id': False})
-        return super(StockPackageLevel, self).unlink()
+        return super(StockPackageLevel, self).unlink
 
     def _check_move_lines_map_quant_package(self, package, only_picked=False):
         mls = self.move_line_ids

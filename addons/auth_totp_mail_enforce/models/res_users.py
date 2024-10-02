@@ -147,4 +147,4 @@ class Users(models.Model):
             ('user_id', '=', self.id),
             ('limit_type', '=', limit_type),
             ('ip', '=', ip),
-        ]).unlink()
+        ]).unlink

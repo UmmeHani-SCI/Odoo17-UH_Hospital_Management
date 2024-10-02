@@ -478,7 +478,7 @@ class TestSequenceMixin(TestSequenceMixinCommon):
         copies[5].name = 'XMISC/2019/10006'
 
         copies[4].button_draft()
-        copies[4].with_context(force_delete=True).unlink()
+        copies[4].with_context(force_delete=True).unlink
         copies[5].button_draft()
 
         wizard = Form(self.env['account.resequence.wizard'].with_context(
@@ -596,7 +596,7 @@ class TestSequenceMixin(TestSequenceMixinCommon):
         mistake = moves[1]
         mistake.button_draft()
         mistake.posted_before = False
-        mistake.with_context(force_delete=True).unlink()
+        mistake.with_context(force_delete=True).unlink
         moves -= mistake
 
         self.env['account.resequence.wizard'].create({
@@ -686,19 +686,19 @@ class TestSequenceMixinDeletion(TestSequenceMixinCommon):
         """
 
         # A draft move without any name can always be deleted.
-        self.move_draft.unlink()
+        self.move_draft.unlink
 
         # The last element of each sequence chain should allow deletion.
         # Everything should be deletable if we follow this order (a bit randomized on purpose)
         for move in (self.move_1_3, self.move_1_2, self.move_3_1, self.move_2_2, self.move_2_1, self.move_1_1):
             move.button_draft()
-            move.unlink()
+            move.unlink
 
     def test_sequence_deletion_2(self):
         """Can delete in batch."""
         all_moves = (self.move_1_3 + self.move_1_2 + self.move_3_1 + self.move_2_2 + self.move_2_1 + self.move_1_1)
         all_moves.button_draft()
-        all_moves.unlink()
+        all_moves.unlink
 
 
 @tagged('post_install', '-at_install')
@@ -744,11 +744,11 @@ class TestSequenceMixinConcurrency(TransactionCase):
             moves = env['account.move'].browse(self.data['move_ids'])
             moves.filtered(lambda x: x.state in ('posted', 'cancel')).button_draft()
             moves.posted_before = False
-            moves.unlink()
+            moves.unlink
             journal = env['account.journal'].browse(self.data['journal_id'])
-            journal.unlink()
+            journal.unlink
             account = env['account.account'].browse(self.data['account_id'])
-            account.unlink()
+            account.unlink
             env.cr.commit()
         for env in self.data['envs']:
             env.cr.close()

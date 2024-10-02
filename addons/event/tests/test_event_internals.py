@@ -390,7 +390,7 @@ class TestEventData(TestEventInternalsCommon):
         This is important to be able to show only relevant mail templates on the related
         field "template_ref".
         """
-        self.env['mail.template'].search([('model', '=', 'event.registration')]).unlink()
+        self.env['mail.template'].search([('model', '=', 'event.registration')]).unlink
         self.env['mail.template'].create({'model_id': self.env['ir.model']._get('event.registration').id, 'name': 'test template'})
         self.env['mail.template'].create({'model_id': self.env['ir.model']._get('res.partner').id, 'name': 'test template'})
         templates = self.env['mail.template'].with_context(filter_template_on_event=True).name_search('test template')
@@ -439,7 +439,7 @@ class TestEventData(TestEventInternalsCommon):
         self.assertFalse(event.event_registrations_open)
 
         # seats available are back
-        registration.unlink()
+        registration.unlink
         self.assertEqual(event.seats_available, 1)
         self.assertTrue(event.event_registrations_open)
 

@@ -31,7 +31,7 @@ class Repair(models.Model):
                     line_vals_list.append(op._prepare_phantom_line_vals(bom_line, line_data['qty']))
             lines_to_unlink_ids.add(op.id)
 
-        self.env['stock.move'].browse(lines_to_unlink_ids).sudo().unlink()
+        self.env['stock.move'].browse(lines_to_unlink_ids).sudo().unlink
         if line_vals_list:
             self.env['stock.move'].create(line_vals_list)
 

@@ -692,7 +692,7 @@ class Meeting(models.Model):
             detached_events |= self._apply_recurrence_values(recurrence_values, future=recurrence_update_setting == 'future_events')
 
         (detached_events & self).active = False
-        (detached_events - self).with_context(archive_on_error=True).unlink()
+        (detached_events - self).with_context(archive_on_error=True).unlink
 
         # Notify attendees if there is an alarm on the modified event, or if there was an alarm
         # that has just been removed, as it might have changed their next event notification
@@ -768,7 +768,7 @@ class Meeting(models.Model):
 
     def unlink(self):
         if not self:
-            return super().unlink()
+            return super().unlink
 
         # Get concerned attendees to notify them if there is an alarm on the unlinked events,
         # as it might have changed their next event notification
@@ -781,7 +781,7 @@ class Meeting(models.Model):
             ('base_event_id', 'in', [e.id for e in self])
         ])
 
-        result = super().unlink()
+        result = super().unlink
 
         if recurrences:
             recurrences._select_new_base_event()
@@ -945,11 +945,11 @@ class Meeting(models.Model):
         self.ensure_one()
         if recurrence_update_setting == 'all_events':
             events = self.recurrence_id.calendar_event_ids
-            self.recurrence_id.unlink()
-            events.unlink()
+            self.recurrence_id.unlink
+            events.unlink
         elif recurrence_update_setting == 'future_events':
             future_events = self.recurrence_id.calendar_event_ids.filtered(lambda ev: ev.start >= self.start)
-            future_events.unlink()
+            future_events.unlink
 
     def action_mass_archive(self, recurrence_update_setting):
         """
@@ -967,7 +967,7 @@ class Meeting(models.Model):
                 'recurrence_update': 'self_only'
             })
             if len(self.recurrence_id.calendar_event_ids) == 0:
-                self.recurrence_id.unlink()
+                self.recurrence_id.unlink
             elif self == self.recurrence_id.base_event_id:
                 self.recurrence_id._select_new_base_event()
 
@@ -1147,7 +1147,7 @@ class Meeting(models.Model):
                 detached_events |= recurrence.calendar_event_ids
                 recurrence.calendar_event_ids.recurrence_id = False
                 recurrences_to_unlink |= recurrence
-        recurrences_to_unlink.with_context(archive_on_error=True).unlink()
+        recurrences_to_unlink.with_context(archive_on_error=True).unlink
         return detached_events - self
 
     def _get_time_update_dict(self, base_event, time_values):
@@ -1255,7 +1255,7 @@ class Meeting(models.Model):
 
             # Archive all events and delete recurrence, reactivate base event and apply updated values.
             base_event.action_mass_archive("all_events")
-            base_event.recurrence_id.unlink()
+            base_event.recurrence_id.unlink
             base_event.write({
                 'active': True,
                 'recurrence_id': False,

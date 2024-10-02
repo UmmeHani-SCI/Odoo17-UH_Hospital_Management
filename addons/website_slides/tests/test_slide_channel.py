@@ -238,7 +238,7 @@ class TestSlidesManagement(slides_common.SlidesCase):
             "Has question(s) linked to the slides")
         self.assertTrue(self.channel.channel_partner_ids.exists(), "Has participant(s)")
 
-        self.channel.with_user(self.user_manager).unlink()
+        self.channel.with_user(self.user_manager).unlink
         self.assertFalse(self.channel.exists(),
             "Should have deleted channel along with the slides even if there are slides with quiz and participant(s)")
 
@@ -299,11 +299,11 @@ class TestSlidesManagement(slides_common.SlidesCase):
 
         # Unlinking slides
         with self.mock_mail_gateway():
-            self.channel.slide_ids[:1].with_user(self.user_manager).unlink()
+            self.channel.slide_ids[:1].with_user(self.user_manager).unlink
         self.assertFalse(were_emails_sent(), "Participants should not receive emails when a slide is deleted.")
 
         with self.mock_mail_gateway():
-            self.channel.slide_ids.with_user(self.user_manager).unlink()
+            self.channel.slide_ids.with_user(self.user_manager).unlink
         self.assertFalse(were_emails_sent(), "Participants should not receive emails when all remaining slides are deleted.")
 
 

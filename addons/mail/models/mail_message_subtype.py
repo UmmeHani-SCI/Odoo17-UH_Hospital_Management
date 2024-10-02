@@ -54,7 +54,7 @@ class MailMessageSubtype(models.Model):
 
     def unlink(self):
         self.env.registry.clear_cache()  # _get_auto_subscription_subtypes
-        return super(MailMessageSubtype, self).unlink()
+        return super(MailMessageSubtype, self).unlink
 
     @tools.ormcache('model_name')
     def _get_auto_subscription_subtypes(self, model_name):

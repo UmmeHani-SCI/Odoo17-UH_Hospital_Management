@@ -310,7 +310,7 @@ class Web_Editor(http.Controller):
             else:
                 attachments_to_remove += attachment
         if attachments_to_remove:
-            attachments_to_remove.unlink()
+            attachments_to_remove.unlink
         return removal_blocked_by
 
     @http.route('/web_editor/get_image_info', type='json', auth='user', website=True)

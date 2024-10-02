@@ -975,7 +975,7 @@ class TestTrackingInternals(MailCommon):
             ('model', '=', 'mail.test.ticket'),
             ('name', 'in', ('email_from', 'user_id', 'datetime'))  # also include a non tracked field
         ])
-        fields_toremove.with_context(_force_unlink=True).unlink()
+        fields_toremove.with_context(_force_unlink=True).unlink
         self.assertEqual(len(trackings_all.exists()), 5)
 
         # check display / format, even if field is removed

@@ -484,7 +484,7 @@ class TestProcRule(TransactionCase):
         })
         self.assertEqual(orderpoint.warehouse_id, warehouse_a)
         self.assertEqual(orderpoint.location_id, warehouse_a.lot_stock_id)
-        orderpoint.unlink()
+        orderpoint.unlink
 
         # Warehouse specified, must choose the `lot_stock_id` of that warehouse by default
         orderpoint = self.env['stock.warehouse.orderpoint'].create({
@@ -493,7 +493,7 @@ class TestProcRule(TransactionCase):
         })
         self.assertEqual(orderpoint.warehouse_id, warehouse_b)
         self.assertEqual(orderpoint.location_id, warehouse_b.lot_stock_id)
-        orderpoint.unlink()
+        orderpoint.unlink
 
         # Location specified, must choose the warehouse of that location by default
         orderpoint = self.env['stock.warehouse.orderpoint'].create({
@@ -502,7 +502,7 @@ class TestProcRule(TransactionCase):
         })
         self.assertEqual(orderpoint.warehouse_id, warehouse_b)
         self.assertEqual(orderpoint.location_id, warehouse_b.lot_stock_id)
-        orderpoint.unlink()
+        orderpoint.unlink
 
         # Warehouse specified, location specified, must let them and not overwrite them with a default
         location = warehouse_b.lot_stock_id.copy()
@@ -513,7 +513,7 @@ class TestProcRule(TransactionCase):
         })
         self.assertEqual(orderpoint.warehouse_id, warehouse_b)
         self.assertEqual(orderpoint.location_id, location)
-        orderpoint.unlink()
+        orderpoint.unlink
 
     def test_replenishment_order_to_max(self):
         warehouse = self.env['stock.warehouse'].search([('company_id', '=', self.env.user.id)], limit=1)

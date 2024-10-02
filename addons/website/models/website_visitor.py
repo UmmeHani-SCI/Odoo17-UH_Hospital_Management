@@ -328,7 +328,7 @@ class WebsiteVisitor(models.Model):
         if not target.partner_id:
             raise ValueError("The `target` visitor should be linked to a partner.")
         self.website_track_ids.visitor_id = target.id
-        self.unlink()
+        self.unlink
 
     def _cron_unlink_old_visitors(self, batch_size=1000, limit=None):
         """ Unlink inactive visitors (see '_inactive_visitors_domain' for
@@ -344,7 +344,7 @@ class WebsiteVisitor(models.Model):
             visitor_model.sudo().search(self._inactive_visitors_domain(), limit=limit).ids,
             visitor_model.browse,
         ):
-            inactive_visitors_batch.unlink()
+            inactive_visitors_batch.unlink
             if auto_commit:
                 self.env.cr.commit()
 

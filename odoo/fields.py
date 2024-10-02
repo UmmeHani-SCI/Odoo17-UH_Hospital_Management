@@ -2506,7 +2506,7 @@ class Binary(Field):
                         for record in missing
                     ])
             else:
-                atts.unlink()
+                atts.unlink
 
 
 class Image(Binary):
@@ -4496,7 +4496,7 @@ class One2many(_RelationalMulti):
                     before = {record: record[self.name] for record in to_link}
                 if to_delete:
                     # unlink() will remove the lines from the cache
-                    comodel.browse(to_delete).unlink()
+                    comodel.browse(to_delete).unlink
                     to_delete.clear()
                 if to_create:
                     # create() will add the new lines to the cache of records
@@ -4927,7 +4927,7 @@ class Many2many(_RelationalMulti):
 
             if to_delete:
                 # delete lines in batch
-                comodel.browse(to_delete).unlink()
+                comodel.browse(to_delete).unlink
                 relation_delete(to_delete)
 
         # update the cache of self

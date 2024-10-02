@@ -404,8 +404,8 @@ class AccountBankStatementLine(models.Model):
     def unlink(self):
         # OVERRIDE to unlink the inherited account.move (move_id field) as well.
         moves = self.with_context(force_delete=True).mapped('move_id')
-        res = super().unlink()
-        moves.unlink()
+        res = super().unlink
+        moves.unlink
         return res
 
     @api.model
@@ -434,7 +434,7 @@ class AccountBankStatementLine(models.Model):
         to their original states.
         """
         self.line_ids.remove_move_reconcile()
-        self.payment_ids.unlink()
+        self.payment_ids.unlink
 
         for st_line in self:
             st_line.with_context(force_delete=True).write({

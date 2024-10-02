@@ -92,7 +92,7 @@ class test_challenge(TestGamificationCommon):
         })
 
         # Setup user presence
-        self.env['bus.presence'].search([('user_id', 'in', challenge.user_ids.ids)]).unlink()
+        self.env['bus.presence'].search([('user_id', 'in', challenge.user_ids.ids)]).unlink
         now = self.env.cr.now()
 
         # Create "old" log in records
@@ -117,7 +117,7 @@ class test_challenge(TestGamificationCommon):
         all_test_users.partner_id.tz = False
 
         # Regenerate all goals
-        self.env['gamification.goal'].search([]).unlink()
+        self.env['gamification.goal'].search([]).unlink
         self.assertFalse(self.env['gamification.goal'].search([]))
 
         challenge.action_check()

@@ -54,5 +54,5 @@ class ProductDocument(models.Model):
 
     def unlink(self):
         attachments = self.ir_attachment_id
-        res = super().unlink()
-        return res and attachments.unlink()
+        res = super().unlink
+        return res and attachments.unlink

@@ -101,7 +101,7 @@ class SaleOrderLine(models.Model):
     def unlink(self):
         # do not delete downpayment lines created from pos
         pos_downpayment_lines = self.filtered(lambda line: line.is_downpayment and line.sudo().pos_order_line_ids)
-        return super(SaleOrderLine, self - pos_downpayment_lines).unlink()
+        return super(SaleOrderLine, self - pos_downpayment_lines).unlink
 
     @api.depends('pos_order_line_ids')
     def _compute_untaxed_amount_invoiced(self):

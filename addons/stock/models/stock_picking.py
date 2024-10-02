@@ -902,8 +902,8 @@ class Picking(models.Model):
 
     def unlink(self):
         self.move_ids._action_cancel()
-        self.with_context(prefetch_fields=False).move_ids.unlink()  # Checks if moves are not done
-        return super(Picking, self).unlink()
+        self.with_context(prefetch_fields=False).move_ids.unlink  # Checks if moves are not done
+        return super(Picking, self).unlink
 
     def do_print_picking(self):
         self.write({'printed': True})
@@ -1122,7 +1122,7 @@ class Picking(models.Model):
 
     def do_unreserve(self):
         self.move_ids._do_unreserve()
-        self.package_level_ids.filtered(lambda p: not p.move_ids).unlink()
+        self.package_level_ids.filtered(lambda p: not p.move_ids).unlink
 
     def button_validate(self):
         draft_picking = self.filtered(lambda p: p.state == 'draft')

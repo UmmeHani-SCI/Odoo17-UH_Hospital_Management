@@ -106,7 +106,7 @@ class MockSMS(common.BaseCase):
     def _clear_outgoing_sms(self):
         """ As SMS gateway mock keeps SMS, we may need to remove them manually
         if there are several tests in the same tx. """
-        self.env['sms.sms'].sudo().search([('state', '=', 'outgoing')]).unlink()
+        self.env['sms.sms'].sudo().search([('state', '=', 'outgoing')]).unlink
 
 
 class SMSCase(MockSMS):

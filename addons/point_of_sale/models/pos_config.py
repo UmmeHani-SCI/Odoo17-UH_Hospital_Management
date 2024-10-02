@@ -514,8 +514,8 @@ class PosConfig(models.Model):
     def unlink(self):
         # Delete the pos.config records first then delete the sequences linked to them
         sequences_to_delete = self.sequence_id | self.sequence_line_id
-        res = super(PosConfig, self).unlink()
-        sequences_to_delete.unlink()
+        res = super(PosConfig, self).unlink
+        sequences_to_delete.unlink
         return res
 
     # TODO-JCB: Maybe we can move this logic in `_reset_default_on_vals`

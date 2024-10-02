@@ -702,7 +702,7 @@ class HrExpenseSheet(models.Model):
             default_values_list=[{'invoice_date': fields.Date.context_today(move), 'ref': False} for move in non_draft_moves],
             cancel=True
         )
-        draft_moves.unlink()
+        draft_moves.unlink
 
     def _prepare_bills_vals(self):
         self.ensure_one()

@@ -31,7 +31,7 @@ class TestMrpOrder(TestMrpCommon):
         man_order.action_confirm()
         man_order.action_cancel()
         self.assertEqual(man_order.state, 'cancel', "Production order should be in cancel state.")
-        man_order.unlink()
+        man_order.unlink
 
     def test_access_rights_user(self):
         """ Checks an MRP user can create, confirm and cancel a manufacturing order. """
@@ -45,7 +45,7 @@ class TestMrpOrder(TestMrpCommon):
         man_order.action_confirm()
         man_order.action_cancel()
         self.assertEqual(man_order.state, 'cancel', "Production order should be in cancel state.")
-        man_order.unlink()
+        man_order.unlink
 
     def test_basic(self):
         """ Checks a basic manufacturing order: no routing (thus no workorders), no lot and
@@ -130,8 +130,8 @@ class TestMrpOrder(TestMrpCommon):
     def test_production_availability(self):
         """ Checks the availability of a production order through mutliple calls to `action_assign`.
         """
-        self.bom_3.bom_line_ids.filtered(lambda x: x.product_id == self.product_5).unlink()
-        self.bom_3.bom_line_ids.filtered(lambda x: x.product_id == self.product_4).unlink()
+        self.bom_3.bom_line_ids.filtered(lambda x: x.product_id == self.product_5).unlink
+        self.bom_3.bom_line_ids.filtered(lambda x: x.product_id == self.product_4).unlink
         self.bom_3.ready_to_produce = 'all_available'
 
         production_form = Form(self.env['mrp.production'])
@@ -1781,7 +1781,7 @@ class TestMrpOrder(TestMrpCommon):
             self.assertIn(mo, MO.search([('components_availability_state', '=', state)]))
             self.assertNotIn(mo, MO.search([('components_availability_state', '!=', state)]))
 
-        self.bom_2.unlink()  # remove the kit bom of product_5
+        self.bom_2.unlink  # remove the kit bom of product_5
         now = fields.Datetime.now()
         mo_form = Form(self.env['mrp.production'])
         mo_form.bom_id = self.bom_3  # product_5 (2), product_4 (8), product_2 (12)
@@ -2148,7 +2148,7 @@ class TestMrpOrder(TestMrpCommon):
         workcenter.resource_calendar_id.tz = 'Asia/Bangkok'
         # The test will try to plan some WO on next Monday. We need to unlink all
         # useless times off to ensure that nothing will disturb the slot reservation
-        (workcenter.resource_calendar_id.global_leave_ids | workcenter.resource_calendar_id.leave_ids).unlink()
+        (workcenter.resource_calendar_id.global_leave_ids | workcenter.resource_calendar_id.leave_ids).unlink
 
         bom = self.env['mrp.bom'].create({
             'product_tmpl_id': self.product_1.product_tmpl_id.id,
@@ -2297,7 +2297,7 @@ class TestMrpOrder(TestMrpCommon):
 
         self.assertEqual(list(mo.workorder_ids.mapped("state")), ["waiting", "pending"])
 
-        mo.workorder_ids[0].unlink()
+        mo.workorder_ids[0].unlink
 
         self.assertEqual(list(mo.workorder_ids.mapped("state")), ["waiting"])
         mo.action_assign()
@@ -3559,7 +3559,7 @@ class TestMrpOrder(TestMrpCommon):
         mo_form = Form(self.env['mrp.production'])
         mo_form.bom_id = self.bom_3
         mo = mo_form.save()
-        mo.workorder_ids[1].unlink()
+        mo.workorder_ids[1].unlink
         mo.action_confirm()
         self.assertEqual(mo.state, 'confirmed')
         self.assertEqual(len(mo.workorder_ids), 2)
@@ -3622,7 +3622,7 @@ class TestMrpOrder(TestMrpCommon):
         mo2 = mo2_form.save()
         for move in mo2.move_raw_ids:
             if move.product_id == p2:
-                move.unlink()
+                move.unlink
             elif move.product_id == p1:
                 # p1 = qty_base_1 = 12 => now 12 dozens instead of units
                 move.product_uom = self.env.ref('uom.product_uom_dozen')
@@ -3675,7 +3675,7 @@ class TestMrpOrder(TestMrpCommon):
 
         #### scenario 3 - repeated comp move ####
         # bom.bom_line_ids[0]/product_id = p2
-        bom.bom_line_ids[0].unlink()
+        bom.bom_line_ids[0].unlink
         mo3 = self.env['mrp.production'].create({
             'product_id': p_final.id,
             'bom_id': bom.id,

@@ -67,7 +67,7 @@ class IrAttachment(models.Model):
         self.env['bus.bus']._sendmany((attachment._bus_notification_target(), 'ir.attachment/delete', {
             'id': attachment.id, 'message': {'id': message.id, 'write_date': message.write_date} if message else None
         }) for attachment in self)
-        self.unlink()
+        self.unlink
 
     def _bus_notification_target(self):
         self.ensure_one()

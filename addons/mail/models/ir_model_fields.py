@@ -53,4 +53,4 @@ class IrModelField(models.Model):
                         'type': field.ttype,
                     }
                 })
-        return super().unlink()
+        return super().unlink

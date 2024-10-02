@@ -596,7 +596,7 @@ class TestStockValuationLCFIFOVB(TestStockValuationLCCommon):
         accounting_date = '2024-01-31'
 
         self.cr.execute("UPDATE res_company SET currency_id = %s WHERE id = %s", (usd_currency.id, company.id))
-        self.env['res.currency.rate'].search([]).unlink()
+        self.env['res.currency.rate'].search([]).unlink
         self.env['res.currency.rate'].create({
             'name': invoice_date,
             'rate': 1.0,

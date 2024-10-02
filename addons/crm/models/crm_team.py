@@ -170,7 +170,7 @@ class Team(models.Model):
                         'variable': frequency.variable,
                         'won_count': frequency.won_count if float_compare(frequency.won_count, 0.1, 2) == 1 else 0.1,
                     })
-        return super(Team, self).unlink()
+        return super(Team, self).unlink
 
     # ------------------------------------------------------------
     # MESSAGING
@@ -512,12 +512,12 @@ class Team(models.Model):
             # may encounter errors, already commit what is allocated to avoid endless cron loops.
             if auto_commit and counter % BUNDLE_COMMIT_SIZE == 0:
                 # unlink duplicates once
-                self.env['crm.lead'].browse(lead_unlink_ids).unlink()
+                self.env['crm.lead'].browse(lead_unlink_ids).unlink
                 lead_unlink_ids = set()
                 self._cr.commit()
 
         # unlink duplicates once
-        self.env['crm.lead'].browse(lead_unlink_ids).unlink()
+        self.env['crm.lead'].browse(lead_unlink_ids).unlink
 
         if auto_commit:
             self._cr.commit()

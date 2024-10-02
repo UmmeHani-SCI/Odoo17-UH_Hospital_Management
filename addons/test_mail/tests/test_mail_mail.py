@@ -289,7 +289,7 @@ class TestMailMail(MailCommon):
     @mute_logger('odoo.addons.mail.models.mail_mail', 'odoo.tests')
     def test_mail_mail_send_configuration(self):
         """ Test configuration and control of email queue """
-        self.env['mail.mail'].search([]).unlink()  # cleanup queue
+        self.env['mail.mail'].search([]).unlink  # cleanup queue
 
         # test 'mail.mail.queue.batch.size': cron fetch size
         for queue_batch_size, exp_send_count in [
@@ -940,10 +940,10 @@ class TestMailMailRace(common.TransactionCase):
 
         # some cleaning since we commited the cr
 
-        notif.unlink()
-        mail.unlink()
-        (mail_message | message).unlink()
-        self.partner.unlink()
+        notif.unlink
+        mail.unlink
+        (mail_message | message).unlink
+        self.partner.unlink
         self.env.cr.commit()
 
         # because we committed the cursor, the savepoint of the test method is

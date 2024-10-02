@@ -194,7 +194,7 @@ class DataRecycleModel(models.Model):
 
     def write(self, vals):
         if 'active' in vals and not vals['active']:
-            self.env['data_recycle.record'].search([('recycle_model_id', 'in', self.ids)]).unlink()
+            self.env['data_recycle.record'].search([('recycle_model_id', 'in', self.ids)]).unlink
         return super().write(vals)
 
     def open_records(self):

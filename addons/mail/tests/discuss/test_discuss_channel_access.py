@@ -473,7 +473,7 @@ class TestDiscussChannelAccess(MailCommon):
             elif operation == "write":
                 channel.write({"name": "new name"})
             elif operation == "unlink":
-                channel.unlink()
+                channel.unlink
 
     def _execute_action_member(self, channel_id, user_key, target, operation, result):
         current_user = self.users[user_key]
@@ -507,4 +507,4 @@ class TestDiscussChannelAccess(MailCommon):
             elif operation == "write":
                 member.write({"custom_channel_name": "new name"})
             elif operation == "unlink":
-                member.unlink()
+                member.unlink

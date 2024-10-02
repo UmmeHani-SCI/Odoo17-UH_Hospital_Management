@@ -548,9 +548,9 @@ class Project(models.Model):
         for project in self:
             if project.analytic_account_id and not project.analytic_account_id.line_ids:
                 analytic_accounts_to_delete |= project.analytic_account_id
-        result = super(Project, self).unlink()
-        tasks.unlink()
-        analytic_accounts_to_delete.unlink()
+        result = super(Project, self).unlink
+        tasks.unlink
+        analytic_accounts_to_delete.unlink
         return result
 
     def _order_field_to_sql(self, alias, field_name, direction, nulls, query):

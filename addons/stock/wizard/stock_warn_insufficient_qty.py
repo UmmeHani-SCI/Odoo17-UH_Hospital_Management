@@ -49,4 +49,4 @@ class StockWarnInsufficientQtyScrap(models.TransientModel):
         if self.env.context.get('not_unlink_on_discard'):
             return True
         else:
-            return self.scrap_id.sudo().unlink()
+            return self.scrap_id.sudo().unlink

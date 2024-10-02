@@ -320,7 +320,7 @@ class TestSalePrices(SaleCommon):
         with mute_logger('odoo.models.unlink'):
             self.env['res.currency.rate'].search(
                 [('currency_id', '=', self.env.company.currency_id.id)]
-            ).unlink()
+            ).unlink
         new_uom = self.env['uom.uom'].create({
             'name': '10 units',
             'factor_inv': 10,
@@ -380,7 +380,7 @@ class TestSalePrices(SaleCommon):
             'login': 'hohoho',
         })
         with mute_logger('odoo.models.unlink'):
-            self.env['res.currency.rate'].search([]).unlink()
+            self.env['res.currency.rate'].search([]).unlink
         self.env['res.currency.rate'].create({
             'name': '2010-01-01',
             'rate': 2.0,

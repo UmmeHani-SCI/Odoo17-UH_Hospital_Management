@@ -328,10 +328,10 @@ class TestCRMLead(TestCrmCommon):
         with freeze_time('2022-07-13 11:00:00'):
             self.assertEqual(lead.meeting_display_date, fields.Date.from_string('2022-07-14'))
             self.assertEqual(lead.meeting_display_label, 'Next Meeting')
-            (meeting_2 | meeting_3).unlink()
+            (meeting_2 | meeting_3).unlink
             self.assertEqual(lead.meeting_display_date, fields.Date.from_string('2022-07-12'))
             self.assertEqual(lead.meeting_display_label, 'Last Meeting')
-            meeting_1.unlink()
+            meeting_1.unlink
             self.assertFalse(lead.meeting_display_date)
             self.assertEqual(lead.meeting_display_label, 'No Meeting')
 
@@ -609,7 +609,7 @@ class TestCRMLead(TestCrmCommon):
         self.assertEqual(meetings.opportunity_id, lead)
         self.assertEqual(meetings.mapped('res_id'), [lead.id, lead.id])
         self.assertEqual(meetings.mapped('res_model'), ['crm.lead', 'crm.lead'])
-        lead.unlink()
+        lead.unlink
         self.assertEqual(meetings.exists(), meetings)
         self.assertFalse(meetings.opportunity_id)
         self.assertEqual(set(meetings.mapped('res_id')), set([0]))

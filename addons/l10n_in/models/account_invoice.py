@@ -137,7 +137,7 @@ class AccountMove(models.Model):
                     partner_name=m.partner_id.display_name)
                     for m in self)
                 logger_msg = 'Force deleted Journal Entries %s by %s (%s)' % (moves_details, self.env.user.name, self.env.user.id)
-        res = super().unlink()
+        res = super().unlink
         if logger_msg:
             _logger.info(logger_msg)
         return res

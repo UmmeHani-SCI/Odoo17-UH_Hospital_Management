@@ -34,10 +34,10 @@ class TestOnboardingConcurrency(BaseCase):
     def cleanUpClass(cls):
         with cls.registry.cursor() as cr:
             env = odoo.api.Environment(cr, odoo.SUPERUSER_ID, {})
-            env['onboarding.onboarding'].browse(cls.onboarding_id).unlink()
+            env['onboarding.onboarding'].browse(cls.onboarding_id).unlink
             env['onboarding.progress'].search([
                 ('onboarding_id', '=', cls.onboarding_id)
-            ]).unlink()
+            ]).unlink
 
     @mute_logger('odoo.sql_db')
     def test_concurrent_create_progress(self):

@@ -15,7 +15,7 @@
     </record>
 
     <record id="action_hospital_appointment_line" model="ir.actions.act_window">
-        <field name="name">Appointment List</field>
+        <field name="name">Appointment Line</field>
         <field name="res_model">hospital.appointment_line</field>
         <field name="view_mode">tree,form,kanban</field>
         <field name="view_id" ref="view_tree_hospital_appointment_line"/>

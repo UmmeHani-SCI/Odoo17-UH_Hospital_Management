@@ -117,8 +117,8 @@ class SaleOrderLine(models.Model):
         for line in related_lines:
             if line.state == 'sale':
                 line.coupon_id.points += line.points_cost
-        res = super(SaleOrderLine, self | related_lines).unlink()
-        coupons_to_unlink.sudo().unlink()
+        res = super(SaleOrderLine, self | related_lines).unlink
+        coupons_to_unlink.sudo().unlink
         return res
 
     def _sellable_lines_domain(self):

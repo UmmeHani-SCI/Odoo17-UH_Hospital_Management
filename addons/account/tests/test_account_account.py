@@ -478,7 +478,7 @@ class TestAccountAccount(AccountTestInvoicingCommon):
         self.assertEqual(group_101.parent_id, group_10)
 
         # Delete group_101 and recreate it
-        group_101.unlink()
+        group_101.unlink
         group_101 = create_account_group('group_101', 101, self.env.company)
 
         self.assertEqual(len(group_1.parent_id), 0)

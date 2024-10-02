@@ -130,7 +130,7 @@ class PaymentWizard(models.TransientModel):
             self.env.company.payment_onboarding_payment_method = self.payment_method
 
         # delete wizard data immediately to get rid of residual credentials
-        self.sudo().unlink()
+        self.sudo().unlink
 
         if payment_method == 'stripe':
             return self._start_stripe_onboarding()

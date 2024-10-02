@@ -61,7 +61,7 @@ class TestEventSecurity(TestEventFullCommon):
         with self.assertRaises(AccessError):
             event.name = 'Test'
         with self.assertRaises(AccessError):
-            event.unlink()
+            event.unlink
 
         # Event Registration
         registration = self.env['event.registration'].create({
@@ -70,7 +70,7 @@ class TestEventSecurity(TestEventFullCommon):
         self.assertEqual(registration.event_id.name, event.name, 'Registration users should be able to read')
         registration.name = 'Test write'
         with self.assertRaises(AccessError):
-            registration.unlink()
+            registration.unlink
 
     @users('user_eventuser')
     @mute_logger('odoo.models.unlink', 'odoo.addons.base.models.ir_model')
@@ -87,7 +87,7 @@ class TestEventSecurity(TestEventFullCommon):
 
         # Event: cannot unlink
         with self.assertRaises(AccessError):
-            event.unlink()
+            event.unlink
 
         # Event Type
         with self.assertRaises(AccessError):
@@ -126,11 +126,11 @@ class TestEventSecurity(TestEventFullCommon):
         # Event Registration
         registration = self.env['event.registration'].create({'event_id': event.id, 'name': 'Myself'})
         registration.write({'name': 'Myself2'})
-        registration.unlink()
+        registration.unlink
 
-        event.unlink()
-        stage.unlink()
-        event_type.unlink()
+        event.unlink
+        stage.unlink
+        event_type.unlink
 
         # Settings access rights required to enable some features
         self.user_eventmanager.write({'groups_id': [

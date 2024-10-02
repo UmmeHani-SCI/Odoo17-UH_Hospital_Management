@@ -36,7 +36,7 @@ class PartnerDevice(models.Model):
         public_key_value = ir_params_sudo.get_param(public_key)
         # Regenerate new Keys if public key not present
         if not public_key_value:
-            self.sudo().search([]).unlink()  # Reset all devices (ServiceWorker)
+            self.sudo().search([]).unlink  # Reset all devices (ServiceWorker)
             private_key_value, public_key_value = generate_vapid_keys()
             ir_params_sudo.set_param('mail.web_push_vapid_private_key', private_key_value)
             ir_params_sudo.set_param(public_key, public_key_value)
@@ -80,7 +80,7 @@ class PartnerDevice(models.Model):
             ('endpoint', '=', endpoint)
         ])
         if user_device:
-            user_device.unlink()
+            user_device.unlink
 
     def _verify_vapid_public_key(self, sw_public_key):
         ir_params_sudo = self.env['ir.config_parameter'].sudo()

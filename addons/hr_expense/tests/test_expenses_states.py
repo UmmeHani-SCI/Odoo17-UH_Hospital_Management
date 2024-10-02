@@ -119,7 +119,7 @@ class TestExpensesStates(TestExpenseCommon):
         self.expense_states_employee_sheet.account_move_ids.button_draft()
 
         # STEP 3: ER posted with draft move -> unlink move (Reverts to approve state)
-        self.expense_states_employee_sheet.account_move_ids.unlink()
+        self.expense_states_employee_sheet.account_move_ids.unlink
         self.assertRecordValues(self.expense_states_employee_sheet.expense_line_ids, [
             {'state': 'approved'},
         ])
@@ -194,7 +194,7 @@ class TestExpensesStates(TestExpenseCommon):
         ])
 
         # Change the report state to a paid one
-        self.expense_states_employee_sheet.account_move_ids.unlink()
+        self.expense_states_employee_sheet.account_move_ids.unlink
         self.expense_states_employee_sheet.action_sheet_move_create()
         action_context = self.expense_states_employee_sheet.action_register_payment()['context']
         payment = self.env['account.payment.register'].with_context(action_context).create({})._create_payments()
@@ -276,7 +276,7 @@ class TestExpensesStates(TestExpenseCommon):
         self.expense_states_company_sheet.account_move_ids.button_draft()
 
         # STEP 3: ER draft & paid -> Delete move (Back to approve state)
-        self.expense_states_company_sheet.account_move_ids.unlink()
+        self.expense_states_company_sheet.account_move_ids.unlink
         self.assertRecordValues(self.expense_states_company_sheet.expense_line_ids, [
             {'state': 'approved'},
         ])

@@ -17,7 +17,7 @@ class TestMailGroupMessage(TestMailListCommon):
             'alias_contact': 'followers',
             'moderation': False,
         })
-        self.test_group.member_ids.unlink()
+        self.test_group.member_ids.unlink
 
         for num in range(42):
             self.env['mail.group.member'].create({

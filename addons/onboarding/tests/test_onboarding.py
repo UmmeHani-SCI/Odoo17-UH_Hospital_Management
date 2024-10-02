@@ -233,6 +233,6 @@ class TestOnboarding(TestOnboardingCommon):
         self.assertEqual(len(self.onboarding_1.progress_ids), 2)
 
         # group_erp_manager has no access to onboardng, compute_current_progress is the focus of this test
-        self.company_2.with_user(user).unlink()
+        self.company_2.with_user(user).unlink
         self.onboarding_1._compute_current_progress()
         self.assertEqual(len(self.onboarding_1.progress_ids), 1)

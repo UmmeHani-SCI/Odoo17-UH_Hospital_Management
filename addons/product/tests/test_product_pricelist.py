@@ -295,7 +295,7 @@ class TestProductPricelist(ProductCommon):
                 }),
             ] * 101,
         })
-        self.customer_pricelist.unlink()
+        self.customer_pricelist.unlink
 
     def test_40_pricelist_item_min_quantity_precision(self):
         """Test that the min_quantity has the precision of Product UoM."""

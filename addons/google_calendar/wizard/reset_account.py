@@ -45,7 +45,7 @@ class ResetGoogleAccount(models.TransientModel):
             events.google_id = False
             recurrences.google_id = False
             if self.delete_policy != 'delete_google':
-                events.unlink()
+                events.unlink
 
         # Define which events must be synchronized in the next synchronization:
         # in 'all' sync policy we activate the sync for all events and in the 'new'

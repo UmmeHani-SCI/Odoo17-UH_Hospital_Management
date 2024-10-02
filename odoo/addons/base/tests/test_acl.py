@@ -293,7 +293,7 @@ class TestIrRule(TransactionCaseWithUserDemo):
         self.assertTrue(partners, "Demo user should see partners even with the combined rules.")
 
         # delete global domains (to combine only group domains)
-        self.env['ir.rule'].search([('groups', '=', False)]).unlink()
+        self.env['ir.rule'].search([('groups', '=', False)]).unlink
 
         # read the partners as demo user (several group domains, no global domain)
         partners = partners_demo.search([])

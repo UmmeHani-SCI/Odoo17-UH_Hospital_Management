@@ -55,7 +55,7 @@ class TestUi(HttpCase):
         If the partner has no email but the lead has one, it should be propagated
         if we edit and save the lead form.
         """
-        self.env['crm.lead'].search([]).unlink()
+        self.env['crm.lead'].search([]).unlink
         user_admin = self.env['res.users'].search([('login', '=', 'admin')])
 
         partner = self.env['res.partner'].create({'name': 'Test Partner'})
@@ -93,7 +93,7 @@ class TestUi(HttpCase):
         partner. This test check that we correctly detect field values changes in JS
         (aka undefined VS falsy).
         """
-        self.env['crm.lead'].search([]).unlink()
+        self.env['crm.lead'].search([]).unlink
         user_admin = self.env['res.users'].search([('login', '=', 'admin')])
 
         partner = self.env['res.partner'].create({'name': 'Test Partner'})

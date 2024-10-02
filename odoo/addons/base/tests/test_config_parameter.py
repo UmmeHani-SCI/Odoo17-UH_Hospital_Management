@@ -14,7 +14,7 @@ class TestIrConfigParameter(TransactionCase):
         for key in _default_parameters:
             config_parameter = self.env['ir.config_parameter'].search([('key', '=', key)], limit=1)
             with self.assertRaises(ValidationError):
-                config_parameter.unlink()
+                config_parameter.unlink
 
             new_key = f"{key}_updated"
             with self.assertRaises(ValidationError):

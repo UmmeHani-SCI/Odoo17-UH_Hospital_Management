@@ -82,8 +82,8 @@ class TestSMSSchedule(EventCase, SMSCase):
         self.assertEqual(sub_scheduler.mail_count_done, 3)
 
         # clear notification queue to avoid conflicts when checking next notifications
-        self.env['mail.notification'].sudo().search([('sms_number', 'in', sanitized_numbers)]).unlink()
-        self.env['sms.sms'].sudo().search([('number', 'in', sanitized_numbers)]).unlink()
+        self.env['mail.notification'].sudo().search([('sms_number', 'in', sanitized_numbers)]).unlink
+        self.env['sms.sms'].sudo().search([('number', 'in', sanitized_numbers)]).unlink
 
         # check before event scheduler
         before_scheduler = self.env['event.mail'].search([('event_id', '=', test_event.id), ('interval_type', '=', 'before_event')])

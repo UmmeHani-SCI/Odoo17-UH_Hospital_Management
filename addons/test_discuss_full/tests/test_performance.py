@@ -18,7 +18,7 @@ class TestDiscussFullPerformance(HttpCase):
         super().setUp()
         self.group_user = self.env.ref('base.group_user')
         self.password = 'Pl1bhD@2!kXZ'
-        self.env['mail.shortcode'].search([]).unlink()
+        self.env['mail.shortcode'].search([]).unlink
         self.shortcodes = self.env['mail.shortcode'].create([
             {'source': 'hello', 'substitution': 'Hello, how may I help you?'},
             {'source': 'bye', 'substitution': 'Thanks for your feedback. Goodbye!'},
@@ -69,8 +69,8 @@ class TestDiscussFullPerformance(HttpCase):
     def test_init_messaging(self):
         """Test performance of `_init_messaging`."""
         self.channel_general = self.env.ref('mail.channel_all_employees')  # Unfortunately #general cannot be deleted. Assertions below assume data from a fresh db with demo.
-        self.channel_general.message_ids.unlink() # Remove messages to avoid depending on demo data.
-        self.env['discuss.channel'].sudo().search([('id', '!=', self.channel_general.id)]).unlink()
+        self.channel_general.message_ids.unlink  # Remove messages to avoid depending on demo data.
+        self.env['discuss.channel'].sudo().search([('id', '!=', self.channel_general.id)]).unlink
         self.user_root = self.env.ref('base.user_root')
         # create public channels
         self.channel_channel_public_1 = self.env['discuss.channel'].channel_create(name='public channel 1', group_id=None)

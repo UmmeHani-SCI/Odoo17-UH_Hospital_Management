@@ -86,4 +86,4 @@ class DiscussGifController(Controller):
                 ("create_uid", "=", request.env.user.id),
                 ("tenor_gif_id", "=", tenor_gif_id),
             ]
-        ).unlink()
+        ).unlink

@@ -449,7 +449,7 @@ class TestUnbuild(TestMrpCommon):
 
         mo = mo.procurement_group_id.mrp_production_ids[1]
         # FIXME sle: issue in backorder?
-        mo.move_raw_ids.move_line_ids.unlink()
+        mo.move_raw_ids.move_line_ids.unlink
         self.assertEqual(mo.product_qty, 2)
         mo_form = Form(mo)
         mo_form.qty_producing = 2

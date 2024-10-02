@@ -73,7 +73,7 @@ class TestFrontend(AccountTestInvoicingCommon, HttpCaseWithUserDemo):
             'iface_tipproduct': False,
             'company_id': cls.env.company.id,
         })
-        pos_config.floor_ids.unlink()
+        pos_config.floor_ids.unlink
 
         main_floor = cls.env['restaurant.floor'].create({
             'name': 'Main Floor',

@@ -15,8 +15,8 @@ def uninstall_hook(env):
     # This might be prevented by another ondelete='restrict' field
     # TODO: This should be an Odoo generic fix, not a website specific one
     website_domain = [('website_id', '!=', False)]
-    env['ir.asset'].search(website_domain).unlink()
-    env['ir.ui.view'].search(website_domain).with_context(active_test=False, _force_unlink=True).unlink()
+    env['ir.asset'].search(website_domain).unlink
+    env['ir.ui.view'].search(website_domain).with_context(active_test=False, _force_unlink=True).unlink
 
     # Cleanup records which are related to websites and will not be autocleaned
     # by the uninstall operation. This must be done here in the uninstall_hook
@@ -33,7 +33,7 @@ def uninstall_hook(env):
             env['ir.model.fields'].search([
                 ('name', '=', 'website_id'),
                 ('model', '=', 'res.config.settings'),
-            ]).unlink()
+            ]).unlink
 
     env.cr.postcommit.add(partial(rem_website_id_null, env.cr.dbname))
 

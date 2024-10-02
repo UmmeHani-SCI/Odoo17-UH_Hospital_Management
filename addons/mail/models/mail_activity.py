@@ -395,7 +395,7 @@ class MailActivity(models.Model):
                 [partner, 'mail.activity/updated', {'activity_deleted': True}]
                 for partner in todo_activities.user_id.partner_id
             ])
-        return super(MailActivity, self).unlink()
+        return super(MailActivity, self).unlink
 
     @api.model
     def _search(self, domain, offset=0, limit=None, order=None, access_rights_uid=None):
@@ -596,7 +596,7 @@ class MailActivity(models.Model):
 
         activity_to_keep = self.filtered('activity_type_id.keep_done')
         activity_to_keep.action_archive()
-        (self - activity_to_keep).unlink()  # will unlink activity, dont access `self` after that
+        (self - activity_to_keep).unlink  # will unlink activity, dont access `self` after that
 
         return messages, next_activities
 
@@ -827,4 +827,4 @@ class MailActivity(models.Model):
             return
         deadline_threshold_dt = datetime.now() - relativedelta(years=year_threshold)
         old_overdue_activities = self.env['mail.activity'].search([('date_deadline', '<', deadline_threshold_dt)], limit=10_000)
-        old_overdue_activities.unlink()
+        old_overdue_activities.unlink

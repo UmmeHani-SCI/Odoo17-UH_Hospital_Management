@@ -127,8 +127,8 @@ class Rating(models.Model):
 
     def unlink(self):
         # OPW-2181568: Delete the chatter message too
-        self.env['mail.message'].search([('rating_ids', 'in', self.ids)]).unlink()
-        return super(Rating, self).unlink()
+        self.env['mail.message'].search([('rating_ids', 'in', self.ids)]).unlink
+        return super(Rating, self).unlink
 
     def _find_parent_data(self, values):
         """ Determine the parent res_model/res_id, based on the values to create or write """

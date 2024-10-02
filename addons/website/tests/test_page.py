@@ -174,9 +174,9 @@ class TestPage(common.TransactionCase):
         View = self.env['ir.ui.view']
 
         # currently the view unlink of website.page can't handle views with inherited views
-        self.extension_view.unlink()
+        self.extension_view.unlink
 
-        self.page_1.unlink()
+        self.page_1.unlink
         self.assertEqual(Page.search_count([('url', '=', '/page_1')]), 0)
         self.assertEqual(View.search_count([('name', 'in', ('Base', 'Extension'))]), 0)
 
@@ -190,10 +190,10 @@ class TestPage(common.TransactionCase):
         })
 
         # currently the view unlink of website.page can't handle views with inherited views
-        self.extension_view.unlink()
+        self.extension_view.unlink
 
         website_id = 1
-        self.page_1.with_context(website_id=website_id).unlink()
+        self.page_1.with_context(website_id=website_id).unlink
 
         self.assertEqual(bool(self.base_view.exists()), False)
         self.assertEqual(bool(self.page_1.exists()), False)
@@ -434,7 +434,7 @@ class WithContext(HttpCase):
         self.assertIn(contactus_content, r.content)
 
         # Case 4: Check first menu fallback is a redirect (and not a reroute)
-        self.env['website.page'].search([('url', '=', home_url)]).unlink()  # this also deletes the / home menu
+        self.env['website.page'].search([('url', '=', home_url)]).unlink  # this also deletes the / home menu
         website.homepage_url = False
         # -------------------------------------------
         # / page exists | first menu  |  homepage_url

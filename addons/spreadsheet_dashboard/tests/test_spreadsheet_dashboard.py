@@ -49,7 +49,7 @@ class TestSpreadsheetDashboard(DashboardTestCommon):
             'res_id': group.id,
         })
         with self.assertRaises(UserError, msg="You cannot delete a_group as it is used in another module"):
-            group.unlink()
+            group.unlink
 
     def test_load_with_user_locale(self):
         dashboard = self.create_dashboard().with_user(self.user)

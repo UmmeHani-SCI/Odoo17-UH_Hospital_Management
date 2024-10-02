@@ -56,7 +56,7 @@ class TestEventFlow(EventCase):
         ])
 
         # Imagine user deletes mail template for whatever reason
-        scheduler.template_ref.unlink()
+        scheduler.template_ref.unlink
 
         # EventUser create registrations for this event
         self.env['event.registration'].with_user(self.user_eventuser).create({

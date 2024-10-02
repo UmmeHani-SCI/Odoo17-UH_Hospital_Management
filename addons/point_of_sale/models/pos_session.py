@@ -255,8 +255,8 @@ class PosSession(models.Model):
         return sessions
 
     def unlink(self):
-        self.statement_line_ids.unlink()
-        return super(PosSession, self).unlink()
+        self.statement_line_ids.unlink
+        return super(PosSession, self).unlink
 
     def login(self):
         self.ensure_one()
@@ -367,7 +367,7 @@ class PosSession(models.Model):
                 # Set the uninvoiced orders' state to 'done'
                 self.env['pos.order'].search([('session_id', '=', self.id), ('state', '=', 'paid')]).write({'state': 'done'})
             else:
-                self.move_id.sudo().unlink()
+                self.move_id.sudo().unlink
             self.sudo().with_company(self.company_id)._reconcile_account_move_lines(data)
         else:
             self.sudo()._post_statement_difference(self.cash_register_difference, False)
@@ -2436,10 +2436,10 @@ class PosSession(models.Model):
         # Remove the scheduled activity if there is any
         unprocessed_pos_order_scheduled_activity = self.sudo()._get_unprocessed_pos_order_scheduled_activity(pos_reference, current_order_data_obj_hash, create=False)
         if unprocessed_pos_order_scheduled_activity:
-            unprocessed_pos_order_scheduled_activity.unlink()
+            unprocessed_pos_order_scheduled_activity.unlink
 
         # Remove the attachments that have different datas
-        self.sudo()._get_captured_order_attachment(pos_reference, current_order_data_obj_hash).unlink()
+        self.sudo()._get_captured_order_attachment(pos_reference, current_order_data_obj_hash).unlink
 
 
 class ProcurementGroup(models.Model):

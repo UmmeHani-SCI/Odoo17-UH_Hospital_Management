@@ -83,7 +83,7 @@ class OnboardingStep(models.Model):
 
         # Progress is reset (to be done per-company or, for steps, to have a single record)
         if steps_changing_is_per_company:
-            steps_changing_is_per_company.progress_ids.unlink()
+            steps_changing_is_per_company.progress_ids.unlink
         self.onboarding_ids.action_refresh_progress_ids()
 
         if self.onboarding_ids - already_linked_onboardings:

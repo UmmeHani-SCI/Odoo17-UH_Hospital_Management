@@ -279,7 +279,7 @@ class AdvancedFollowersTest(MailCommon):
         Subtype = cls.env['mail.message.subtype']
 
         # clean demo data to avoid interferences
-        Subtype.search([('res_model', 'in', ['mail.test.container', 'mail.test.track'])]).unlink()
+        Subtype.search([('res_model', 'in', ['mail.test.container', 'mail.test.track'])]).unlink
 
         # mail.test.track subtypes (aka: task records)
         cls.sub_track_1 = Subtype.create({
@@ -634,7 +634,7 @@ class RecipientsNotificationTest(MailCommon):
             ('message_type', '=', 'user_notification')
         ])
         self.assertEqual(len(mail_message), 1)
-        test.unlink()
+        test.unlink
         self.assertEqual(
             self.env['mail.message'].search_count([
                 ('res_id', '=', test.id),

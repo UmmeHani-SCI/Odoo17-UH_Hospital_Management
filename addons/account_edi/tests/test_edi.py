@@ -13,8 +13,8 @@ class TestAccountEdi(AccountEdiTestCommon, CronMixinCase):
     def setUpClass(cls, chart_template_ref=None, edi_format_ref=None):
         super().setUpClass(chart_template_ref=chart_template_ref, edi_format_ref=edi_format_ref)
 
-        cls.env['account.edi.document'].search([]).unlink()
-        cls.env['account.edi.format'].search([]).unlink()
+        cls.env['account.edi.document'].search([]).unlink
+        cls.env['account.edi.format'].search([]).unlink
 
         cls.test_edi_format = cls.env['account.edi.format'].sudo().create({
             'name': 'test_edi_format',

@@ -455,7 +455,7 @@ class HrEmployeePrivate(models.Model):
 
     def unlink(self):
         resources = self.mapped('resource_id')
-        super(HrEmployeePrivate, self).unlink()
+        super(HrEmployeePrivate, self).unlink
         return resources.unlink()
 
     def _get_employee_m2o_to_empty_on_archived_employees(self):

@@ -345,7 +345,7 @@ class Post(models.Model):
             if post.is_correct:
                 post.create_uid.sudo()._add_karma(post.forum_id.karma_gen_answer_accepted * -1, post, _('The accepted answer is deleted'))
                 self.env.user.sudo()._add_karma(post.forum_id.karma_gen_answer_accepted * -1, post, _('Delete the accepted answer'))
-        return super(Post, self).unlink()
+        return super(Post, self).unlink
 
     def write(self, vals):
         trusted_keys = ['active', 'is_correct', 'tag_ids']  # fields where security is checked manually
@@ -649,7 +649,7 @@ class Post(models.Model):
         new_message = question.with_user(self_sudo.create_uid.id).with_context(mail_create_nosubscribe=True).sudo().message_post(**values).sudo(False)
 
         # unlink the original answer, using SUPERUSER_ID to avoid karma issues
-        self.sudo().unlink()
+        self.sudo().unlink
 
         return new_message
 
@@ -693,7 +693,7 @@ class Post(models.Model):
         new_post = self.with_user(post_create_uid).sudo().create(post_values).sudo(False)
 
         # delete comment
-        comment_sudo.unlink()
+        comment_sudo.unlink
 
         return new_post
 
@@ -716,7 +716,7 @@ class Post(models.Model):
             )
             if user_karma < karma_required:
                 raise AccessError(_('%d karma required to delete a comment.', karma_required))
-            result.append(comment_sudo.unlink())
+            result.append(comment_sudo.unlink)
         return result
 
     def _set_viewed(self):

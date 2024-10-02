@@ -152,7 +152,7 @@ class TestEdiFacturaeXmls(AccountTestInvoicingCommon):
 
     def test_cannot_generate_unsigned_xml(self):
         """ Test that no valid certificate prevents a xml generation"""
-        self.certificate.unlink()
+        self.certificate.unlink
         random.seed(42)
         with freeze_time(self.frozen_today), \
                 patch(f"{self.certificate_module}.fields.datetime.now", lambda x=None: self.frozen_today), \

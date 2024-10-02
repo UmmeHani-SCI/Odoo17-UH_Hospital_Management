@@ -54,7 +54,7 @@ class TestAccess(common.SlidesCase):
         self.slide.with_user(self.user_emp).read(['name'])
 
         # unlink membership -> cannot read
-        membership.unlink()
+        membership.unlink
         self.channel.with_user(self.user_emp).read(['name'])
         with self.assertRaises(AccessError):
             self.slide.with_user(self.user_emp).read(['name'])
@@ -223,7 +223,7 @@ class TestAccess(common.SlidesCase):
         with self.assertRaises(AccessError):
             self.slide.with_user(self.user_emp).read(['name'])
 
-        user_emp_membership.unlink()
+        user_emp_membership.unlink
         with self.assertRaises(AccessError):
             self.channel.with_user(self.user_emp).read(['name'])
 
@@ -336,16 +336,16 @@ class TestRemoveMembership(common.SlidesCase):
     def test_security_unlink(self):
         # Only the publisher can unlink channel_partner (and slide_partner by extension)
         with self.assertRaises(AccessError):
-            self.channel_partner.with_user(self.user_public).unlink()
+            self.channel_partner.with_user(self.user_public).unlink
         with self.assertRaises(AccessError):
-            self.channel_partner.with_user(self.user_portal).unlink()
+            self.channel_partner.with_user(self.user_portal).unlink
         with self.assertRaises(AccessError):
-            self.channel_partner.with_user(self.user_emp).unlink()
+            self.channel_partner.with_user(self.user_emp).unlink
 
     def test_slide_partner_remove(self):
         id_slide_partner = self.slide_partner.id
         id_channel_partner = self.channel_partner.id
-        self.channel_partner.with_user(self.user_officer).unlink()
+        self.channel_partner.with_user(self.user_officer).unlink
         self.assertFalse(self.env['slide.channel.partner'].search([('id', '=', '%d' % id_channel_partner)]))
         # Slide(s) related to the channel and the partner is unlink too.
         self.assertFalse(self.env['slide.slide.partner'].search([('id', '=', '%d' % id_slide_partner)]))
@@ -519,15 +519,15 @@ class TestAccessFeatures(common.SlidesCase):
         with self.assertRaises(AccessError):
             self.env['slide.slide.resource'].with_user(user_officer_other).create(resource_values)
         with self.assertRaises(AccessError):
-            resource1.with_user(user_officer_other).unlink()
+            resource1.with_user(user_officer_other).unlink
 
         # Responsible officer can do anything on their own channels
         resource1.with_user(self.user_officer).write({'name': 'other name'})
-        resource1.with_user(self.user_officer).unlink()
+        resource1.with_user(self.user_officer).unlink
 
         # Managers can do anything on all channels
         resource2.with_user(self.user_manager).write({'name': 'Another name'})
-        resource2.with_user(self.user_manager).unlink()
+        resource2.with_user(self.user_manager).unlink
         self.env['slide.slide.resource'].with_user(self.user_manager).create(resource_values)
 
 

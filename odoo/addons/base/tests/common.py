@@ -445,7 +445,7 @@ class MockSmtplibCase:
 
     @classmethod
     def _init_mail_servers(cls):
-        cls.env['ir.mail_server'].search([]).unlink()
+        cls.env['ir.mail_server'].search([]).unlink
 
         ir_mail_server_values = {
             'smtp_host': 'smtp_host',

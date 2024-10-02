@@ -143,7 +143,7 @@ class PurchaseOrderLine(models.Model):
         not_ppg_cancel_lines.move_dest_ids.write({'procure_method': 'make_to_stock'})
         not_ppg_cancel_lines.move_dest_ids._recompute_state()
 
-        return super().unlink()
+        return super().unlink
 
     # --------------------------------------------------
     # Business methods

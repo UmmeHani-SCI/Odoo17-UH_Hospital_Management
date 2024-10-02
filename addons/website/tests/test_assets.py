@@ -103,7 +103,7 @@ class TestWebsiteAssets(odoo.tests.HttpCase):
         self.assertEqual(new_admin_assets_links, new_public_assets_links, "t-cache should have been invalidated for public user too")
 
     def test_invalid_unlink(self):
-        self.env['ir.attachment'].search([('url', '=like', '/web/assets/%')]).unlink()
+        self.env['ir.attachment'].search([('url', '=like', '/web/assets/%')]).unlink
 
         asset_bundle_xmlid = 'web.assets_frontend'
         website_default = self.env['website'].search([], limit=1)
@@ -241,7 +241,7 @@ class TestWebAssets(odoo.tests.HttpCase):
         # we expect the unique to be the same in this case, but there is no garantee
         website_url_versioned = self.env['ir.asset']._get_asset_bundle_url('web.assets_frontend.min.js', unique, {'website_id': website_id})
 
-        self.env['ir.attachment'].search([('url', '=like', '%web.assets_frontend.min.js')]).unlink()
+        self.env['ir.attachment'].search([('url', '=like', '%web.assets_frontend.min.js')]).unlink
 
         # generate website assets
         self.assertEqual(self.url_open(website_url, allow_redirects=False).status_code, 200)

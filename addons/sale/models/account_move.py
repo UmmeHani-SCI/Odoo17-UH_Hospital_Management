@@ -27,9 +27,9 @@ class AccountMove(models.Model):
 
     def unlink(self):
         downpayment_lines = self.mapped('line_ids.sale_line_ids').filtered(lambda line: line.is_downpayment and line.invoice_lines <= self.mapped('line_ids'))
-        res = super(AccountMove, self).unlink()
+        res = super(AccountMove, self).unlink
         if downpayment_lines:
-            downpayment_lines.unlink()
+            downpayment_lines.unlink
         return res
 
     @api.depends('invoice_user_id')

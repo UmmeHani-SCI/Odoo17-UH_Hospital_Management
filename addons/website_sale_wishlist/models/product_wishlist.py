@@ -60,7 +60,7 @@ class ProductWishlist(models.Model):
         # Remove session products already present for the user
         duplicated_wishes = session_wishes.filtered(lambda wish: wish.product_id <= partner_products)
         session_wishes -= duplicated_wishes
-        duplicated_wishes.unlink()
+        duplicated_wishes.unlink
         # Assign the rest to the user
         session_wishes.write({"partner_id": self.env.user.partner_id.id})
         request.session.pop('wishlist_ids')
@@ -69,9 +69,10 @@ class ProductWishlist(models.Model):
     def _gc_sessions(self, *args, **kwargs):
         """Remove wishlists for unexisting sessions."""
         self.with_context(active_test=False).search([
-            ("create_date", "<", fields.Datetime.to_string(datetime.now() - timedelta(weeks=kwargs.get('wishlist_week', 5)))),
+            ("create_date", "<",
+             fields.Datetime.to_string(datetime.now() - timedelta(weeks=kwargs.get('wishlist_week', 5)))),
             ("partner_id", "=", False),
-        ]).unlink()
+        ]).unlink
 
 
 class ResPartner(models.Model):

@@ -38,9 +38,9 @@ class TestUTMSecurity(TestUTMCommon):
         test_utm_source.write({'name': 'Source EDITED'})
 
         # UNLINK
-        test_utm_campaign.unlink()
-        test_utm_medium.unlink()
-        test_utm_source.unlink()
+        test_utm_campaign.unlink
+        test_utm_medium.unlink
+        test_utm_source.unlink
 
     @users('user_employee_utm')
     def test_utm_security_employee(self):
@@ -72,8 +72,8 @@ class TestUTMSecurity(TestUTMCommon):
 
         # UNLINK
         with self.assertRaises(AccessError):
-            test_utm_campaign.unlink()
+            test_utm_campaign.unlink
         with self.assertRaises(AccessError):
-            test_utm_medium.unlink()
+            test_utm_medium.unlink
         with self.assertRaises(AccessError):
-            test_utm_source.unlink()
+            test_utm_source.unlink

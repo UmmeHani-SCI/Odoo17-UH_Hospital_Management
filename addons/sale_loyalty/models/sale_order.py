@@ -54,7 +54,7 @@ class SaleOrder(models.Model):
         order = super(SaleOrder, self).copy(default)
         reward_lines = order.order_line.filtered('is_reward_line')
         if reward_lines:
-            reward_lines.unlink()
+            reward_lines.unlink
         return order
 
     def action_confirm(self):
@@ -70,7 +70,7 @@ class SaleOrder(models.Model):
         reward_coupons = self.order_line.coupon_id
         self.coupon_point_ids.filtered(
             lambda pe: pe.coupon_id.program_id.applies_on == 'current' and pe.coupon_id not in reward_coupons
-        ).coupon_id.sudo().unlink()
+        ).coupon_id.sudo().unlink
         # Add/remove the points to our coupons
         for coupon, change in self.filtered(lambda s: s.state != 'sale')._get_point_changes().items():
             coupon.points += change
@@ -87,11 +87,11 @@ class SaleOrder(models.Model):
         )._get_point_changes().items():
             coupon.points -= changes
         # Remove any rewards
-        self.order_line.filtered(lambda l: l.is_reward_line).unlink()
+        self.order_line.filtered(lambda l: l.is_reward_line).unlink
         self.coupon_point_ids.coupon_id.sudo().filtered(
-            lambda c: not c.program_id.is_nominative and c.order_id in self and not c.use_count)\
-            .unlink()
-        self.coupon_point_ids.unlink()
+            lambda c: not c.program_id.is_nominative and c.order_id in self and not c.use_count) \
+            .unlink
+        self.coupon_point_ids.unlink
         return res
 
     def action_open_reward_wizard(self):
@@ -574,7 +574,7 @@ class SaleOrder(models.Model):
             })
 
     def _remove_program_from_points(self, programs):
-        self.coupon_point_ids.filtered(lambda p: p.coupon_id.program_id in programs).sudo().unlink()
+        self.coupon_point_ids.filtered(lambda p: p.coupon_id.program_id in programs).sudo().unlink
 
     def _get_reward_line_values(self, reward, coupon, **kwargs):
         self.ensure_one()
@@ -846,9 +846,9 @@ class SaleOrder(models.Model):
         if order_line_update:
             self.write({'order_line': order_line_update})
         if coupons_to_unlink:
-            coupons_to_unlink.sudo().unlink()
+            coupons_to_unlink.sudo().unlink
         if point_entries_to_unlink:
-            point_entries_to_unlink.sudo().unlink()
+            point_entries_to_unlink.sudo().unlink
 
     def _get_not_rewarded_order_lines(self):
         return self.order_line.filtered(lambda line: line.product_id and not line.reward_id)

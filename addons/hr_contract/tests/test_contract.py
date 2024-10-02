@@ -166,7 +166,7 @@ class TestHrContracts(TestContractCommon):
 
             mail_activity = self.env['mail.activity'].search([('res_id', '=', contract_1.id), ('res_model', '=', 'hr.contract')])
             self.assertTrue(mail_activity.exists(), "There should be reminder activity as employee work permit going to end soon")
-            mail_activity.unlink()
+            mail_activity.unlink
 
             mail_activity2 = self.env['mail.activity'].search([('res_id', '=', contract_2.id), ('res_model', '=', 'hr.contract')])
             self.assertFalse(mail_activity2.exists(), "There should be no reminder as the contract is not yet about to expire.")

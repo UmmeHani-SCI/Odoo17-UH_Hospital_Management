@@ -443,7 +443,7 @@ class ir_cron(models.Model):
 
     def unlink(self):
         self._try_lock(lockfk=True)
-        return super(ir_cron, self).unlink()
+        return super(ir_cron, self).unlink
 
     def try_write(self, values):
         try:
@@ -552,4 +552,4 @@ class ir_cron_trigger(models.Model):
 
     @api.autovacuum
     def _gc_cron_triggers(self):
-        self.search([('call_at', '<', datetime.now() + relativedelta(weeks=-1))]).unlink()
+        self.search([('call_at', '<', datetime.now() + relativedelta(weeks=-1))]).unlink

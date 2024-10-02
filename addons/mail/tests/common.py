@@ -814,7 +814,7 @@ class MailCase(MockEmail):
 
     def _reset_bus(self):
         self.env.cr.precommit.run()  # trigger the creation of bus.bus records
-        self.env["bus.bus"].sudo().search([]).unlink()
+        self.env["bus.bus"].sudo().search([]).unlink
 
     @contextmanager
     def mock_mail_app(self):

@@ -15,4 +15,4 @@ class WorkLocation(models.Model):
         if employee_uses_location:
             raise UserError(_("You cannot delete locations that are being used by your employees"))
         exceptions_using_location = self.env['hr.employee.location'].search([('work_location_id', 'in', self.ids)])
-        exceptions_using_location.unlink()
+        exceptions_using_location.unlink

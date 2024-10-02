@@ -226,7 +226,7 @@ class TestAccessRights(SalesTeamCommon):
             'Sales manager should be able to edit a Sales Team')
 
         # Manager can delete a Sales Team
-        india_channel.unlink()
+        india_channel.unlink
         self.assertNotIn(
             india_channel.id, self.env['crm.team'].search([]).ids,
             'Sales manager should be able to delete a Sales Team')

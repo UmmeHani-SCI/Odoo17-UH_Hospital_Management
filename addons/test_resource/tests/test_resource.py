@@ -181,7 +181,7 @@ class TestCalendar(TestResourceCommon):
         )
         self.assertEqual(hours, 32)
 
-        leave.unlink()
+        leave.unlink
 
         # leave of very small size
         leave = self.env['resource.calendar.leaves'].create({
@@ -198,7 +198,7 @@ class TestCalendar(TestResourceCommon):
         )
         self.assertEqual(hours, 35)
 
-        leave.unlink()
+        leave.unlink
 
         # no timezone given should be converted to UTC
         # Should equal to a leave between 2018/04/03 10:00:00 and 2018/04/04 10:00:00
@@ -222,7 +222,7 @@ class TestCalendar(TestResourceCommon):
         )
         self.assertEqual(hours, 0)
 
-        leave.unlink()
+        leave.unlink
 
         # 2 weeks calendar week 1
         hours = self.calendar_jules.get_work_hours_count(
@@ -260,7 +260,7 @@ class TestCalendar(TestResourceCommon):
         )
         self.assertEqual(hours, 16)
 
-        leave.unlink()
+        leave.unlink
 
         # 2 weeks calendar week 2, leave during a day where he works this week
         leave = self.env['resource.calendar.leaves'].create({
@@ -277,7 +277,7 @@ class TestCalendar(TestResourceCommon):
         )
         self.assertEqual(hours, 8)
 
-        leave.unlink()
+        leave.unlink
 
         # leave without calendar, should count for anyone in the company
         leave = self.env['resource.calendar.leaves'].create({
@@ -791,7 +791,7 @@ class TestResMixin(TestResourceCommon):
         )[self.john.id]
         self.assertEqual(data, {'days': 5, 'hours': 40})
 
-        leave.unlink()
+        leave.unlink
 
         # leave size 0
         leave = self.env['resource.calendar.leaves'].create({
@@ -808,7 +808,7 @@ class TestResMixin(TestResourceCommon):
         )[self.jean.id]
         self.assertEqual(data, {'days': 5, 'hours': 40})
 
-        leave.unlink()
+        leave.unlink
 
         # leave very small size
         leave = self.env['resource.calendar.leaves'].create({
@@ -915,7 +915,7 @@ class TestResMixin(TestResourceCommon):
         )[self.jean.id]
         self.assertEqual(data, {'days': 0.5, 'hours': 4})
 
-        leave.unlink()
+        leave.unlink
 
         # leave size 0
         leave = self.env['resource.calendar.leaves'].create({
@@ -932,7 +932,7 @@ class TestResMixin(TestResourceCommon):
         )[self.jean.id]
         self.assertEqual(data, {'days': 0, 'hours': 0})
 
-        leave.unlink()
+        leave.unlink
 
         # leave very small size
         leave = self.env['resource.calendar.leaves'].create({
@@ -950,7 +950,7 @@ class TestResMixin(TestResourceCommon):
         self.assertEqual(data['days'], 0)
         self.assertAlmostEqual(data['hours'], 0, 2)
 
-        leave.unlink()
+        leave.unlink
 
     def test_list_leaves(self):
         jean_leave = self.env['resource.calendar.leaves'].create({
@@ -982,7 +982,7 @@ class TestResMixin(TestResourceCommon):
         )
         self.assertEqual(leaves, [(date(2018, 4, 2), 4, leave)])
 
-        leave.unlink()
+        leave.unlink
 
         # very small size
         leave = self.env['resource.calendar.leaves'].create({
@@ -1002,7 +1002,7 @@ class TestResMixin(TestResourceCommon):
         self.assertAlmostEqual(leaves[0][1], 0, 2)
         self.assertEqual(leaves[0][2].id, leave.id)
 
-        leave.unlink()
+        leave.unlink
 
         # size 0
         leave = self.env['resource.calendar.leaves'].create({
@@ -1019,7 +1019,7 @@ class TestResMixin(TestResourceCommon):
         )
         self.assertEqual(leaves, [])
 
-        leave.unlink()
+        leave.unlink
 
     def test_list_work_time_per_day(self):
         working_time = self.john.list_work_time_per_day(
@@ -1065,7 +1065,7 @@ class TestResMixin(TestResourceCommon):
             (date(2018, 4, 6), 8),
         ])
 
-        leave.unlink()
+        leave.unlink
 
         # very small size
         leave = self.env['resource.calendar.leaves'].create({
@@ -1084,7 +1084,7 @@ class TestResMixin(TestResourceCommon):
         self.assertEqual(working_time[0][0], date(2018, 4, 2))
         self.assertAlmostEqual(working_time[0][1], 8, 2)
 
-        leave.unlink()
+        leave.unlink
 
         # size 0
         leave = self.env['resource.calendar.leaves'].create({
@@ -1107,7 +1107,7 @@ class TestResMixin(TestResourceCommon):
             (date(2018, 4, 6), 8),
         ])
 
-        leave.unlink()
+        leave.unlink
 
 
 class TestTimezones(TestResourceCommon):

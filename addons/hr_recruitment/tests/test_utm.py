@@ -20,9 +20,9 @@ class TestUTMConsistencyHrRecruitment(TestUTMCommon):
         with self.assertRaises(UserError):
             # can't unlink the source as it's used by a mailing.mailing as its source
             # unlinking the source would break all the mailing statistics
-            utm_source.unlink()
+            utm_source.unlink
 
         # you are not supposed to delete the 'utm_campaign_job' record as it is hardcoded in
         # the creation of the alias of the recruitment source
         with self.assertRaises(UserError):
-            self.env.ref('hr_recruitment.utm_campaign_job').unlink()
+            self.env.ref('hr_recruitment.utm_campaign_job').unlink

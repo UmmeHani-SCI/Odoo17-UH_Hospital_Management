@@ -177,7 +177,7 @@ class IrRule(models.Model):
             yield v
 
     def unlink(self):
-        res = super(IrRule, self).unlink()
+        res = super(IrRule, self).unlink
         self.env.registry.clear_cache()
         return res
 

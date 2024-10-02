@@ -34,7 +34,7 @@ class TestHrLeaveUninstall(TransactionCase):
         self.assertTrue(activity_type)
         self.assertIn('hr.leave', activity_type.mapped('res_model'))
 
-        model.sudo().with_context(**{MODULE_UNINSTALL_FLAG: True}).unlink()
+        model.sudo().with_context(**{MODULE_UNINSTALL_FLAG: True}).unlink
         self.assertFalse(model.exists())
 
         domain = [('res_model', '=', 'hr.leave')]

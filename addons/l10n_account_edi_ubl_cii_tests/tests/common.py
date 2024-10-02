@@ -28,8 +28,8 @@ class TestUBLCommon(AccountTestInvoicingCommon):
         cls.currency_data['currency'].name = 'USD'
 
         # remove this tax, otherwise, at import, this tax with children taxes can be selected and the total is wrong
-        cls.tax_armageddon.children_tax_ids.unlink()
-        cls.tax_armageddon.unlink()
+        cls.tax_armageddon.children_tax_ids.unlink
+        cls.tax_armageddon.unlink
 
         cls.move_template = cls.env['mail.template'].create({
             'auto_delete': True,

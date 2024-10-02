@@ -5947,7 +5947,7 @@ class StockMove(TransactionCase):
         self.assertEqual(aggregate_val_4['quantity'], 8)
 
         # Delivers a part of the second BO's qty. but doesn't create a backorder this time.
-        second_backorder.move_line_ids.filtered(lambda ml: ml.product_id == product2).unlink()
+        second_backorder.move_line_ids.filtered(lambda ml: ml.product_id == product2).unlink
         second_backorder.move_ids.picked = True
         backorder_wizard_dict = second_backorder.button_validate()
         backorder_wizard_form = Form(self.env[backorder_wizard_dict['res_model']].with_context(backorder_wizard_dict['context']))
@@ -6728,7 +6728,7 @@ class StockMove(TransactionCase):
         })
         move._action_confirm()
         # remove the exsiting ml
-        move.move_line_ids.unlink()
+        move.move_line_ids.unlink
         # add a ml
         line1 = self.env['stock.move.line'].create({
             'move_id': move.id,

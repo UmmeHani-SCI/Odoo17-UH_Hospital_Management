@@ -619,7 +619,7 @@ class IrAttachment(models.Model):
         # are deleting the same file, and some of the transactions are
         # rolled back by PostgreSQL (due to concurrent updates detection).
         to_delete = set(attach.store_fname for attach in self if attach.store_fname)
-        res = super(IrAttachment, self).unlink()
+        res = super(IrAttachment, self).unlink
         for file_path in to_delete:
             self._file_delete(file_path)
 
@@ -742,5 +742,5 @@ class IrAttachment(models.Model):
             ('res_model', '=', 'ir.ui.view'),
             ('res_id', '=', 0),
             ('create_uid', '=', SUPERUSER_ID),
-        ]).unlink()
+        ]).unlink
         self.env.registry.clear_cache('assets')

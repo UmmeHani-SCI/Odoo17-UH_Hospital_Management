@@ -46,11 +46,11 @@ class TestTemplateRefModel(TestWEventCommon):
         self.assertEqual(len(event_type.event_type_mail_ids), 2)
         self.assertEqual(len(event.event_mail_ids), 2)
 
-        template_mail.unlink()
+        template_mail.unlink
         self.assertEqual(len(event_type.event_type_mail_ids.exists()), 1)
         self.assertEqual(len(event.event_mail_ids.exists()), 1)
 
-        template_sms.unlink()
+        template_sms.unlink
         self.assertEqual(len(event_type.event_type_mail_ids.exists()), 0)
         self.assertEqual(len(event.event_mail_ids.exists()), 0)
 

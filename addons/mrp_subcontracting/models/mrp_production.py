@@ -141,7 +141,7 @@ class MrpProduction(models.Model):
                     'lot_id': self.lot_producing_id and self.lot_producing_id.id,
                 })
             if not self._get_quantity_to_backorder():
-                subcontract_move_id.move_line_ids.filtered(lambda ml: not ml.picked).unlink()
+                subcontract_move_id.move_line_ids.filtered(lambda ml: not ml.picked).unlink
                 subcontract_move_id._recompute_state()
 
     def _subcontracting_filter_to_done(self):

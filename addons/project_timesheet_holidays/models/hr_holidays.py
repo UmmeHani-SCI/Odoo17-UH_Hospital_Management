@@ -91,7 +91,7 @@ class Holidays(models.Model):
         old_timesheets = self.env["account.analytic.line"].sudo().search([('project_id', '!=', False), ('holiday_id', 'in', leave_ids)])
         if old_timesheets:
             old_timesheets.holiday_id = False
-            old_timesheets.unlink()
+            old_timesheets.unlink
 
         self.env['account.analytic.line'].sudo().create(vals_list)
 
@@ -133,7 +133,7 @@ class Holidays(models.Model):
         result = super(Holidays, self).action_refuse()
         timesheets = self.sudo().mapped('timesheet_ids')
         timesheets.write({'holiday_id': False})
-        timesheets.unlink()
+        timesheets.unlink
         self._check_missing_global_leave_timesheets()
         return result
 
@@ -141,7 +141,7 @@ class Holidays(models.Model):
         res = super()._action_user_cancel(reason)
         timesheets = self.sudo().timesheet_ids
         timesheets.write({'holiday_id': False})
-        timesheets.unlink()
+        timesheets.unlink
         self._check_missing_global_leave_timesheets()
         return res
 
@@ -150,7 +150,7 @@ class Holidays(models.Model):
         # override this method to reevaluate timesheets after the leaves are updated via force cancel
         timesheets = self.sudo().timesheet_ids
         timesheets.holiday_id = False
-        timesheets.unlink()
+        timesheets.unlink
 
     def write(self, vals):
         res = super().write(vals)
@@ -160,5 +160,5 @@ class Holidays(models.Model):
             if leave.number_of_days == 0 and leave.sudo().timesheet_ids:
                 leave.sudo().timesheet_ids.holiday_id = False
                 timesheet_ids_to_remove.extend(leave.timesheet_ids)
-        self.env['account.analytic.line'].browse(set(timesheet_ids_to_remove)).sudo().unlink()
+        self.env['account.analytic.line'].browse(set(timesheet_ids_to_remove)).sudo().unlink
         return res

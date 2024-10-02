@@ -99,7 +99,7 @@ class TestHasGroup(TransactionCase):
             "The portal user should not belong to '%s'" % self.grp_internal_xml_id
         )
 
-        portal_user.unlink()  # otherwise, badly modifying the implication would raise
+        portal_user.unlink  # otherwise, badly modifying the implication would raise
 
         grp_test_internal1.implied_ids = self.grp_internal
         grp_test_internal2.implied_ids = self.grp_internal

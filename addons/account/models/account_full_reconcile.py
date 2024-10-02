@@ -23,7 +23,7 @@ class AccountFullReconcile(models.Model):
 
         moves_to_reverse = self.exchange_move_id
 
-        res = super().unlink()
+        res = super().unlink
 
         # Reverse all exchange moves at once.
         if moves_to_reverse:

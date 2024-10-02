@@ -187,7 +187,7 @@ class TestSaleCouponProgramRules(TestSaleCouponCommon):
         self.assertEqual(len(order.order_line.ids), 4, "We should get both rewards regardless of applying order.")
 
         p_minimum_threshold_free_delivery.sequence = 10
-        (order.order_line - sol1).unlink()
+        (order.order_line - sol1).unlink
         # I add delivery cost in Sales order
         delivery_wizard = Form(self.env['choose.delivery.carrier'].with_context({
             'default_order_id': order.id,

@@ -494,7 +494,7 @@ class TestFields(TransactionCaseWithUserDemo):
 
         # delete b; both c and d are deleted in cascade; c should also be marked
         # to recompute, but recomputation should not fail...
-        b.unlink()
+        b.unlink
         self.assertEqual((a + b + c + d).exists(), a)
 
     def test_12_recursive_tree(self):
@@ -522,7 +522,7 @@ class TestFields(TransactionCaseWithUserDemo):
         # there will be nothing left to write in the database afterwards!  This
         # makes the call to unlink() crash in that case.
         #
-        order.unlink()
+        order.unlink
 
     def test_12_recursive_context_dependent(self):
         a = self.env['test_new_api.recursive'].create({'name': 'A'})
@@ -563,7 +563,7 @@ class TestFields(TransactionCaseWithUserDemo):
         self.env['test_new_api.emailmessage'].create(
             [{'message': message.id}] * 101,
         )
-        message.unlink()
+        message.unlink
 
     def test_12_unlink_cascade_ir_rule_using_related(self):
         """ Test that `unlink` on many records doesn't raise a RecursionError
@@ -583,7 +583,7 @@ class TestFields(TransactionCaseWithUserDemo):
             'domain_force': str([('active', '=', False)]),
         })
 
-        message.with_user(self.user_demo).unlink()
+        message.with_user(self.user_demo).unlink
 
     def test_12_dynamic_depends(self):
         Model = self.registry['test_new_api.compute.dynamic.depends']
@@ -1426,7 +1426,7 @@ class TestFields(TransactionCaseWithUserDemo):
         # delete middle: this should trigger left.right_id by traversing
         # middle.left_id, and right.left_size by traversing left.right_id
         # before its computation!
-        middle.unlink()
+        middle.unlink
         self.assertFalse(left.right_id)
         self.assertFalse(right.left_ids)
         self.assertFalse(right.left_size)
@@ -1518,7 +1518,7 @@ class TestFields(TransactionCaseWithUserDemo):
             self.assertIsInstance(rec.tag_id.id, int)
 
         # unlink value of a many2one (tag2), and check again
-        tag2.unlink()
+        tag2.unlink
         self.assertEqual(record.with_user(user0).tag_id, tag1)
         self.assertEqual(record.with_user(user1).tag_id, tag0.browse())
         self.assertEqual(record.with_user(user2).tag_id, tag0)
@@ -1834,7 +1834,7 @@ class TestFields(TransactionCaseWithUserDemo):
         self.assertEqual(existing._prefetch_ids, records._ids)
 
         # this invalidates the caches but the prefetching remains the same
-        deleted.unlink()
+        deleted.unlink
 
         # this should not trigger a MissingError
         existing.categories
@@ -2945,7 +2945,7 @@ class TestFields(TransactionCaseWithUserDemo):
 
         # unlink the line, and check the recomputation of move.quantity
         user = self.user_demo
-        line.with_user(user).unlink()
+        line.with_user(user).unlink
         self.assertEqual(move.quantity, 0)
 
     def test_99_prefetch_group(self):
@@ -3063,9 +3063,9 @@ class TestX2many(common.TransactionCase):
         })
         with self.assertRaises(psycopg2.IntegrityError):
             with mute_logger('odoo.sql_db'), self.cr.savepoint():
-                record_a.unlink()
+                record_a.unlink
         # Test B is still cascade.
-        record_b.unlink()
+        record_b.unlink
         self.assertFalse(record_b.exists())
 
     def test_11_ondelete_many2many(self):
@@ -3077,9 +3077,9 @@ class TestX2many(common.TransactionCase):
         })
         with self.assertRaises(psycopg2.IntegrityError):
             with mute_logger('odoo.sql_db'), self.cr.savepoint():
-                record_b.unlink()
+                record_b.unlink
         # Test A is still cascade.
-        record_a.unlink()
+        record_a.unlink
         self.assertFalse(record_a.exists())
 
     def test_12_active_test_one2many(self):
@@ -3310,7 +3310,7 @@ class TestX2many(common.TransactionCase):
             'relation': 'res.country',
             'store': False,
         })
-        self.assertTrue(field.unlink())
+        self.assertTrue(field.unlink)
 
     def test_custom_m2m_related(self):
         # this checks the ondelete of a related many2many field
@@ -3325,7 +3325,7 @@ class TestX2many(common.TransactionCase):
             'readonly': True,
             'store': True,
         })
-        self.assertTrue(field.unlink())
+        self.assertTrue(field.unlink)
 
     @mute_logger('odoo.addons.base.models.ir_model')
     @common.users('portal')
@@ -3742,7 +3742,7 @@ class TestParentStore(common.TransactionCase):
 
     def test_delete(self):
         """ Delete a node. """
-        self.cats(6).unlink()
+        self.cats(6).unlink
         self.assertChildOf(self.cats(0), self.cats(0, 1, 2, 3, 4, 5))
         self.assertChildOf(self.cats(3), self.cats(3, 4, 5))
         self.assertChildOf(self.cats(5), self.cats(5))
@@ -3893,7 +3893,7 @@ class TestMany2oneReference(common.TransactionCase):
         ids = self.env.cr.fetchone()
         # fake record to emulate the unlink of a non-existant record
         foo = m.browse(1 if not ids[0] else (ids[0] + 1))
-        self.assertTrue(foo.unlink())
+        self.assertTrue(foo.unlink)
 
     def test_search_inverse_one2many_autojoin(self):
         record = self.env['test_new_api.inverse_m2o_ref'].create({})
@@ -3928,7 +3928,7 @@ class TestSelectionDeleteUpdate(common.TransactionCase):
             ('field_id.model', '=', self.MODEL_ABSTRACT),
             ('field_id.name', '=', 'state'),
             ('value', '=', 'confirmed'),
-        ], limit=1).unlink()
+        ], limit=1).unlink
 
 
 @common.tagged('selection_update_base')
@@ -3986,7 +3986,7 @@ class TestSelectionOndelete(common.TransactionCase):
             ('field_id.model', '=', model),
             ('field_id.name', '=', 'my_selection'),
             ('value', '=', option),
-        ], limit=1).unlink()
+        ], limit=1).unlink
 
     def test_ondelete_default(self):
         # create some records, one of which having the extended selection option
@@ -4779,25 +4779,25 @@ class TestUnlinkConstraints(common.TransactionCase):
         cls.undeletable_foo_uninstall = cls.undeletable_foo.with_context(**uninstall)
 
     def test_unlink_constraint_manual_bar(self):
-        self.assertTrue(self.deletable_bar.unlink())
+        self.assertTrue(self.deletable_bar.unlink)
         with self.assertRaises(ValueError, msg="Nooooooooo bar can't be greater than five!!"):
-            self.undeletable_bar.unlink()
+            self.undeletable_bar.unlink
 
     def test_unlink_constraint_uninstall_bar(self):
-        self.assertTrue(self.deletable_bar.unlink())
+        self.assertTrue(self.deletable_bar.unlink)
         # should succeed since it's at_uninstall=False
-        self.assertTrue(self.undeletable_bar_uninstall.unlink())
+        self.assertTrue(self.undeletable_bar_uninstall.unlink)
 
     def test_unlink_constraint_manual_foo(self):
-        self.assertTrue(self.deletable_foo.unlink())
+        self.assertTrue(self.deletable_foo.unlink)
         with self.assertRaises(ValueError, msg="You didn't say if you wanted it crudo or cotto..."):
-            self.undeletable_foo.unlink()
+            self.undeletable_foo.unlink
 
     def test_unlink_constraint_uninstall_foo(self):
         self.assertTrue(self.deletable_foo)
         # should fail since it's at_uninstall=True
         with self.assertRaises(ValueError, msg="You didn't say if you wanted it crudo or cotto..."):
-            self.undeletable_foo_uninstall.unlink()
+            self.undeletable_foo_uninstall.unlink
 
 
 @common.tagged('wrong_related_path')

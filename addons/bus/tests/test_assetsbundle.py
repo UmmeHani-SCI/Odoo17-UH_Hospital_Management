@@ -15,7 +15,7 @@ class BusWebTests(odoo.tests.HttpCase):
         - The interface deals with those bus messages by displaying one notification
         """
         # start from a clean slate
-        self.env['ir.attachment'].search([('name', 'ilike', 'web.assets_%')]).unlink()
+        self.env['ir.attachment'].search([('name', 'ilike', 'web.assets_%')]).unlink
         self.env.registry.clear_cache()
 
         sendones = []

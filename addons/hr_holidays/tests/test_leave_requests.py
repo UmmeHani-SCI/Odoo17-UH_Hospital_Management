@@ -775,7 +775,7 @@ class TestLeaveRequests(TestHrHolidaysCommon):
             'request_date_to': '2021-12-10',
         })
         self.assertEqual(time_off.number_of_days, 4)
-        global_time_off.unlink()
+        global_time_off.unlink
         self.assertEqual(time_off.number_of_days, 5)
 
     def test_time_off_duration_zero(self):

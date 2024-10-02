@@ -222,14 +222,14 @@ class TestWebsiteSaleImage(odoo.tests.HttpCase):
 
         # CASE: unlink move image to fallback if fallback image empty
         template.image_1920 = False
-        product_red.unlink()
+        product_red.unlink
         self.assertEqual(template.image_1920, red_image)
 
         # CASE: unlink does nothing special if fallback image already set
         self.env['product.product'].create({
             'product_tmpl_id': template.id,
             'image_1920': green_image,
-        }).unlink()
+        }).unlink
         self.assertEqual(template.image_1920, red_image)
 
         # CASE: display variant image first if set

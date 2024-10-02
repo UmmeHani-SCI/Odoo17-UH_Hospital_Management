@@ -23,7 +23,7 @@ class TestIrDefault(TransactionCase):
         IrDefault3 = IrDefault1.with_user(user3)
 
         # set a default value for all users
-        IrDefault1.search([('field_id.model', '=', 'res.partner')]).unlink()
+        IrDefault1.search([('field_id.model', '=', 'res.partner')]).unlink
         IrDefault1.set('res.partner', 'ref', 'GLOBAL', user_id=False, company_id=False)
         self.assertEqual(IrDefault1._get_model_defaults('res.partner'), {'ref': 'GLOBAL'},
                          "Can't retrieve the created default value for all users.")
@@ -63,7 +63,7 @@ class TestIrDefault(TransactionCase):
         IrDefault = self.env['ir.default']
 
         # default without condition
-        IrDefault.search([('field_id.model', '=', 'res.partner')]).unlink()
+        IrDefault.search([('field_id.model', '=', 'res.partner')]).unlink
         IrDefault.set('res.partner', 'ref', 'X')
         self.assertEqual(IrDefault._get_model_defaults('res.partner'),
                          {'ref': 'X'})
@@ -71,7 +71,7 @@ class TestIrDefault(TransactionCase):
                          {})
 
         # default with a condition
-        IrDefault.search([('field_id.model', '=', 'res.partner.title')]).unlink()
+        IrDefault.search([('field_id.model', '=', 'res.partner.title')]).unlink
         IrDefault.set('res.partner.title', 'shortcut', 'X')
         IrDefault.set('res.partner.title', 'shortcut', 'Mr', condition='name=Mister')
         self.assertEqual(IrDefault._get_model_defaults('res.partner.title'),
@@ -98,7 +98,7 @@ class TestIrDefault(TransactionCase):
     def test_removal(self):
         """ check defaults for many2one with their value being removed """
         IrDefault = self.env['ir.default']
-        IrDefault.search([('field_id.model', '=', 'res.partner')]).unlink()
+        IrDefault.search([('field_id.model', '=', 'res.partner')]).unlink
 
         # set a record as a default value
         title = self.env['res.partner.title'].create({'name': 'President'})
@@ -106,7 +106,7 @@ class TestIrDefault(TransactionCase):
         self.assertEqual(IrDefault._get_model_defaults('res.partner'), {'title': title.id})
 
         # delete the record, and check the presence of the default value
-        title.unlink()
+        title.unlink
         self.assertEqual(IrDefault._get_model_defaults('res.partner'), {})
 
     def test_multi_company_defaults(self):

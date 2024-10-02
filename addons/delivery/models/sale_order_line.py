@@ -30,7 +30,7 @@ class SaleOrderLine(models.Model):
 
     def unlink(self):
         self.filtered('is_delivery').order_id.filtered('carrier_id').carrier_id = False
-        return super().unlink()
+        return super().unlink
 
     def _is_delivery(self):
         self.ensure_one()

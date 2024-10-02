@@ -166,7 +166,7 @@ class MicrosoftSync(models.AbstractModel):
         if self.env.user._get_microsoft_sync_status() != "sync_paused":
             for ev in synced:
                 ev._microsoft_delete(ev._get_organizer(), ev.ms_organizer_event_id)
-        return super().unlink()
+        return super().unlink
 
     def _write_from_microsoft(self, microsoft_event, vals):
         self.with_context(dont_notify=True).write(vals)

@@ -77,7 +77,7 @@ class TestHrHolidaysAccessRightsCommon(TestHrHolidaysCommon):
 
         # Here we only test access rights, prevent any conflict with
         # existing mandatory days - they are tested someplace else.
-        cls.env['hr.leave.mandatory.day'].search([]).unlink()
+        cls.env['hr.leave.mandatory.day'].search([]).unlink
 
     def request_leave(self, user_id, request_date_from, number_of_days, values=None):
         values = dict(values or {}, **{
@@ -731,7 +731,7 @@ class TestAccessRightsUnlink(TestHrHolidaysAccessRightsCommon):
             'state': 'draft',
         }
         leave = self.request_leave(self.user_employee_id, date.today() + relativedelta(days=6), 1, values)
-        leave.with_user(self.user_employee.id).unlink()
+        leave.with_user(self.user_employee.id).unlink
 
     def test_leave_unlink_confirm_by_user(self):
         """ A simple user may delete its leave in confirm state in the future"""
@@ -742,7 +742,7 @@ class TestAccessRightsUnlink(TestHrHolidaysAccessRightsCommon):
             'state': 'confirm',
         }
         leave = self.request_leave(self.user_employee_id, date.today() + relativedelta(days=6), 1, values)
-        leave.with_user(self.user_employee.id).unlink()
+        leave.with_user(self.user_employee.id).unlink
 
     def test_leave_unlink_confirm_in_past_by_user(self):
         """ A simple user cannot delete its leave in the past"""
@@ -754,7 +754,7 @@ class TestAccessRightsUnlink(TestHrHolidaysAccessRightsCommon):
         }
         leave = self.request_leave(self.user_employee_id, date.today() + relativedelta(days=-4), 1, values)
         with self.assertRaises(UserError), self.cr.savepoint():
-            leave.with_user(self.user_employee.id).unlink()
+            leave.with_user(self.user_employee.id).unlink
 
     def test_leave_unlink_validate_by_user(self):
         """ A simple user cannot delete its leave in validate state"""
@@ -766,7 +766,7 @@ class TestAccessRightsUnlink(TestHrHolidaysAccessRightsCommon):
         leave = self.request_leave(self.user_employee_id, date.today() + relativedelta(days=6), 1, values)
         leave.with_user(self.user_hrmanager_id).write({'state': 'validate'})
         with self.assertRaises(UserError), self.cr.savepoint():
-            leave.with_user(self.user_employee.id).unlink()
+            leave.with_user(self.user_employee.id).unlink
 
 class TestMultiCompany(TestHrHolidaysCommon):
 

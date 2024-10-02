@@ -79,9 +79,9 @@ class TestSaleService(TestCommonSaleTimesheet):
 
         # delete timesheets before deleting the task, so as to trigger the error
         # about linked sales order lines and not the one about linked timesheets
-        task.timesheet_ids.unlink()
+        task.timesheet_ids.unlink
         # unlink automatically task from the SOL when deleting the task
-        task.unlink()
+        task.unlink
         self.assertFalse(sale_order_line.task_id, "Deleting the task its should automatically unlink the task from SOL.")
 
     def test_timesheet_uom(self):
@@ -180,7 +180,7 @@ class TestSaleService(TestCommonSaleTimesheet):
         self.assertEqual(so_line_deliver_new_task_project.qty_delivered, timesheet1.unit_amount, 'Delivered quantity should be the same then its only related timesheet.')
 
         # remove the only timesheet
-        timesheet1.unlink()
+        timesheet1.unlink
         self.assertEqual(so_line_deliver_new_task_project.qty_delivered, 0.0, 'Delivered quantity should be reset to zero, since there is no more timesheet.')
 
         # log 2 new timesheets
@@ -201,7 +201,7 @@ class TestSaleService(TestCommonSaleTimesheet):
         self.assertEqual(so_line_deliver_new_task_project.qty_delivered, timesheet2.unit_amount + timesheet3.unit_amount, 'Delivered quantity should be the sum of the 2 timesheets unit amounts.')
 
         # remove timesheet2
-        timesheet2.unlink()
+        timesheet2.unlink
         self.assertEqual(so_line_deliver_new_task_project.qty_delivered, timesheet3.unit_amount, 'Delivered quantity should be reset to the sum of remaining timesheets unit amounts.')
 
     def test_sale_create_task(self):

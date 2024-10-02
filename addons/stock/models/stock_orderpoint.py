@@ -250,7 +250,8 @@ class StockWarehouseOrderpoint(models.Model):
             notification = self.with_context(written_after=now)._get_replenishment_order_notification()
         # Forced to call compute quantity because we don't have a link.
         self._compute_qty()
-        self.filtered(lambda o: o.create_uid.id == SUPERUSER_ID and o.qty_to_order <= 0.0 and o.trigger == 'manual').unlink()
+        self.filtered(
+            lambda o: o.create_uid.id == SUPERUSER_ID and o.qty_to_order <= 0.0 and o.trigger == 'manual').unlink
         return notification
 
     def action_replenish_auto(self):
@@ -516,7 +517,7 @@ class StockWarehouseOrderpoint(models.Model):
             expression.AND([domain, [('ids', 'in', self.ids)]])
         orderpoints_to_remove = self.env['stock.warehouse.orderpoint'].with_context(active_test=False).search(domain)
         # Remove previous automatically created orderpoint that has been refilled.
-        orderpoints_to_remove.unlink()
+        orderpoints_to_remove.unlink
         return orderpoints_to_remove
 
     def _prepare_procurement_values(self, date=False, group=False):

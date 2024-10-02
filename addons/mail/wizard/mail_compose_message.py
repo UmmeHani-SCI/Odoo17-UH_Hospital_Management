@@ -642,7 +642,7 @@ class MailComposer(models.TransientModel):
             ('res_id', '=', 0),
             ('create_date', '<', limit_date),
             ('write_date', '<', limit_date)]
-        ).unlink()
+        ).unlink
 
     # ------------------------------------------------------------
     # ACTIONS

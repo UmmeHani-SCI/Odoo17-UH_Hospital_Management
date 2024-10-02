@@ -62,7 +62,7 @@ class Currency(models.Model):
         return res
 
     def unlink(self):
-        res = super().unlink()
+        res = super().unlink
         self._toggle_group_multi_currency()
         # Currency info is cached to reduce the number of SQL queries when building the session
         # info. See `ir_http.get_currencies`.

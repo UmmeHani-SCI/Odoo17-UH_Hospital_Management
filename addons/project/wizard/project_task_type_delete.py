@@ -51,7 +51,7 @@ class ProjectTaskTypeDelete(models.TransientModel):
         return self._get_action()
 
     def action_unlink(self):
-        self.stage_ids.unlink()
+        self.stage_ids.unlink
         return self._get_action()
 
     def _get_action(self):

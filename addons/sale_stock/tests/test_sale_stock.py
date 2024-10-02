@@ -936,7 +936,7 @@ class TestSaleStock(TestSaleCommon, ValuationReconciliationTestCommon):
         picking1 = sale_order1.picking_ids
         self.assertTrue(picking1)
         self.assertEqual(picking1.state, 'assigned')
-        picking1.unlink()
+        picking1.unlink
 
         # make sure generated picking will does not auto-assign
         picking_type_out.reservation_method = 'manual'
@@ -946,7 +946,7 @@ class TestSaleStock(TestSaleCommon, ValuationReconciliationTestCommon):
         picking2 = sale_order2.picking_ids
         self.assertTrue(picking2)
         self.assertEqual(picking2.state, 'confirmed')
-        picking2.unlink()
+        picking2.unlink
 
         # make sure generated picking auto-assigns according to (picking) scheduled date
         picking_type_out.reservation_method = 'by_date'
@@ -958,7 +958,7 @@ class TestSaleStock(TestSaleCommon, ValuationReconciliationTestCommon):
         picking3 = sale_order3.picking_ids
         self.assertTrue(picking3)
         self.assertEqual(picking3.state, 'confirmed')
-        picking3.unlink()
+        picking3.unlink
         # within scheduled date + reservation days before => auto-assign
         sale_order4 = self._get_new_sale_order(amount=10.0)
         sale_order4.commitment_date = datetime.now() + timedelta(days=1)

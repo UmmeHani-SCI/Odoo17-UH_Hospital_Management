@@ -22,8 +22,8 @@ class SmsTemplate(models.Model):
         return super()._name_search(name, domain, operator, limit, order)
 
     def unlink(self):
-        res = super().unlink()
+        res = super().unlink
         domain = ('template_ref', 'in', [f"{template._name},{template.id}" for template in self])
-        self.env['event.mail'].sudo().search([domain]).unlink()
-        self.env['event.type.mail'].sudo().search([domain]).unlink()
+        self.env['event.mail'].sudo().search([domain]).unlink
+        self.env['event.type.mail'].sudo().search([domain]).unlink
         return res

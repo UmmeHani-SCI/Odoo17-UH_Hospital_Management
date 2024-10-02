@@ -837,7 +837,7 @@ class TestSaleTimesheet(TestCommonSaleTimesheet):
         move = sale_order._create_invoices()
         self.assertEqual(analytic_line.timesheet_invoice_id, move, "The timesheet should be linked to move")
 
-        move.with_context(check_move_validity=False).line_ids[0].unlink()
+        move.with_context(check_move_validity=False).line_ids[0].unlink
         self.assertFalse(analytic_line.timesheet_invoice_id, "The timesheet should have been unlinked from move")
 
     def test_update_sol_price(self):

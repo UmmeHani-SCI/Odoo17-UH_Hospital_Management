@@ -58,7 +58,7 @@ class TestPortalTimesheet(TestProjectSharingCommon):
                 elif view_type == 'kanban':
                     self.assertEqual(view_id, portal_kanban_view_id)
 
-            self.env['ir.ui.view'].browse([portal_tree_view_id, portal_form_view_id, portal_kanban_view_id]).unlink()
+            self.env['ir.ui.view'].browse([portal_tree_view_id, portal_form_view_id, portal_kanban_view_id]).unlink
 
         action = self.task_portal.with_user(self.user_portal).action_view_subtask_timesheet()
         for view_id, view_type in action['views']:

@@ -546,12 +546,12 @@ class TestSurveyInternals(common.TestSurveyCommon, MailCase):
             ],
         )
 
-        q_is_kinda_vegetarian.unlink()
+        q_is_kinda_vegetarian.unlink
 
         # Deleting one trigger but maintaining another keeps conditional behavior
         self.assertTrue(bool(veggie_question.triggering_answer_ids))
 
-        q_is_vegetarian.suggested_answer_ids[0].unlink()
+        q_is_vegetarian.suggested_answer_ids[0].unlink
 
         # Deleting answer Yes makes the following question always visible
         self.assertFalse(bool(veggie_question.triggering_answer_ids))
@@ -559,7 +559,7 @@ class TestSurveyInternals(common.TestSurveyCommon, MailCase):
         # But the other is still conditional
         self.assertEqual(not_veggie_question.triggering_answer_ids[0].id, q_is_vegetarian.suggested_answer_ids[0].id)
 
-        q_is_vegetarian.unlink()
+        q_is_vegetarian.unlink
 
         # Now it will also be always visible
         self.assertFalse(bool(not_veggie_question.triggering_answer_ids))

@@ -274,7 +274,7 @@ class LoyaltyReward(models.Model):
 
     def unlink(self):
         programs = self.program_id
-        res = super().unlink()
+        res = super().unlink
         # Not guaranteed to trigger the constraint
         programs._constrains_reward_ids()
         return res

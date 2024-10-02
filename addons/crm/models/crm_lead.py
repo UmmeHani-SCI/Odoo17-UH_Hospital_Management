@@ -949,7 +949,7 @@ class Lead(models.Model):
                 'res_id': False,
                 'res_model_id': False,
             })
-        return super(Lead, self).unlink()
+        return super(Lead, self).unlink
 
     @api.model
     def _read_group_stage_ids(self, stages, domain, order):
@@ -1448,7 +1448,7 @@ class Lead(models.Model):
         # delete tail opportunities
         # we use the SUPERUSER to avoid access rights issues because as the user had the rights to see the records it should be safe to do so
         if auto_unlink:
-            opportunities_tail.sudo().unlink()
+            opportunities_tail.sudo().unlink
 
         return opportunities_head
 

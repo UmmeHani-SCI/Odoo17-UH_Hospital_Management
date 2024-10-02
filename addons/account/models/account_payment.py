@@ -763,8 +763,8 @@ class AccountPayment(models.Model):
     def unlink(self):
         # OVERRIDE to unlink the inherited account.move (move_id field) as well.
         moves = self.with_context(force_delete=True).move_id
-        res = super().unlink()
-        moves.unlink()
+        res = super().unlink
+        moves.unlink
         return res
 
     @api.depends('move_id.name')

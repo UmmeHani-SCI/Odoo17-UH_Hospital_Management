@@ -40,7 +40,7 @@ class Employee(models.Model):
     def _delete_future_public_holidays_timesheets(self):
         future_timesheets = self.env['account.analytic.line'].sudo().search([('global_leave_id', '!=', False), ('date', '>=', fields.date.today()), ('employee_id', 'in', self.ids)])
         future_timesheets.write({'global_leave_id': False})
-        future_timesheets.unlink()
+        future_timesheets.unlink
 
     def _create_future_public_holidays_timesheets(self, employees):
         lines_vals = []

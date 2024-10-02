@@ -714,7 +714,7 @@ class Slide(models.Model):
         for category in self.filtered(lambda slide: slide.is_category):
             category.channel_id._move_category_slides(category, False)
         channel_partner_ids = self.channel_id.channel_partner_ids
-        res = super(Slide, self).unlink()
+        res = super(Slide, self).unlink
         channel_partner_ids._recompute_completion()
         return res
 

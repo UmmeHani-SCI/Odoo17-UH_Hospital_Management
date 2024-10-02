@@ -427,7 +427,7 @@ class TestProjectSharing(TestProjectSharingCommon):
         with self.assertRaises(AccessError, msg="Should not accept the portal user to update a milestone."):
             project_milestone.with_user(self.user_portal).write(['name'])
         with self.assertRaises(AccessError, msg="Should not accept the portal user to delete a milestone."):
-            project_milestone.with_user(self.user_portal).unlink()
+            project_milestone.with_user(self.user_portal).unlink
         with self.assertRaises(AccessError, msg="Should not accept the portal user to create a milestone."):
             self.env['project.milestone'].with_user(self.user_portal).create({
                 'name': 'Test Project new Milestone',

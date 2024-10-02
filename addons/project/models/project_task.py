@@ -1110,7 +1110,7 @@ class Task(models.Model):
 
         if not vals.get('recurring_task', True) and self.recurrence_id:
             tasks_in_recurrence = self.recurrence_id.task_ids
-            self.recurrence_id.unlink()
+            self.recurrence_id.unlink
             tasks_in_recurrence.write({'recurring_task': False})
 
         # The sudo is required for a portal user as the record update
@@ -1164,8 +1164,8 @@ class Task(models.Model):
         last_task_id_per_recurrence_id = self.recurrence_id._get_last_task_id_per_recurrence_id()
         for task in self:
             if task.id == last_task_id_per_recurrence_id.get(task.recurrence_id.id):
-                task.recurrence_id.unlink()
-        return super().unlink()
+                task.recurrence_id.unlink
+        return super().unlink
 
     def update_date_end(self, stage_id):
         project_task_type = self.env['project.task.type'].browse(stage_id)
@@ -1660,7 +1660,7 @@ class Task(models.Model):
 
     def action_unlink_recurrence(self):
         self.recurrence_id.task_ids.recurring_task = False
-        self.recurrence_id.unlink()
+        self.recurrence_id.unlink
 
     def action_convert_to_subtask(self):
         self.ensure_one()

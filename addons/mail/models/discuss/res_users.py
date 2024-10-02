@@ -29,7 +29,7 @@ class ResUsers(models.Model):
 
     def unlink(self):
         self._unsubscribe_from_non_public_channels()
-        return super().unlink()
+        return super().unlink
 
     def _unsubscribe_from_non_public_channels(self):
         """This method un-subscribes users from group restricted channels. Main purpose
@@ -40,7 +40,7 @@ class ResUsers(models.Model):
         current_cm = self.env["discuss.channel.member"].sudo().search(domain)
         current_cm.filtered(
             lambda cm: (cm.channel_id.channel_type == "channel" and cm.channel_id.group_public_id)
-        ).unlink()
+        ).unlink
 
     def _init_messaging(self):
         self.ensure_one()

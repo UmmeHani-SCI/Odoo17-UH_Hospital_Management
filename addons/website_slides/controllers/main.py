@@ -1218,7 +1218,7 @@ class WebsiteSlides(WebsiteProfile):
             request.env['slide.question'].search([
                 ('slide_id', '=', slide.id),
                 ('id', '=', int(existing_question_id))
-            ]).unlink()
+            ]).unlink
 
         request.env['slide.slide.partner'].search([
             ('slide_id', '=', slide_id),
@@ -1381,7 +1381,7 @@ class WebsiteSlides(WebsiteProfile):
             })
 
             if not slide.video_source_type:
-                slide.unlink()
+                slide.unlink
                 return {'error': _("Could not find your video. Please check if your link is correct and if the video can be accessed.")}
 
             if slide.video_source_type == 'youtube':

@@ -2297,11 +2297,11 @@ class TestAccountMoveInInvoiceOnchanges(AccountTestInvoicingCommon):
         move_form = Form(self.env['account.move'].with_context(default_move_type='in_invoice'))
         self.assertEqual(move_form.invoice_date, date.today())
         move.button_draft()
-        move.unlink()
+        move.unlink
 
         # We are June 17th. Lock date : April 30th. Bill Date of the most recent Vendor Bill : April 30th
         # ==> Default New Vendor Bill date = May 31st (last day of the first month not locked)
-        self.env['account.move'].search([('state', '!=', 'posted')]).unlink()
+        self.env['account.move'].search([('state', '!=', 'posted')]).unlink
         move = self.init_invoice(move_type='in_invoice', invoice_date='2022-04-30', products=self.product_a, post=True)
         move.company_id.fiscalyear_lock_date = fields.Date.from_string('2022-04-30')
         move_form = Form(self.env['account.move'].with_context(default_move_type='in_invoice'))

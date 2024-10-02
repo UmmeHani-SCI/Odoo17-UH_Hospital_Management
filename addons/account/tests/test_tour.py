@@ -19,7 +19,7 @@ class TestUi(AccountTestInvoicingCommon, odoo.tests.HttpCase):
         if 'deferred_move_ids' in all_moves._fields:
             all_moves = all_moves.filtered(lambda m: not m.deferred_move_ids)
         all_moves.button_draft()
-        all_moves.with_context(force_delete=True).unlink()
+        all_moves.with_context(force_delete=True).unlink
 
         # In case of latam impacting multiple countries, disable the required fields manually.
         if 'l10n_latam_use_documents' in cls.env['account.journal']._fields:
@@ -52,7 +52,7 @@ class TestUi(AccountTestInvoicingCommon, odoo.tests.HttpCase):
         for invoice in invoices:
             if invoice.state in ('cancel', 'posted'):
                 invoice.button_draft()
-        invoices.unlink()
+        invoices.unlink
 
         self.start_tour("/web", 'account_tour', login="admin")
 

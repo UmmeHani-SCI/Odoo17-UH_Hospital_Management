@@ -701,7 +701,7 @@ class TestUnityRead(TransactionCase):
         ])
 
     def test_reference_with_deleted_record(self):
-        self.lesson_day1.unlink()
+        self.lesson_day1.unlink
         read = self.course.web_read(
             {
                 'reference': {'fields': {}},
@@ -723,7 +723,7 @@ class TestUnityRead(TransactionCase):
         the raw value of those fields is returned from the database, and no test
         for existence is made.
         """
-        self.lesson_day1.unlink()
+        self.lesson_day1.unlink
         read = self.course.web_read(
             {
                 'reference': {},
@@ -740,7 +740,7 @@ class TestUnityRead(TransactionCase):
         ])
 
     def test_reference_with_deleted_record_extra_info(self):
-        self.lesson_day1.unlink()
+        self.lesson_day1.unlink
         read = self.course.web_read(
             {
                 'reference': {'fields': {'display_name': {}}},

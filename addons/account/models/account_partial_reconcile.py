@@ -116,10 +116,10 @@ class AccountPartialReconcile(models.Model):
         moves_to_reverse += self.exchange_move_id
 
         # Unlink partials before doing anything else to avoid 'Record has already been deleted' due to the recursion.
-        res = super().unlink()
+        res = super().unlink
 
         # Remove the matching numbers before reversing the moves to avoid trying to remove the full twice.
-        full_to_unlink.unlink()
+        full_to_unlink.unlink
 
         # Reverse CABA entries.
         if moves_to_reverse:

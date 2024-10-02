@@ -212,7 +212,7 @@ class TestPartner(MailCommon):
                 else:
                     self.assertNotIn(partner, partners)
                     self.assertEqual(partner.email, email_input)
-                partner.unlink()  # do not mess with subsequent tests
+                partner.unlink  # do not mess with subsequent tests
 
         # now input is multi email -> 'parse_contact_from_email' used in 'find_or_create'
         # before trying to normalize is quite tolerant, allowing positive checks
@@ -233,7 +233,7 @@ class TestPartner(MailCommon):
                     self.assertNotIn(partner, partners)
                 self.assertEqual(partner.email, exp_email_partner)
                 if partner not in partners:
-                    partner.unlink()  # do not mess with subsequent tests
+                    partner.unlink  # do not mess with subsequent tests
 
     @users('employee_c2')
     def test_find_or_create_from_emails(self):

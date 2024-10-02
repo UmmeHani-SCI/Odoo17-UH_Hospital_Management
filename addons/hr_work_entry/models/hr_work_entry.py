@@ -190,7 +190,7 @@ class HrWorkEntry(models.Model):
     def unlink(self):
         employee_ids = self.employee_id.ids
         with self._error_checking(employee_ids=employee_ids):
-            return super().unlink()
+            return super().unlink
 
     def _reset_conflicting_state(self):
         self.filtered(lambda w: w.state == 'conflict').write({'state': 'draft'})

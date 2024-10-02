@@ -90,10 +90,10 @@ class IrActions(models.Model):
         """unlink ir.action.todo/ir.filters which are related to actions which will be deleted.
            NOTE: ondelete cascade will not work on ir.actions.actions so we will need to do it manually."""
         todos = self.env['ir.actions.todo'].search([('action_id', 'in', self.ids)])
-        todos.unlink()
+        todos.unlink
         filters = self.env['ir.filters'].search([('action_id', 'in', self.ids)])
-        filters.unlink()
-        res = super(IrActions, self).unlink()
+        filters.unlink
+        res = super(IrActions, self).unlink
         # self.get_bindings() depends on action records
         self.env.registry.clear_cache()
         return res
@@ -319,7 +319,7 @@ class IrActionsActWindow(models.Model):
 
     def unlink(self):
         self.env.registry.clear_cache()
-        return super(IrActionsActWindow, self).unlink()
+        return super(IrActionsActWindow, self).unlink
 
     def exists(self):
         ids = self._existing()
@@ -1065,7 +1065,7 @@ class IrActionsTodo(models.Model):
                     self -= todo_open_menu
             except ValueError:
                 pass
-        return super(IrActionsTodo, self).unlink()
+        return super(IrActionsTodo, self).unlink
 
     def action_launch(self):
         """ Launch Action of Wizard"""

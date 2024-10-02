@@ -445,7 +445,7 @@ class TestWebsitePriceListAvailableGeoIP(TestWebsitePriceListAvailable):
     def setUp(self):
         super(TestWebsitePriceListAvailableGeoIP, self).setUp()
         # clean `property_product_pricelist` for partner for this test (clean setup)
-        self.env['ir.property'].search([('res_id', '=', 'res.partner,%s' % self.env.user.partner_id.id)]).unlink()
+        self.env['ir.property'].search([('res_id', '=', 'res.partner,%s' % self.env.user.partner_id.id)]).unlink
 
         # set different country groups on pricelists
         c_EUR = self.env.ref('base.europe')

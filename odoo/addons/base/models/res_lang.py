@@ -320,7 +320,7 @@ class Lang(models.Model):
 
     def unlink(self):
         self.env.registry.clear_cache()
-        return super(Lang, self).unlink()
+        return super(Lang, self).unlink
 
     def copy_data(self, default=None):
         default = dict(default or {})

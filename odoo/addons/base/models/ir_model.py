@@ -319,15 +319,15 @@ class IrModel(models.Model):
         (self - manual_models).field_id._prepare_update()
 
         # delete fields whose comodel is being removed
-        self.env['ir.model.fields'].search([('relation', 'in', self.mapped('model'))]).unlink()
+        self.env['ir.model.fields'].search([('relation', 'in', self.mapped('model'))]).unlink
 
         # delete ir_crons created by user
         crons = self.env['ir.cron'].with_context(active_test=False).search([('model_id', 'in', self.ids)])
         if crons:
-            crons.unlink()
+            crons.unlink
 
         self._drop_table()
-        res = super(IrModel, self).unlink()
+        res = super(IrModel, self).unlink
 
         # Reload registry for normal unlink only. For module uninstall, the
         # reload is done independently in odoo.modules.loading.
@@ -944,7 +944,7 @@ class IrModelFields(models.Model):
 
         model_names = self.mapped('model')
         self._drop_column()
-        res = super(IrModelFields, self).unlink()
+        res = super(IrModelFields, self).unlink
 
         # The field we just deleted might be inherited, and the registry is
         # inconsistent in this case; therefore we reload the registry.
@@ -1554,7 +1554,7 @@ class IrModelSelection(models.Model):
             query_update(self.env.cr, self._table, row, ['id'])
 
         if rows_to_remove:
-            self.browse(rows_to_remove).unlink()
+            self.browse(rows_to_remove).unlink
 
         return cur_rows
 
@@ -1640,7 +1640,7 @@ class IrModelSelection(models.Model):
 
     def unlink(self):
         self._process_ondelete()
-        result = super().unlink()
+        result = super().unlink
 
         # Reload registry for normal unlink only. For module uninstall, the
         # reload is done independently in odoo.modules.loading.
@@ -1705,7 +1705,7 @@ class IrModelSelection(models.Model):
             elif ondelete.startswith('set '):
                 safe_write(selection._get_records(), field.name, ondelete[4:])
             elif ondelete == 'cascade':
-                selection._get_records().unlink()
+                selection._get_records().unlink
             else:
                 # this shouldn't happen... simply a sanity check
                 raise ValueError(_(
@@ -1798,7 +1798,7 @@ class IrModelConstraint(models.Model):
                         sql.Identifier(table), sql.Identifier(hname)))
                     _logger.info('Dropped CONSTRAINT %s@%s', name, data.model.model)
 
-        return super().unlink()
+        return super().unlink
 
     def copy(self, default=None):
         default = dict(default or {})
@@ -1916,7 +1916,7 @@ class IrModelRelation(models.Model):
             if tools.table_exists(self._cr, name):
                 to_drop.add(name)
 
-        self.unlink()
+        self.unlink
 
         # drop m2m relation tables
         for table in to_drop:
@@ -2100,7 +2100,7 @@ class IrModelAccess(models.Model):
 
     def unlink(self):
         self.call_cache_clearing_methods()
-        return super(IrModelAccess, self).unlink()
+        return super(IrModelAccess, self).unlink
 
 
 class IrModelData(models.Model):
@@ -2221,7 +2221,7 @@ class IrModelData(models.Model):
     def unlink(self):
         """ Regular unlink method, but make sure to clear the caches. """
         self.env.registry.clear_cache()  # _xmlid_lookup
-        return super(IrModelData, self).unlink()
+        return super(IrModelData, self).unlink
 
     def _lookup_xmlids(self, xml_ids, model):
         """ Look up the given XML ids of the given model. """
@@ -2408,7 +2408,7 @@ class IrModelData(models.Model):
                     # processing exist in the database otherwise a MissingError will be raised
                     orphans = ref_data.filtered(lambda r: r.res_id in missing._ids)
                     _logger.info('Deleting orphan ir_model_data %s', orphans)
-                    orphans.unlink()
+                    orphans.unlink
                     # /!\ this must go before any field accesses on `records`
                     records -= missing
                 # do not remove LOG_ACCESS_COLUMNS unless _log_access is False
@@ -2480,11 +2480,11 @@ class IrModelData(models.Model):
                 # record), also applies to ir.model.fields, constraints, etc.
                 pass
         # remove remaining module data records
-        module_data.unlink()
+        module_data.unlink
 
     @api.model
     def _process_end_unlink_record(self, record):
-        record.unlink()
+        record.unlink
 
     @api.model
     def _process_end(self, modules):
@@ -2559,7 +2559,7 @@ class IrModelData(models.Model):
             else:
                 bad_imd_ids.append(id)
         if bad_imd_ids:
-            self.browse(bad_imd_ids).unlink()
+            self.browse(bad_imd_ids).unlink
 
         # Once all views are created create specific ones
         self.env['ir.ui.view']._create_all_specific_views(modules)

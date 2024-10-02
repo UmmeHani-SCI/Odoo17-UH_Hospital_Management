@@ -19,7 +19,7 @@ class TestORM(TransactionCase):
         """ Verify that accessing deleted records works as expected """
         c1 = self.env['res.partner.category'].create({'name': 'W'})
         c2 = self.env['res.partner.category'].create({'name': 'Y'})
-        c1.unlink()
+        c1.unlink
 
         # read() is expected to skip deleted records because our API is not
         # transactional for a sequence of search()->read() performed from the
@@ -36,7 +36,7 @@ class TestORM(TransactionCase):
         self.assertEqual([], cs[0].read(['name']), "read() should skip deleted records")
 
         # Deleting an already deleted record should be simply ignored
-        self.assertTrue(c1.unlink(), "Re-deleting should be a no-op")
+        self.assertTrue(c1.unlink, "Re-deleting should be a no-op")
 
     @mute_logger('odoo.models')
     def test_access_partial_deletion(self):
@@ -48,13 +48,13 @@ class TestORM(TransactionCase):
         records = Model.create([{'name': name[0], 'code': name[1]} for name in (['Foo', 'ZV'], ['Bar', 'ZX'], ['Baz', 'ZY'])])
         for record in records:
             record.name
-            record.unlink()
+            record.unlink
 
         # access computed field when another record from the same prefetch set has been deleted
         records = Model.create([{'name': name[0], 'code': name[1]} for name in (['Foo', 'ZV'], ['Bar', 'ZX'], ['Baz', 'ZY'])])
         for record in records:
             record.display_name
-            record.unlink()
+            record.unlink
 
     @mute_logger('odoo.models', 'odoo.addons.base.models.ir_rule')
     def test_access_filtered_records(self):
@@ -87,16 +87,16 @@ class TestORM(TransactionCase):
             p1.with_user(user).write({'name': 'foo'})
         # unlink as unprivileged user
         with self.assertRaises(AccessError):
-            p1.with_user(user).unlink()
+            p1.with_user(user).unlink
 
         # Prepare mixed case 
-        p2.unlink()
+        p2.unlink
         # read mixed records: some deleted and some filtered
         with self.assertRaises(AccessError):
             (p1 + p2).with_user(user).read(['name'])
         # delete mixed records: some deleted and some filtered
         with self.assertRaises(AccessError):
-            (p1 + p2).with_user(user).unlink()
+            (p1 + p2).with_user(user).unlink
 
     def test_read(self):
         partner = self.env['res.partner'].create({'name': 'MyPartner1'})
@@ -249,7 +249,7 @@ class TestORM(TransactionCase):
             p1_prop, "Nain poilu", 'p1_prop should have been created')
 
         # Unlink with unprivileged user
-        p1.unlink()
+        p1.unlink
 
         # ir.property is deleted
         p1_prop = self.env['ir.property'].with_user(user)._get("ref", "res.partner", res_id=p1.id)

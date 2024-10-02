@@ -180,7 +180,7 @@ class MergePartnerAutomatic(models.TransientModel):
             except psycopg2.Error:
                 # updating fails, most likely due to a violated unique constraint
                 # keeping record with nonexistent partner_id is useless, better delete it
-                records.sudo().unlink()
+                records.sudo().unlink
 
         update_records = functools.partial(update_records)
 
@@ -345,7 +345,7 @@ class MergePartnerAutomatic(models.TransientModel):
         self._log_merge_operation(src_partners, dst_partner)
 
         # delete source partner, since they are merged
-        src_partners.unlink()
+        src_partners.unlink
 
     def _log_merge_operation(self, src_partners, dst_partner):
         _logger.info('(uid = %s) merged the partners %r with %s', self._uid, src_partners.ids, dst_partner.id)
@@ -453,7 +453,7 @@ class MergePartnerAutomatic(models.TransientModel):
     def action_skip(self):
         """ Skip this wizard line. Don't compute any thing, and simply redirect to the new step."""
         if self.current_line_id:
-            self.current_line_id.unlink()
+            self.current_line_id.unlink
         return self._action_next_screen()
 
     def _action_next_screen(self):
@@ -550,7 +550,7 @@ class MergePartnerAutomatic(models.TransientModel):
         for line in self.line_ids:
             partner_ids = literal_eval(line.aggr_ids)
             self._merge(partner_ids)
-            line.unlink()
+            line.unlink
             self._cr.commit()  # TODO JEM : explain why
 
         self.write({'state': 'finished'})
@@ -595,7 +595,7 @@ class MergePartnerAutomatic(models.TransientModel):
         for line in self.line_ids:
             partner_ids = literal_eval(line.aggr_ids)
             self._merge(partner_ids)
-            line.unlink()
+            line.unlink
             self._cr.commit()
 
         self.write({'state': 'finished'})
@@ -657,6 +657,6 @@ class MergePartnerAutomatic(models.TransientModel):
         self._merge(self.partner_ids.ids, self.dst_partner_id)
 
         if self.current_line_id:
-            self.current_line_id.unlink()
+            self.current_line_id.unlink
 
         return self._action_next_screen()

@@ -68,7 +68,7 @@ class TestIrMailServer(MailCommon):
         IrMailServer = self.env['ir.mail_server']
 
         # Remove all mail server so we will use the odoo-bin arguments
-        IrMailServer.search([]).unlink()
+        IrMailServer.search([]).unlink
         self.assertFalse(IrMailServer.search([]))
 
         for mail_from, (expected_smtp_from, expected_msg_from) in zip(
@@ -275,7 +275,7 @@ class TestIrMailServer(MailCommon):
         # but we can still use the mail server configured for test.mycompany.com
         # and so we will be able to use the bounce address
         # because we use the mail server for "test.mycompany.com"
-        self.mail_server_notification.unlink()
+        self.mail_server_notification.unlink
         for provide_smtp in [False, True]:
             with self.mock_smtplib_connection():
                 if provide_smtp:

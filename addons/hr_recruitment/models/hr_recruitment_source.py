@@ -49,6 +49,6 @@ class RecruitmentSource(models.Model):
     def unlink(self):
         """ Cascade delete aliases to avoid useless / badly configured aliases. """
         aliases = self.alias_id
-        res = super().unlink()
-        aliases.sudo().unlink()
+        res = super().unlink
+        aliases.sudo().unlink
         return res

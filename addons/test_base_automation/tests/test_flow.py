@@ -852,7 +852,7 @@ if env.context.get('old_values', None):  # on write
 
         lead = self.create_lead()
         self.assertEqual(called_count, 0)
-        lead.unlink()
+        lead.unlink
         self.assertEqual(called_count, 1)
 
     def test_004_check_method(self):
@@ -1028,7 +1028,7 @@ class TestCompute(common.TransactionCase):
         limit = sys.getrecursionlimit()
         try:
             sys.setrecursionlimit(100)
-            task.unlink()
+            task.unlink
         finally:
             sys.setrecursionlimit(limit)
 

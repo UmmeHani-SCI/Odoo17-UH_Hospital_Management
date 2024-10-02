@@ -345,7 +345,7 @@ class PropertiesCase(TestPropertiesMixin):
             values = messages.read(['attributes'])
 
         # remove some partners in the list
-        partners[:20].unlink()
+        partners[:20].unlink
         self.env.invalidate_all()
         # 5 queries instead of 25 queries, thanks to the cache values that has been
         # cleaned (the properties field can trust the cached value, the deleted ids
@@ -767,7 +767,7 @@ class PropertiesCase(TestPropertiesMixin):
         }]
 
         # remove the partner on message 2
-        self.partner.unlink()
+        self.partner.unlink
         with self.assertQueryCount(4):
             # 1 query to read the field
             # 1 query to read the definition
@@ -779,7 +779,7 @@ class PropertiesCase(TestPropertiesMixin):
             'name': 'moderator_partner_id',
             'value': self.partner_2.id,
         }]
-        self.partner_2.unlink()
+        self.partner_2.unlink
 
         with self.assertQueryCount(4):
             value = self.message_2.read(['attributes'])
@@ -806,7 +806,7 @@ class PropertiesCase(TestPropertiesMixin):
                 'value': False,
             }],
         )
-        partner.unlink()
+        partner.unlink
         self.assertEqual(
             self.message_2.read(['attributes'])[0]['attributes'],
             [{
@@ -1177,12 +1177,12 @@ class PropertiesCase(TestPropertiesMixin):
             attributes = self.message_1.read(['attributes'])[0]['attributes']
             self.assertEqual(attributes[0]['value'], name_get(partners[:10]))
 
-        partners[:5].unlink()
+        partners[:5].unlink
         with self.assertQueryCount(5):
             attributes = self.message_1.read(['attributes'])[0]['attributes']
             self.assertEqual(attributes[0]['value'], name_get(partners[5:10]))
 
-        partners[5].unlink()
+        partners[5].unlink
         with self.assertQueryCount(5):
             properties = self.message_1.read(['attributes'])[0]['attributes']
         self.assertEqual(properties[0]['value'], name_get(partners[6:10]))
@@ -1707,7 +1707,7 @@ class PropertiesSearchCase(TestPropertiesMixin):
     def setUpClass(cls):
         super().setUpClass()
         cls.messages = cls.message_1 | cls.message_2 | cls.message_3
-        cls.env['test_new_api.message'].search([('id', 'not in', cls.messages.ids)]).unlink()
+        cls.env['test_new_api.message'].search([('id', 'not in', cls.messages.ids)]).unlink
 
     @mute_logger('odoo.fields')
     def test_properties_field_search_boolean(self):
@@ -2105,7 +2105,7 @@ class PropertiesGroupByCase(TestPropertiesMixin):
         })
 
         cls.messages = cls.message_1 | cls.message_2 | cls.message_3 | cls.message_4
-        cls.env['test_new_api.message'].search([('id', 'not in', cls.messages.ids)]).unlink()
+        cls.env['test_new_api.message'].search([('id', 'not in', cls.messages.ids)]).unlink
 
         cls.wrong_discussion_id = cls.env['test_new_api.discussion'].search(
             [], order="id DESC", limit=1).id + 1000
@@ -2563,7 +2563,7 @@ class PropertiesGroupByCase(TestPropertiesMixin):
         self.message_2.attributes = {'mypartners': partners[3:8].ids}
         self.message_3.attributes = {'mypartners': partners[8:].ids}
 
-        (partners[4] | partners[7] | partners[9]).unlink()
+        (partners[4] | partners[7] | partners[9]).unlink
 
         with self.assertQueryCount(4):
             result = Model.read_group(
@@ -2596,7 +2596,7 @@ class PropertiesGroupByCase(TestPropertiesMixin):
         self._check_domains_count(result)
 
         # now message 1 and 2 will also be in the falsy group
-        partners[:8].unlink()
+        partners[:8].unlink
         with self.assertQueryCount(4):
             result = Model.read_group(
                 domain=[('discussion', '!=', self.wrong_discussion_id)],
@@ -2611,7 +2611,7 @@ class PropertiesGroupByCase(TestPropertiesMixin):
         self._check_domains_count(result)
 
         # special case, no partner exists
-        existing_partners.unlink()
+        existing_partners.unlink
         result = Model.read_group(
             domain=[('discussion', '!=', self.wrong_discussion_id)],
             fields=[],

@@ -51,7 +51,7 @@ class ProductPricelist(models.Model):
         return res
 
     def unlink(self):
-        res = super(ProductPricelist, self).unlink()
+        res = super(ProductPricelist, self).unlink
         self and self.env.registry.clear_cache()
         return res
 

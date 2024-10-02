@@ -46,7 +46,7 @@ class IrDefault(models.Model):
     def unlink(self):
         if self:
             self.env.registry.clear_cache()
-        return super(IrDefault, self).unlink()
+        return super(IrDefault, self).unlink
 
     @api.model
     def set(self, model_name, field_name, value, user_id=False, company_id=False, condition=False):
@@ -179,7 +179,7 @@ class IrDefault(models.Model):
         domain = [('field_id.ttype', '=', 'many2one'),
                   ('field_id.relation', '=', records._name),
                   ('json_value', 'in', json_vals)]
-        return self.search(domain).unlink()
+        return self.search(domain).unlink
 
     @api.model
     def discard_values(self, model_name, field_name, values):
@@ -187,4 +187,4 @@ class IrDefault(models.Model):
         field = self.env['ir.model.fields']._get(model_name, field_name)
         json_vals = [json.dumps(value, ensure_ascii=False) for value in values]
         domain = [('field_id', '=', field.id), ('json_value', 'in', json_vals)]
-        return self.search(domain).unlink()
+        return self.search(domain).unlink

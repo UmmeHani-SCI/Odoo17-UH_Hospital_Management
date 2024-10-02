@@ -225,7 +225,7 @@ class Meeting(models.Model):
             recurrence_deletion = any(ev.recurrency and ev.recurrence_id and ev.follow_recurrence for ev in synced_events)
             if not change_from_microsoft and recurrence_deletion:
                 self._forbid_recurrence_update()
-        return super().unlink()
+        return super().unlink
 
     def _recreate_event_different_organizer(self, values, sender_user):
         """ Copy current event values, delete it and recreate it with the new organizer user. """

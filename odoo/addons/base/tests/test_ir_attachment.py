@@ -68,7 +68,7 @@ class TestIrAttachment(TransactionCaseWithUserDemo):
 
         a2_fn = os.path.join(self.filestore, a2.store_fname)
 
-        a3.unlink()
+        a3.unlink
         self.assertTrue(os.path.isfile(a2_fn))
 
     def test_05_change_data_change_file(self):
@@ -176,7 +176,7 @@ class TestIrAttachment(TransactionCaseWithUserDemo):
         ####################################
 
         # reset default ~ delete
-        self.env['ir.config_parameter'].search([('key', 'ilike', 'base.image_autoresize%')]).unlink()
+        self.env['ir.config_parameter'].search([('key', 'ilike', 'base.image_autoresize%')]).unlink
 
         attach = Attachment.with_context(image_no_postprocess=True).create({
             'name': 'image',
@@ -241,7 +241,7 @@ class TestIrAttachment(TransactionCaseWithUserDemo):
         a1 = self.Attachment.create({'name': 'a1', 'raw': unique_blob})
         store_path = os.path.join(self.filestore, a1.store_fname)
         self.assertTrue(os.path.isfile(store_path), 'file exists')
-        a1.unlink()
+        a1.unlink
         self.Attachment._gc_file_store_unsafe()
         self.assertFalse(os.path.isfile(store_path), 'file removed')
 
@@ -340,7 +340,7 @@ class TestPermissions(TransactionCaseWithUserDemo):
         attachment = self.Attachments.create(self.vals)
         attachment.copy()
         attachment.write({'raw': b'test'})
-        attachment.unlink()
+        attachment.unlink
 
     def test_basic_modifications(self):
         """Lacking write access to the linked record means create, update, and
@@ -351,7 +351,7 @@ class TestPermissions(TransactionCaseWithUserDemo):
         with self.assertRaises(AccessError):
             self.attachment.write({'raw': b'yay'})
         with self.assertRaises(AccessError):
-            self.attachment.unlink()
+            self.attachment.unlink
         with self.assertRaises(AccessError):
             self.attachment.copy()
 

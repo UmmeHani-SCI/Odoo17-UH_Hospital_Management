@@ -133,7 +133,7 @@ class TestXMLID(TransactionCase):
         self.assertEqual(category.name, 'Foo')
 
         # suppress category
-        category.unlink()
+        category.unlink
         self.assertFalse(self.env.ref(xml_id, raise_if_not_found=False))
 
         # update category, this should recreate it
@@ -370,7 +370,7 @@ class TestIrModel(TransactionCase):
         self.assertEqual(record.display_name, "Ifan Ben-Mezd")
 
         # unlinking x_name should fixup _rec_name and display_name
-        self.env['ir.model.fields']._get('x_bananas', 'x_name').unlink()
+        self.env['ir.model.fields']._get('x_bananas', 'x_name').unlink
         record = self.env['x_bananas'].browse(record.id)
         self.assertEqual(record._rec_name, None)
         self.assertEqual(self.registry.field_depends[type(record).display_name], ())
@@ -471,7 +471,7 @@ class TestIrModelEdition(TransactionCase):
         self.assertTrue(model.exists())
         self.assertTrue(model2.exists())
 
-        self.env["ir.model"].browse(model.ids + model2.ids).unlink()
+        self.env["ir.model"].browse(model.ids + model2.ids).unlink
         self.assertFalse(model.exists())
         self.assertFalse(model2.exists())
 

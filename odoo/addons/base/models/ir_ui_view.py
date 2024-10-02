@@ -517,7 +517,7 @@ actual arch.
         # not all users would see the updated views
         custom_view = self.env['ir.ui.view.custom'].sudo().search([('ref_id', 'in', self.ids)])
         if custom_view:
-            custom_view.unlink()
+            custom_view.unlink
 
         self.env.registry.clear_cache('templates')
         if 'arch_db' in vals and not self.env.context.get('no_save_prev'):
@@ -541,9 +541,9 @@ actual arch.
     def unlink(self):
         # if in uninstall mode and has children views, emulate an ondelete cascade
         if self.env.context.get('_force_unlink', False) and self.inherit_children_ids:
-            self.inherit_children_ids.unlink()
+            self.inherit_children_ids.unlink
         self.env.registry.clear_cache('templates')
-        return super(View, self).unlink()
+        return super(View, self).unlink
 
     def _update_field_translations(self, fname, translations, digest=None):
         return super(View, self.with_context(no_save_prev=True))._update_field_translations(fname, translations, digest)

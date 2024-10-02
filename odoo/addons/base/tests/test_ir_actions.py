@@ -602,7 +602,7 @@ class TestCustomFields(TestCommonCustomFields):
     def test_remove_without_view(self):
         """ try removing a custom field that does not occur in views """
         field = self.create_field('x_foo')
-        field.unlink()
+        field.unlink
 
     def test_rename_without_view(self):
         """ try renaming a custom field that does not occur in views """
@@ -617,7 +617,7 @@ class TestCustomFields(TestCommonCustomFields):
 
         # try to delete the field, this should fail but not modify the registry
         with self.assertRaises(UserError):
-            field.unlink()
+            field.unlink
         self.assertIn('x_foo', self.env[self.MODEL]._fields)
 
     @mute_logger('odoo.addons.base.models.ir_ui_view')
@@ -637,10 +637,10 @@ class TestCustomFields(TestCommonCustomFields):
         self.assertTrue(field)
 
         with self.assertRaisesRegex(UserError, 'This column contains module data'):
-            field.unlink()
+            field.unlink
 
         # but it works in the context of uninstalling a module
-        field.with_context(_force_unlink=True).unlink()
+        field.with_context(_force_unlink=True).unlink
 
     def test_unlink_with_inverse(self):
         """ create a custom o2m and then delete its m2o inverse """
@@ -666,10 +666,10 @@ class TestCustomFields(TestCommonCustomFields):
 
         # normal mode: you cannot break dependencies
         with self.assertRaises(UserError):
-            m2o_field.unlink()
+            m2o_field.unlink
 
         # uninstall mode: unlink dependant fields
-        m2o_field.with_context(_force_unlink=True).unlink()
+        m2o_field.with_context(_force_unlink=True).unlink
         self.assertFalse(o2m_field.exists())
 
     def test_unlink_with_dependant(self):
@@ -689,10 +689,10 @@ class TestCustomFields(TestCommonCustomFields):
 
         # normal mode: you cannot break dependencies
         with self.assertRaises(UserError):
-            field.unlink()
+            field.unlink
 
         # uninstall mode: unlink dependant fields
-        field.with_context(_force_unlink=True).unlink()
+        field.with_context(_force_unlink=True).unlink
         self.assertFalse(dependant.exists())
 
     def test_unlink_inherited_custom(self):
@@ -709,10 +709,10 @@ class TestCustomFields(TestCommonCustomFields):
 
         # one cannot delete the inherited field itself
         with self.assertRaises(UserError):
-            inherited_field.unlink()
+            inherited_field.unlink
 
         # but the inherited field is deleted when its parent field is
-        field.unlink()
+        field.unlink
         self.assertFalse(field.exists())
         self.assertFalse(inherited_field.exists())
         self.assertFalse(self.env['ir.model.fields'].search_count([
@@ -829,7 +829,7 @@ class TestCustomFields(TestCommonCustomFields):
         self.assertEqual(rec3.x_sel, 'baz')
 
         # remove selection value 'foo'
-        field.selection_ids[0].unlink()
+        field.selection_ids[0].unlink
         x_sel = Model._fields['x_sel']
         self.assertEqual(x_sel.type, 'selection')
         self.assertEqual(x_sel.selection, [('bar', 'Bar'), ('baz', 'Baz')])

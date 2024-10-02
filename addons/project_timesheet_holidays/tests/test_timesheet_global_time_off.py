@@ -108,7 +108,7 @@ class TestTimesheetGlobalTimeOff(common.TransactionCase):
         self.assertEqual(leave_task.effective_hours, 80)
 
         # Now we delete the global time off. The timesheets should be deleted too.
-        global_time_off.unlink()
+        global_time_off.unlink
 
         self.assertFalse(leave_task.timesheet_ids.ids)
 
@@ -473,8 +473,8 @@ class TestTimesheetGlobalTimeOff(common.TransactionCase):
         self.assertTrue(gto_without_calendar.timesheet_ids.filtered(lambda r: r.employee_id == test_user.employee_id))
 
         # remove global time offs to remove the timesheet so we can test cancelling the leave
-        global_time_off.unlink()
-        gto_without_calendar.unlink()
+        global_time_off.unlink
+        gto_without_calendar.unlink
 
         # create a new leave at same dates
         holiday2 = HrLeave.with_user(test_user).create({

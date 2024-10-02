@@ -3063,7 +3063,7 @@ class TestAccountMoveOutInvoiceOnchanges(AccountTestInvoicingCommon):
             ('name', '=', self.env['account.move.line']._fields['price_unit']._digits),
         ]).digits = 5
 
-        self.env['res.currency.rate'].search([]).unlink()
+        self.env['res.currency.rate'].search([]).unlink
 
         invoice = self.env['account.move'].create({
             'move_type': 'out_invoice',

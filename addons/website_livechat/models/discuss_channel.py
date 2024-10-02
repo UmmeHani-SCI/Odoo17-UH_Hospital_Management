@@ -20,7 +20,7 @@ class DiscussChannel(models.Model):
          """
         super().channel_pin(pinned=pinned)
         if self.livechat_active and not self.message_ids:
-            self.sudo().unlink()
+            self.sudo().unlink
 
     def _channel_info(self):
         """

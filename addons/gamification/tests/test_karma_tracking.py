@@ -29,7 +29,7 @@ class TestKarmaTrackingCommon(common.TransactionCase):
             karma=0,
             groups='base.group_user',
         )
-        cls.env['gamification.karma.tracking'].search([]).unlink()
+        cls.env['gamification.karma.tracking'].search([]).unlink
 
         cls.test_date = datetime(2021, 6, 1)
         cls.first_day_of_test_date_month = '2021-06-01'
@@ -310,7 +310,7 @@ class TestComputeRankCommon(common.TransactionCase):
                 karma=k,
             )
 
-        cls.env['gamification.karma.rank'].search([]).unlink()
+        cls.env['gamification.karma.rank'].search([]).unlink
 
         cls.rank_1 = cls.env['gamification.karma.rank'].create({
             'name': 'rank 1',

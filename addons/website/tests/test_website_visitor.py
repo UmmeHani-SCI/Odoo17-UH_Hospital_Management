@@ -397,7 +397,7 @@ class WebsiteVisitorTests(MockVisitor, HttpCaseWithUserDemo):
         """ See :meth:`test_merge_partner_with_visitor_single` """
         # Setup a visitor for admin_duplicate and none for admin
         Visitor = self.env['website.visitor']
-        (self.partner_admin_duplicate + self.partner_admin).visitor_ids.unlink()
+        (self.partner_admin_duplicate + self.partner_admin).visitor_ids.unlink
         [visitor_admin_duplicate, visitor_admin] = Visitor.create([{
             'partner_id': self.partner_admin_duplicate.id,
             'access_token': self.partner_admin_duplicate.id,
@@ -471,7 +471,7 @@ class WebsiteVisitorTests(MockVisitor, HttpCaseWithUserDemo):
         """
         # Setup a visitor for admin_duplicate and none for admin
         Visitor = self.env['website.visitor']
-        (self.partner_admin_duplicate + self.partner_admin).visitor_ids.unlink()
+        (self.partner_admin_duplicate + self.partner_admin).visitor_ids.unlink
         visitor_admin_duplicate = Visitor.create({
             'partner_id': self.partner_admin_duplicate.id,
             'access_token': self.partner_admin_duplicate.id,

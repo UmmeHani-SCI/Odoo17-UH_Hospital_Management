@@ -315,7 +315,7 @@ class TestAttendeeCase(HttpCaseWithUserPortal):
         self.assertTrue(f'slides/{slug(self.channel)}' in res.url, "Should redirect the logged attendee to the course page")
 
         # Logged user is not an attendee of the course, and has no rights to see it.
-        self.channel_partner_emp.sudo().unlink()
+        self.channel_partner_emp.sudo().unlink
         self.channel.visibility = 'members'
         res = self.url_open(invite_url_emp)
         self.assertEqual(res.status_code, 200)
@@ -375,7 +375,7 @@ class TestAttendeeCase(HttpCaseWithUserPortal):
 
         # If removed from invited attendees, the link is not valid anymore.
         self.channel.sudo().is_published = True
-        self.channel_partner_emp.sudo().unlink()
+        self.channel_partner_emp.sudo().unlink
         res = self.url_open(invite_url_emp)
         self.assertEqual(res.status_code, 200)
         self.assertTrue('/slides?invite_error=expired' in res.url, "Using an expired link should redirect to the main /slides page")
@@ -471,7 +471,7 @@ class TestAttendeeCase(HttpCaseWithUserPortal):
             "Should have redirected to the 'no_channel' page as this channel ID does not exist")
 
         # Expired Link. Redirects to the main slides page.
-        self.channel_partner_emp.sudo().unlink()
+        self.channel_partner_emp.sudo().unlink
         res = self.url_open(invite_url_emp)
         self.assertEqual(res.status_code, 200)
         self.assertTrue('/slides?invite_error=expired' in res.url, "Using an expired link should redirect to the main /slides page for non public courses")

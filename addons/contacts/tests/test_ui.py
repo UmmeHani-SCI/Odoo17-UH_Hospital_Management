@@ -27,7 +27,7 @@ class TestUi(odoo.tests.HttpCase):
         # so "Company" is the default value for the field res.partner.company_type
         self.env['ir.default'].search([
             ('field_id', '=', self.env.ref('base.field_res_partner__company_type').id),
-        ]).unlink()
+        ]).unlink
         self.assertEqual(self.env['res.partner'].with_context(**action_context).new().company_type, "company")
 
         self.start_tour("/web", 'debug_menu_set_defaults', login="admin")

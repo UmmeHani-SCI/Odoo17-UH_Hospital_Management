@@ -299,7 +299,7 @@ class TestMassMailValues(MassMailCommon):
         mailing.mailing_filter_id = filter_3
         filter_3_domain = filter_3.mailing_domain
         self.assertEqual(literal_eval(mailing.mailing_domain), literal_eval(filter_3_domain))
-        filter_3.unlink()  # delete the filter record
+        filter_3.unlink  # delete the filter record
         self.assertFalse(mailing.mailing_filter_id, "Should unset filter if it is deleted")
         self.assertEqual(literal_eval(mailing.mailing_domain), literal_eval(filter_3_domain), "Should still have the same domain")
 
@@ -604,7 +604,7 @@ class TestMassMailFeatures(MassMailCommon, CronMixinCase):
         self.assertEqual(len(self.mailing_list_1.contact_ids.message_ids), 3)
 
         # 2- Keep archives and reply-to set to 'answer = update thread'
-        self.mailing_list_1.contact_ids.message_ids.unlink()
+        self.mailing_list_1.contact_ids.message_ids.unlink
         mailing = mailing.copy()
         mailing.write({
             'reply_to_mode': 'update',
@@ -619,7 +619,7 @@ class TestMassMailFeatures(MassMailCommon, CronMixinCase):
         self.assertEqual(len(self.mailing_list_1.contact_ids.message_ids), 3)
 
         # 3- Remove archives and reply-to set to 'answer = new thread'
-        self.mailing_list_1.contact_ids.message_ids.unlink()
+        self.mailing_list_1.contact_ids.message_ids.unlink
         mailing = mailing.copy()
         mailing.write({
             'keep_archives': False,
@@ -637,7 +637,7 @@ class TestMassMailFeatures(MassMailCommon, CronMixinCase):
 
         # 4- Remove archives and reply-to set to 'answer = update thread'
         # Imply keeping mail.message for gateway reply)
-        self.mailing_list_1.contact_ids.message_ids.unlink()
+        self.mailing_list_1.contact_ids.message_ids.unlink
         mailing = mailing.copy()
         mailing.write({
             'keep_archives': False,

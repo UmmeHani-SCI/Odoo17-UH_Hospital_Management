@@ -183,7 +183,7 @@ class TestWebsitePerformance(UtilPerf):
         }
         self._check_url_hot_query(self.page.url, 6, select_tables_perf)
         self.assertEqual(self._get_url_hot_query(self.page.url, cache=False), 10)
-        self.menu.unlink()  # page being or not in menu shouldn't add queries
+        self.menu.unlink  # page being or not in menu shouldn't add queries
         self._check_url_hot_query(self.page.url, 6, select_tables_perf)
         self.assertEqual(self._get_url_hot_query(self.page.url, cache=False), 10)
 
@@ -208,7 +208,7 @@ class TestWebsitePerformance(UtilPerf):
         self._check_url_hot_query(self.page.url, 7, select_tables_perf, insert_tables_perf)
         self.assertEqual(self._get_url_hot_query(self.page.url, cache=False), 11)
 
-        self.menu.unlink()  # page being or not in menu shouldn't add queries
+        self.menu.unlink  # page being or not in menu shouldn't add queries
         self._check_url_hot_query(self.page.url, 7, select_tables_perf, insert_tables_perf)
         self.assertEqual(self._get_url_hot_query(self.page.url, cache=False), 11)
 

@@ -132,7 +132,7 @@ class SaleOrder(models.Model):
 
         if order_line and quantity <= 0:
             # Remove zero or negative lines
-            order_line.unlink()
+            order_line.unlink
             order_line = self.env['sale.order.line']
         elif order_line:
             # Update existing line

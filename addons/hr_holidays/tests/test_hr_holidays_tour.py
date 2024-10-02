@@ -22,7 +22,7 @@ class TestHrHolidaysTour(HttpCase):
             ('date_to', "<=", date_to),
             ('employee_id', '=', admin_employee.id)
         ])
-        leaves_on_freeze_date.sudo().unlink()
+        leaves_on_freeze_date.sudo().unlink
 
         LeaveType = self.env['hr.leave.type'].with_user(admin_user)
 

@@ -92,7 +92,7 @@ class TestSyncOdoo2Google(TestSyncGoogle):
             events._sync_odoo2google(self.google_service)
 
         with self.assertQueryCount(__system__=27):
-            events.unlink()
+            events.unlink
 
 
     @patch_api
@@ -126,7 +126,7 @@ class TestSyncOdoo2Google(TestSyncGoogle):
             })
 
         with self.assertQueryCount(__system__=37):
-            event.unlink()
+            event.unlink
 
     def test_event_without_user(self):
         event = self.env['calendar.event'].create({
@@ -767,7 +767,7 @@ class TestSyncOdoo2Google(TestSyncGoogle):
 
         # Pause synchronization and delete synced event.
         self.env.user.sudo().pause_google_synchronization()
-        record.unlink()
+        record.unlink
 
         # Assert that synchronization is paused, delete wasn't called and record was archived in Odoo.
         self.assertFalse(self.env.user.google_synchronization_stopped)

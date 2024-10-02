@@ -75,7 +75,7 @@ class IrAsset(models.Model):
 
     def unlink(self):
         self.env.registry.clear_cache('assets')
-        return super().unlink()
+        return super().unlink
 
     name = fields.Char(string='Name', required=True)
     bundle = fields.Char(string='Bundle name', required=True)

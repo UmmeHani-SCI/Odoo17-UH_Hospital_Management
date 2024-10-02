@@ -65,7 +65,7 @@ class HolidaysAllocation(models.Model):
 
     def action_refuse(self):
         res = super().action_refuse()
-        self.overtime_id.sudo().unlink()
+        self.overtime_id.sudo().unlink
         return res
 
     def _get_accrual_plan_level_work_entry_prorata(self, level, start_period, start_date, end_period, end_date):

@@ -16,7 +16,7 @@ class TestAnalyticPlanOperations(TransactionCase):
         # columns exists
         self.env.cr.execute(f"SELECT {column} FROM account_analytic_line LIMIT 1")
 
-        plan.unlink()
+        plan.unlink
         with self.assertRaises(psycopg2.errors.UndefinedColumn), mute_logger('odoo.sql_db'):
             # column has been deleted
             self.env.cr.execute(f"SELECT {column} FROM account_analytic_line LIMIT 1")
@@ -34,7 +34,7 @@ class TestAnalyticPlanOperations(TransactionCase):
 
         # can't delete a plan still used in a view
         with self.assertRaisesRegex(UserError, 'still present in views'):
-            plan.unlink()
+            plan.unlink
 
     def test_validate_deleted_account(self):
         plan, mandatory_plan = self.env['account.analytic.plan'].create([{
@@ -64,8 +64,8 @@ class TestAnalyticPlanOperations(TransactionCase):
         distribution_model._validate_distribution()
 
         # even by keeping a deleted account, the validation still works
-        test_account.unlink()
-        plan.unlink()
+        test_account.unlink
+        plan.unlink
         distribution_model._validate_distribution()
 
     def test_validate_company_plans(self):

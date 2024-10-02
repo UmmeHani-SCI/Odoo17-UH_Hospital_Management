@@ -145,7 +145,7 @@ class TestMailAlias(TestMailAliasCommon):
             {'alias_model_id': alias_model_id, 'alias_name': self.alias_bounce_c2},
         ])
         self.assertEqual(new_aliases.alias_domain_id, mail_alias_domain)
-        new_aliases.unlink()
+        new_aliases.unlink
         # bounce/catchall of another domain is ok
         new_mail_alias.write({'alias_name': mail_alias_domain_c2.bounce_alias})
         other_alias.write({'alias_name': mail_alias_domain_c2.catchall_alias})
@@ -270,7 +270,7 @@ class TestMailAlias(TestMailAliasCommon):
                     'alias_name': alias_name,
                 })
                 self.assertEqual(alias.alias_name, expected, msg)
-                alias.unlink()
+                alias.unlink
 
         alias = self.env['mail.alias'].create({
             'alias_model_id': self.env['ir.model']._get('mail.test.container').id,
@@ -399,18 +399,18 @@ class TestAliasCompany(TestMailAliasCommon):
 
         # cannot unlink alias domain as there are aliases linked to it
         with self.assertRaises(psycopg2.errors.ForeignKeyViolation), self.cr.savepoint(), mute_logger('odoo.sql_db'):
-            mail_alias_domain.unlink()
+            mail_alias_domain.unlink
 
         # eject linked aliases then remove alias domain of first company; should
         # not impact second company
         self.env['mail.alias'].sudo().search([]).write({'alias_domain_id': False})
-        mail_alias_domain.unlink()
+        mail_alias_domain.unlink
         self.assertFalse(self.company_admin.alias_domain_id)
         self.assertEqual(self.company_2.alias_domain_id, mail_alias_domain_c2)
         self.assertFalse(self.test_alias_mc.alias_domain_id)
 
         # remove all alias domains
-        self.env['mail.alias.domain'].search([]).unlink()
+        self.env['mail.alias.domain'].search([]).unlink
         self.assertFalse(self.company_2.alias_domain_id)
         self.assertEqual(self.company_2.bounce_email, '')
         self.assertEqual(self.company_2.bounce_formatted, '')

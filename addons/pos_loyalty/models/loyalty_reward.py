@@ -15,4 +15,4 @@ class LoyaltyReward(models.Model):
     def unlink(self):
         if len(self) == 1 and self.env['pos.order.line'].sudo().search_count([('reward_id', 'in', self.ids)], limit=1):
             return self.action_archive()
-        return super().unlink()
+        return super().unlink

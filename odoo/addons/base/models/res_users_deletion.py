@@ -65,7 +65,7 @@ class ResUsersDeletion(models.Model):
             try:
                 self.env.cr.execute("SAVEPOINT delete_user")
                 partner = user.partner_id
-                user.unlink()
+                user.unlink
                 _logger.info("User #%i %r, deleted. Original request from %r.",
                              user.id, user_name, delete_request.create_uid.name)
                 self.env.cr.execute("RELEASE SAVEPOINT delete_user")
@@ -85,7 +85,7 @@ class ResUsersDeletion(models.Model):
             #         Could be impossible if the partner is linked to a SO for example
             try:
                 self.env.cr.execute("SAVEPOINT delete_partner")
-                partner.unlink()
+                partner.unlink
                 _logger.info("Partner #%i %r, deleted. Original request from %r.",
                              partner.id, user_name, delete_request.create_uid.name)
                 self.env.cr.execute("RELEASE SAVEPOINT delete_partner")

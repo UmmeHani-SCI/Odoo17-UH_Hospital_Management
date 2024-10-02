@@ -24,7 +24,7 @@ class Efaktur(models.Model):
 
         popped = int(range.min)
         if int(range.min) >= int(range.max):
-            range.unlink()
+            range.unlink
         else:
             range.min = '%013d' % (popped + 1)
         return popped
@@ -42,7 +42,7 @@ class Efaktur(models.Model):
 
         range_low = self.search([('max', '=', '%013d' % (int(max) - 1))])
         if range_low:
-            range_sup.unlink()
+            range_sup.unlink
             range_low.max = '%013d' % int(max)
 
         if not range_sup and not range_low:

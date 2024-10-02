@@ -307,10 +307,10 @@ class IrModule(models.Model):
                 ('module', 'in', deleted_modules_names),
             ])
             assets = self.env['ir.asset'].search([('id', 'in', assets_data.mapped('res_id'))])
-            assets.unlink()
+            assets.unlink
             _logger.info("deleting imported modules upon uninstallation: %s",
                          ", ".join(deleted_modules_names))
-            modules_to_delete.unlink()
+            modules_to_delete.unlink
         return res
 
     @api.model

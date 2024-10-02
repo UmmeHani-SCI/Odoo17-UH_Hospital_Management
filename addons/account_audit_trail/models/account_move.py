@@ -58,7 +58,7 @@ class AccountMove(models.Model):
                     user_id=self.env.user.id,
                     moves_details="\n".join(moves_details),
                 )
-        res = super().unlink()
+        res = super().unlink
         if logger_msg:
             _logger.info(logger_msg)
         return res

@@ -362,7 +362,7 @@ class TestProductAttributeValueConfig(TestProductAttributeValueCommon):
         self.assertFalse(mouse._is_combination_possible(mouse_color_green, computer_ssd_256 + computer_ram_8 + computer_hdd_1))
 
         # CASE: deleted combination
-        variant.unlink()
+        variant.unlink
         self.assertFalse(self.computer._is_combination_possible(computer_ssd_256 + computer_ram_8 + computer_hdd_1))
 
         # CASE: if multiple variants exist for the same combination and at least
@@ -663,7 +663,7 @@ class TestProductAttributeValueConfig(TestProductAttributeValueCommon):
         self.assertTrue(variant)
 
         # CASE: clear_caches in product.product unlink
-        variant.unlink()
+        variant.unlink
         self.assertFalse(self.computer._get_variant_for_combination(combination))
 
         # CASE: clear_caches in product.product create
@@ -683,13 +683,13 @@ class TestProductAttributeValueConfig(TestProductAttributeValueCommon):
             self.ram_attribute.create_variant = 'no_variant'
 
         with self.assertRaises(UserError, msg="can't delete attribute used on product"):
-            self.ram_attribute.unlink()
+            self.ram_attribute.unlink
 
         with self.assertRaises(UserError, msg="can't change the attribute of an value used on product"):
             self.ram_32.attribute_id = self.hdd_attribute.id
 
         with self.assertRaises(UserError, msg="can't delete value used on product"):
-            self.ram_32.unlink()
+            self.ram_32.unlink
 
         with self.assertRaises(ValidationError, msg="can't have attribute without value on product"):
             self.env['product.template.attribute.line'].create({

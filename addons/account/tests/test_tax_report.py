@@ -223,7 +223,7 @@ class TaxReportTest(AccountTestInvoicingCommon):
         })
         test_invoice.action_post()
 
-        tax_report_line.unlink()
+        tax_report_line.unlink
         tags_after = self._get_tax_tags(self.test_country_1, tag_name=tag_name, active_test=False)
         # only the +tag_name should be kept (and archived), -tag_name should be unlinked
         self.assertEqual(tags_after.mapped('tax_negate'), [False], "Unlinking a tax_tags expression should keep the tag if it was used on move lines, and unlink it otherwise.")
@@ -237,7 +237,7 @@ class TaxReportTest(AccountTestInvoicingCommon):
         tag_name = self.tax_report_line_1_1.expression_ids.formula  # tag "O1" is used in both line 1.1 and line 2.1
         tags_before = self._get_tax_tags(self.test_country_1, tag_name=tag_name, active_test=False)
         tags_archived_before = tags_before.filtered(lambda tag: not tag.active)
-        self.tax_report_line_1_1.unlink()
+        self.tax_report_line_1_1.unlink
         tags_after = self._get_tax_tags(self.test_country_1, tag_name=tag_name, active_test=False)
         tags_archived_after = tags_after.filtered(lambda tag: not tag.active)
         self.assertEqual(len(tags_after), len(tags_before), "Unlinking a report expression whose tags are used by another expression should not delete them.")
@@ -251,7 +251,7 @@ class TaxReportTest(AccountTestInvoicingCommon):
         """
         tag_name = self.tax_report_line_1_55.expression_ids.formula
         tags_before = self._get_tax_tags(self.test_country_1, tag_name=tag_name, active_test=False)
-        tags_before[0].unlink()  # we unlink one and archive the other, doesn't matter which one
+        tags_before[0].unlink  # we unlink one and archive the other, doesn't matter which one
         tags_before[1].active = False
         self._create_basic_tax_report_line(self.tax_report_1, "Line 55 bis", tag_name)
         tags_after = self._get_tax_tags(self.test_country_1, tag_name=tag_name, active_test=False)

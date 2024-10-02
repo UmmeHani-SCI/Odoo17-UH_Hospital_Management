@@ -137,7 +137,7 @@ class TestCalendar(SavepointCaseWithUserDemo):
         self.assertEqual(test_record.activity_ids.note, test_note3)
 
         # deleting meeting should delete its activity
-        test_record.activity_ids.unlink()
+        test_record.activity_ids.unlink
         self.assertEqual(self.env['calendar.event'], self.env['calendar.event'].search([('name', '=', test_name)]))
 
         # create using active_model keys

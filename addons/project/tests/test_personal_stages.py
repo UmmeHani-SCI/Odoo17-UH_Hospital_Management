@@ -226,7 +226,7 @@ class TestPersonalStages(TestProjectCommon):
         #  | Task 1  | Task 2  |
         #  +---------+---------+
 
-        user_2_stages[2].with_user(user_2.id).unlink()
+        user_2_stages[2].with_user(user_2.id).unlink
         self.assertEqual(self.env['project.task.type'].with_user(user_2.id).search_count([('project_ids', '=', False), ('user_id', '=', user_2.id)]), 2,
                          "A user should be able to unlink its own (empty) personal stage.")
 
@@ -245,7 +245,7 @@ class TestPersonalStages(TestProjectCommon):
         #  +---------+---------+---------+---------+
 
         private_tasks.invalidate_recordset(['personal_stage_type_id'])
-        user_1_stages[2].with_user(user_1.id).unlink()
+        user_1_stages[2].with_user(user_1.id).unlink
         self.assertEqual(self.env['project.task.type'].with_user(user_1.id).search_count([('project_ids', '=', False), ('user_id', '=', user_1.id)]), 4,
                          "A user should be able to unlink its own personal stage.")
         self.assertEqual(self.env['project.task'].with_user(user_1.id).search_count([('user_ids', 'in', user_1.ids)]), 4,
@@ -267,7 +267,7 @@ class TestPersonalStages(TestProjectCommon):
         #  | Task 2  | Task 4  |
         #  +---------+---------+
 
-        user_1_stages.filtered(lambda s: s.id in [user_1_stages[1].id, user_1_stages[3].id]).with_user(user_1.id).unlink()
+        user_1_stages.filtered(lambda s: s.id in [user_1_stages[1].id, user_1_stages[3].id]).with_user(user_1.id).unlink
         self.assertEqual(self.env['project.task.type'].with_user(user_1.id).search_count([('project_ids', '=', False), ('user_id', '=', user_1.id)]), 2,
                          "A user should be able to unlink its own personal stage in batch.")
         self.assertEqual(self.env['project.task'].with_user(user_1.id).search_count([('user_ids', 'in', user_1.ids)]), 4,
@@ -302,7 +302,7 @@ class TestPersonalStages(TestProjectCommon):
         #  +---------+
         #
 
-        (user_1_stages[0] | user_2_stages[1]).sudo().unlink()
+        (user_1_stages[0] | user_2_stages[1]).sudo().unlink
         self.assertEqual(self.env['project.task.type'].with_user(user_1.id).search_count([('project_ids', '=', False), ('user_id', '=', user_1.id)]), 1,
                          "Superuser should be able to delete personal stages in batch.")
         self.assertEqual(self.env['project.task.type'].with_user(user_2.id).search_count([('project_ids', '=', False), ('user_id', '=', user_2.id)]), 1,
@@ -334,7 +334,7 @@ class TestPersonalStages(TestProjectCommon):
         #
 
         with self.assertRaises(UserError, msg="Deleting the last personal stage of a user should raise an error"):
-            user_2_stages[0].with_user(user_2.id).unlink()
+            user_2_stages[0].with_user(user_2.id).unlink
         self.assertEqual(self.env['project.task.type'].with_user(user_2.id).search_count([('project_ids', '=', False), ('user_id', '=', user_2.id)]), 1,
                          "Last personal stage of a user should not be deleted by unlink method")
         private_tasks.invalidate_recordset(['personal_stage_type_id'])
@@ -354,7 +354,7 @@ class TestPersonalStages(TestProjectCommon):
         })
 
         with self.assertRaises(UserError, msg="Deleting the last personal stage of a user should raise an error, even if the stage is empty"):
-            empty_stage_user_3.with_user(user_3.id).unlink()
+            empty_stage_user_3.with_user(user_3.id).unlink
 
         # ---------------------------------------------------------
         # - H. Mixed scenario: 1 normal stage and 2 personal ones -
@@ -374,7 +374,7 @@ class TestPersonalStages(TestProjectCommon):
             'name': 'Empty stage in project Pigs',
             'sequence': 10,
         }])
-        empty_stages.sudo().unlink()
+        empty_stages.sudo().unlink
         self.assertFalse(self.env['project.task.type'].search_count([('id', 'in', empty_stages.ids)]),
                          "All stages, wether they are personal or not, should be able to be deleted in batch")
 

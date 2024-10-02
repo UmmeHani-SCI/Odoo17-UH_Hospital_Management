@@ -31,7 +31,7 @@ class TestConfigureShops(TestPoSCommon):
         """
         self.env['account.tax'].search([
             ('company_id', '=', self.env.company.id), ('tax_exigibility', '=', 'on_payment')
-        ]).unlink()
+        ]).unlink
 
     def test_should_not_affect_other_pos_config(self):
         """ Change in one pos.config should not reflect to the other.

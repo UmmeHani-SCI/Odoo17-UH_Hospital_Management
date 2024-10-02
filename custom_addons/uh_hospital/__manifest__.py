@@ -2,7 +2,8 @@
     'name' : "Hospital Management System",
     "author" : "Umme Hani",
     'description': ' Module for managing hospital patients and records.',
-    "License" :"LGPL-3",
+    'license': 'LGPL-3',
+
     'version' :"17.0.1.1",
     'category': 'Healthcare',
     'depends': ['base','web', 'mail'],
@@ -15,6 +16,7 @@
              'views/patients_readonly_views.xml',
              'views/appoinment_views.xml',
              'views/appointment_line_views.xml',
+             'views/doctor.xml',
 
              'views/menu.xml',
 

@@ -29,7 +29,7 @@ class TestSaleCouponProgramNumbers(TestSaleCouponNumbersCommon):
         self._apply_promo_code(order, 'test_10pc')
         self.assertEqual(len(order.order_line.ids), 3, "We should have 3 lines as we should have a new line for promo code reduction")
         self.assertEqual(order.amount_total, 864, "Only paid product should have their price discounted")
-        order.order_line.filtered(lambda x: 'Discount' in x.name).unlink()  # Remove Discount
+        order.order_line.filtered(lambda x: 'Discount' in x.name).unlink  # Remove Discount
         order._remove_program_from_points(self.p1)
 
         # Check free product is removed since we are below minimum required quantity
@@ -144,7 +144,7 @@ class TestSaleCouponProgramNumbers(TestSaleCouponNumbersCommon):
         # test coupon with code works the same as auto applied_programs
         p_specific_product.write({'trigger': 'with_code'})
         p_specific_product.rule_ids.write({'mode': 'with_code', 'code': '20pc'})
-        order.order_line.filtered(lambda l: l.is_reward_line).unlink()
+        order.order_line.filtered(lambda l: l.is_reward_line).unlink
         order._remove_program_from_points(p_specific_product)
         self._auto_rewards(order, self.all_programs)
         self.assertEqual(len(order.order_line.ids), 1, "Reduction should be removed since we deleted it and it is now a promo code usage, it shouldn't be automatically reapplied")
@@ -407,7 +407,7 @@ class TestSaleCouponProgramNumbers(TestSaleCouponNumbersCommon):
         self.assertEqual(len(order.order_line.ids), 13, "Order should have a new discount line for 20% on Large Cabinet")
 
         # Check that if you delete one of the discount tax line, the others tax lines from the same promotion got deleted as well.
-        order.order_line.filtered(lambda l: '10%' in l.name)[0].unlink()
+        order.order_line.filtered(lambda l: '10%' in l.name)[0].unlink
         order._remove_program_from_points(self.p1)
         self.assertEqual(len(order.order_line.ids), 9, "All of the 10% discount line per tax should be removed")
         # At this point, removing the Conference Chair's discount line (split per tax) removed also the others discount lines
@@ -445,7 +445,7 @@ class TestSaleCouponProgramNumbers(TestSaleCouponNumbersCommon):
         self.assertEqual(order.amount_untaxed, 1445.28, "The order should have one more paid Conference Chair with 10% incl tax and discounted by 10%")
 
         # Check that if you remove a product, his reward lines got removed, especially the discount per tax one
-        sol2.unlink()
+        sol2.unlink
         self._auto_rewards(order, self.all_programs)
         # Name                 | Qty | price_unit |  Tax     |  HTVA   |   TVAC  |  TVA  |
         # --------------------------------------------------------------------------------
@@ -718,7 +718,7 @@ class TestSaleCouponProgramNumbers(TestSaleCouponNumbersCommon):
         self.assertEqual(order.amount_untaxed, 0.0, "The untaxed amount should not go below 0")
         self.assertEqual(order.amount_total, 0.0, "The promotion program should not make the order total go below 0")
 
-        order.order_line[3:].unlink() #remove all coupon
+        order.order_line[3:].unlink  #remove all coupon
         order._remove_program_from_points(coupon_program)
         order._remove_program_from_points(self.p1)
 
@@ -806,7 +806,7 @@ class TestSaleCouponProgramNumbers(TestSaleCouponNumbersCommon):
         self.assertEqual(order.amount_total, 0.0, "The promotion program should not be altered after recomputation")
         self.assertEqual(order.amount_tax, 0)
 
-        order.order_line[3:].unlink() #remove all coupon
+        order.order_line[3:].unlink  #remove all coupon
         order._remove_program_from_points(coupon_program)
         order._remove_program_from_points(self.p1)
 
@@ -956,7 +956,7 @@ class TestSaleCouponProgramNumbers(TestSaleCouponNumbersCommon):
         self._auto_rewards(order, self.all_programs)
         self.assertEqual(len(order.order_line.ids), 3, "The promotion lines should have been added")
         self.assertEqual(order.amount_total, self.conferenceChair.lst_price * (sol1.product_uom_qty) + self.drawerBlack.lst_price * sol2.product_uom_qty, "The promotion line was not applied to the amount total")
-        sol2.unlink()
+        sol2.unlink
         self._auto_rewards(order, self.all_programs)
         self.assertEqual(len(order.order_line.ids), 2, "The other product should not affect the promotion")
         self.assertEqual(order.amount_total, self.conferenceChair.lst_price * (sol1.product_uom_qty), "The promotion line was not applied to the amount total")
@@ -1353,7 +1353,7 @@ class TestSaleCouponProgramNumbers(TestSaleCouponNumbersCommon):
         self._apply_promo_code(order, 'test_10pc')
         self.assertEqual(order.amount_total, 9, "The total should be 9$.")
         # Now the order way around
-        order.order_line.filtered('reward_id').unlink()
+        order.order_line.filtered('reward_id').unlink
         self._apply_promo_code(order, 'test_10pc')
         self.assertEqual(order.amount_total, 18, "The total should be 9$.")
         self._auto_rewards(order, programs)
@@ -1437,7 +1437,7 @@ class TestSaleCouponProgramNumbers(TestSaleCouponNumbersCommon):
         self._auto_rewards(order, program_b)
         self.assertAlmostEqual(order.amount_total, 7, 0, 'Total should be 7$')
         # Now the order way around
-        order.order_line.filtered('reward_id').unlink()
+        order.order_line.filtered('reward_id').unlink
         self._auto_rewards(order, program_b)
         self.assertAlmostEqual(order.amount_total, 18, 0, 'Total should be 18$')
         self._auto_rewards(order, program_a)

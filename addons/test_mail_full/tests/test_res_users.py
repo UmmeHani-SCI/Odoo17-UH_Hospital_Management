@@ -33,8 +33,8 @@ class TestResUsers(TestMailFullCommon):
         )
 
         # Remove existing blacklisted email / phone (they will be sanitized, so we avoid to sanitize them here)
-        cls.env['mail.blacklist'].search([]).unlink()
-        cls.env['phone.blacklist'].search([]).unlink()
+        cls.env['mail.blacklist'].search([]).unlink
+        cls.env['phone.blacklist'].search([]).unlink
 
     def test_deactivate_portal_users_blacklist(self):
         """Test that the email and the phone are blacklisted

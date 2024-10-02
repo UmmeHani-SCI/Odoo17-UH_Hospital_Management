@@ -793,7 +793,7 @@ class TestPickShip(TestStockCommon):
 
         # Directly delete the move lines on the picking. (Use show detail operation on picking type)
         # Should do the same behavior than unreserve
-        picking_client.move_line_ids.unlink()
+        picking_client.move_line_ids.unlink
 
         self.assertEqual(picking_client.move_ids.state, 'waiting', 'The move state should be waiting since nothing is reserved and another origin move still in progess.')
         self.assertEqual(picking_client.state, 'waiting', 'The picking state should not be ready anymore.')
@@ -806,7 +806,7 @@ class TestPickShip(TestStockCommon):
         back_order.button_validate()
 
         self.assertEqual(picking_client.move_ids.quantity, 10, 'The total quantity should be reserved since everything is available.')
-        picking_client.move_line_ids.unlink()
+        picking_client.move_line_ids.unlink
 
         self.assertEqual(picking_client.move_ids.state, 'confirmed', 'The move should be confirmed since all the origin moves are processed.')
         self.assertEqual(picking_client.state, 'confirmed', 'The picking should be confirmed since all the moves are confirmed.')

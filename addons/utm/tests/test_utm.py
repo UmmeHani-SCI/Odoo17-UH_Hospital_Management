@@ -96,7 +96,7 @@ class TestUtm(TestUTMCommon):
             self.assertEqual(utm_4.name, 'UTM new [3]', msg='Must add a counter as suffix to ensure uniqueness')
             self.assertEqual(utm_5.name, 'UTM new [4]', msg='Must add a counter as suffix to ensure uniqueness')
 
-            (utm_0 | utm_3 | utm_4).unlink()
+            (utm_0 | utm_3 | utm_4).unlink
 
             utm_new_multi = self.env[utm_model].create([{'name': 'UTM new'} for _ in range(4)])
             self.assertListEqual(

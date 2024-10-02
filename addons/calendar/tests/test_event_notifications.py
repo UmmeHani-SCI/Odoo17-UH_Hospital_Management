@@ -365,7 +365,7 @@ class TestEventNotifications(TransactionCase, MailCase, CronMixinCase):
             self.assertEqual(search_event(), event)
         with freeze_time('2023-11-15 19:30:00'):    # 20:30 after event
             self.assertEqual(len(search_event()), 0)
-        event.unlink()
+        event.unlink
 
         self.env.user.tz = 'America/Lima' # UTC -5 15th November 2023
         event = self.env['calendar.event'].create({
@@ -383,7 +383,7 @@ class TestEventNotifications(TransactionCase, MailCase, CronMixinCase):
             self.assertEqual(search_event(), event)
         with freeze_time('2023-11-16 01:30:00'):    # 20:30 after event
             self.assertEqual(len(search_event()), 0)
-        event.unlink()
+        event.unlink
 
         event = self.env['calendar.event'].create({
             'name': "Meeting",
@@ -392,4 +392,4 @@ class TestEventNotifications(TransactionCase, MailCase, CronMixinCase):
         }).with_context(mail_notrack=True)
         with freeze_time('2023-11-15 19:00:00'):    # 14:00 the day before event
             self.assertEqual(len(search_event()), 0)
-        event.unlink()
+        event.unlink

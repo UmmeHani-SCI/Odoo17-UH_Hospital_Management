@@ -55,7 +55,7 @@ class TestUnlinkReward(TestPointOfSaleCommon):
             'amount_return': 0.0,
         })
         # Attempt to delete the reward
-        self.reward.unlink()
+        self.reward.unlink
 
         # Ensure the reward is archived and not deleted
         self.assertTrue(self.reward.exists())

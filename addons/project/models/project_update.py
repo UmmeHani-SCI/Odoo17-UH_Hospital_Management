@@ -98,7 +98,7 @@ class ProjectUpdate(models.Model):
 
     def unlink(self):
         projects = self.project_id
-        res = super().unlink()
+        res = super().unlink
         for project in projects:
             project.last_update_id = self.search([('project_id', "=", project.id)], order="date desc", limit=1)
         return res

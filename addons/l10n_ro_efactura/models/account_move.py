@@ -159,7 +159,7 @@ class AccountMove(models.Model):
         """
         self.ensure_one()
         if errors := self._l10n_ro_edi_get_pre_send_errors(xml_data, True):
-            self._l10n_ro_edi_get_failed_documents().unlink()
+            self._l10n_ro_edi_get_failed_documents().unlink
             self._l10n_ro_edi_create_document_invoice_sending_failed('\n'.join(errors))
             return
 
@@ -170,10 +170,10 @@ class AccountMove(models.Model):
             move_type=self.move_type,
         )
         if 'error' in result:
-            self._l10n_ro_edi_get_failed_documents().unlink()
+            self._l10n_ro_edi_get_failed_documents().unlink
             self._l10n_ro_edi_create_document_invoice_sending_failed(result['error'], xml_data)
         else:
-            self._l10n_ro_edi_get_sending_and_failed_documents().unlink()
+            self._l10n_ro_edi_get_sending_and_failed_documents().unlink
             self._l10n_ro_edi_create_document_invoice_sending(result['key_loading'], xml_data)
 
     def _l10n_ro_edi_fetch_invoice_sending_documents(self):
@@ -229,4 +229,4 @@ class AccountMove(models.Model):
                 self._cr.commit()
 
         # Delete outdated documents in batches
-        to_delete_documents.unlink()
+        to_delete_documents.unlink

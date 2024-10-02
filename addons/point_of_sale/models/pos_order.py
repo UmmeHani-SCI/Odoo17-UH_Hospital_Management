@@ -146,7 +146,7 @@ class PosOrder(models.Model):
             pos_order = self.create(self._order_fields(order))
         else:
             pos_order = existing_order
-            pos_order.lines.unlink()
+            pos_order.lines.unlink
             order['user_id'] = pos_order.user_id.id
             pos_order.write(self._order_fields(order))
 
@@ -190,7 +190,7 @@ class PosOrder(models.Model):
 
     def _clean_payment_lines(self):
         self.ensure_one()
-        self.payment_ids.unlink()
+        self.payment_ids.unlink
 
     def _process_payment_lines(self, pos_order, order, pos_session, draft):
         """Create account.bank.statement.lines from the dictionary given to the parent function.
@@ -614,7 +614,7 @@ class PosOrder(models.Model):
                         })
                 else:
                     if rounding_line:
-                        rounding_line.with_context(skip_invoice_sync=True).unlink()
+                        rounding_line.with_context(skip_invoice_sync=True).unlink
                 if rounding_line_difference:
                     existing_terms_line = new_move.line_ids.filtered(
                         lambda line: line.account_id.account_type in ('asset_receivable', 'liability_payable'))
@@ -1147,8 +1147,8 @@ class PosOrder(models.Model):
         orders = self.search([('id', 'in', server_ids), ('state', '=', 'draft')])
         orders.write({'state': 'cancel'})
         # TODO Looks like delete cascade is a better solution.
-        orders.mapped('payment_ids').sudo().unlink()
-        orders.sudo().unlink()
+        orders.mapped('payment_ids').sudo().unlink
+        orders.sudo().unlink
         return orders.ids
 
     @api.model
@@ -1502,7 +1502,7 @@ class PosOrderLine(models.Model):
                 for product_id, lines in lines_by_tracked_product:
                     lines = self.env['pos.order.line'].concat(*lines)
                     moves = pickings_to_confirm.move_ids.filtered(lambda m: m.product_id.id == product_id)
-                    moves.move_line_ids.unlink()
+                    moves.move_line_ids.unlink
                     moves._add_mls_related_to_order(lines, are_qties_done=False)
                     moves._recompute_state()
         return True

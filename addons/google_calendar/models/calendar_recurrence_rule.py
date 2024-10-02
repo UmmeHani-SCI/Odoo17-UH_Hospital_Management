@@ -134,7 +134,7 @@ class RecurrenceRule(models.Model):
             # We archive the old events to recompute the recurrence. These events are already deleted on Google side.
             # We can't call _cancel because events without user_id would not be deleted
             (self.calendar_event_ids - base_event_id).google_id = False
-            (self.calendar_event_ids - base_event_id).unlink()
+            (self.calendar_event_ids - base_event_id).unlink
             base_event_id.with_context(dont_notify=True).write(dict(new_event_values, google_id=False, need_sync=False))
             if new_parsed_rrule == current_parsed_rrule:
                 # if the rrule has changed, it will be recalculated below
@@ -160,7 +160,7 @@ class RecurrenceRule(models.Model):
             detached_events.google_id = False
             log_msg = f"Recurrence #{self.id} | current rule: {current_rrule} | new rule: {self.rrule} | remaining: {len(self.calendar_event_ids)} | removed: {len(detached_events)}"
             _logger.info(log_msg)
-            detached_events.unlink()
+            detached_events.unlink
 
     def _create_from_google(self, gevents, vals_list):
         attendee_values = {}

@@ -29,7 +29,7 @@ class Website(models.Model):
     def configurator_set_menu_links(self, menu_company, module_data):
         # Forum menu should only be a footer link, not a menu
         forum_menu = self.env['website.menu'].search([('url', '=', '/forum'), ('website_id', '=', self.id)])
-        forum_menu.unlink()
+        forum_menu.unlink
         super().configurator_set_menu_links(menu_company, module_data)
 
     def _search_get_details(self, search_type, order, options):

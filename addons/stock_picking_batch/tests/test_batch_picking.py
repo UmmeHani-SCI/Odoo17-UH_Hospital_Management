@@ -184,7 +184,7 @@ class TestBatchPicking(TransactionCase):
 
         # ensure that batch cannot be deleted now that it is done
         with self.assertRaises(UserError):
-            self.batch.unlink()
+            self.batch.unlink
 
     def test_simple_batch_with_wizard(self):
         """ Test a simple batch picking with all quantity for picking available.

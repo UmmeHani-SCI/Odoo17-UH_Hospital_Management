@@ -586,7 +586,7 @@ class MailGroup(models.Model):
             self.env['mail.group.member'].search([
                 ('mail_group_id', '=', self.id),
                 ('email_normalized', '=', email_normalize(email)),
-            ]).unlink()
+            ]).unlink
         else:
             member = self._find_member(email, partner_id)
             if member:

@@ -168,7 +168,7 @@ class TestTrackSuggestions(TestEventOnlineCommon):
                 'Returned track should be the manually wishlisted one')
 
             # remove wishlist, keynote should be top
-            visitor_track.unlink()
+            visitor_track.unlink
             track_suggestion = current_track._get_track_suggestions(limit=1)
             self.assertEqual(
                 track_suggestion, track_5,
@@ -184,7 +184,7 @@ class TestTrackSuggestions(TestEventOnlineCommon):
             self.assertEqual(
                 track_suggestion, track_4,
                 'Returned track should the one with the most common tags as keynote is blacklisted')
-            track_5_visitor.unlink()
+            track_5_visitor.unlink
 
             # remove keynote default, now based on tags
             track_5.write({'wishlisted_by_default': False})

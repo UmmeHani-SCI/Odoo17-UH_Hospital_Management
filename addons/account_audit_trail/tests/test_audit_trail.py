@@ -44,19 +44,19 @@ class TestAuditTrail(AccountTestInvoicingCommon):
             )
 
     def test_can_unlink_draft(self):
-        self.move.unlink()
+        self.move.unlink
 
     def test_cant_unlink_posted(self):
         self.move.action_post()
         self.move.button_draft()
         with self.assertRaisesRegex(UserError, "remove parts of the audit trail"):
-            self.move.unlink()
+            self.move.unlink
 
     def test_cant_unlink_message(self):
         self.move.action_post()
         audit_trail = self.get_trail(self.move)
         with self.assertRaisesRegex(UserError, "remove parts of the audit trail"):
-            audit_trail.unlink()
+            audit_trail.unlink
 
     def test_cant_unown_message(self):
         self.move.action_post()
@@ -72,7 +72,7 @@ class TestAuditTrail(AccountTestInvoicingCommon):
         trackings = audit_trail.tracking_value_ids.sudo()
         self.assertTrue(trackings)
         with self.assertRaisesRegex(UserError, "remove parts of the audit trail"):
-            trackings.unlink()
+            trackings.unlink
 
     def test_content(self):
         messages = ["Journal Entry created"]
@@ -112,7 +112,7 @@ class TestAuditTrail(AccountTestInvoicingCommon):
             r"created  101402 Bank Suspense Account \(Account\) 0.0 -45.0 \(Balance\) False Automatic Balancing Line \(Label\)",
         ])
         self.assertTrail(self.get_trail(self.move), messages)
-        self.move.with_context(dynamic_unlink=True).line_ids.unlink()
+        self.move.with_context(dynamic_unlink=True).line_ids.unlink
         messages.extend([
             r"deleted 400000 Product Sales  \(Account\) 300.0 0.0 \(Balance\) 15%  \(Taxes\)",
             r"deleted 400000 Product Sales  \(Account\) -200.0 0.0 \(Balance\)",

@@ -39,13 +39,13 @@ class TestDigest(TestDigestCommon):
         cls.env['mail.message'].search([
             ('subtype_id', '=', cls.env.ref('mail.mt_comment').id),
             ('message_type', 'in', ('comment', 'email', 'email_outgoing')),
-        ]).unlink()
+        ]).unlink
         cls._setup_messages()
 
         # clean demo users so that we keep only the test users
         cls.env['res.users'].search([('login', 'in', ['demo', 'portal'])]).action_archive()
         # clean logs so that town down can be tested
-        cls.env['res.users.log'].search([('create_uid', 'in', (cls.user_admin + cls.user_employee).ids)]).unlink()
+        cls.env['res.users.log'].search([('create_uid', 'in', (cls.user_admin + cls.user_employee).ids)]).unlink
         # create logs for user_admin
         cls._setup_logs_for_users(cls.user_admin, cls.reference_datetime - relativedelta(days=5))
 
@@ -90,7 +90,7 @@ class TestDigest(TestDigestCommon):
 
     @users('admin')
     def test_digest_kpi_res_users_connected_value(self):
-        self.env['res.users.log'].with_user(SUPERUSER_ID).search([]).unlink()
+        self.env['res.users.log'].with_user(SUPERUSER_ID).search([]).unlink
         # Sanity check
         initial_values = self.all_digests.mapped('kpi_res_users_connected_value')
         self.assertEqual(initial_values, [0, 0, 0])
@@ -292,7 +292,7 @@ class TestDigest(TestDigestCommon):
 
                 self.assertEqual(digest.next_run_date, exp_run_date)
                 self.assertEqual(digest.periodicity, exp_periodicity)
-                self.env['res.users.log'].with_user(SUPERUSER_ID).search([]).unlink()
+                self.env['res.users.log'].with_user(SUPERUSER_ID).search([]).unlink
 
 
 @tagged("digest", "mail_mail", "-at_install", "post_install")

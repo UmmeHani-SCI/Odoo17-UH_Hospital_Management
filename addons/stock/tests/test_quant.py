@@ -506,7 +506,7 @@ class StockQuant(TransactionCase):
         with self.assertRaises(AccessError):
             quant.with_user(self.demo_user).write({'quantity': 2.0})
         with self.assertRaises(UserError):
-            quant.with_user(self.demo_user).unlink()
+            quant.with_user(self.demo_user).unlink
 
         self.env = self.env(user=self.stock_user)
         self.env['stock.quant'].create({
@@ -516,7 +516,7 @@ class StockQuant(TransactionCase):
         })
         quant.with_user(self.stock_user).with_context(inventory_mode=True).write({'quantity': 3.0})
         with self.assertRaises(AccessError):
-            quant.with_user(self.stock_user).unlink()
+            quant.with_user(self.stock_user).unlink
 
     def test_quant_in_date_1(self):
         """ Check that no incoming date is set when updating the quantity of an untracked quant.

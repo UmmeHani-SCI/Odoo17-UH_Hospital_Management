@@ -84,7 +84,7 @@ class TestMrpCancelMO(TestMrpCommon):
         # Case #1: Create MO, do nothing and try to unlink it (can be deleted)
         manufacturing_order = self.generate_mo()[0]
         self.assertEqual(manufacturing_order.exists().state, 'confirmed')
-        manufacturing_order.unlink()
+        manufacturing_order.unlink
         # Check the MO is deleted.
         self.assertEqual(manufacturing_order.exists().state, False)
 
@@ -100,7 +100,7 @@ class TestMrpCancelMO(TestMrpCommon):
         # Unlink the MO must raises an UserError since it cannot be really cancelled
         self.assertEqual(manufacturing_order.exists().state, 'progress')
         with self.assertRaises(UserError):
-            manufacturing_order.unlink()
+            manufacturing_order.unlink
 
     def test_cancel_mo_without_component(self):
         product_form = Form(self.env['product.product'])

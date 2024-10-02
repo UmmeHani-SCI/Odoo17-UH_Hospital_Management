@@ -48,8 +48,8 @@ class SMSTemplate(models.Model):
         return super(SMSTemplate, self).copy(default=default)
 
     def unlink(self):
-        self.sudo().mapped('sidebar_action_id').unlink()
-        return super(SMSTemplate, self).unlink()
+        self.sudo().mapped('sidebar_action_id').unlink
+        return super(SMSTemplate, self).unlink
 
     def action_create_sidebar_action(self):
         ActWindow = self.env['ir.actions.act_window']
@@ -74,5 +74,5 @@ class SMSTemplate(models.Model):
     def action_unlink_sidebar_action(self):
         for template in self:
             if template.sidebar_action_id:
-                template.sidebar_action_id.unlink()
+                template.sidebar_action_id.unlink
         return True

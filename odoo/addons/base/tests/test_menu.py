@@ -18,7 +18,7 @@ class TestMenu(TransactionCase):
 
         # delete and check that direct children are promoted to top-level
         # cfr. explanation in menu.unlink()
-        root.unlink()
+        root.unlink
 
         # Generic trick necessary for search() calls to avoid hidden menus 
         Menu = self.env['ir.ui.menu'].with_context({'ir.ui.menu.full_list': True})

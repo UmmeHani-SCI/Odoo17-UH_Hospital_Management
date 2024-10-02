@@ -237,7 +237,7 @@ class TestPeppolMessage(TestAccountMoveSendCommon):
                 }])
 
         # we can't send the ubl document again unless we regenerate the pdf
-        move.invoice_pdf_report_id.unlink()
+        move.invoice_pdf_report_id.unlink
         wizard = self.create_send_and_print(
             move,
             checkbox_ubl_cii_xml=True,

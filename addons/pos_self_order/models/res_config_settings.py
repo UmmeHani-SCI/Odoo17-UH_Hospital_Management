@@ -124,7 +124,7 @@ class ResConfigSettings(models.TransientModel):
         # Delete previous attachments
         self.env["ir.attachment"].search([
             ("name", "=", "self_order_qr_code.zip"),
-        ]).unlink()
+        ]).unlink
 
         # Create an attachment with the zip
         attachment_id = self.env["ir.attachment"].create({

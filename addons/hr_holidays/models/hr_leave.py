@@ -1027,7 +1027,7 @@ Attempting to double-book your time off won't magically make your vacation 2x be
         self._force_cancel(_("deleted by %s (uid=%d).",
             self.env.user.display_name, self.env.user.id
         ))
-        return super(HolidaysRequest, self.with_context(leave_skip_date_check=True)).unlink()
+        return super(HolidaysRequest, self.with_context(leave_skip_date_check=True)).unlink
 
     def copy_data(self, default=None):
         if default and 'request_date_from' in default and 'request_date_to' in default:
@@ -1082,7 +1082,7 @@ Attempting to double-book your time off won't magically make your vacation 2x be
 
     def _remove_resource_leave(self):
         """ This method will create entry in resource calendar time off object at the time of holidays cancel/removed """
-        return self.env['resource.calendar.leaves'].search([('holiday_id', 'in', self.ids)]).unlink()
+        return self.env['resource.calendar.leaves'].search([('holiday_id', 'in', self.ids)]).unlink
 
     def _validate_leave_request(self):
         """ Validate time off requests (holiday_type='employee')

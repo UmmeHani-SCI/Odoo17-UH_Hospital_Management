@@ -1,18 +1,20 @@
 from email.policy import default
 
 from odoo import api, fields, models
+from odoo.tools.populate import compute
 
 
 class HospitalAppointment(models.Model):
     _name = 'hospital.appointment'
     _description = 'Hospital Appointment'
     _inherit =  ['mail.thread']
+    _rec_names_search = ['reference','patient_id']
     _rec_name = 'patient_id'
 
-    patient_id= fields.Many2one('hospital.patient', string='Patient')
-    date_appointment = fields.Date(string='Date')
-    note = fields.Text(string='Note')
-    reference = fields.Char(string='Reference', default='New')
+    patient_id= fields.Many2one('hospital.patient', string='Patient', tracking=True)
+    date_appointment = fields.Date(string='Date of Appointment' , tracking=True)
+    note = fields.Text(string='Note' , tracking=True)
+    reference = fields.Char(string='Reference', default='New', tracking=True)
     state = fields.Selection(
         [
             ('draft', 'Draft'),
@@ -26,9 +28,10 @@ class HospitalAppointment(models.Model):
         , tracking=True
     )
     appointment_line_ids = (fields.One2many
-                            ('hospital.appointment_line', 'appointment_id', string='Lines')
-                            )
-
+                            ('hospital.appointment_line', 'appointment_id', string='Lines' )
+                           )
+    total_qty = fields.Float(compute='_compute_total_qty', store=True ,string='Total Quantity', tracking=True)
+    dob = fields.Date(string='Date of Birth', tracking=True, related='patient_id.dob')
     @api.model_create_multi
     def create(self, vals_list):
         print("uh_hospital", vals_list)
@@ -36,6 +39,16 @@ class HospitalAppointment(models.Model):
             if 'reference' not in vals or vals['reference'] == 'New':
                 vals['reference'] = self.env['ir.sequence'].next_by_code('hospital.appointment') or 'New'
         return super(HospitalAppointment, self).create(vals_list)
+
+    @api.depends('appointment_line_ids','appointment_line_ids.qty')
+    def _compute_total_qty(self):
+        for rec in self:
+            total_qty=0
+            print(rec.appointment_line_ids)
+            for line in rec.appointment_line_ids:
+                print('Line Value', line.qty)
+                total_qty += line.qty
+            rec.total_qty= total_qty
 
     def action_confirm(self):
         for rec in self:
@@ -53,12 +66,18 @@ class HospitalAppointment(models.Model):
         for rec in self:
             rec.state='cancel'
 
+    def _compute_display_name(self):
+        for rec in self:
+            print("values is,"f"[{rec.reference}]{rec.patient_id.name}")
+            rec.display_name=f"[{rec.reference}]{rec.patient_id.name}"
+
 
 class HospitalAppointmentLine(models.Model):
     _name = 'hospital.appointment_line'
     _description = 'Hospital Appointment Line'
 
-    appointment_id = fields.Many2one('hospital.appointment', string='Appointment')
-    product_id = fields.Many2one('product.product', string='Product')
-    qty = fields.Float(string='Quantity')
+    appointment_id = fields.Many2one('hospital.appointment', string='Appointment', tracking=True)
+    product_id = fields.Many2one(
+        'product.product', string='Product', tracking=True , required=True)
+    qty = fields.Float(string='Quantity', tracking=True)
 

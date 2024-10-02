@@ -99,5 +99,5 @@ class ResPartner(models.Model):
             ('partner_id', 'in', self.ids),
             ('partner_invoice_id', 'in', self.ids),
             ('partner_shipping_id', 'in', self.ids),
-        ]).unlink()
-        return super().unlink()
+        ]).unlink
+        return super().unlink

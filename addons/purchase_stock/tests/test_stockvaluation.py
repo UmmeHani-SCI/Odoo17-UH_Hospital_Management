@@ -421,7 +421,7 @@ class TestStockValuationWithCOA(AccountTestInvoicingCommon):
         the currency rate, validate the receipt and then check that the value of the received goods
         is set according to the last currency rate.
         """
-        self.env['res.currency.rate'].search([]).unlink()
+        self.env['res.currency.rate'].search([]).unlink
         usd_currency = self.env.ref('base.USD')
         self.env.company.currency_id = usd_currency.id
 
@@ -689,7 +689,7 @@ class TestStockValuationWithCOA(AccountTestInvoicingCommon):
 
         # SetUp currency and rates   1$ = 2 Euros
         self.cr.execute("UPDATE res_company SET currency_id = %s WHERE id = %s", (self.usd_currency.id, company.id))
-        self.env['res.currency.rate'].search([]).unlink()
+        self.env['res.currency.rate'].search([]).unlink
         self.env['res.currency.rate'].create({
             'name': date_po,
             'rate': 1.0,
@@ -913,7 +913,7 @@ class TestStockValuationWithCOA(AccountTestInvoicingCommon):
         self.product1.product_tmpl_id.categ_id.property_valuation = 'real_time'
 
         # SetUp currency and rates 1$ = 2Euros
-        self.env['res.currency.rate'].search([]).unlink()
+        self.env['res.currency.rate'].search([]).unlink
         self.env['res.currency.rate'].create({
             'name': date_po,
             'rate': 1.0,
@@ -1078,7 +1078,7 @@ class TestStockValuationWithCOA(AccountTestInvoicingCommon):
 
         # SetUp currency and rates
         self.cr.execute("UPDATE res_company SET currency_id = %s WHERE id = %s", (self.usd_currency.id, company.id))
-        self.env['res.currency.rate'].search([]).unlink()
+        self.env['res.currency.rate'].search([]).unlink
         self.env['res.currency.rate'].create({
             'name': date_po,
             'rate': 1.0,
@@ -1180,7 +1180,7 @@ class TestStockValuationWithCOA(AccountTestInvoicingCommon):
 
         # SetUp currency and rates
         self.cr.execute("UPDATE res_company SET currency_id = %s WHERE id = %s", (self.usd_currency.id, company.id))
-        self.env['res.currency.rate'].search([]).unlink()
+        self.env['res.currency.rate'].search([]).unlink
         self.env['res.currency.rate'].create({
             'name': date_po,
             'rate': 1.0,
@@ -1338,7 +1338,7 @@ class TestStockValuationWithCOA(AccountTestInvoicingCommon):
 
         # SetUp currency and rates
         self.cr.execute("UPDATE res_company SET currency_id = %s WHERE id = %s", (self.usd_currency.id, company.id))
-        self.env['res.currency.rate'].search([]).unlink()
+        self.env['res.currency.rate'].search([]).unlink
         self.env['res.currency.rate'].create({
             'name': date_po,
             'rate': 1.0,
@@ -1470,7 +1470,7 @@ class TestStockValuationWithCOA(AccountTestInvoicingCommon):
 
         # SetUp currency and rates
         self.cr.execute("UPDATE res_company SET currency_id = %s WHERE id = %s", (self.usd_currency.id, company.id))
-        self.env['res.currency.rate'].search([]).unlink()
+        self.env['res.currency.rate'].search([]).unlink
         self.env['res.currency.rate'].create({
             'name': date,
             'rate': 1.0,
@@ -1576,7 +1576,7 @@ class TestStockValuationWithCOA(AccountTestInvoicingCommon):
 
         # SetUp currency and rates
         self.cr.execute("UPDATE res_company SET currency_id = %s WHERE id = %s", (self.usd_currency.id, company.id))
-        self.env['res.currency.rate'].search([]).unlink()
+        self.env['res.currency.rate'].search([]).unlink
         self.env['res.currency.rate'].create([{
             'name': date_po,
             'rate': 1.0,
@@ -2720,7 +2720,7 @@ class TestStockValuationWithCOA(AccountTestInvoicingCommon):
 
         self.env.company.currency_id = usd_currency.id
 
-        self.env['res.currency.rate'].search([]).unlink()
+        self.env['res.currency.rate'].search([]).unlink
         self.env['res.currency.rate'].create([{
             'name': day.strftime('%Y-%m-%d'),
             'rate': 1 / rate,
@@ -2975,7 +2975,7 @@ class TestStockValuationWithCOA(AccountTestInvoicingCommon):
         bill_rate = 3.0
         today_rate = 4.0
 
-        self.env['res.currency.rate'].search([]).unlink()
+        self.env['res.currency.rate'].search([]).unlink
         self.env['res.currency.rate'].create([
             {
                 'name': po_date,
@@ -3176,7 +3176,7 @@ class TestStockValuationWithCOA(AccountTestInvoicingCommon):
 
         self.env.company.currency_id = usd_currency.id
 
-        self.env['res.currency.rate'].search([]).unlink()
+        self.env['res.currency.rate'].search([]).unlink
         self.env['res.currency.rate'].create([{
             'name': day.strftime('%Y-%m-%d'),
             'rate': 1 / rate,

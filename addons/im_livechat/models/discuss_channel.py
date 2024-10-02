@@ -78,7 +78,7 @@ class DiscussChannel(models.Model):
                 COALESCE(write_date, create_date, (now() at time zone 'UTC'))::timestamp
                 < ((now() at time zone 'UTC') - interval %s)""", ("%s hours" % hours,))
         empty_channel_ids = [item['id'] for item in self.env.cr.dictfetchall()]
-        self.browse(empty_channel_ids).unlink()
+        self.browse(empty_channel_ids).unlink
 
     def _execute_command_help_message_extra(self):
         msg = super()._execute_command_help_message_extra()
@@ -235,7 +235,7 @@ class DiscussChannel(models.Model):
             'chatbot_current_step_id': False
         })
 
-        self.chatbot_message_ids.unlink()
+        self.chatbot_message_ids.unlink
 
         return self._chatbot_post_message(
             chatbot_script,

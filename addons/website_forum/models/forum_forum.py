@@ -262,13 +262,13 @@ class Forum(models.Model):
 
     def unlink(self):
         self.env['website'].sudo()._update_forum_count()
-        return super().unlink()
+        return super().unlink
 
     def write(self, vals):
         if 'privacy' in vals:
             if not vals['privacy']:
                 # The forum is neither public, neither private, remove menu to avoid conflict
-                self.menu_id.unlink()
+                self.menu_id.unlink
             elif vals['privacy'] == 'public':
                 # The forum is public, the menu must be also public
                 vals['authorized_group_id'] = False

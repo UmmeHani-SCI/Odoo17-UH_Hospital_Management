@@ -44,7 +44,7 @@ class TestIrSequenceDateRangeStandard(SingleTransactionCase):
 
     def test_ir_sequence_date_range_3_unlink(self):
         seq = self.env['ir.sequence'].search([('code', '=', 'test_sequence_date_range')])
-        seq.unlink()
+        seq.unlink
 
 
 class TestIrSequenceDateRangeNoGap(SingleTransactionCase):
@@ -85,7 +85,7 @@ class TestIrSequenceDateRangeNoGap(SingleTransactionCase):
 
     def test_ir_sequence_date_range_3_unlink(self):
         seq = self.env['ir.sequence'].search([('code', '=', 'test_sequence_date_range_2')])
-        seq.unlink()
+        seq.unlink
 
 
 class TestIrSequenceDateRangeChangeImplementation(SingleTransactionCase):
@@ -139,4 +139,4 @@ class TestIrSequenceDateRangeChangeImplementation(SingleTransactionCase):
     def test_ir_sequence_date_range_4_unlink(self):
         domain = [('code', 'in', ['test_sequence_date_range_3', 'test_sequence_date_range_4'])]
         seqs = self.env['ir.sequence'].search(domain)
-        seqs.unlink()
+        seqs.unlink

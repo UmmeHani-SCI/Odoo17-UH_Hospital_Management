@@ -40,7 +40,7 @@ class TestSlideInternals(slides_common.SlidesCase):
         before_unlink = self.category2.completion_time
         self.assertEqual(before_unlink, self.slide_4.completion_time + self.slide_5.completion_time)
 
-        self.channel.slide_ids[6].sudo().unlink()
+        self.channel.slide_ids[6].sudo().unlink
         self.category2._compute_category_completion_time()
 
         after_unlink = self.category2.completion_time

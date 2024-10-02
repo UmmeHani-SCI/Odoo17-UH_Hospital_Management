@@ -187,7 +187,7 @@ class MailTemplate(models.Model):
 
     def unlink(self):
         self.unlink_action()
-        return super(MailTemplate, self).unlink()
+        return super(MailTemplate, self).unlink
 
     def cancel_unlink(self):
         return {
@@ -208,7 +208,7 @@ class MailTemplate(models.Model):
     def unlink_action(self):
         for template in self:
             if template.ref_ir_act_window:
-                template.ref_ir_act_window.unlink()
+                template.ref_ir_act_window.unlink
         return True
 
     def create_action(self):

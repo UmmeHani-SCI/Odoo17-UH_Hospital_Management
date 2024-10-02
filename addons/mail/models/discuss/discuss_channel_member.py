@@ -153,8 +153,8 @@ class ChannelMember(models.Model):
 
     def unlink(self):
         # sudo: discuss.channel.rtc.session - cascade unlink of sessions for self member
-        self.sudo().rtc_session_ids.unlink()  # ensure unlink overrides are applied
-        return super().unlink()
+        self.sudo().rtc_session_ids.unlink  # ensure unlink overrides are applied
+        return super().unlink
 
     def _notify_typing(self, is_typing):
         """ Broadcast the typing notification to channel members
@@ -223,7 +223,7 @@ class ChannelMember(models.Model):
         self.ensure_one()
         check_rtc_session_ids = (check_rtc_session_ids or []) + self.rtc_session_ids.ids
         self.channel_id._rtc_cancel_invitations(member_ids=self.ids)
-        self.rtc_session_ids.unlink()
+        self.rtc_session_ids.unlink
         rtc_session = self.env['discuss.channel.rtc.session'].create({'channel_member_id': self.id})
         current_rtc_sessions, outdated_rtc_sessions = self._rtc_sync_sessions(check_rtc_session_ids=check_rtc_session_ids)
         ice_servers = self.env["mail.ice.server"]._get_ice_servers()
@@ -303,7 +303,7 @@ class ChannelMember(models.Model):
     def _rtc_leave_call(self):
         self.ensure_one()
         if self.rtc_session_ids:
-            self.rtc_session_ids.unlink()
+            self.rtc_session_ids.unlink
         else:
             return self.channel_id._rtc_cancel_invitations(member_ids=self.ids)
 

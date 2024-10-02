@@ -20,7 +20,7 @@ class TestPricelistAutoCreation(ProductCommon):
         cls.group_user = cls.env.ref('base.group_user').sudo()
         cls.group_product_pricelist = cls.env.ref('product.group_product_pricelist')
         cls.group_user._remove_group(cls.group_product_pricelist)
-        cls.env['product.pricelist'].search([]).unlink()
+        cls.env['product.pricelist'].search([]).unlink
         return res
 
     def test_inactive_curr_set_on_company(self):

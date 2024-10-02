@@ -57,7 +57,7 @@ class TestAPI(MailCommon, TestRecipients):
                     expected_body = Markup('<p>&lt;div class="ltr"&gt;&lt;img src="cid:ii_lps7a8sm0" alt="test_image.jpeg" width="542" height="253"&gt;Zboing&lt;/div&gt;</p>')
                 self.assertEqual(message.attachment_ids, attachments + new_attachment)
                 self.assertEqual(message.body, expected_body)
-                new_attachment.unlink()
+                new_attachment.unlink
 
         # internals of attachment processing, in case it is called for other addons
         for with_markup in [False, True]:
@@ -445,7 +445,7 @@ class TestDiscuss(MailCommon, TestRecipients):
         channel_message = self.env['mail.message'].sudo().search([('model', '=', 'discuss.channel'), ('res_id', 'in', channel.ids)])
         self.assertEqual(len(channel_message), 1, "Test message should have been posted")
 
-        channel.sudo().unlink()
+        channel.sudo().unlink
         remaining_message = channel_message.exists()
         self.assertEqual(len(remaining_message), 0, "Test message should have been deleted")
 

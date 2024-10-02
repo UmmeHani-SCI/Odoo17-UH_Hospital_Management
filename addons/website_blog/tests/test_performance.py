@@ -16,7 +16,7 @@ class TestBlogPerformance(UtilPerf):
         # avoid the menu cache being disabled, which would increase sql queries
         self.env['website.menu'].search([
             ('url', '=like', '/%/%-%'),
-        ]).unlink()
+        ]).unlink
 
         self.env['blog.blog'].search([]).active = False
         blogs = self.env['blog.blog'].create([{

@@ -19,8 +19,8 @@ class MailThread(models.AbstractModel):
     def unlink(self):
         """ When removing a record, its rating should be deleted too. """
         record_ids = self.ids
-        result = super().unlink()
-        self.env['rating.rating'].sudo().search([('res_model', '=', self._name), ('res_id', 'in', record_ids)]).unlink()
+        result = super().unlink
+        self.env['rating.rating'].sudo().search([('res_model', '=', self._name), ('res_id', 'in', record_ids)]).unlink
         return result
 
     def _message_create(self, values_list):

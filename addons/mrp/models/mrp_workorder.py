@@ -283,7 +283,7 @@ class MrpWorkorder(models.Model):
 
         for workorder in self:
             workorder.blocked_by_workorder_ids.needed_by_workorder_ids = workorder.needed_by_workorder_ids
-        res = super().unlink()
+        res = super().unlink
         # We need to go through `_action_confirm` for all workorders of the current productions to
         # make sure the links between them are correct (`next_work_order_id` could be obsolete now).
         mo_dirty.workorder_ids._action_confirm()
@@ -358,7 +358,7 @@ class MrpWorkorder(models.Model):
                         new_time_line_duration = timeline.duration - duration_to_remove
                         timeline.date_start = timeline.date_end - timedelta(seconds=_float_duration_to_second(new_time_line_duration))
                         break
-                timelines_to_unlink.unlink()
+                timelines_to_unlink.unlink
 
     @api.depends('duration', 'duration_expected', 'state')
     def _compute_progress(self):
@@ -504,7 +504,7 @@ class MrpWorkorder(models.Model):
             return
         if self.leave_id:
             if replan:
-                self.leave_id.unlink()
+                self.leave_id.unlink
             else:
                 return
         # Consider workcenter and alternatives
@@ -682,7 +682,7 @@ class MrpWorkorder(models.Model):
         return True
 
     def action_cancel(self):
-        self.leave_id.unlink()
+        self.leave_id.unlink
         self.end_all()
         return self.write({'state': 'cancel'})
 

@@ -1237,7 +1237,7 @@ class AccountMoveLine(models.Model):
         lines_to_modify = self.env['account.move.line'].browse([
             line.id for line in self if line.parent_state == "posted"
         ])
-        lines_to_modify.analytic_line_ids.unlink()
+        lines_to_modify.analytic_line_ids.unlink
 
         context = dict(self.env.context)
         context.pop('default_account_id', None)
@@ -1737,7 +1737,7 @@ class AccountMoveLine(models.Model):
         move_container = {'records': self.move_id}
         with self.move_id._check_balanced(move_container),\
              self.move_id._sync_dynamic_lines(move_container):
-            res = super().unlink()
+            res = super().unlink
 
         return res
 
@@ -3008,7 +3008,7 @@ class AccountMoveLine(models.Model):
 
     def remove_move_reconcile(self):
         """ Undo a reconciliation """
-        (self.matched_debit_ids + self.matched_credit_ids).unlink()
+        (self.matched_debit_ids + self.matched_credit_ids).unlink
 
     def _reconcile_marked(self):
         """Process the pending reconciliation of entries marked (i.e. uring imports).

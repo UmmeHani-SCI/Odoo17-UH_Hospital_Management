@@ -973,7 +973,7 @@ class TestPointOfSaleFlow(TestPointOfSaleCommon):
             [self.env.ref('base.USD').id, self.env.company.id])
 
         # Demo data are crappy, clean-up the rates
-        self.env['res.currency.rate'].search([]).unlink()
+        self.env['res.currency.rate'].search([]).unlink
         self.env['res.currency.rate'].create({
             'name': '2010-01-01',
             'rate': 2.0,
@@ -1216,7 +1216,7 @@ class TestPointOfSaleFlow(TestPointOfSaleCommon):
         self.PosOrder.create_from_ui([product5_order])
 
         # delete tax
-        dummy_50_perc_tax.unlink()
+        dummy_50_perc_tax.unlink
 
         total_cash_payment = sum(pos_session.mapped('order_ids.payment_ids').filtered(lambda payment: payment.payment_method_id.type == 'cash').mapped('amount'))
         pos_session.post_closing_cash_details(total_cash_payment)

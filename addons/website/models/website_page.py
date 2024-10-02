@@ -83,7 +83,7 @@ class Page(models.Model):
                     })
             elif page.menu_ids:
                 # If the page is no longer in menu, we should remove its website_menu
-                page.menu_ids.unlink()
+                page.menu_ids.unlink
 
     # This update was added to make sure the mixin calculations are correct
     # (page.website_url > page.url).
@@ -154,11 +154,11 @@ class Page(models.Model):
         )
         # Rebind self to avoid unlink already deleted records from `ondelete="cascade"`
         self = self - views_to_delete.page_ids
-        views_to_delete.unlink()
+        views_to_delete.unlink
 
         # Make sure website._get_menu_ids() will be recomputed
         self.env.registry.clear_cache()
-        return super().unlink()
+        return super().unlink
 
     def write(self, vals):
         for page in self:

@@ -196,7 +196,7 @@ class IrUiMenu(models.Model):
         direct_children.write({'parent_id': False})
 
         self.env.registry.clear_cache()
-        return super(IrUiMenu, self).unlink()
+        return super(IrUiMenu, self).unlink
 
     def copy(self, default=None):
         record = super(IrUiMenu, self).copy(default=default)

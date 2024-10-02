@@ -56,7 +56,7 @@ class TestChannelInternals(MailCommon):
         self.env['discuss.channel.member'].sudo().search([
             ('partner_id', 'in', self.test_partner.ids),
             ('channel_id', 'in', channel.ids)
-        ]).unlink()
+        ]).unlink
         self.assertEqual(channel.message_partner_ids, self.env['res.partner'])
         self.assertEqual(channel.channel_partner_ids, self.env['res.partner'])
 
@@ -136,7 +136,7 @@ class TestChannelInternals(MailCommon):
         self.assertEqual(self.test_channel.channel_partner_ids, self.user_employee.partner_id | self.partner_employee_nomail)
 
         # Unsubscribe deleted user from the private channels, but not from public channels
-        self.user_employee_nomail.unlink()
+        self.user_employee_nomail.unlink
         self.assertEqual(group_restricted_channel.channel_partner_ids, self.env['res.partner'])
         self.assertEqual(self.test_channel.channel_partner_ids, self.user_employee.partner_id | self.partner_employee_nomail)
 
@@ -292,7 +292,7 @@ class TestChannelInternals(MailCommon):
         self.assertEqual(private_group.channel_partner_ids, self.user_employee.partner_id | test_partner)
 
         # Unsubscribe deleted user from the private channels, but not from public channels and not from group
-        test_user.unlink()
+        test_user.unlink
         self.assertEqual(group_restricted_channel.channel_partner_ids, self.env['res.partner'])
         self.assertEqual(self.test_channel.channel_partner_ids, self.user_employee.partner_id | test_partner)
         self.assertEqual(private_group.channel_partner_ids, self.user_employee.partner_id | test_partner)

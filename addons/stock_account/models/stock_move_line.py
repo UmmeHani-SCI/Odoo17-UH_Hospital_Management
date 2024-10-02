@@ -55,7 +55,7 @@ class StockMoveLine(models.Model):
 
     def unlink(self):
         analytic_move_to_recompute = self.move_id
-        res = super().unlink()
+        res = super().unlink
         analytic_move_to_recompute._account_analytic_entry_move()
         return res
 

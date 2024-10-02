@@ -3,3 +3,5 @@ access_hospital_patient,hospital.patient,model_hospital_patient,base.group_user,
 
 access_hospital_appointment,hospital.appointment,model_hospital_appointment,base.group_user,1,1,1,1
 access_hospital_appointment_line,hospital.appointment_line,model_hospital_appointment_line,base.group_user,1,1,1,1
+
+access_hospital_doctor_specialties,hospital.doctor_specialties,model_hospital_doctor_specialties,base.group_user,1,1,1,1

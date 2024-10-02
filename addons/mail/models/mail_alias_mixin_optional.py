@@ -138,8 +138,8 @@ class AliasMixinOptional(models.AbstractModel):
     def unlink(self):
         """ Delete the given records, and cascade-delete their corresponding alias. """
         aliases = self.mapped('alias_id')
-        res = super().unlink()
-        aliases.sudo().unlink()
+        res = super().unlink
+        aliases.sudo().unlink
         return res
 
     @api.returns(None, lambda value: value[0])

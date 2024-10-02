@@ -79,10 +79,10 @@ class TestAccrualAllocations(TestHrHolidaysCommon):
         })
 
         with self.assertRaises(ValidationError):
-            accrual_plan.unlink()
+            accrual_plan.unlink
 
-        allocation.unlink()
-        accrual_plan.unlink()
+        allocation.unlink
+        accrual_plan.unlink
 
     def test_frequency_hourly_calendar(self):
         with freeze_time("2017-12-5"):

@@ -246,16 +246,16 @@ class MailActivityMixin(models.AbstractModel):
         if 'active' in vals and vals['active'] is False:
             self.env['mail.activity'].sudo().search(
                 [('res_model', '=', self._name), ('res_id', 'in', self.ids)]
-            ).unlink()
+            ).unlink
         return super(MailActivityMixin, self).write(vals)
 
     def unlink(self):
         """ Override unlink to delete records activities through (res_model, res_id). """
         record_ids = self.ids
-        result = super(MailActivityMixin, self).unlink()
+        result = super(MailActivityMixin, self).unlink
         self.env['mail.activity'].sudo().search(
             [('res_model', '=', self._name), ('res_id', 'in', record_ids)]
-        ).unlink()
+        ).unlink
         return result
 
     def _read_group_groupby(self, groupby_spec, query):
@@ -303,7 +303,7 @@ class MailActivityMixin(models.AbstractModel):
             self.env['mail.activity'].sudo().search([
                 ('res_model', '=', self._name),
                 ('res_id', 'in', record_to_deactivate.ids)
-            ]).unlink()
+            ]).unlink
         return super(MailActivityMixin, self).toggle_active()
 
     def activity_send_mail(self, template_id):
@@ -473,5 +473,5 @@ class MailActivityMixin(models.AbstractModel):
         activity_types_ids = [act_type_id for act_type_id in activity_types_ids if act_type_id]
         if not any(activity_types_ids):
             return False
-        self.activity_search(act_type_xmlids, user_id=user_id).unlink()
+        self.activity_search(act_type_xmlids, user_id=user_id).unlink
         return True

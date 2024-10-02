@@ -124,7 +124,7 @@ class TestProjectBase(TestProjectCommon):
         task_count = len(project_unlink.tasks)
         self.assertEqual(task_count, 1, "The project should have 1 task")
 
-        project_unlink.unlink()
+        project_unlink.unlink
         self.assertNotEqual(task_count, 0, "The all tasks linked to project should be deleted when user delete the project")
 
     def test_auto_assign_stages_when_importing_tasks(self):

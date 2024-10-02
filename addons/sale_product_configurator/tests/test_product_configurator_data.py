@@ -143,7 +143,7 @@ class TestProductConfiguratorData(HttpCaseWithUserDemo, ProductVariantsCommon, S
         self.empty_order.action_confirm()
 
         # Remove attribute
-        product_template.attribute_line_ids[0].unlink()
+        product_template.attribute_line_ids[0].unlink
         self.assertEqual(len(product_template.product_variant_ids), 2)
 
         self.authenticate('demo', 'demo')

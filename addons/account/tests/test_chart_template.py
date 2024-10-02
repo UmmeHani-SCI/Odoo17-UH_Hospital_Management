@@ -364,8 +364,8 @@ class TestChartTemplate(TransactionCase):
 
         """
         fiscal_position = self.env['account.fiscal.position'].search([])
-        fiscal_position.tax_ids.unlink()
-        self.env['account.tax'].search([('company_id', '=', self.company_1.id)]).unlink()
+        fiscal_position.tax_ids.unlink
+        self.env['account.tax'].search([('company_id', '=', self.company_1.id)]).unlink
 
         with patch.object(AccountChartTemplate, '_get_chart_template_data', side_effect=test_get_data, autospec=True):
             self.env['account.chart.template'].try_loading('test', company=self.company_1, install_demo=False)
@@ -374,7 +374,7 @@ class TestChartTemplate(TransactionCase):
         self.assertEqual(len(self.env['account.tax'].search([('company_id', '=', self.company_1.id)])), 2)
         self.assertEqual(len(fiscal_position.tax_ids), 1)
 
-        fiscal_position.tax_ids.unlink()
+        fiscal_position.tax_ids.unlink
         with patch.object(AccountChartTemplate, '_get_chart_template_data', side_effect=test_get_data, autospec=True):
             self.env['account.chart.template'].try_loading('test', company=self.company_1, install_demo=False)
 
@@ -452,7 +452,7 @@ class TestChartTemplate(TransactionCase):
         self.env['ir.model.data'].search([
             ('name', '=', f'{self.company_1.id}_test_account_expense_template'),
             ('module', '=', 'account'),
-        ]).unlink()
+        ]).unlink
 
         # reload chart template
         with patch.object(AccountChartTemplate, '_get_chart_template_data', side_effect=test_get_data, autospec=True):

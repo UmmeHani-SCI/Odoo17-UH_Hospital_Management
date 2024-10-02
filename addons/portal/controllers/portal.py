@@ -370,7 +370,7 @@ class CustomerPortal(Controller):
         if attachment_sudo.env['mail.message'].search([('attachment_ids', 'in', attachment_sudo.ids)]):
             raise UserError(_("The attachment %s cannot be removed because it is linked to a message.", attachment_sudo.name))
 
-        return attachment_sudo.unlink()
+        return attachment_sudo.unlink
 
     def details_form_validate(self, data, partner_creation=False):
         error = dict()

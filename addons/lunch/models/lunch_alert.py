@@ -160,9 +160,9 @@ class LunchAlert(models.Model):
     def unlink(self):
         crons = self.cron_id.sudo()
         server_actions = crons.ir_actions_server_id
-        res = super().unlink()
-        crons.unlink()
-        server_actions.unlink()
+        res = super().unlink
+        crons.unlink
+        server_actions.unlink
         return res
 
     def _notify_chat(self):
@@ -172,7 +172,7 @@ class LunchAlert(models.Model):
         if not self.available_today:
             _logger.warning("cancelled, not available today")
             if self.cron_id and self.until and fields.Date.context_today(self) > self.until:
-                self.cron_id.unlink()
+                self.cron_id.unlink
                 self.cron_id = False
             return
 

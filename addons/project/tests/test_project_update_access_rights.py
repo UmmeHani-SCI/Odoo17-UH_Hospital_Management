@@ -42,11 +42,11 @@ class TestProjectUpdateAccessRights(TestProjectCommon):
     @users('Base user')
     def test_project_update_user_no_unlink(self):
         with self.assertRaises(AccessError, msg="%s should not be able to unlink in the project update" % self.env.user.name):
-            self.project_update_1.with_user(self.env.user).unlink()
+            self.project_update_1.with_user(self.env.user).unlink
 
     @users('Project admin')
     def test_project_update_admin_unlink(self):
-        self.project_update_1.with_user(self.env.user).unlink()
+        self.project_update_1.with_user(self.env.user).unlink
 
     @users('Portal user')
     def test_project_update_portal_user_no_read(self):
@@ -70,7 +70,7 @@ class TestProjectUpdateAccessRights(TestProjectCommon):
     @users('Portal user')
     def test_project_update_portal_user_no_unlink(self):
         with self.assertRaises(AccessError, msg=f"{self.env.user.name} should not be able to unlink in the project update"):
-            self.project_update_1.with_user(self.env.user).unlink()
+            self.project_update_1.with_user(self.env.user).unlink
 
     @users('Portal user')
     def test_project_milestone_portal_user_no_read(self):
@@ -93,4 +93,4 @@ class TestProjectUpdateAccessRights(TestProjectCommon):
     @users('Portal user')
     def test_project_milestone_portal_user_no_unlink(self):
         with self.assertRaises(AccessError, msg=f"{self.env.user.name} should not be able to unlink in the project update"):
-            self.project_milestone.with_user(self.env.user).unlink()
+            self.project_milestone.with_user(self.env.user).unlink

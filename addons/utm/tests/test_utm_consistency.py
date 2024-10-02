@@ -15,4 +15,4 @@ class TestUTMConsistency(TestUTMCommon):
         some functional flows, notably in HR and Mass Mailing. """
 
         with self.assertRaises(UserError):
-            self.env.ref('utm.utm_medium_email').unlink()
+            self.env.ref('utm.utm_medium_email').unlink

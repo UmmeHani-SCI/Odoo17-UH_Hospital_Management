@@ -8,7 +8,7 @@ from odoo.exceptions import ValidationError
 @tagged("-at_install", "post_install")
 class TestModel(TransactionCase):
     def setUp(self):
-        self.env["html.field.history.test"].search([]).unlink()
+        self.env["html.field.history.test"].search([]).unlink
         super().setUp()
 
     def test_html_field_history_write(self):
@@ -47,7 +47,7 @@ class TestModel(TransactionCase):
             }
         )
         self.assertEqual(len(rec1.html_field_history["versioned_field_1"]), 3)
-        rec1.unlink()
+        rec1.unlink
 
         rec2 = self.env["html.field.history.test"].create(
             {
@@ -73,7 +73,7 @@ class TestModel(TransactionCase):
                 }
             )
 
-        rec2.unlink()
+        rec2.unlink
 
     def test_html_field_history_revision_are_sanitized(self):
         rec1 = self.env["html.field.history.test"].create(
@@ -98,4 +98,4 @@ class TestModel(TransactionCase):
         self.assertEqual(rec1.versioned_field_1, "<p>not a scam</p>")
         self.assertNotIn("iframe", rec1.html_field_history["versioned_field_1"])
         self.assertNotIn("not.secure.scam", rec1.html_field_history["versioned_field_1"])
-        rec1.unlink()
+        rec1.unlink

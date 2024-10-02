@@ -86,5 +86,5 @@ class TestWebsiteEventMeet(EventCase):
         self.assertTrue(meeting_room.chat_room_id)
         chat_room_id = meeting_room.chat_room_id.id
 
-        meeting_room.unlink()
+        meeting_room.unlink
         self.assertFalse(self.env["chat.room"].browse(chat_room_id).exists())

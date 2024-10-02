@@ -10,4 +10,4 @@ class Company(models.Model):
     @api.ondelete(at_uninstall=False)
     def _unlink_onboarding_progress(self):
         progress = self.env['onboarding.progress'].sudo().search([('company_id', 'in', self.ids)])
-        progress.unlink()
+        progress.unlink

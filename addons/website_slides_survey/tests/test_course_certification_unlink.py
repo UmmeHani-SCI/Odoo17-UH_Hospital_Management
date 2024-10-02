@@ -32,10 +32,10 @@ class TestSurvey(SlidesCase):
             ValidationError,
             msg="Should raise when trying to unlink a survey linked to courses"
         ):
-            (self.survey | self.survey2).unlink()
+            (self.survey | self.survey2).unlink
 
         self.assertTrue(self.survey.exists())
         self.assertTrue(self.survey2.exists())
         certification.survey_id = self.survey2
-        self.survey.unlink()
+        self.survey.unlink
         self.assertFalse(self.survey.exists())

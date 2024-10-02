@@ -116,7 +116,7 @@ class TestForumCommon(common.TransactionCase):
 
     @mute_logger("odoo.models.unlink")
     def _activate_tags_for_counts(self):
-        self.env['forum.tag'].search([]).unlink()
+        self.env['forum.tag'].search([]).unlink
         self.tags = self.env['forum.tag'].create(
             [
                 {'forum_id': forum_id.id, 'name': f'Test Tag {tag_idx}'}

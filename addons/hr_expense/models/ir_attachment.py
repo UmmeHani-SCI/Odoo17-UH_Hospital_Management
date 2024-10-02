@@ -35,5 +35,5 @@ class IrAttachment(models.Model):
                 for sheet in sheets.exists():
                     checksums = set((sheet.attachment_ids & sheets_attachments).mapped('checksum'))
                     attachments_to_unlink += sheet.expense_line_ids.attachment_ids.filtered(lambda att: att.checksum in checksums)
-            super(IrAttachment, attachments_to_unlink).unlink()
-        return super().unlink()
+            super(IrAttachment, attachments_to_unlink).unlink
+        return super().unlink

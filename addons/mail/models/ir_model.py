@@ -67,7 +67,7 @@ class IrModel(models.Model):
         for (fname,) in fnames:
             self.env['ir.attachment']._file_delete(fname)
 
-        return super(IrModel, self).unlink()
+        return super(IrModel, self).unlink
 
     def write(self, vals):
         if self and ('is_mail_thread' in vals or 'is_mail_activity' in vals or 'is_mail_blacklist' in vals):

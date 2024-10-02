@@ -17,7 +17,7 @@ class TestSaleStockMargin(TestStockValuationCommon):
             'name': 'Simple Pricelist',
             'company_id': False,
         })
-        cls.env['res.currency.rate'].search([]).unlink()
+        cls.env['res.currency.rate'].search([]).unlink
 
     #########
     # UTILS #

@@ -62,5 +62,5 @@ class TestCompany(TransactionCase):
         })
 
         with self.assertRaises(UserError):
-            parent_company.unlink()
+            parent_company.unlink
         self.assertTrue(parent_company.exists())

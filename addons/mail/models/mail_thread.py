@@ -328,11 +328,11 @@ class MailThread(models.AbstractModel):
             return True
         # discard pending tracking
         self._track_discard()
-        self.env['mail.message'].sudo().search([('model', '=', self._name), ('res_id', 'in', self.ids)]).unlink()
-        res = super(MailThread, self).unlink()
+        self.env['mail.message'].sudo().search([('model', '=', self._name), ('res_id', 'in', self.ids)]).unlink
+        res = super(MailThread, self).unlink
         self.env['mail.followers'].sudo().search(
             [('res_model', '=', self._name), ('res_id', 'in', self.ids)]
-        ).unlink()
+        ).unlink
         return res
 
     def copy_data(self, default=None):
@@ -4014,7 +4014,7 @@ class MailThread(models.AbstractModel):
             ('res_model', '=', self._name),
             ('res_id', 'in', self.ids),
             ('partner_id', 'in', partner_ids),
-        ]).unlink()
+        ]).unlink
 
     def _message_auto_subscribe_followers(self, updated_values, default_subtype_ids):
         """ Optional method to override in addons inheriting from mail.thread.
@@ -4290,7 +4290,7 @@ class MailThread(models.AbstractModel):
         }
         if "body" in msg_values:
             # sudo: mail.message.translation - discarding translations of message after editing it
-            self.env["mail.message.translation"].sudo().search([("message_id", "=", message.id)]).unlink()
+            self.env["mail.message.translation"].sudo().search([("message_id", "=", message.id)]).unlink
             payload["Message"]["translationValue"] = False
         self.env["bus.bus"]._sendone(message._bus_notification_target(), "mail.record/insert", payload)
 
@@ -4460,7 +4460,7 @@ class MailThread(models.AbstractModel):
             # clean up obsolete devices
             if devices_to_unlink:
                 devices_list = list(devices_to_unlink)
-                self.env['mail.partner.device'].sudo().browse(devices_list).unlink()
+                self.env['mail.partner.device'].sudo().browse(devices_list).unlink
 
         else:
             self.env['mail.notification.web.push'].sudo().create([{

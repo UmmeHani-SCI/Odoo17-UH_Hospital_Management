@@ -13,7 +13,7 @@ class TestCrmDigest(TestDigestCommon):
     def setUpClass(cls):
         super().setUpClass()
 
-        cls.env['crm.lead'].search([]).unlink()
+        cls.env['crm.lead'].search([]).unlink
 
         cls.env['crm.lead'].create([{
             'name': 'Lead 1',

@@ -98,7 +98,7 @@ class TestACLFeedback(Feedback):
 
         ACL = cls.env['ir.model.access']
         m = cls.env['ir.model'].search([('model', '=', 'test_access_right.some_obj')])
-        ACL.search([('model_id', '=', m.id)]).unlink()
+        ACL.search([('model_id', '=', m.id)]).unlink
         ACL.create({
             'name': "read",
             'model_id': m.id,

@@ -97,7 +97,7 @@ class Onboarding(models.Model):
         onboardings_to_refresh_progress = self.filtered(
             lambda o: o.is_per_company and o.progress_ids and not o.progress_ids.company_id
         )
-        onboardings_to_refresh_progress.progress_ids.unlink()
+        onboardings_to_refresh_progress.progress_ids.unlink
         onboardings_to_refresh_progress._create_progress()
 
     def action_toggle_visibility(self):

@@ -130,7 +130,7 @@ class TestJavascriptAssetsBundle(FileTouchable):
         super().setUpClass()
         # this is mainly to avoid tests breaking when executed after pre-generate
         cls.maxDiff = 10000
-        cls.env['ir.attachment'].search([('url', '=like', '/web/assets/%test_assetsbundle%')]).unlink()
+        cls.env['ir.attachment'].search([('url', '=like', '/web/assets/%test_assetsbundle%')]).unlink
 
     def setUp(self):
         super(TestJavascriptAssetsBundle, self).setUp()

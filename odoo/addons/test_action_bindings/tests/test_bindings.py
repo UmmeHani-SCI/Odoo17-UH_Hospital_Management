@@ -7,7 +7,7 @@ class TestActionBindings(common.TransactionCase):
         Actions = self.env['ir.actions.actions']
 
         # first make sure there is no bound action
-        self.env.ref('base.action_partner_merge').unlink()
+        self.env.ref('base.action_partner_merge').unlink
         bindings = Actions.get_bindings('res.partner')
         self.assertFalse(bindings.get('action'))
         self.assertFalse(bindings.get('report'))

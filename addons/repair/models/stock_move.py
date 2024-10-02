@@ -50,7 +50,7 @@ class StockMove(models.Model):
 
     def unlink(self):
         self._clean_repair_sale_order_line()
-        return super().unlink()
+        return super().unlink
 
     @api.model_create_multi
     def create(self, vals_list):

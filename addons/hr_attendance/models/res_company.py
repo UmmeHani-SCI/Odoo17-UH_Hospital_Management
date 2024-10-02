@@ -104,7 +104,7 @@ class ResCompany(models.Model):
 
         res = super().write(vals)
         if delete_domain:
-            self.env['hr.attendance.overtime'].search(delete_domain).unlink()
+            self.env['hr.attendance.overtime'].search(delete_domain).unlink
         if search_domain:
             self.env['hr.attendance'].search(search_domain)._update_overtime()
 

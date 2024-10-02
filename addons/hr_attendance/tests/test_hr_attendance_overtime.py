@@ -134,7 +134,7 @@ class TestHrAttendanceOvertime(TransactionCase):
         })
         self.assertEqual(self.employee.total_overtime, 12)
 
-        attendance.unlink()
+        attendance.unlink
         self.assertEqual(self.employee.total_overtime, 1)
 
     def test_overtime_change_employee(self):
@@ -152,7 +152,7 @@ class TestHrAttendanceOvertime(TransactionCase):
             'check_in': datetime(2021, 1, 4, 7, 0),
             'check_out': datetime(2021, 1, 4, 18, 0)
         })
-        attendance.unlink()
+        attendance.unlink
         self.assertEqual(self.other_employee.total_overtime, 2)
         self.assertEqual(self.employee.total_overtime, 0)
 
@@ -356,7 +356,7 @@ class TestHrAttendanceOvertime(TransactionCase):
         self.assertEqual(m_attendance_3.overtime_hours, 1.5)
 
         # Deleting previous attendances should update correctly the overtime hours in other attendances
-        m_attendance_2.unlink()
+        m_attendance_2.unlink
         m_attendance_1.write({
             'check_out': datetime(2023, 1, 3, 17, 0)
         })

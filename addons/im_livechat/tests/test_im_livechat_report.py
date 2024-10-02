@@ -10,7 +10,7 @@ from odoo.tests.common import tagged
 class TestImLivechatReport(TestImLivechatCommon):
     def setUp(self):
         super().setUp()
-        self.env['discuss.channel'].search([('livechat_channel_id', '!=', False)]).unlink()
+        self.env['discuss.channel'].search([('livechat_channel_id', '!=', False)]).unlink
 
         def _compute_available_operator_ids(channel_self):
             for record in channel_self:

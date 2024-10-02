@@ -34,7 +34,7 @@ class StockMove(models.Model):
         return action_data
 
     def _action_cancel(self):
-        self.analytic_account_line_ids.unlink()
+        self.analytic_account_line_ids.unlink
         return super()._action_cancel()
 
     def _should_force_price_unit(self):
@@ -449,7 +449,7 @@ class StockMove(models.Model):
             unit_amount = - sum(self.stock_valuation_layer_ids.mapped('quantity'))
 
         if self.analytic_account_line_ids and amount == 0 and unit_amount == 0:
-            self.analytic_account_line_ids.unlink()
+            self.analytic_account_line_ids.unlink
             return False
 
         return self.env['account.analytic.account']._perform_analytic_distribution(

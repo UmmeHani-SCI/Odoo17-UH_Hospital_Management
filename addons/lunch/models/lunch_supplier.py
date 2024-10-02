@@ -210,9 +210,9 @@ class LunchSupplier(models.Model):
     def unlink(self):
         crons = self.cron_id.sudo()
         server_actions = crons.ir_actions_server_id
-        res = super().unlink()
-        crons.unlink()
-        server_actions.unlink()
+        res = super().unlink
+        crons.unlink
+        server_actions.unlink
         return res
 
     def toggle_active(self):

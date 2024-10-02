@@ -9,7 +9,7 @@ class TestGBF(common.TransactionCase):
         TM = self.env['test_converter.test_model']
 
         # remove all existing subs (no need to panic, it will be rollbacked...)
-        Sub.search([]).unlink()
+        Sub.search([]).unlink
 
         subs_ids = [Sub.create({'name': 'sub%d' % i}).id for i in range(5)]
         tm_ids = [TM.create({'many2one': subs_ids[i]}).id for i in range(3)]

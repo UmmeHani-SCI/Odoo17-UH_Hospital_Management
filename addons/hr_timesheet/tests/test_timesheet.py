@@ -226,13 +226,13 @@ class TestTimesheet(TestCommonTimesheet):
             'project_id': tracked_project.id,
         })
         with self.assertRaises(UserError):
-            tracked_project.analytic_account_id.unlink()
+            tracked_project.analytic_account_id.unlink
 
         # task can be removed, as there is no timesheet
-        task.unlink()
+        task.unlink
 
         # since both projects linked to the same analytic account are empty (no task), it can be removed
-        tracked_project.analytic_account_id.unlink()
+        tracked_project.analytic_account_id.unlink
 
     def test_transfert_project(self):
         """ Transfert task with timesheet to another project. """
@@ -653,9 +653,9 @@ class TestTimesheet(TestCommonTimesheet):
             'unit_amount': 4,
             'employee_id': self.empl_employee.id,
         })
-        self.task2.unlink()
+        self.task2.unlink
         with self.assertRaises(RedirectWarning):
-            self.task1.unlink()
+            self.task1.unlink
 
     def test_cannot_convert_task_with_timesheets_in_private_task(self):
         self.env['account.analytic.line'].create({

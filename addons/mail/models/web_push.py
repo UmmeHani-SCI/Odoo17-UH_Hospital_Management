@@ -56,11 +56,11 @@ class WebPush(models.Model):
                 devices_to_unlink.add(device.id)
 
         # clean up notif
-        web_push_notifications_sudo.unlink()
+        web_push_notifications_sudo.unlink
 
         # clean up obsolete devices
         if devices_to_unlink:
-            self.env['mail.partner.device'].sudo().browse(devices_to_unlink).unlink()
+            self.env['mail.partner.device'].sudo().browse(devices_to_unlink).unlink
 
         # restart the cron if needed
         if self.search_count([]) > 0:

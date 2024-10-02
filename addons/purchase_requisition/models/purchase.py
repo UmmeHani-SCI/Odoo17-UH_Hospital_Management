@@ -16,7 +16,7 @@ class PurchaseOrderGroup(models.Model):
     def write(self, vals):
         res = super().write(vals)
         # when len(POs) == 1, only linking PO to itself at this point => self implode (delete) group
-        self.filtered(lambda g: len(g.order_ids) <= 1).unlink()
+        self.filtered(lambda g: len(g.order_ids) <= 1).unlink
         return res
 
 
@@ -170,13 +170,13 @@ class PurchaseOrder(models.Model):
                 self.env['purchase.order.group'].create({'order_ids': [Command.set(self.ids + self.alternative_po_ids.ids)]})
             elif self.purchase_group_id and len(self.alternative_po_ids + self) <= 1:
                 # write in purchase group isn't called so we have to manually unlink obsolete groups here
-                self.purchase_group_id.unlink()
+                self.purchase_group_id.unlink
         if vals.get('purchase_group_id', False):
             # the write is for multiple POs => don't double count the POs of the final group
             additional_groups = orig_purchase_group - self.purchase_group_id
             if additional_groups:
                 additional_pos = (additional_groups.order_ids - self.purchase_group_id.order_ids)
-                additional_groups.unlink()
+                additional_groups.unlink
                 if additional_pos:
                     self.purchase_group_id.order_ids |= additional_pos
 

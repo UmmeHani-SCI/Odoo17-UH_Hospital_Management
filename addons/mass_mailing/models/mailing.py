@@ -667,8 +667,8 @@ class MassMailing(models.Model):
             ('mailing_id', 'in', self.ids),
             ('state', '=', 'exception')
         ])
-        failed_mails.mapped('mailing_trace_ids').unlink()
-        failed_mails.unlink()
+        failed_mails.mapped('mailing_trace_ids').unlink
+        failed_mails.unlink
         self.action_put_in_queue()
 
     def action_view_traces_scheduled(self):

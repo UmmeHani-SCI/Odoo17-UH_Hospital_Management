@@ -91,11 +91,11 @@ class TestMailGroup(TestMailListCommon):
         member = self.test_group._find_member(email, partner_3.id)
         self.assertEqual(member, member_3, 'Should return the member with the right partner')
 
-        member_2.unlink()
+        member_2.unlink
         member = self.test_group._find_member(email, partner_2.id)
         self.assertEqual(member, member_1, 'Should return the member without partner')
 
-        member_1.unlink()
+        member_1.unlink
         member = self.test_group._find_member(email, partner_2.id)
         self.assertFalse(member, 'Should not return any member because the only one with the same email has a different partner')
 

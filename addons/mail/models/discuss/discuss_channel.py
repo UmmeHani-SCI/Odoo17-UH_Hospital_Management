@@ -154,7 +154,7 @@ class Channel(models.Model):
         if new_members:
             self.env['discuss.channel.member'].create(new_members)
         if outdated:
-            outdated.unlink()
+            outdated.unlink
 
     def _search_channel_partner_ids(self, operator, operand):
         return [('channel_member_ids', 'any', [('partner_id', operator, operand)])]
@@ -329,7 +329,7 @@ class Channel(models.Model):
         if not member:
             return True
         channel_info = self._channel_info()[0]  # must be computed before leaving the channel (access rights)
-        member.unlink()
+        member.unlink
         # side effect of unsubscribe that wasn't taken into account because
         # channel_info is called before actually unpinning the channel
         channel_info['is_pinned'] = False

@@ -44,7 +44,7 @@ class TestDataRecycle(TransactionCase):
         self.assertEqual(set(self.recycle_model.recycle_record_ids.mapped('res_id')), set(self.old_partners.ids))
 
         # Test record deletion outside of the recycle scope
-        self.old_partners[0].unlink()
+        self.old_partners[0].unlink
         self.assertEqual(self.recycle_model.recycle_record_ids[0].name, '**Record Deleted**')
 
     def test_recycle_domain(self):

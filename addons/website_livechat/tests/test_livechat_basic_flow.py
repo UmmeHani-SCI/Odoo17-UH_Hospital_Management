@@ -52,7 +52,7 @@ class TestLivechatBasicFlowHttpCase(HttpCaseWithUserDemo, TestLivechatCommon):
 
         # Check Channel naming
         self.assertEqual(channel_1.name, "%s %s" % (f'Visitor #{channel_1.livechat_visitor_id.id}', self.operator.livechat_username))
-        channel_1.unlink()
+        channel_1.unlink
 
         # Remove livechat_username
         self.operator.livechat_username = False

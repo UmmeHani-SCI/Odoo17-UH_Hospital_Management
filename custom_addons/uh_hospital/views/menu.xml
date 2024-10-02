@@ -6,6 +6,7 @@
               web_icon="uh_hospital,static\description\icon.png"
               sequence="1"/>
 
+
     <!-- Front Desk Submenu -->
     <menuitem id="menu_frontDesk"
               name="Front Desk"
@@ -36,6 +37,18 @@
               action="action_hospital_appointment_line"
               sequence="1"/>
 
+        <!-- Configuration Submenu -->
+    <menuitem id="menu_doctor"
+              name="Doctor"
+              parent="menu_hospital_root"
+              sequence="20"/>
+
+    <!-- Example: Submenus under Doctor -->
+    <menuitem id="menu_doctor_specialties"
+              name="Doctor Specialties"
+              parent="menu_doctor"
+              action="action_hospital_doctor_specialties"
+              sequence="1"/>
 
 
 </odoo>

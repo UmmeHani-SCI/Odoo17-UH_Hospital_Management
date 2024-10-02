@@ -95,7 +95,7 @@ class Slide(models.Model):
 
     def unlink(self):
         old_surveys = self.mapped('survey_id')
-        result = super(Slide, self).unlink()
+        result = super(Slide, self).unlink
         self._ensure_challenge_category(old_surveys=old_surveys, unlink=True)
         return result
 

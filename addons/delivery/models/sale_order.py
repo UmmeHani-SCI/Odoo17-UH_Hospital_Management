@@ -53,7 +53,7 @@ class SaleOrder(models.Model):
                 _('You can not update the shipping costs on an order where it was already invoiced!\n\nThe following delivery lines (product, invoiced quantity and price) have already been processed:\n\n')
                 + '\n'.join(['- %s: %s x %s' % (line.product_id.with_context(display_default_code=False).display_name, line.qty_invoiced, line.price_unit) for line in delivery_lines])
             )
-        to_delete.unlink()
+        to_delete.unlink
 
     def set_delivery_line(self, carrier, amount):
         self._remove_delivery_line()

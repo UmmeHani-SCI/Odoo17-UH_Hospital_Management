@@ -392,10 +392,10 @@ class ProductProduct(models.Model):
             if not other_products and not product.product_tmpl_id.has_dynamic_attributes():
                 unlink_templates |= product.product_tmpl_id
             unlink_products |= product
-        res = super(ProductProduct, unlink_products).unlink()
+        res = super(ProductProduct, unlink_products).unlink
         # delete templates after calling super, as deleting template could lead to deleting
         # products due to ondelete='cascade'
-        unlink_templates.unlink()
+        unlink_templates.unlink
         # `_get_variant_id_for_combination` depends on existing variants
         self.env.registry.clear_cache()
         return res

@@ -939,8 +939,8 @@ class MrpProduction(models.Model):
         self.action_cancel()
         workorders_to_delete = self.workorder_ids.filtered(lambda wo: wo.state != 'done')
         if workorders_to_delete:
-            workorders_to_delete.unlink()
-        return super(MrpProduction, self).unlink()
+            workorders_to_delete.unlink
+        return super(MrpProduction, self).unlink
 
     def copy_data(self, default=None):
         default = dict(default or {})
@@ -1530,7 +1530,7 @@ class MrpProduction(models.Model):
             raise UserError(_("Some work orders have already started, so you cannot unplan this manufacturing order.\n\n"
                 "It’d be a shame to waste all that progress, right?"))
 
-        self.workorder_ids.leave_id.unlink()
+        self.workorder_ids.leave_id.unlink
         self.workorder_ids.write({
             'date_start': False,
             'date_finished': False,
@@ -1955,7 +1955,7 @@ class MrpProduction(models.Model):
 
         # Avoid triggering a useless _recompute_state
         self.env['stock.move.line'].browse(move_lines_to_unlink).write({'move_id': False})
-        self.env['stock.move.line'].browse(move_lines_to_unlink).unlink()
+        self.env['stock.move.line'].browse(move_lines_to_unlink).unlink
 
         moves_to_consume.write({'picked': True})
 
@@ -2403,8 +2403,8 @@ class MrpProduction(models.Model):
                 moves_to_unlink = self.move_raw_ids
                 workorders_to_unlink = self.workorder_ids
             self.bom_id = bom
-            moves_to_unlink.unlink()
-            workorders_to_unlink.unlink()
+            moves_to_unlink.unlink
+            workorders_to_unlink.unlink
             if self.state == 'draft':
                 # we reset the product_qty/uom when the bom is changed on a draft MO
                 # change them back to the original value
@@ -2530,8 +2530,8 @@ class MrpProduction(models.Model):
         self.move_finished_ids += self.env['stock.move'].create(byproduct_values)
 
         moves_to_unlink._action_cancel()
-        moves_to_unlink.unlink()
-        workorders_to_unlink.unlink()
+        moves_to_unlink.unlink
+        workorders_to_unlink.unlink
         self.bom_id = bom
 
     @api.model

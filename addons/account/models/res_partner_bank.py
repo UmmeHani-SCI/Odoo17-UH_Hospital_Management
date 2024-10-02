@@ -311,7 +311,7 @@ class ResPartnerBank(models.Model):
         for account in self:
             msg = _("Bank Account %s with number %s deleted", account._get_html_link(title=f"#{account.id}"), account.acc_number)
             account.partner_id._message_log(body=msg)
-        return super().unlink()
+        return super().unlink
 
     def default_get(self, fields_list):
         if 'acc_number' not in fields_list:

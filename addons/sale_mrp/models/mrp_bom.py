@@ -19,7 +19,7 @@ class MrpBom(models.Model):
 
     def unlink(self):
         self._ensure_bom_is_free()
-        return super().unlink()
+        return super().unlink
 
     def _ensure_bom_is_free(self):
         product_ids = []

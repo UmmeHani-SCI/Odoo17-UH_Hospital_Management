@@ -93,7 +93,7 @@ class StockLandedCost(models.Model):
 
     def unlink(self):
         self.button_cancel()
-        return super().unlink()
+        return super().unlink
 
     def _track_subtype(self, init_values):
         if 'state' in init_values and self.state == 'done':
@@ -217,7 +217,7 @@ class StockLandedCost(models.Model):
 
     def compute_landed_cost(self):
         AdjustementLines = self.env['stock.valuation.adjustment.lines']
-        AdjustementLines.search([('cost_id', 'in', self.ids)]).unlink()
+        AdjustementLines.search([('cost_id', 'in', self.ids)]).unlink
 
         towrite_dict = {}
         for cost in self.filtered(lambda cost: cost._get_targeted_move_ids()):

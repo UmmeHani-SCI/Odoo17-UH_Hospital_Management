@@ -134,7 +134,7 @@ class TestChannelStatistics(common.SlidesCase):
         self.assertEqual(channel_publisher.completion, 25)
 
         # Should update completion when a slide is unlinked
-        self.slide_4.with_user(self.user_manager).unlink()
+        self.slide_4.with_user(self.user_manager).unlink
         self.assertEqual(member_emp.completion, 100)
         self.assertEqual(channel_emp.completion, 100)
         self.assertEqual(member_publisher.completion, 33)

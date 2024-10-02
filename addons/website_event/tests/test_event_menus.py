@@ -59,7 +59,7 @@ class TestEventMenus(OnlineEventCase, HttpCase):
         self._assert_website_menus(event, ['Introduction', 'Location', 'Register'], menus_out=['Community'])
 
         # simulate menu removal from frontend: aka unlinking a menu
-        event.menu_id.child_id.filtered(lambda menu: menu.name == 'Introduction').unlink()
+        event.menu_id.child_id.filtered(lambda menu: menu.name == 'Introduction').unlink
 
         self.assertTrue(event.website_menu)
         self._assert_website_menus(event, ['Location', 'Register'], menus_out=['Introduction', 'Community'])

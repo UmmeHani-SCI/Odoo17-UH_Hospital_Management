@@ -1213,5 +1213,5 @@ class Survey(models.Model):
             goals_to_delete = challenges_to_delete.mapped('line_ids').mapped('definition_id')
             badges.action_archive()
             # delete all challenges and goals because not needed anymore (challenge lines are deleted in cascade)
-            challenges_to_delete.unlink()
-            goals_to_delete.unlink()
+            challenges_to_delete.unlink
+            goals_to_delete.unlink

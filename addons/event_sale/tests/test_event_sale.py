@@ -490,7 +490,7 @@ class TestEventSale(TestEventSaleCommon):
         event = self.env['event.event'].browse(self.event_0.ids)
         self.register_person.action_make_registration()
         self.assertEqual(len(event.registration_ids), 1)
-        self.sale_order.unlink()
+        self.sale_order.unlink
         self.assertEqual(len(event.registration_ids), 0)
 
     @users('user_salesman')
@@ -500,7 +500,7 @@ class TestEventSale(TestEventSaleCommon):
         event = self.env['event.event'].browse(self.event_0.ids)
         self.register_person.action_make_registration()
         self.assertEqual(len(event.registration_ids), 1)
-        self.sale_order.order_line.unlink()
+        self.sale_order.order_line.unlink
         self.assertEqual(len(event.registration_ids), 0)
 
     @users('user_salesman')

@@ -44,7 +44,7 @@ class CustomerPortal(portal.CustomerPortal):
             quantity = order_line.product_uom_qty + number
 
         if unlink or quantity <= 0:
-            order_line.unlink()
+            order_line.unlink
         else:
             order_line.product_uom_qty = quantity
 

@@ -116,7 +116,7 @@ class Menu(models.Model):
             menus_to_remove |= self.env['website.menu'].search([('url', '=', menu.url),
                                                                 ('website_id', '!=', False),
                                                                 ('id', '!=', menu.id)])
-        return super(Menu, menus_to_remove).unlink()
+        return super(Menu, menus_to_remove).unlink
 
     @api.ondelete(at_uninstall=False)
     def _unlink_except_master_tags(self):
@@ -249,7 +249,7 @@ class Menu(models.Model):
                     menu['parent_id'] = new_id
         to_delete = data.get('to_delete')
         if to_delete:
-            self.browse(to_delete).unlink()
+            self.browse(to_delete).unlink
         for menu in data['data']:
             mid = menu['id']
             # new menu are prefixed by new-

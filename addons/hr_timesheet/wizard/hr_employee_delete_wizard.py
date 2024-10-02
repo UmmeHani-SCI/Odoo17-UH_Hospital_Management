@@ -47,7 +47,7 @@ class HrEmployeDeleteWizard(models.TransientModel):
 
     def action_confirm_delete(self):
         self.ensure_one()
-        self.employee_ids.unlink()
+        self.employee_ids.unlink
         return self.env['ir.actions.act_window']._for_xml_id('hr.open_view_employee_list_my')
 
     def action_open_timesheets(self):

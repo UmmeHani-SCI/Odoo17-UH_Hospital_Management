@@ -28,7 +28,7 @@ class TestSaleCouponMultiwebsite(TestSaleCouponNumbersCommon):
         })
 
         def _remove_reward():
-            order.order_line.filtered('is_reward_line').unlink()
+            order.order_line.filtered('is_reward_line').unlink
             self.assertEqual(len(order.order_line.ids), 1, "Program should have been removed")
 
         def _apply_code(code, backend=True):

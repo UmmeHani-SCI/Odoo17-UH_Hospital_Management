@@ -266,7 +266,7 @@ class TestUi(HttpCaseWithUserDemo, HttpCaseWithUserPortal):
         # archive first combination (first variant)
         product_template.product_variant_ids[0].active = False
         # delete second combination (which is now first variant since cache has been cleared)
-        product_template.product_variant_ids[0].unlink()
+        product_template.product_variant_ids[0].unlink
 
         self.start_tour("/", 'tour_shop_deleted_archived_variants', login="portal")
 

@@ -13,8 +13,8 @@ class TestProcurement(TestMrpCommon):
     def test_procurement(self):
         """This test case when create production order check procurement is create"""
         # Update BOM
-        self.bom_3.bom_line_ids.filtered(lambda x: x.product_id == self.product_5).unlink()
-        self.bom_1.bom_line_ids.filtered(lambda x: x.product_id == self.product_1).unlink()
+        self.bom_3.bom_line_ids.filtered(lambda x: x.product_id == self.product_5).unlink
+        self.bom_1.bom_line_ids.filtered(lambda x: x.product_id == self.product_1).unlink
         # Update route
         self.warehouse = self.env.ref('stock.warehouse0')
         self.warehouse.mto_pull_id.route_id.active = True
@@ -546,7 +546,7 @@ class TestProcurement(TestMrpCommon):
         mto_route.action_unarchive()
         # Setup for the secondary test
         routes_count = self.env['stock.route'].search_count([])
-        mto_route.rule_ids.search([('company_id', 'not in', (False, self.env.company.id))]).unlink()
+        mto_route.rule_ids.search([('company_id', 'not in', (False, self.env.company.id))]).unlink
         mto_route.company_id = self.env.company
         # Define products requested for this BoM.
         product = self.env['product.product'].create({

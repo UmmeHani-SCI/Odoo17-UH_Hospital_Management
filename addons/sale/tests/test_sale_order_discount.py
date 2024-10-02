@@ -49,7 +49,7 @@ class TestSaleOrderDiscount(SaleCommon):
         self.assertEqual(discount_line.product_uom_qty, 1.0)
 
         # One tax group
-        discount_line.unlink()
+        discount_line.unlink
         dumb_tax = self.env['account.tax'].create({'name': 'test'})
         solines.tax_id = dumb_tax
         self.wizard.action_apply_discount()
@@ -61,7 +61,7 @@ class TestSaleOrderDiscount(SaleCommon):
         self.assertEqual(discount_line.product_uom_qty, 1.0)
 
         # Two tax groups
-        discount_line.unlink()
+        discount_line.unlink
         solines[0].tax_id = [Command.clear()]
         self.wizard.action_apply_discount()
         discount_lines = self.sale_order.order_line - solines

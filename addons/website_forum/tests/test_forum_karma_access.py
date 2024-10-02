@@ -329,15 +329,15 @@ class TestForumKarma(TestForumCommon):
 
     def test_unlink_post_all(self):
         self.user_portal.karma = KARMA['unlink_all']
-        self.post.with_user(self.user_portal).unlink()
+        self.post.with_user(self.user_portal).unlink
 
     def test_unlink_post_crash(self):
         with self.assertRaises(AccessError):
-            self.post.with_user(self.user_portal).unlink()
+            self.post.with_user(self.user_portal).unlink
 
     def test_unlink_post_own(self):
         self.post.create_uid.karma = KARMA['unlink_own']
-        self.post.unlink()
+        self.post.unlink
 
     def test_validate_a_post(self):
         Post = self.env['forum.post']

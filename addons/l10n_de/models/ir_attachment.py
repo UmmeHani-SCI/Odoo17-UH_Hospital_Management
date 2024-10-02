@@ -49,4 +49,4 @@ class IrAttachment(models.Model):
                     user=self.env.user.name,
                     date=today,
                 )
-        return super(IrAttachment, self - invoice_pdf_attachments).unlink()
+        return super(IrAttachment, self - invoice_pdf_attachments).unlink

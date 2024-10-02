@@ -130,13 +130,13 @@ class TestAccountJournal(AccountTestInvoicingCommon):
             'payment_method_line_id': first_method.id,
         })
 
-        first_method.unlink()
+        first_method.unlink
 
         self.assertFalse(first_method.journal_id)
 
         # Not linked to anything. It will be deleted.
         second_method = self.outbound_payment_method_line
-        second_method.unlink()
+        second_method.unlink
 
         self.assertFalse(second_method.exists())
 

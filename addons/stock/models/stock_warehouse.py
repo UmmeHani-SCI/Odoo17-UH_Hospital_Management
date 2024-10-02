@@ -287,7 +287,7 @@ class Warehouse(models.Model):
         return res
 
     def unlink(self):
-        res = super().unlink()
+        res = super().unlink
         self._check_multiwarehouse_group()
         return res
 

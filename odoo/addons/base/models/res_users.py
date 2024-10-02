@@ -1489,7 +1489,7 @@ class GroupsView(models.Model):
         return res
 
     def unlink(self):
-        res = super(GroupsView, self).unlink()
+        res = super(GroupsView, self).unlink
         self._update_user_groups_view()
         # actions.get_bindings() depends on action records
         self.env.registry.clear_cache()
@@ -1687,7 +1687,7 @@ class ModuleCategory(models.Model):
         return res
 
     def unlink(self):
-        res = super().unlink()
+        res = super().unlink
         self.env["res.groups"]._update_user_groups_view()
         return res
 
@@ -2000,7 +2000,7 @@ class CheckIdentity(models.TransientModel):
     def revoke_all_devices(self):
         self._check_identity()
         self.env.user._change_password(self.password)
-        self.sudo().unlink()
+        self.sudo().unlink
         return {'type': 'ir.actions.client', 'tag': 'reload'}
 
 #----------------------------------------------------------
@@ -2063,7 +2063,7 @@ class ChangePasswordOwn(models.TransientModel):
     @check_identity
     def change_password(self):
         self.env.user._change_password(self.new_password)
-        self.unlink()
+        self.unlink
         # reload to avoid a session expired error
         # would be great to update the session id in-place, but it seems dicey
         return {'type': 'ir.actions.client', 'tag': 'reload'}
@@ -2178,7 +2178,7 @@ class APIKeys(models.Model):
             ip = request.httprequest.environ['REMOTE_ADDR'] if request else 'n/a'
             _logger.info("API key(s) removed: scope: <%s> for '%s' (#%s) from %s",
                self.mapped('scope'), self.env.user.login, self.env.uid, ip)
-            self.sudo().unlink()
+            self.sudo().unlink
             return {'type': 'ir.actions.act_window_close'}
         raise AccessError(_("You can not remove API keys unless they're yours or you are a system user"))
 
@@ -2230,7 +2230,7 @@ class APIKeyDescription(models.TransientModel):
 
         description = self.sudo()
         k = self.env['res.users.apikeys']._generate(None, self.sudo().name)
-        description.unlink()
+        description.unlink
 
         return {
             'type': 'ir.actions.act_window',

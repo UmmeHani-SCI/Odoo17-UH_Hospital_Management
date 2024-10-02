@@ -153,7 +153,7 @@ class View(models.Model):
                     # in the same order in the copied tree.
                     child = inherit_child.copy({'inherit_id': website_specific_view.id, 'key': inherit_child.key})
                     inherit_child.inherit_children_ids.write({'inherit_id': child.id})
-                    inherit_child.unlink()
+                    inherit_child.unlink
                 else:
                     # Trigger COW on inheriting views
                     inherit_child.write({'inherit_id': website_specific_view.id})
@@ -225,7 +225,7 @@ class View(models.Model):
             for view in self.filtered(lambda view: not view.website_id):
                 specific_views += view._get_specific_views()
 
-        result = super(View, self + specific_views).unlink()
+        result = super(View, self + specific_views).unlink
         self.env.registry.clear_cache('templates')
         return result
 

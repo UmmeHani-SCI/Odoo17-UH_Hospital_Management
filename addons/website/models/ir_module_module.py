@@ -263,7 +263,7 @@ class IrModuleModule(models.Model):
             for model_name in self._theme_model_names:
                 template = self._get_module_data(model_name)
                 models = template.with_context(**{'active_test': False, MODULE_UNINSTALL_FLAG: True}).mapped('copy_ids').filtered(lambda m: m.website_id == website)
-                models.unlink()
+                models.unlink
                 self._theme_cleanup(model_name, website)
 
     def _theme_cleanup(self, model_name, website):
@@ -297,7 +297,7 @@ class IrModuleModule(models.Model):
             ('website_id', '=', website.id),
             ('theme_template_id', '=', False),
         ])
-        orphans.unlink()
+        orphans.unlink
 
     def _theme_get_upstream(self):
         """

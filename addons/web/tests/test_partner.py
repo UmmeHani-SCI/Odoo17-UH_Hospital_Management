@@ -89,7 +89,7 @@ class TestPartnerVCard(HttpCase):
     @unittest.skip
     def test_not_exist_partner_vcard(self):
         partner_id = self.partner.id
-        self.partner.unlink()
+        self.partner.unlink
         res = self.url_open('/web/partner/%d/vcard' % partner_id)
         self.assertEqual(res.status_code, 404)
 

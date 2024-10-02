@@ -18,8 +18,8 @@ class TestWebsiteSequence(odoo.tests.TransactionCase):
         if 'loyalty.program' in self.env:
             programs = self.env['loyalty.program'].search([])
             programs.active = False
-            programs.coupon_ids.unlink()
-            programs.unlink()
+            programs.coupon_ids.unlink
+            programs.unlink
         product_templates.write({'active': False})
         self.p1, self.p2, self.p3, self.p4 = ProductTemplate.create([{
             'name': 'First Product',

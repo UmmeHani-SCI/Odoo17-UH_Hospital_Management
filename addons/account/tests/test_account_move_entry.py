@@ -223,7 +223,7 @@ class TestAccountMove(AccountTestInvoicingCommon):
             self.test_move.name = "Othername"
 
         with self.assertRaises(UserError), self.cr.savepoint():
-            self.test_move.unlink()
+            self.test_move.unlink
 
         with self.assertRaises(UserError), self.cr.savepoint():
             self.test_move.button_draft()
@@ -333,7 +333,7 @@ class TestAccountMove(AccountTestInvoicingCommon):
             self.test_move.name = "Othername"
 
         with self.assertRaises(UserError), self.cr.savepoint():
-            self.test_move.unlink()
+            self.test_move.unlink
 
         with self.assertRaises(UserError), self.cr.savepoint():
             self.test_move.button_draft()
@@ -413,7 +413,7 @@ class TestAccountMove(AccountTestInvoicingCommon):
 
         # You can't unlink an already reconciled line.
         with self.assertRaises(UserError), self.cr.savepoint():
-            draft_moves.unlink()
+            draft_moves.unlink
 
     def test_add_followers_on_post(self):
         # Add some existing partners, some from another company
@@ -576,7 +576,7 @@ class TestAccountMove(AccountTestInvoicingCommon):
     def test_misc_prevent_unlink_posted_items(self):
         def unlink_posted_items():
             self.test_move.line_ids.filtered(lambda l: not l.tax_repartition_line_id).balance = 0
-            self.test_move.line_ids[0].unlink()
+            self.test_move.line_ids[0].unlink
 
         # You cannot remove journal items if the related journal entry is posted.
         self.test_move.action_post()
@@ -864,7 +864,7 @@ class TestAccountMove(AccountTestInvoicingCommon):
             ]
         })
         tax_line = move.line_ids.filtered("tax_ids")
-        tax_line.unlink()
+        tax_line.unlink
 
         # But creating unbalanced misc entry shouldn't be allowed otherwise
         with self.assertRaisesRegex(UserError, r"The move \(.*\) is not balanced\."):

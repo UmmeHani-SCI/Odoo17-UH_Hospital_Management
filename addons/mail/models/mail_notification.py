@@ -99,7 +99,7 @@ class MailNotification(models.Model):
             ('res_partner_id.partner_share', '=', False),
             ('notification_status', 'in', ('sent', 'canceled'))
         ]
-        return self.search(domain).unlink()
+        return self.search(domain).unlink
 
     # ------------------------------------------------------------
     # TOOLS

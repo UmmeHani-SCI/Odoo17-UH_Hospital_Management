@@ -249,7 +249,7 @@ class Website(models.Model):
                 ('url', '=', '/cookie-policy'),
             ])
             if not values['cookies_bar']:
-                existing_policy_page.unlink()
+                existing_policy_page.unlink
             elif not existing_policy_page:
                 cookies_view = self.env.ref('website.cookie_policy', raise_if_not_found=False)
                 if cookies_view:
@@ -305,7 +305,7 @@ class Website(models.Model):
         self._remove_attachments_on_website_unlink()
 
         companies = self.company_id
-        res = super().unlink()
+        res = super().unlink
         companies._compute_website_id()
         return res
 
@@ -318,7 +318,7 @@ class Website(models.Model):
             ('url', '=like', '/_custom/%'),  # customized theme attachment
             ('url', 'ilike', '.assets\\_'),
         ])
-        attachments_to_unlink.unlink()
+        attachments_to_unlink.unlink
 
     def create_and_redirect_configurator(self):
         self._force()

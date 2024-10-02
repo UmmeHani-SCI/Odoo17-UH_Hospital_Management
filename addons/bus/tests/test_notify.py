@@ -82,7 +82,7 @@ class NotifyTests(TransactionCase):
         thread = threading.Thread(target=single_listen)
         thread.start()
 
-        self.env["bus.bus"].search([]).unlink()
+        self.env["bus.bus"].search([]).unlink
         self.env["bus.bus"]._sendone("channel 1", "test 1", {})
         self.env["bus.bus"]._sendone("channel 2", "test 2", {})
         self.env["bus.bus"]._sendone("channel 1", "test 3", {})

@@ -588,7 +588,7 @@ class OrderLine(models.Model):
             if other_line.reward and other_line.product == line.product
         ]
         self = self.union(*reward_lines)
-        return super().unlink()
+        return super().unlink
 
 
 class CompanyDependent(models.Model):
@@ -1939,4 +1939,4 @@ class ModelAutovacuumed(models.Model):
 
     @api.autovacuum
     def _gc(self):
-        self.search([('expire_at', '<', datetime.datetime.now() - datetime.timedelta(days=1))]).unlink()
+        self.search([('expire_at', '<', datetime.datetime.now() - datetime.timedelta(days=1))]).unlink

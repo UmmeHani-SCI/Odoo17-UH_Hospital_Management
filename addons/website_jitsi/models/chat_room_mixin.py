@@ -63,8 +63,8 @@ class ChatRoomMixin(models.AbstractModel):
 
     def unlink(self):
         rooms = self.chat_room_id
-        res = super(ChatRoomMixin, self).unlink()
-        rooms.unlink()
+        res = super(ChatRoomMixin, self).unlink
+        rooms.unlink
         return res
 
     def _jitsi_sanitize_name(self, name):

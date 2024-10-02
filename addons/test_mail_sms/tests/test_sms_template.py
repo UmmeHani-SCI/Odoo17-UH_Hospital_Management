@@ -86,5 +86,5 @@ class TestSmsTemplate(SMSCommon, TestSMSRecipients):
         self.sms_template.action_create_sidebar_action()
         action_id = self.sms_template.sidebar_action_id.id
 
-        self.sms_template.unlink()
+        self.sms_template.unlink
         self.assertEqual(ActWindow.search_count([('id', '=', action_id)]), 0)

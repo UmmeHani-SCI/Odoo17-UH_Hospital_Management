@@ -574,7 +574,7 @@ class TestReorderingRule(TransactionCase):
         self.assertTrue(po_line)
         self.assertEqual(po_line.partner_id, default_vendor)
         po_line.order_id.button_cancel()
-        po_line.order_id.unlink()
+        po_line.order_id.unlink
 
         # now force the vendor:
         po_line = self.env["purchase.order.line"].search(

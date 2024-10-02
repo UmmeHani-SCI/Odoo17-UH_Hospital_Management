@@ -30,7 +30,7 @@ class TestBLAccessRights(common.TestMassMailCommon):
             self.bl_rec.with_user(self.env.user).write({'email': 'jaimie.lannister@example.com'})
 
         with self.assertRaises(AccessError):
-            self.bl_rec.with_user(self.env.user).unlink()
+            self.bl_rec.with_user(self.env.user).unlink
 
     @users('portal_test')
     def test_bl_crud_portal(self):
@@ -44,7 +44,7 @@ class TestBLAccessRights(common.TestMassMailCommon):
             self.bl_rec.with_user(self.env.user).write({'email': 'jaimie.lannister@example.com'})
 
         with self.assertRaises(AccessError):
-            self.bl_rec.with_user(self.env.user).unlink()
+            self.bl_rec.with_user(self.env.user).unlink
 
     @users('user_marketing')
     def test_bl_crud_marketing(self):
@@ -56,7 +56,7 @@ class TestBLAccessRights(common.TestMassMailCommon):
         self.bl_rec.with_user(self.env.user).write({'email': 'jaimie.lannister@example.com'})
         self.assertEqual(self.bl_rec.email, 'jaimie.lannister@example.com')
 
-        self.bl_rec.with_user(self.env.user).unlink()
+        self.bl_rec.with_user(self.env.user).unlink
 
 
 class TestBLConsistency(common.TestMassMailCommon):

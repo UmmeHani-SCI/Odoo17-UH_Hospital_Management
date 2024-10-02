@@ -75,7 +75,7 @@ class HRLeave(models.Model):
             raise ValidationError(_('The employee does not have enough extra hours to request this leave.'))
 
         res = super().action_draft()
-        overtime_leaves.overtime_id.sudo().unlink()
+        overtime_leaves.overtime_id.sudo().unlink
         for leave in overtime_leaves:
             overtime = self.env['hr.attendance.overtime'].sudo().create({
                 'employee_id': leave.employee_id.id,
@@ -88,7 +88,7 @@ class HRLeave(models.Model):
 
     def action_refuse(self):
         res = super().action_refuse()
-        self.sudo().overtime_id.unlink()
+        self.sudo().overtime_id.unlink
         return res
 
     def _validate_leave_request(self):
@@ -111,9 +111,9 @@ class HRLeave(models.Model):
 
     def unlink(self):
         # TODO master change to ondelete
-        self.sudo().overtime_id.unlink()
-        return super().unlink()
+        self.sudo().overtime_id.unlink
+        return super().unlink
 
     def _force_cancel(self, *args, **kwargs):
         super()._force_cancel(*args, **kwargs)
-        self.sudo().overtime_id.unlink()
+        self.sudo().overtime_id.unlink

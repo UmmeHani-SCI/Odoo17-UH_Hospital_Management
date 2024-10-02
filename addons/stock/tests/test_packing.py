@@ -1818,7 +1818,7 @@ class TestPacking(TestPackingCommon):
         })
         delivery.action_confirm()
         self.assertEqual(delivery.package_level_ids.package_id, pack1 | pack2, 'The two first packages should be picked')
-        delivery.package_level_ids[-1].unlink()
+        delivery.package_level_ids[-1].unlink
         self.env['stock.package_level'].create({
             'package_id': pack3.id,
             'picking_id': delivery.id,
@@ -1826,7 +1826,7 @@ class TestPacking(TestPackingCommon):
             'location_dest_id': delivery.location_dest_id.id,
         })
         delivery.package_level_ids.is_done = True
-        delivery.move_line_ids.filtered(lambda ml: ml.package_id == pack2).unlink()
+        delivery.move_line_ids.filtered(lambda ml: ml.package_id == pack2).unlink
         delivery.action_assign()
         delivery.package_level_ids.invalidate_recordset()
         self.assertRecordValues(delivery.package_level_ids, [

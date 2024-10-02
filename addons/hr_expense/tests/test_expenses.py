@@ -197,17 +197,17 @@ class TestExpenses(TestExpenseCommon):
 
         # Trying to delete analytic accounts should be forbidden if linked to an expense
         with self.assertRaises(UserError):
-            (self.analytic_account_1 | self.analytic_account_2).unlink()
+            (self.analytic_account_1 | self.analytic_account_2).unlink
 
         # Unlinking moves
         (payment_1 | payment_2).action_draft()
         self.assertRecordValues(expense_sheet_by_employee, [{'payment_state': 'not_paid', 'state': 'post'}])
         expense_sheet_by_employee.account_move_ids.button_draft()
-        expense_sheet_by_employee.account_move_ids.unlink()
+        expense_sheet_by_employee.account_move_ids.unlink
 
         with self.assertRaises(UserError, msg="For company-paid expenses report, deleting payments is an all-or-nothing situation"):
-            expense_sheet_by_company.account_move_ids[:-1].payment_id.unlink()
-        expense_sheet_by_company.account_move_ids.payment_id.unlink()
+            expense_sheet_by_company.account_move_ids[:-1].payment_id.unlink
+        expense_sheet_by_company.account_move_ids.payment_id.unlink
 
         self.assertRecordValues(expense_sheets.sorted('payment_mode'), [
             {'payment_mode': 'company_account', 'state': 'approve', 'payment_state': 'not_paid', 'account_move_ids': []},
@@ -216,9 +216,9 @@ class TestExpenses(TestExpenseCommon):
 
         expense_sheet_by_employee.action_reset_expense_sheets()
         self.assertRecordValues(expense_sheet_by_employee, [{'state': 'draft', 'payment_state': 'not_paid', 'account_move_ids': []}])
-        expense_sheet_by_employee.expense_line_ids.unlink()
+        expense_sheet_by_employee.expense_line_ids.unlink
         # Only possible if no expense linked to the account
-        self.analytic_account_1.unlink()
+        self.analytic_account_1.unlink
 
         expense_sheet = self.env['hr.expense.sheet'].create({
             'name': 'Expense for John Smith',
@@ -871,7 +871,7 @@ class TestExpenses(TestExpenseCommon):
             }) if sheet_has_attachment else self.env['ir.attachment']
 
             assert_attachments_are_synced(sheet, sheet_attachment, sheet_has_attachment)
-            expense_1.attachment_ids.unlink()
+            expense_1.attachment_ids.unlink
             assert_attachments_are_synced(sheet, sheet_attachment, sheet_has_attachment)
             self.env['ir.attachment'].create({
                 'name': "test_file_1.txt",
@@ -886,11 +886,11 @@ class TestExpenses(TestExpenseCommon):
             assert_attachments_are_synced(sheet, sheet_attachment, sheet_has_attachment)
             sheet.expense_line_ids = [Command.set([expense_1.id, expense_3.id])]
             assert_attachments_are_synced(sheet, sheet_attachment, sheet_has_attachment)
-            expense_3.unlink()
+            expense_3.unlink
             assert_attachments_are_synced(sheet, sheet_attachment, sheet_has_attachment)
             sheet.attachment_ids.filtered(
                 lambda att: att.checksum in sheet.expense_line_ids.attachment_ids.mapped('checksum')
-            ).unlink()
+            ).unlink
             assert_attachments_are_synced(sheet, sheet_attachment, sheet_has_attachment)
 
     def test_create_report_name(self):

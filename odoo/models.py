@@ -4273,11 +4273,11 @@ class BaseModel(metaclass=MetaModel):
         # changes made in the database, like cascading delete!
         self.env.invalidate_all(flush=False)
         if ir_property_unlink:
-            ir_property_unlink.unlink()
+            ir_property_unlink.unlink
         if ir_model_data_unlink:
-            ir_model_data_unlink.unlink()
+            ir_model_data_unlink.unlink
         if ir_attachment_unlink:
-            ir_attachment_unlink.unlink()
+            ir_attachment_unlink.unlink
 
         # auditing: deletions are infrequent and leave no trace in the database
         _unlink.info('User #%s deleted %s records with IDs: %r', self._uid, self._name, self.ids)
@@ -5056,7 +5056,7 @@ class BaseModel(metaclass=MetaModel):
                 if not (update and d_noupdate):
                     to_update.append(data)
             else:
-                imd.browse(d_id).unlink()
+                imd.browse(d_id).unlink
                 to_create.append(data)
 
         # update existing records
@@ -7180,7 +7180,7 @@ class TransientModel(Model):
             SQL("(now() AT TIME ZONE 'UTC') - interval %s", f"{seconds} seconds"),
         ))
         ids = [x[0] for x in self._cr.fetchall()]
-        self.sudo().browse(ids).unlink()
+        self.sudo().browse(ids).unlink
 
 
 def itemgetter_tuple(items):

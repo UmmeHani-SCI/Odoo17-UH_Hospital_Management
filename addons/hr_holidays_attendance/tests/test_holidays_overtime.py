@@ -95,7 +95,7 @@ class TestHolidaysOvertime(TransactionCase):
 
             # An employee cannot delete an overtime adjustment
             with self.assertRaises(AccessError), self.cr.savepoint():
-                overtime.unlink()
+                overtime.unlink
 
             # ... nor change its duration
             with self.assertRaises(AccessError), self.cr.savepoint():
@@ -127,7 +127,7 @@ class TestHolidaysOvertime(TransactionCase):
         self.assertEqual(self.employee.total_overtime, 0)
 
         overtime = leave.overtime_id
-        leave.unlink()
+        leave.unlink
         self.assertFalse(overtime.exists(), "Overtime should be deleted along with the leave")
         self.assertEqual(self.employee.total_overtime, 8)
 

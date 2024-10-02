@@ -14,7 +14,7 @@ class TestAccessRightsTodo(TestAccessRights):
             self.private_task.with_user(self.env.user).write({'name': 'Test write'})
 
         with self.assertRaises(AccessError):
-            self.private_task.with_user(self.env.user).unlink()
+            self.private_task.with_user(self.env.user).unlink
 
         with self.assertRaises(AccessError):
             self.private_task.with_user(self.env.user).read(['name'])

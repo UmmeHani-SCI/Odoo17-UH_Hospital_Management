@@ -566,7 +566,7 @@ class TestMailgateway(MailCommon):
         self.assertEqual(alias_valid.alias_status, 'valid')
 
         # Test with a dangling reference that must trigger bounce emails and set the alias status to invalid.
-        container_custom.unlink()
+        container_custom.unlink
         with self.assertRaises(Exception), patch('odoo.addons.mail.models.mail_alias.Alias._alias_bounce_incoming_email',
                                                  autospec=True) as _alias_bounce_incoming_email_mock:
             self.format_and_process(MAIL_TEMPLATE, self.email_from, f'valid@{self.alias_domain}', subject='Invalid',

@@ -256,9 +256,9 @@ class AccountPaymentTerm(models.Model):
     def unlink(self):
         for terms in self:
             self.env['ir.property'].sudo().search(
-                [('value_reference', 'in', ['account.payment.term,%s'%payment_term.id for payment_term in terms])]
-            ).unlink()
-        return super(AccountPaymentTerm, self).unlink()
+                [('value_reference', 'in', ['account.payment.term,%s' % payment_term.id for payment_term in terms])]
+            ).unlink
+        return super(AccountPaymentTerm, self).unlink
 
     def _get_last_discount_date(self, date_ref):
         self.ensure_one()

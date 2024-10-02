@@ -140,7 +140,7 @@ class TestWarehouseMrp(common.TestMrpCommon):
         })
 
         # Update Bill Of Material to remove product with phantom bom.
-        self.bom_3.bom_line_ids.filtered(lambda x: x.product_id == self.product_5).unlink()
+        self.bom_3.bom_line_ids.filtered(lambda x: x.product_id == self.product_5).unlink
 
         # Create Inventory Adjustment For Stick and Stone Tools with lot.
         lot_product_4 = self.env['stock.lot'].create({

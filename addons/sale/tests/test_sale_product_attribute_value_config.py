@@ -220,7 +220,7 @@ class TestSaleProductAttributeValueConfig(TestSaleProductAttributeValueCommon):
         # CASE: variant does not exist, but template is non-dynamic, so it
         # should not create it
         Product = self.env['product.product']
-        variant1.unlink()
+        variant1.unlink
         self.assertEqual(self.computer._create_product_variant(combination), Product)
 
     def test_05_create_product_variant_dynamic(self):

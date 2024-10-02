@@ -19,4 +19,4 @@ class SaleOrderLine(models.Model):
                     disabled_rewards_per_order[line.order_id] |= line.reward_id
             for order, rewards in disabled_rewards_per_order.items():
                 order.disabled_auto_rewards += rewards
-        return super().unlink()
+        return super().unlink

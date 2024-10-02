@@ -385,7 +385,7 @@ class HrAttendance(models.Model):
         employees_worked_hours_to_compute = (affected_employees.ids +
                                              created_overtimes.employee_id.ids +
                                              overtime_to_unlink.employee_id.ids)
-        overtime_to_unlink.sudo().unlink()
+        overtime_to_unlink.sudo().unlink
         self.env.add_to_compute(self._fields['overtime_hours'],
                                 self.search([('employee_id', 'in', employees_worked_hours_to_compute)]))
 
@@ -412,7 +412,7 @@ class HrAttendance(models.Model):
 
     def unlink(self):
         attendances_dates = self._get_attendances_dates()
-        res = super().unlink()
+        res = super().unlink
         self._update_overtime(attendances_dates)
         return res
 

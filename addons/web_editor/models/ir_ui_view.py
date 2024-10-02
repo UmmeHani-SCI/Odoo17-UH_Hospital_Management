@@ -508,4 +508,4 @@ class IrUiView(models.Model):
         key = snippet_view.key.split('.')[1]
         custom_key = self._get_snippet_addition_view_key(template_key, key)
         snippet_addition_view = self.search([('key', '=', custom_key)])
-        (snippet_addition_view | snippet_view).unlink()
+        (snippet_addition_view | snippet_view).unlink

@@ -581,9 +581,9 @@ class WebsiteSale(payment_portal.PaymentPortal):
             product_template = product_product.product_tmpl_id
 
         if product_product and product_product.product_variant_image_ids:
-            product_product.product_variant_image_ids.unlink()
+            product_product.product_variant_image_ids.unlink
         else:
-            product_template.product_template_image_ids.unlink()
+            product_template.product_template_image_ids.unlink
 
     @http.route(['/shop/product/resequence-image'], type='json', auth='user', website=True)
     def resequence_product_image(self, image_res_model, image_res_id, move):
@@ -820,7 +820,7 @@ class WebsiteSale(payment_portal.PaymentPortal):
             'suggested_products': [],
         })
         if order:
-            order.order_line.filtered(lambda l: l.product_id and not l.product_id.active).unlink()
+            order.order_line.filtered(lambda l: l.product_id and not l.product_id.active).unlink
             values['suggested_products'] = order._cart_accessories()
             values.update(self._get_express_shop_payment_values(order))
 
@@ -943,7 +943,7 @@ class WebsiteSale(payment_portal.PaymentPortal):
     def clear_cart(self):
         order = request.website.sale_get_order()
         for line in order.order_line:
-            line.unlink()
+            line.unlink
 
     def _get_cart_notification_information(self, order, line_ids):
         """ Get the information about the sale order line to show in the notification.
@@ -1986,7 +1986,8 @@ class WebsiteSale(payment_portal.PaymentPortal):
     def products_recently_viewed_delete(self, product_id, **kwargs):
         visitor_sudo = request.env['website.visitor']._get_visitor_from_request()
         if visitor_sudo:
-            request.env['website.track'].sudo().search([('visitor_id', '=', visitor_sudo.id), ('product_id', '=', product_id)]).unlink()
+            request.env['website.track'].sudo().search(
+                [('visitor_id', '=', visitor_sudo.id), ('product_id', '=', product_id)]).unlink
         return {}
 
 

@@ -527,9 +527,9 @@ class AccountMove(models.Model):
             'l10n_vn_edi_invoice_state': False,
         })
         # Cleanup the files as well. They will still be available in the chatter.
-        cancelled_sinvoices.l10n_vn_edi_sinvoice_xml_file_id.unlink()
-        cancelled_sinvoices.l10n_vn_edi_sinvoice_pdf_file_id.unlink()
-        cancelled_sinvoices.l10n_vn_edi_sinvoice_file_id.unlink()
+        cancelled_sinvoices.l10n_vn_edi_sinvoice_xml_file_id.unlink
+        cancelled_sinvoices.l10n_vn_edi_sinvoice_pdf_file_id.unlink
+        cancelled_sinvoices.l10n_vn_edi_sinvoice_file_id.unlink
         return res
 
     def _l10n_vn_edi_generate_invoice_json(self):

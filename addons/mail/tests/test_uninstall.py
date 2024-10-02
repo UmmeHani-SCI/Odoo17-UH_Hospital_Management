@@ -25,7 +25,7 @@ class TestMailUninstall(TransactionCase):
             'res_id': record.id,
         })
 
-        model.unlink()
+        model.unlink
         self.assertFalse(model.exists())
         self.assertFalse(activity_type.exists())
         self.assertFalse(activity.exists())

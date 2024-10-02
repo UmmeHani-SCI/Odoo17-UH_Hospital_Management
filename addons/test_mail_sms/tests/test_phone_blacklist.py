@@ -57,7 +57,7 @@ class TestPhoneBlacklist(SMSCommon, TestSMSRecipients):
             rec = self.env['mail.test.sms.bl'].search([('phone_sanitized_blacklisted', '=', True)])
             self.assertEqual(rec, test_record)
 
-            bl_record.unlink()
+            bl_record.unlink
             rec = self.env['mail.test.sms.bl'].search([('phone_sanitized_blacklisted', '=', True)])
             self.assertEqual(rec, self.env['mail.test.sms.bl'])
 

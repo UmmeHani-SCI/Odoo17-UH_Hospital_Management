@@ -16,7 +16,7 @@ class TestEGEdiCommon(AccountEdiTestCommon):
 
         cls.currency_aed_id = cls.env.ref('base.AED')
         cls.currency_aed_id.write({'active': True})
-        cls.env['res.currency.rate'].search([]).unlink()
+        cls.env['res.currency.rate'].search([]).unlink
         cls.env['res.currency.rate'].create({'currency_id': cls.currency_aed_id.id,
                                             'rate': 0.198117095128, 'name': '2022-03-15'})
 

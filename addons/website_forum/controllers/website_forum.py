@@ -449,7 +449,7 @@ class WebsiteForum(WebsiteProfile):
     @http.route('/forum/<model("forum.forum"):forum>/post/<model("forum.post"):post>/delete', type='http', auth="user", methods=['POST'], website=True)
     def post_delete(self, forum, post, **kwargs):
         question = post.parent_id
-        post.unlink()
+        post.unlink
         if question:
             request.redirect("/forum/%s/%s" % (slug(forum), slug(question)))
         return request.redirect("/forum/%s" % slug(forum))

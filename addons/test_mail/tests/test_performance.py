@@ -490,7 +490,7 @@ class TestBaseAPIPerformance(BaseMailPerformance):
         self.assertFalse(message.attachment_ids)
 
         # remove created partner to ensure tests are the same each run
-        self.env['res.partner'].sudo().search([('email', '=', 'nopartner.test@example.com')]).unlink()
+        self.env['res.partner'].sudo().search([('email', '=', 'nopartner.test@example.com')]).unlink
 
     @users('admin', 'employee')
     @warmup
@@ -517,7 +517,7 @@ class TestBaseAPIPerformance(BaseMailPerformance):
         )
 
         # remove created partner to ensure tests are the same each run
-        self.env['res.partner'].sudo().search([('email', '=', 'nopartner.test@example.com')]).unlink()
+        self.env['res.partner'].sudo().search([('email', '=', 'nopartner.test@example.com')]).unlink
 
     @users('admin', 'employee')
     @warmup
@@ -548,7 +548,7 @@ class TestBaseAPIPerformance(BaseMailPerformance):
         self.assertEqual(message.notified_partner_ids, customer + self.user_test.partner_id + new_partner)
 
         # remove created partner to ensure tests are the same each run
-        new_partner.unlink()
+        new_partner.unlink
 
     @users('admin', 'employee')
     @warmup
@@ -581,7 +581,7 @@ class TestBaseAPIPerformance(BaseMailPerformance):
         self.assertEqual(message.notified_partner_ids, customer + self.user_test.partner_id + new_partner)
 
         # remove created partner to ensure tests are the same each run
-        new_partner.unlink()
+        new_partner.unlink
 
     @mute_logger('odoo.tests', 'odoo.addons.mail.models.mail_mail', 'odoo.models.unlink')
     @users('admin', 'employee')

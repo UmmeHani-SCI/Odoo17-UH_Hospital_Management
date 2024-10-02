@@ -346,7 +346,7 @@ class RecurrenceRule(models.Model):
         events = self._get_events_from(event.start)
         detached_events = self._detach_events(events)
         if not self.calendar_event_ids:
-            self.with_context(archive_on_error=True).unlink()
+            self.with_context(archive_on_error=True).unlink
             return detached_events
 
         if event.allday:

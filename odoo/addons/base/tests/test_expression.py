@@ -211,7 +211,7 @@ class TestExpression(SavepointCaseWithUserDemo):
 
         # restrict access of user Demo to partners Top and Bottom
         accessible = top + bot
-        self.env['ir.rule'].search([]).unlink()
+        self.env['ir.rule'].search([]).unlink
         self.env['ir.rule'].create({
             'name': 'partners rule',
             'model_id': self.env['ir.model']._get('res.partner').id,
@@ -1295,7 +1295,7 @@ class TestQueries(TransactionCase):
     @mute_logger('odoo.models.unlink')
     def test_access_rules(self):
         Model = self.env['res.users'].with_user(self.env.ref('base.user_admin'))
-        self.env['ir.rule'].search([]).unlink()
+        self.env['ir.rule'].search([]).unlink
         self.env['ir.rule'].create([{
             'name': 'users rule',
             'model_id': self.env['ir.model']._get('res.users').id,

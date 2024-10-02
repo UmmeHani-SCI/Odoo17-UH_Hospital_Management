@@ -90,7 +90,7 @@ class TestMassMailing(models.TransientModel):
                 )
 
         # manually delete the emails since we passed 'auto_delete: False'
-        mails_sudo.unlink()
+        mails_sudo.unlink
 
         if notification_messages:
             self.mass_mailing_id._message_log(body=Markup('<ul>%s</ul>') % Markup().join(

@@ -328,7 +328,7 @@ class TestWebPushNotification(SMSCommon):
         ir_params_sudo.search([('key', 'in', [
             'mail.web_push_vapid_private_key',
             'mail.web_push_vapid_public_key'
-        ])]).unlink()
+        ])]).unlink
         new_vapid_public_key = self.env['mail.partner.device'].get_web_push_vapid_public_key()
         self.assertNotEqual(self.vapid_public_key, new_vapid_public_key)
         with self.assertRaises(InvalidVapidError):

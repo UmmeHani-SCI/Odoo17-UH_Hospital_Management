@@ -13,7 +13,7 @@ class TestResPartnerIap(MailCommon):
     def test_res_partner_iap_constraint(self):
         partner = self.partner_employee
 
-        self.env["res.partner.iap"].search([("partner_id", "=", partner.id)]).unlink()
+        self.env["res.partner.iap"].search([("partner_id", "=", partner.id)]).unlink
         self.env["res.partner.iap"].create({"partner_id": partner.id, "iap_enrich_info": "test info"})
 
         with self.assertRaises(psycopg2.IntegrityError, msg="Can create only one partner IAP per partner"):
@@ -28,7 +28,7 @@ class TestResPartnerIap(MailCommon):
         partner.invalidate_recordset()
         self.assertEqual(partner.iap_enrich_info, "test info")
 
-        partner_iap.unlink()
+        partner_iap.unlink
         partner.iap_enrich_info = "test info 2"
 
         partner_iap = self.env["res.partner.iap"].search([("partner_id", "=", partner.id)])

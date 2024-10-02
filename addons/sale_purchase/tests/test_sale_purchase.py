@@ -116,7 +116,7 @@ class TestSalePurchase(TestCommonSalePurchaseNoChart):
     def test_no_supplier(self):
         """ Test confirming SO with product with no supplier raise Error """
         # delete the suppliers
-        self.supplierinfo1.unlink()
+        self.supplierinfo1.unlink
         # confirm the SO should raise UserError
         with self.assertRaises(UserError):
             self.sale_order_1.action_confirm()

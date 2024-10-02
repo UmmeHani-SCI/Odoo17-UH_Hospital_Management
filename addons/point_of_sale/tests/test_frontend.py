@@ -38,7 +38,7 @@ class TestPointOfSaleHttpCommon(AccountTestInvoicingHttpCommon):
         env.company.account_default_pos_receivable_account_id = account_receivable
         env['ir.property']._set_default('property_account_receivable_id', 'res.partner', account_receivable, main_company)
         # Pricelists are set below, do not take demo data into account
-        env['ir.property'].sudo().search([('name', '=', 'property_product_pricelist')]).unlink()
+        env['ir.property'].sudo().search([('name', '=', 'property_product_pricelist')]).unlink
 
         # Create user.
         cls.pos_user = cls.env['res.users'].create({
@@ -74,7 +74,7 @@ class TestPointOfSaleHttpCommon(AccountTestInvoicingHttpCommon):
             'name': 'Bank',
             'journal_id': cls.bank_journal.id,
         })
-        env['pos.config'].search([]).unlink()
+        env['pos.config'].search([]).unlink
         cls.main_pos_config = env['pos.config'].create({
             'name': 'Shop',
             'module_pos_restaurant': False,

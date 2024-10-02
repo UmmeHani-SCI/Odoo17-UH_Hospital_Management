@@ -33,4 +33,4 @@ class MrpDocument(models.Model):
 
     def unlink(self):
         self.mapped('ir_attachment_id').unlink()
-        return super(MrpDocument, self).unlink()
+        return super(MrpDocument, self).unlink

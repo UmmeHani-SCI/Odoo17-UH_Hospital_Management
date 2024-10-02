@@ -451,7 +451,8 @@ class AccountReportLine(models.Model):
                 # If we want to replace a formula shortcut with a full-syntax expression, we need to make the formula field falsy
                 # We can't simply remove it from the xml because it won't be updated
                 # If the formula field is falsy, we need to remove the expression that it generated
-                report_line.expression_ids.filtered(lambda exp: exp.engine == engine and exp.label == 'balance' and not xml_ids.get(exp.id)).unlink()
+                report_line.expression_ids.filtered(
+                    lambda exp: exp.engine == engine and exp.label == 'balance' and not xml_ids.get(exp.id)).unlink
                 continue
 
             vals = {
@@ -473,7 +474,7 @@ class AccountReportLine(models.Model):
                         # we expect the shortcut to replace the original expression. The full declaration should also
                         # be removed from the data file, leading to the ORM deleting it automatically.
                         if xml_ids.get(expression.id):
-                            expression.unlink()
+                            expression.unlink
                             vals_list.append(vals)
                         else:
                             expression.write(vals)
@@ -493,7 +494,7 @@ class AccountReportLine(models.Model):
         the @api.ondelete method _unlink_archive_used_tags is not automatically
         called if the parent model is deleted.
         """
-        self.expression_ids.unlink()
+        self.expression_ids.unlink
 
 
 class AccountReportExpression(models.Model):
@@ -693,7 +694,7 @@ class AccountReportExpression(models.Model):
             rep_lines_with_tag = self.env['account.tax.repartition.line'].sudo().search([('tag_ids', 'in', (tags_to_archive + tags_to_unlink).ids)])
             rep_lines_with_tag.write({'tag_ids': [Command.unlink(tag.id) for tag in tags_to_archive + tags_to_unlink]})
             tags_to_archive.active = False
-            tags_to_unlink.unlink()
+            tags_to_unlink.unlink
 
     @api.depends('report_line_name', 'label')
     def _compute_display_name(self):

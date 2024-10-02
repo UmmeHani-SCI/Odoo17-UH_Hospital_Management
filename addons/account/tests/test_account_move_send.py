@@ -831,7 +831,7 @@ class TestAccountMoveSend(TestAccountMoveSendCommon):
         # Manually remove the attachment and check the mail's attachments are not removed.
         invoice_pdf_report_name = invoice.invoice_pdf_report_id.name
         invoice_pdf_report_datas = invoice.invoice_pdf_report_id.datas
-        invoice.invoice_pdf_report_id.unlink()
+        invoice.invoice_pdf_report_id.unlink
         self.assertRecordValues(message.attachment_ids.sorted('name'), [
             {
                 'name': invoice_pdf_report_name,

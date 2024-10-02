@@ -163,7 +163,7 @@ class ProductTemplateAttributeLine(models.Model):
         # - For single value lines because the values are directly removed from
         #   the variants.
         # - For values that are present on variants that can be deleted.
-        self.product_template_value_ids._only_active().unlink()
+        self.product_template_value_ids._only_active().unlink
         # Keep a reference to the related templates before the deletion.
         templates = self.product_tmpl_id
         # Now delete or archive the lines.
@@ -171,7 +171,7 @@ class ProductTemplateAttributeLine(models.Model):
         for ptal in self:
             try:
                 with self.env.cr.savepoint(), tools.mute_logger('odoo.sql_db'):
-                    super(ProductTemplateAttributeLine, ptal).unlink()
+                    super(ProductTemplateAttributeLine, ptal).unlink
             except Exception:
                 # We catch all kind of exceptions to be sure that the operation
                 # doesn't fail.
@@ -245,7 +245,7 @@ class ProductTemplateAttributeLine(models.Model):
             ptav_to_activate.write({'ptav_active': True})
             ptav_to_unlink.write({'ptav_active': False})
         if ptav_to_unlink:
-            ptav_to_unlink.unlink()
+            ptav_to_unlink.unlink
         ProductTemplateAttributeValue.create(ptav_to_create)
         self.product_tmpl_id._create_variant_ids()
 

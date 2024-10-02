@@ -57,8 +57,8 @@ class WebsiteControllerPage(models.Model):
         )
         # Rebind self to avoid unlink already deleted records from `ondelete="cascade"`
         self = self - views_to_delete.controller_page_ids
-        views_to_delete.unlink()
+        views_to_delete.unlink
 
         # Make sure website._get_menu_ids() will be recomputed
         self.env.registry.clear_cache()
-        return super().unlink()
+        return super().unlink

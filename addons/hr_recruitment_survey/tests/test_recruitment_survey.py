@@ -40,7 +40,7 @@ class TestRecruitmentSurvey(common.SingleTransactionCase):
         self.job_sysadmin.response_ids = False
         Answer = self.env['survey.user_input']
         answers = Answer.search([('survey_id', '=', self.survey_sysadmin.id)])
-        answers.unlink()
+        answers.unlink
 
         self.survey_sysadmin.write({'access_mode': 'public', 'users_login_required': False})
         action = self.job_sysadmin.action_send_survey()

@@ -204,7 +204,7 @@ class One2manyCase(TransactionCase):
         with self.assertRaises(UserError):
             MergeWizard_with_context.create({}).action_merge()
 
-        u2.unlink()
+        u2.unlink
         MergeWizard_with_context.create({}).action_merge()
         self.assertTrue(dst_partner.exists())
         self.assertEqual(u1.partner_id.id, dst_partner.id)
@@ -312,7 +312,7 @@ class One2manyCase(TransactionCase):
         self.assertEqual(child.size1, 6)
 
         # delete parent, and check that recomputation ends
-        parent.unlink()
+        parent.unlink
         self.env.flush_all()
 
     def test_compute_stored_many2one_one2many(self):

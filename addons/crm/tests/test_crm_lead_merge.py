@@ -498,8 +498,8 @@ class TestLeadMerge(TestLeadMergeCommon):
         lead_w_partner              contact_2           KO (already added with lead_w_email)
         lead_w_partner_company
         """
-        self.leads.message_follower_ids.unlink()
-        self.leads.message_ids.unlink()
+        self.leads.message_follower_ids.unlink
+        self.leads.message_ids.unlink
 
         self.lead_w_contact.message_subscribe([self.contact_1.id])
         self.lead_w_email.message_subscribe([self.contact_1.id, self.contact_2.id, self.contact_company.id])

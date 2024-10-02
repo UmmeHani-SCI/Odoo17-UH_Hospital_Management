@@ -48,7 +48,7 @@ class TestUninstallPurchaseStock(PurchaseTestCommon):
         with patch.object(PurchaseOrderLine, '_compute_qty_received', _compute_qty_received):
             stock_moves_option.sudo().with_context(**{
                 MODULE_UNINSTALL_FLAG: True
-            }).unlink()
+            }).unlink
 
         self.assertEqual(order_line.qty_received_method, 'manual')
         self.assertEqual(order_line.qty_received, 1)

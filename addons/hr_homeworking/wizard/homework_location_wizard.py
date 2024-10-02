@@ -37,14 +37,14 @@ class HomeworkLocationWizard(models.TransientModel):
         if self.weekly:
             # delete any exceptions on the current date
             if employee_location:
-                employee_location.unlink()
+                employee_location.unlink
             employee_id.write({
                 default_location_for_current_date: self.work_location_id.id,
             })
         else:
             # check if work_location_id is the same as the default one for that day
             if self.work_location_id.id == employee_id[default_location_for_current_date].id:
-                employee_location.unlink()
+                employee_location.unlink
             # check if worklocation is set for that employee that day
             elif employee_location:
                 employee_location.write({

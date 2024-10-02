@@ -120,7 +120,7 @@ class GoogleSync(models.AbstractModel):
             # Then, since it has been deleted on Google, the event is also deleted on Odoo DB (_sync_google2odoo).
             self.action_archive()
             return True
-        return super().unlink()
+        return super().unlink
 
     def _from_google_ids(self, google_ids):
         if not google_ids:

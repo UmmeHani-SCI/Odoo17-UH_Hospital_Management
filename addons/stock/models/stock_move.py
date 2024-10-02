@@ -373,7 +373,7 @@ class StockMove(models.Model):
                 else:
                     ml.quantity -= qty_ml_dec
                 quantity -= move.product_uom._compute_quantity(qty_ml_dec, move.product_uom, round=False)
-            self.env['stock.move.line'].browse(mls_to_unlink).unlink()
+            self.env['stock.move.line'].browse(mls_to_unlink).unlink
 
         def _process_increase(move, quantity):
             # move._action_assign(quantity)
@@ -816,7 +816,7 @@ Please change the quantity done or the rounding precision of your unit of measur
         ml_to_unlink = self.env['stock.move.line'].browse(ml_to_unlink)
         moves_not_to_recompute = self.env['stock.move'].browse(moves_not_to_recompute)
 
-        ml_to_unlink.unlink()
+        ml_to_unlink.unlink
         # `write` on `stock.move.line` doesn't call `_recompute_state` (unlike to `unlink`),
         # so it must be called for each move where no move line has been deleted.
         (moves_to_unreserve - moves_not_to_recompute)._recompute_state()
@@ -1090,7 +1090,7 @@ Please change the quantity done or the rounding precision of your unit of measur
 
         if moves_to_unlink:
             moves_to_unlink._action_cancel()
-            moves_to_unlink.sudo().unlink()
+            moves_to_unlink.sudo().unlink
 
         if moves_to_cancel:
             moves_to_cancel.filtered(lambda m: not m.picked)._action_cancel()
@@ -1875,7 +1875,7 @@ Please change the quantity done or the rounding precision of your unit of measur
             if (move.quantity <= 0 or not move.picked) and not move.is_inventory:
                 if float_compare(move.product_uom_qty, 0.0, precision_rounding=move.product_uom.rounding) == 0 or cancel_backorder:
                     move._action_cancel()
-        self.env['stock.move.line'].browse(ml_ids_to_unlink).unlink()
+        self.env['stock.move.line'].browse(ml_ids_to_unlink).unlink
 
         # Create extra moves where necessary
         for move in moves:
@@ -1947,8 +1947,8 @@ Please change the quantity done or the rounding precision of your unit of measur
 
     def unlink(self):
         # With the non plannified picking, draft moves could have some move lines.
-        self.with_context(prefetch_fields=False).mapped('move_line_ids').unlink()
-        return super(StockMove, self).unlink()
+        self.with_context(prefetch_fields=False).mapped('move_line_ids').unlink
+        return super(StockMove, self).unlink
 
     def _prepare_move_split_vals(self, qty):
         vals = {

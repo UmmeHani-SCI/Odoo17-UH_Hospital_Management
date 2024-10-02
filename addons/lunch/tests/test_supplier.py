@@ -35,7 +35,7 @@ class TestSupplier(TestsCommon):
 env['lunch.supplier'].browse([{self.supplier_kothai.id}])._send_auto_email()""")
 
         cron_id = self.supplier_kothai.cron_id.id
-        self.supplier_kothai.unlink()
+        self.supplier_kothai.unlink
         self.assertFalse(self.env['ir.cron'].sudo().search([('id', '=', cron_id)]))
 
     @common.users('cle-lunch-manager')

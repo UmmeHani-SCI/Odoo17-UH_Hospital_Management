@@ -153,7 +153,7 @@ class AccountPaymentMethodLine(models.Model):
 
         (self - unused_payment_method_lines).write({'journal_id': False})
 
-        return super(AccountPaymentMethodLine, unused_payment_method_lines).unlink()
+        return super(AccountPaymentMethodLine, unused_payment_method_lines).unlink
 
     @api.model
     def _auto_toggle_account_to_reconcile(self, account_id):

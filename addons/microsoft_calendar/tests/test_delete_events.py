@@ -27,7 +27,7 @@ class TestDeleteEvents(TestCommon):
     def test_delete_simple_event_from_odoo_organizer_calendar(self, mock_delete):
         event_id = self.simple_event.ms_organizer_event_id
 
-        self.simple_event.with_user(self.organizer_user).unlink()
+        self.simple_event.with_user(self.organizer_user).unlink
         self.call_post_commit_hooks()
         self.simple_event.invalidate_recordset()
 
@@ -42,7 +42,7 @@ class TestDeleteEvents(TestCommon):
     def test_delete_simple_event_from_odoo_attendee_calendar(self, mock_delete):
         event_id = self.simple_event.ms_organizer_event_id
 
-        self.simple_event.with_user(self.attendee_user).unlink()
+        self.simple_event.with_user(self.attendee_user).unlink
         self.call_post_commit_hooks()
         self.simple_event.invalidate_recordset()
 
@@ -145,7 +145,7 @@ class TestDeleteEvents(TestCommon):
         event_id = self.recurrent_events[idx].ms_organizer_event_id
 
         # act
-        self.recurrent_events[idx].with_user(self.organizer_user).unlink()
+        self.recurrent_events[idx].with_user(self.organizer_user).unlink
         self.call_post_commit_hooks()
 
         # assert
@@ -166,7 +166,7 @@ class TestDeleteEvents(TestCommon):
         event_id = self.recurrent_events[idx].ms_organizer_event_id
 
         # act
-        self.recurrent_events[idx].with_user(self.organizer_user).unlink()
+        self.recurrent_events[idx].with_user(self.organizer_user).unlink
         self.call_post_commit_hooks()
 
         # assert
@@ -315,7 +315,7 @@ class TestDeleteEvents(TestCommon):
         self.organizer_user.pause_microsoft_synchronization()
 
         # Try to delete a simple event in Odoo Calendar.
-        self.simple_event.with_user(self.organizer_user).unlink()
+        self.simple_event.with_user(self.organizer_user).unlink
         self.call_post_commit_hooks()
         self.simple_event.invalidate_recordset()
 
@@ -345,14 +345,14 @@ class TestDeleteEvents(TestCommon):
         # Forbid recurrence unlinking from list view with sync on.
         self.assertTrue(self.env['calendar.event'].with_user(self.organizer_user)._check_microsoft_sync_status())
         with self.assertRaises(UserError):
-            self.recurrent_events.unlink()
+            self.recurrent_events.unlink
 
         # Allow recurrence unlinking when update comes from Microsoft (dont_notify=True).
-        self.recurrent_events[2:].with_context(dont_notify=True).unlink()
+        self.recurrent_events[2:].with_context(dont_notify=True).unlink
         self.assertTrue(all(not event.exists() for event in self.recurrent_events[2:]), "Recurrent event must be deleted after unlink from Microsoft.")
 
         # Allow unlinking recurrence when sync is off for the current user.
         self.organizer_user.microsoft_synchronization_stopped = True
         self.assertFalse(self.env['calendar.event'].with_user(self.organizer_user)._check_microsoft_sync_status())
-        self.recurrent_events[1].with_user(self.organizer_user).unlink()
+        self.recurrent_events[1].with_user(self.organizer_user).unlink
         self.assertFalse(self.recurrent_events[1].exists(), "Recurrent event must be deleted after unlink with sync off.")

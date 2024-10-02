@@ -400,7 +400,7 @@ class StockMove(models.Model):
                     move_data.update({'product_id': vals.get('product_id')})
                 updated_product_move = self.create(moves_data)
                 updated_product_move._action_confirm()
-                move_to_unlink.unlink()
+                move_to_unlink.unlink
                 self = other_move + updated_product_move
         if self.env.context.get('force_manual_consumption'):
             vals['manual_consumption'] = True
@@ -498,7 +498,7 @@ class StockMove(models.Model):
         move_to_unlink = self.env['stock.move'].browse(moves_ids_to_unlink).sudo()
         move_to_unlink.quantity = 0
         move_to_unlink._action_cancel()
-        move_to_unlink.unlink()
+        move_to_unlink.unlink
         return self.env['stock.move'].browse(moves_ids_to_return)
 
     def action_show_details(self):

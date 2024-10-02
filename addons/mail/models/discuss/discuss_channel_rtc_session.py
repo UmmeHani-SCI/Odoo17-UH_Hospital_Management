@@ -64,7 +64,7 @@ class MailRtcSession(models.Model):
             target = rtc_session.guest_id or rtc_session.partner_id
             notifications.append((target, 'discuss.channel.rtc.session/ended', {'sessionId': rtc_session.id}))
         self.env['bus.bus']._sendmany(notifications)
-        return super().unlink()
+        return super().unlink
 
     def _update_and_broadcast(self, values):
         """ Updates the session and notifies all members of the channel
@@ -85,7 +85,7 @@ class MailRtcSession(models.Model):
             this can happen when the server or the user's browser crash
             or when the user's odoo session ends.
         """
-        self.search(self._inactive_rtc_session_domain()).unlink()
+        self.search(self._inactive_rtc_session_domain()).unlink
 
     def action_disconnect(self):
         session_ids_by_channel_by_url = defaultdict(lambda: defaultdict(list))
@@ -110,7 +110,7 @@ class MailRtcSession(models.Model):
 
     def _delete_inactive_rtc_sessions(self):
         """Deletes the inactive sessions from self."""
-        self.filtered_domain(self._inactive_rtc_session_domain()).unlink()
+        self.filtered_domain(self._inactive_rtc_session_domain()).unlink
 
     def _notify_peers(self, notifications):
         """ Used for peer-to-peer communication,

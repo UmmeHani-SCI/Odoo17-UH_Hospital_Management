@@ -247,7 +247,7 @@ class ResourceCalendarLeaves(models.Model):
             timesheets = global_time_off_updated.sudo().timesheet_ids
             if timesheets:
                 timesheets.write({'global_leave_id': False})
-                timesheets.unlink()
+                timesheets.unlink
         result = super(ResourceCalendarLeaves, self).write(vals)
         global_time_off_updated and global_time_off_updated.sudo()._generate_timesheeets()
         return result

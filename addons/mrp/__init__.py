@@ -37,6 +37,6 @@ def uninstall_hook(env):
     # we don't try to do anything.
     try:
         with env.cr.savepoint():
-            pbm_routes.unlink()
+            pbm_routes.unlink
     except:
         pass

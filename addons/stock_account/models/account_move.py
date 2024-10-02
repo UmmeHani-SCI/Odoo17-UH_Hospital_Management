@@ -59,7 +59,7 @@ class AccountMove(models.Model):
         res = super(AccountMove, self).button_draft()
 
         # Unlink the COGS lines generated during the 'post' method.
-        self.mapped('line_ids').filtered(lambda line: line.display_type == 'cogs').unlink()
+        self.mapped('line_ids').filtered(lambda line: line.display_type == 'cogs').unlink
         return res
 
     def button_cancel(self):
@@ -69,7 +69,7 @@ class AccountMove(models.Model):
         # Unlink the COGS lines generated during the 'post' method.
         # In most cases it shouldn't be necessary since they should be unlinked with 'button_draft'.
         # However, since it can be called in RPC, better be safe.
-        self.mapped('line_ids').filtered(lambda line: line.display_type == 'cogs').unlink()
+        self.mapped('line_ids').filtered(lambda line: line.display_type == 'cogs').unlink
         return res
 
     # -------------------------------------------------------------------------

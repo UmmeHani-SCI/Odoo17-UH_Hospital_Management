@@ -209,7 +209,7 @@ class TestPayWithGiftCard(TestSaleCouponCommon):
         self.assertEqual(order.order_line.tax_id, self.tax_15pc_excl)
 
         # TAX INCL
-        gift_card_line.unlink()  # Remove gift card
+        gift_card_line.unlink  # Remove gift card
         self.program_gift_card.reward_ids.discount_line_product_id.taxes_id = [
             Command.set(self.tax_10pc_incl.ids)
         ]
@@ -221,7 +221,7 @@ class TestPayWithGiftCard(TestSaleCouponCommon):
         self.assertEqual(gift_card_line.tax_id, self.tax_10pc_incl)
 
         # TAX INCL + TAX EXCL
-        gift_card_line.unlink()  # Remove gift card
+        gift_card_line.unlink  # Remove gift card
         self.program_gift_card.reward_ids.discount_line_product_id.taxes_id = [
             Command.link(self.tax_15pc_excl.id)
         ]

@@ -61,7 +61,7 @@ class ProductTemplate(models.Model):
                 if combo_choices_to_delete:
                     # Delete old combo line
                     combo_ids = combo_choices_to_delete.mapped('combo_id')
-                    combo_choices_to_delete.unlink()
+                    combo_choices_to_delete.unlink
                     # Create new combo line (one for each new variant) in each combo
                     new_variants = template.product_variant_ids.filtered(lambda v: v.active)
                     self.env['pos.combo.line'].create([

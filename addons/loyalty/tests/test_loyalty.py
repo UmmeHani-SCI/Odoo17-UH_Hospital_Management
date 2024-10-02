@@ -27,7 +27,7 @@ class TestLoyalty(TransactionCase):
         with mute_logger('odoo.sql_db'):
             with self.assertRaises(IntegrityError):
                 with self.cr.savepoint():
-                    self.program.reward_ids.discount_line_product_id.unlink()
+                    self.program.reward_ids.discount_line_product_id.unlink
 
     def test_loyalty_mail(self):
         # Test basic loyalty_mail functionalities

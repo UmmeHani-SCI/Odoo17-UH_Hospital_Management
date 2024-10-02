@@ -258,7 +258,7 @@ class Website(Home):
             dom = [('type', '=', 'binary'), '|', ('url', '=like', '%s-%%.xml' % sitemap_base_url),
                    ('url', '=', '%s.xml' % sitemap_base_url)]
             sitemaps = Attachment.search(dom)
-            sitemaps.unlink()
+            sitemaps.unlink
 
             pages = 0
             locs = request.website.with_user(request.website.user_id)._enumerate_pages()

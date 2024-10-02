@@ -302,7 +302,7 @@ class PrivacyLookupWizardLine(models.TransientModel):
         self.ensure_one()
         if self.is_unlinked:
             raise UserError(_('The record is already unlinked.'))
-        self.env[self.res_model].sudo().browse(self.res_id).unlink()
+        self.env[self.res_model].sudo().browse(self.res_id).unlink
         self.execution_details = '%s %s #%s' % (_('Deleted'), self.res_model_id.name, self.res_id)
         self.is_unlinked = True
 

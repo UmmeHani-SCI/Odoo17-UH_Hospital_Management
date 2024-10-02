@@ -1531,7 +1531,7 @@ class TestVariantsExclusion(ProductAttributesCommon):
             [product.product_template_attribute_value_ids for product in self.smartphone.product_variant_ids],
         )
 
-        exclude.unlink()
+        exclude.unlink
         self.assertEqual(len(self.smartphone.product_variant_ids), 4)
 
     @mute_logger('odoo.models.unlink')

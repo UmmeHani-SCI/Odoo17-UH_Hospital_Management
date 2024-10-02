@@ -296,7 +296,7 @@ class TestAccountJournalDashboard(AccountTestInvoicingCommon):
 
         moves[2:4].button_draft()
         self.assertFalse(journal._query_has_sequence_holes())  # no gap (with draft moves using sequence numbers), no gap warning
-        moves[3].unlink()
+        moves[3].unlink
         self.assertTrue(journal.has_sequence_holes)  # gap due to missing sequence, gap warning
 
         moves[2].action_post()

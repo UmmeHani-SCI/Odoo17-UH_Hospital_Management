@@ -30,7 +30,7 @@ class TestLiveChatDigest(TestDigestCommon):
             'channel_type': 'livechat',
         }])
 
-        cls.env['rating.rating'].search([]).unlink()
+        cls.env['rating.rating'].search([]).unlink
 
         cls.env['rating.rating'].create([{
             'rated_partner_id': cls.env.user.partner_id.id,

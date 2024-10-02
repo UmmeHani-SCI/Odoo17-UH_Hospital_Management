@@ -251,7 +251,7 @@ class TestFrenchLeaves(TransactionCase):
             'request_date_to': '2021-09-08',
         })
         self.assertEqual(leave.number_of_days, 5, 'The number of days should be equal to 5.')
-        leave.unlink()
+        leave.unlink
 
         # Week type 1
         leave = self.env['hr.leave'].create({
@@ -262,7 +262,7 @@ class TestFrenchLeaves(TransactionCase):
             'request_date_to': '2021-09-15',
         })
         self.assertEqual(leave.number_of_days, 3, 'The number of days should be equal to 3.')
-        leave.unlink()
+        leave.unlink
 
         # Both ending with week type 1
         leave = self.env['hr.leave'].create({
@@ -273,7 +273,7 @@ class TestFrenchLeaves(TransactionCase):
             'request_date_to': '2021-09-15',
         })
         self.assertEqual(leave.number_of_days, 8, 'The number of days should be equal to 3.')
-        leave.unlink()
+        leave.unlink
 
         # Both ending with week type 0
         with self.assertQueryCount(118):
@@ -288,7 +288,7 @@ class TestFrenchLeaves(TransactionCase):
             # --- 0.11486363410949707 seconds ---
             _logger.info("French Leave Creation: --- %s seconds ---", time.time() - start_time)
         self.assertEqual(leave.number_of_days, 8, 'The number of days should be equal to 3.')
-        leave.unlink()
+        leave.unlink
 
     def test_leave_type_half_day_different_working_hours(self):
         """

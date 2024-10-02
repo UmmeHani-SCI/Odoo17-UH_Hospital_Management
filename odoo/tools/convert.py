@@ -271,7 +271,7 @@ form: module.record_id""" % (xml_id,)
                 _logger.warning('Skipping deletion for missing XML ID `%r`', d_id, exc_info=True)
 
         if records:
-            records.unlink()
+            records.unlink
 
     def _tag_function(self, rec):
         if self.noupdate and self.mode != 'init':

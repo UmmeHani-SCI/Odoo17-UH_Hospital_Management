@@ -30,7 +30,7 @@ class TestGlobalTimeOff(TestWorkEntryBase):
         contract.date_generated_to = start
         work_entries = contract.generate_work_entries(start.date(), end.date())
         self.assertEqual(work_entries.work_entry_type_id.id, contract._get_default_work_entry_type_id())
-        work_entries.unlink()
+        work_entries.unlink
         contract.date_generated_from = start
         contract.date_generated_to = start
         leave.calendar_id = contract.resource_calendar_id

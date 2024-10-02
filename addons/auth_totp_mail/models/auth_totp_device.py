@@ -20,7 +20,7 @@ class AuthTotpDevice(models.Model):
                 ),
             )
 
-        return super().unlink()
+        return super().unlink
 
     def _generate(self, scope, name):
         """ Notify users when trusted devices are added onto their account.

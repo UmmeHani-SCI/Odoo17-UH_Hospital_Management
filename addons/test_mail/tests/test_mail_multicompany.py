@@ -254,7 +254,7 @@ class TestMultiCompanySetup(TestMailMCCommon):
             )
 
     def test_systray_get_activities(self):
-        self.env["mail.activity"].search([]).unlink()
+        self.env["mail.activity"].search([]).unlink
         user_admin = self.user_admin.with_user(self.user_admin)
         test_records = self.env["mail.test.multi.company.with.activity"].create(
             [

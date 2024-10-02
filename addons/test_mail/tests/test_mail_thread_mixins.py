@@ -76,7 +76,7 @@ class TestMailThread(MailCommon, TestRecipients):
                     new_record.invalidate_recordset(fnames=['is_blacklisted'])
                     self.assertTrue(new_record.is_blacklisted)
 
-                bl_record.unlink()
+                bl_record.unlink
 
 
 @tagged('mail_thread', 'mail_thread_cc')

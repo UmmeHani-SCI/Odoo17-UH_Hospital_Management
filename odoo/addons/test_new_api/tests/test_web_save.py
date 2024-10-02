@@ -9,7 +9,7 @@ class TestWebSave(TransactionCase):
     def test_web_save_create(self):
         ''' Test the web_save method on a new record. '''
         # Create a new record, without unity specification (it should return only the id)
-        self.env['test_new_api.person'].search([]).unlink()
+        self.env['test_new_api.person'].search([]).unlink
         result = self.env['test_new_api.person'].web_save({'name': 'ged'}, {})
         person = self.env['test_new_api.person'].search([])
         self.assertTrue(person.exists())

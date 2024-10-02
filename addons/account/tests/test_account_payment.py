@@ -914,7 +914,7 @@ class TestAccountPayment(AccountTestInvoicingCommon):
 
     def test_payment_name(self):
         AccountPayment = self.env['account.payment']
-        AccountPayment.search([]).unlink()
+        AccountPayment.search([]).unlink
 
         payment = AccountPayment.create({
             'journal_id': self.company_data['default_journal_bank'].id,

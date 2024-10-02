@@ -212,7 +212,7 @@ class TestGetDiscussChannel(TestImLivechatCommon, MailCommon):
             },
         )
         channel = self.env["discuss.channel"].browse(channel_info["id"])
-        self.env['bus.bus'].sudo().search([]).unlink()
+        self.env['bus.bus'].sudo().search([]).unlink
         with self.assertBus(
             [(self.env.cr.dbname, "res.partner", self.env.user.partner_id.id)],
             [

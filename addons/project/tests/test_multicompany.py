@@ -320,7 +320,7 @@ class TestMultiCompanyProject(TestMultiCompanyCommon):
         with self.assertRaises(UserError):
             self.project_company_a.company_id = self.company_a
         self.assertEqual(self.project_company_a.company_id, self.company_b, "The account of the project contains AAL, its company can not be updated.")
-        aal.unlink()
+        aal.unlink
 
         project_no_company.analytic_account_id = account_a
         self.assertEqual(project_no_company.company_id, account_a.company_id)

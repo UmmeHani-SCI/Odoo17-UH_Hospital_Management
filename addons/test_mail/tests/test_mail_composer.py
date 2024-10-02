@@ -1151,7 +1151,7 @@ class TestComposerInternals(TestMailComposer):
                 self.env['res.partner'].search([
                     ('email_normalized', 'in', ['test.cc.1@test.example.com',
                                                 'test.cc.2@test.example.com'])
-                ]).unlink()
+                ]).unlink
 
     @users('employee')
     @mute_logger('odoo.tests', 'odoo.addons.mail.models.mail_mail', 'odoo.models.unlink')
@@ -1323,7 +1323,7 @@ class TestComposerInternals(TestMailComposer):
                         test_records.mapped('mobile_number')
                     )
                 finally:
-                    new_partners.unlink()
+                    new_partners.unlink
 
 
 @tagged('mail_composer', 'multi_lang', 'multi_company')
@@ -2600,7 +2600,7 @@ class TestComposerResultsMass(TestMailComposer):
         Translations and email layout supported are also tested.
         """
         # as we use the email queue, don't have failing tests due to other outgoing emails
-        self.env['mail.mail'].sudo().search([]).unlink()
+        self.env['mail.mail'].sudo().search([]).unlink
 
         attachment_data = self._generate_attachments_data(2, self.template._name, self.template.id)
         email_to_1 = 'test.to.1@test.example.com'

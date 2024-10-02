@@ -33,8 +33,8 @@ class TestCRMPLS(TransactionCase):
         })
 
         # Ensure independance on demo data
-        cls.env['crm.lead'].with_context({'active_test': False}).search([]).unlink()
-        cls.env['crm.lead.scoring.frequency'].search([]).unlink()
+        cls.env['crm.lead'].with_context({'active_test': False}).search([]).unlink
+        cls.env['crm.lead.scoring.frequency'].search([]).unlink
         cls.cr.flush()
 
     def _get_lead_values(self, team_id, name_suffix, country_id, state_id, email_state, phone_state, source_id, stage_id):
@@ -581,7 +581,7 @@ class TestCRMPLS(TransactionCase):
         pls_team = self.env["crm.team"].browse(self.pls_team.ids)
 
         # clean existing data
-        self.env["crm.lead.scoring.frequency"].sudo().search([('team_id', '=', False)]).unlink()
+        self.env["crm.lead.scoring.frequency"].sudo().search([('team_id', '=', False)]).unlink
 
         # existing no-team data
         no_team = [
@@ -611,7 +611,7 @@ class TestCRMPLS(TransactionCase):
             } for variable, value, won_count, lost_count in team
         ])
 
-        pls_team.unlink()
+        pls_team.unlink
 
         final_noteam = [
             ('stage_id', '1', 40, 20),

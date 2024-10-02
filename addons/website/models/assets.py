@@ -56,7 +56,7 @@ class Assets(models.AbstractModel):
                 '|', ('id', '=', delete_attachment_id),
                 ('original_id', '=', delete_attachment_id),
                 ('name', 'like', 'google-font'),
-            ]).unlink()
+            ]).unlink
 
         google_local_fonts = values.get('google-local-fonts')
         if google_local_fonts and google_local_fonts != 'null':

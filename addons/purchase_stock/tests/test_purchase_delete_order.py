@@ -20,7 +20,7 @@ class TestDeleteOrder(PurchaseTestCommon):
         })
         purchase_order_1 = purchase_order.with_user(self.res_users_purchase_user)
         with self.assertRaises(UserError):
-            purchase_order_1.unlink()
+            purchase_order_1.unlink
 
         # Delete 'cancelled' purchase order with user group
         purchase_order = self.env['purchase.order'].create({
@@ -30,7 +30,7 @@ class TestDeleteOrder(PurchaseTestCommon):
         purchase_order_2 = purchase_order.with_user(self.res_users_purchase_user)
         purchase_order_2.button_cancel()
         self.assertEqual(purchase_order_2.state, 'cancel', 'PO is cancelled!')
-        purchase_order_2.unlink()
+        purchase_order_2.unlink
 
         # Delete 'draft' purchase order with user group
         purchase_order = self.env['purchase.order'].create({
@@ -40,7 +40,7 @@ class TestDeleteOrder(PurchaseTestCommon):
         purchase_order_3 = purchase_order.with_user(self.res_users_purchase_user)
         purchase_order_3.button_cancel()
         self.assertEqual(purchase_order_3.state, 'cancel', 'PO is cancelled!')
-        purchase_order_3.unlink()
+        purchase_order_3.unlink
 
     def test_01_delete_propagation(self):
         ''' Testcase for deleting purchase order with linked move and propagate cancel off'''

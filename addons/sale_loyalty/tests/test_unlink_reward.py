@@ -48,7 +48,7 @@ class TestUnlinkReward(TestSaleCouponCommon):
         ]})
         order._update_programs_and_rewards()
         self._claim_reward(order, self.promotion_program)
-        self.reward.unlink()
+        self.reward.unlink
 
         # Check that the reward is archived and not deleted
         self.assertTrue(self.reward.exists())

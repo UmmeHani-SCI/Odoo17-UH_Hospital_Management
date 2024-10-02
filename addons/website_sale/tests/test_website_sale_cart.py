@@ -36,7 +36,7 @@ class WebsiteSaleCart(TransactionCaseWithUserPortal):
             'website_published': True,
         })
         product_id = product.id
-        product.unlink()
+        product.unlink
 
         with self.assertRaises(UserError):
             with MockRequest(product.with_user(self.public_user).env, website=self.website.with_user(self.public_user)):

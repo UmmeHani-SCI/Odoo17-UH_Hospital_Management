@@ -118,7 +118,7 @@ class TestReportStockQuantity(tests.TransactionCase):
             'categ_id': self.env.ref('product.product_category_all').id,
         })
         # get auto-created pull rule from when warehouse is created
-        self.wh.reception_route_id.rule_ids.unlink()
+        self.wh.reception_route_id.rule_ids.unlink
         self.env['stock.rule'].create({
             'name': 'Rule Supplier',
             'route_id': self.wh.reception_route_id.id,

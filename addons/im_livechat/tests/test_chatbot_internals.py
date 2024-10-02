@@ -104,7 +104,7 @@ class ChatbotCase(chatbot_common.ChatbotCase):
         self.assertEqual(len(welcome_steps), 3)
         self.assertEqual(welcome_steps, self.chatbot_script.script_step_ids[:3])
 
-        self.chatbot_script.script_step_ids[:2].unlink()
+        self.chatbot_script.script_step_ids[:2].unlink
         welcome_steps = self.chatbot_script._get_welcome_steps()
         self.assertEqual(len(welcome_steps), 1)
         self.assertEqual(welcome_steps, self.chatbot_script.script_step_ids[0])

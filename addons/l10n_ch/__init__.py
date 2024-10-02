@@ -17,7 +17,7 @@ def init_settings(env):
         })
         # We need to call execute, otherwise the "implied_group" in fields are not processed.
         config_wizard.execute()
-        config_wizard.unlink()
+        config_wizard.unlink
 
 def post_init(env):
     init_settings(env)

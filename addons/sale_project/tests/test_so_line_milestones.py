@@ -120,7 +120,7 @@ class TestSoLineMilestones(TestSaleCommon):
         self.milestone1.is_reached = True
         self.assertEqual(self.sol1.qty_delivered, 10.0, "Delivered quantity should start at 10")
 
-        self.milestone1.unlink()
+        self.milestone1.unlink
         self.assertEqual(self.sol1.qty_delivered, 0.0, "Delivered quantity should update when a milestone is removed")
 
     def test_compute_sale_line_in_task(self):

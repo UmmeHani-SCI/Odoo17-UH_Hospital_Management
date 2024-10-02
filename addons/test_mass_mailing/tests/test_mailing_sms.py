@@ -172,7 +172,7 @@ class TestMassSMSInternals(TestMassSMSCommon):
                 mailing.action_send_sms(res_ids=self.records.ids)
 
         # delete old traces (for testing purpose: ease check by deleting old ones)
-        traces.unlink()
+        traces.unlink
         # new failed traces generated for duplicates
         self.assertSMSTraces(
             [{'partner': record.customer_id, 'number': self.records_numbers[i],

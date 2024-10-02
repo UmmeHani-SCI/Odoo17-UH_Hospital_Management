@@ -50,7 +50,7 @@ class BusPresence(models.Model):
 
     def unlink(self):
         self._send_presence("offline")
-        return super().unlink()
+        return super().unlink
 
     @api.model
     def update_presence(self, inactivity_period, identity_field, identity_value):
@@ -126,4 +126,4 @@ class BusPresence(models.Model):
     def _gc_bus_presence(self):
         self.search(
             [("last_poll", "<", datetime.now() - timedelta(seconds=PRESENCE_OUTDATED_TIMER))]
-        ).unlink()
+        ).unlink

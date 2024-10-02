@@ -16,7 +16,7 @@ from odoo.tests.common import users
 
 class TestEventRegisterUTM(HttpCase, TestEventOnlineCommon):
     def test_event_registration_utm_values(self):
-        self.event_0.registration_ids.unlink()
+        self.event_0.registration_ids.unlink
         self.event_0.write({
             'event_ticket_ids': [
                 (5, 0),

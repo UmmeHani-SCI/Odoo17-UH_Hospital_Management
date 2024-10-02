@@ -291,7 +291,7 @@ class ResConfigSettings(models.TransientModel):
 
         self._call_peppol_proxy(endpoint='/api/peppol/1/cancel_peppol_registration')
         self.account_peppol_proxy_state = 'not_registered'
-        self.account_peppol_edi_user.unlink()
+        self.account_peppol_edi_user.unlink
 
     @handle_demo
     def button_migrate_peppol_registration(self):
@@ -331,4 +331,4 @@ class ResConfigSettings(models.TransientModel):
 
         self._call_peppol_proxy(endpoint='/api/peppol/1/cancel_peppol_registration')
         self.account_peppol_proxy_state = 'not_registered'
-        self.account_peppol_edi_user.unlink()
+        self.account_peppol_edi_user.unlink
