@@ -7,9 +7,7 @@
     'version' :"17.0.1.1",
     'category': 'Healthcare',
     'depends': ['base','web', 'mail'],
-    'demo': [
-        'demo/demo.xml',
-    ],
+
     'data': ['security/ir.model.access.csv',  # Access control file
              'data/sequence.xml',
              'views/patients_views.xml',
@@ -17,7 +15,8 @@
              'views/appoinment_views.xml',
              'views/appointment_line_views.xml',
              'views/doctor.xml',
-
+             'views/speciality_views.xml',
+             'views/department_views.xml',
              'views/menu.xml',
 
 

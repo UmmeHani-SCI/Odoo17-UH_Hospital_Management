@@ -1,0 +1,41 @@
+<odoo>
+    <!-- Tree View for Specialties -->
+    <record id="view_hospital_speciality_tree" model="ir.ui.view">
+        <field name="name">hospital.speciality.tree</field>
+        <field name="model">hospital.speciality</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="department_id" />
+                <field name="doctor_count"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Form View for Speciality -->
+    <record id="view_hospital_speciality_form" model="ir.ui.view">
+        <field name="name">hospital.speciality.form</field>
+        <field name="model">hospital.speciality</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="description"/>
+                        <field name="department_id" />  <!-- Added widget="many2one" for department_id -->
+                        <field name="doctor_ids"/>
+                        <field name="doctor_count"/>
+
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action for Specialties -->
+    <record id="action_hospital_speciality" model="ir.actions.act_window">
+        <field name="name">Specialties</field>
+        <field name="res_model">hospital.speciality</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+</odoo>

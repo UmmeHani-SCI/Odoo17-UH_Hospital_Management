@@ -1,6 +1,6 @@
 
 from datetime import date
-from odoo.exceptions import ValidationError
+
 from odoo import api, fields, models
 
 
@@ -10,7 +10,7 @@ class HospitalPatient(models.Model):
     _description = 'Patient Master'
     _inherit =  'mail.thread'
 
-    name = fields.Char(string='Name', required=True, tracking=True, ondelete='cascade')
+    name = fields.Char(string='Name', required=True, tracking=True)
     dob = fields.Date(string='Date of Birth', tracking=True)
     age = fields.Integer(string='Age', compute='_compute_age', store=True, tracking=True)
 
@@ -36,12 +36,12 @@ class HospitalPatient(models.Model):
                 record.age = 0
 
 
-    def unlink(self):
-        for rec in self:
-            domain = [('patient_id', '=', rec.id)]  # Correct the syntax here
-            appointment = self.env['hospital.appointment'].search(domain)
-            if appointment:
-                raise ValidationError("You cannot delete the patient now."
-                                      "\nAppointments existing for this patient : %s" % rec.name)
-
-        return super(HospitalPatient, self).unlink()  # Ensure proper inheritance call
+    # def unlink(self):
+    #     for rec in self:
+    #         domain = [('patient_id', '=', rec.id)]  # Correct the syntax here
+    #         appointment = self.env['hospital.appointment'].search(domain)
+    #         if appointment:
+    #             raise ValidationError("You cannot delete the patient now."
+    #                                   "\nAppointments existing for this patient : %s" % rec.name)
+    #
+    #     return super(HospitalPatient, self).unlink()  # Ensure proper inheritance call
