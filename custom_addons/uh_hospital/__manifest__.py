@@ -15,6 +15,7 @@
              'views/appoinment_views.xml',
              'views/appointment_line_views.xml',
              'views/doctor.xml',
+             'views/nurse.xml',
              'views/speciality_views.xml',
              'views/department_views.xml',
              'views/menu.xml',

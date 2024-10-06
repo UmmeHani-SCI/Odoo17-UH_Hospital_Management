@@ -5,5 +5,6 @@ access_hospital_appointment,hospital.appointment,model_hospital_appointment,base
 access_hospital_appointment_line,hospital.appointment_line,model_hospital_appointment_line,base.group_user,1,1,1,1
 
 access_hospital_doctor,hospital.doctor,model_hospital_doctor,base.group_user,1,1,1,1
+access_hospital_nurse,hospital.nurse,model_hospital_nurse,base.group_user,1,1,1,1
 access_hospital_speciality,hospital.speciality,model_hospital_speciality,base.group_user,1,1,1,1
 access_hospital_department,hospital.department,model_hospital_department,base.group_user,1,1,1,1

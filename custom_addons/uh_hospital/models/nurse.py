@@ -1,11 +1,11 @@
 from odoo import models, fields, api
 
-class HospitalDoctor(models.Model):
-    _name = 'hospital.doctor'
-    _description = 'Doctor Information'
+class HospitalNurse(models.Model):
+    _name = 'hospital.nurse'
+    _description = 'Nurse Information'
     _inherit = ['mail.thread']
 
-    name = fields.Char(string='Doctor Name', required=True, tracking=True)
+    name = fields.Char(string='Nurse Name', required=True, tracking=True)
     gender = fields.Selection([
         ('male', 'Male'),
         ('female', 'Female'),
@@ -22,16 +22,15 @@ class HospitalDoctor(models.Model):
     @api.depends('speciality_ids')
     def _compute_department(self):
         """Automatically assign department based on the selected specialties."""
-        for doctor in self:
-            if doctor.speciality_ids:
-                # Get the department of the first selected specialty
-                doctor.department_id = doctor.speciality_ids[0].department_id
+        for nurse in self:
+            if nurse.speciality_ids:
+                nurse.department_id = nurse.speciality_ids[0].department_id
             else:
-                doctor.department_id = False
+                nurse.department_id = False
 
     @api.depends('dob')
     def _compute_age(self):
-        """Compute the doctor's age based on date of birth."""
+        """Compute the nurse's age based on date of birth."""
         for record in self:
             if record.dob:
                 today = fields.Date.today()

@@ -8,6 +8,7 @@
                 <field name="name"/>
                 <field name="doctor_count"/>
                 <field name="speciality_ids"/>
+                <field name="speciality_ids"  widget="many2many_tags"/>
             </tree>
         </field>
     </record>

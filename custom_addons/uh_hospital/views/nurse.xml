@@ -1,7 +1,8 @@
 <odoo>
-    <record id="view_doctor_tree" model="ir.ui.view">
-        <field name="name">hospital.doctor.tree</field>
-        <field name="model">hospital.doctor</field>
+    <!-- Tree View for Nurses -->
+    <record id="view_nurse_tree" model="ir.ui.view">
+        <field name="name">hospital.nurse.tree</field>
+        <field name="model">hospital.nurse</field>
         <field name="arch" type="xml">
             <tree>
                 <field name="name"/>
@@ -9,14 +10,15 @@
                 <field name="phone" optional="hide"/>
                 <field name="email"/>
                 <field name="department_id"/>
-                <field name="speciality_ids" widget="many2many_tags"  />
+                <field name="speciality_ids" widget="many2many_tags"/>
             </tree>
         </field>
     </record>
 
-    <record id="view_doctor_form" model="ir.ui.view">
-        <field name="name">hospital.doctor.form</field>
-        <field name="model">hospital.doctor</field>
+    <!-- Form View for Nurses -->
+    <record id="view_nurse_form" model="ir.ui.view">
+        <field name="name">hospital.nurse.form</field>
+        <field name="model">hospital.nurse</field>
         <field name="arch" type="xml">
             <form>
                 <sheet>
@@ -34,17 +36,18 @@
                         <field name="department_id"/>
                     </group>
                 </sheet>
-                 <div class="oe_chatter">
-                  <field name="message_follower_ids" groups="base.group_user"/>
-                  <field name="message_ids"/>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" groups="base.group_user"/>
+                    <field name="message_ids"/>
                 </div>
             </form>
         </field>
     </record>
 
-    <record id="action_hospital_doctor" model="ir.actions.act_window">
-        <field name="name">Doctors</field>
-        <field name="res_model">hospital.doctor</field>
+    <!-- Action to Open Nurses -->
+    <record id="action_hospital_nurse" model="ir.actions.act_window">
+        <field name="name">Nurses</field>
+        <field name="res_model">hospital.nurse</field>
         <field name="view_mode">tree,form</field>
     </record>
 </odoo>

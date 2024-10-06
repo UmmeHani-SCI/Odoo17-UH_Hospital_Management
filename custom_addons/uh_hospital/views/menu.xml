@@ -38,30 +38,37 @@
               sequence="1"/>
 
         <!-- Configuration Submenu -->
-    <menuitem id="menu_doctor"
-              name="Doctor"
+    <menuitem id="menu_stuff"
+              name="Hospital Stuff"
               parent="menu_hospital_root"
               sequence="10"/>
 
     <!-- Example: Submenus under Doctor -->
 
-    <menuitem id="menu_hospital_doctor"
-              name="Doctors"
-              parent="menu_doctor"
-              action="action_hospital_doctor"
-              sequence="1"/>
-
     <menuitem id="menu_hospital_department"
               name="Departments"
-              parent="menu_doctor"
+              parent="menu_stuff"
               action="action_hospital_department"
               sequence="1"/>
 
     <menuitem id="menu_hospital_speciality"
               name="Specialties"
-              parent="menu_doctor"
+              parent="menu_stuff"
               action="action_hospital_speciality"
               sequence="1"/>
+
+    <menuitem id="menu_hospital_doctor"
+              name="Doctors"
+              parent="menu_stuff"
+              action="action_hospital_doctor"
+              sequence="1"/>
+
+    <menuitem id="menu_hospital_nurse"
+              name="Nurses"
+              parent="menu_stuff"
+              action="action_hospital_nurse"
+              sequence="1"/>
+
 
 
 
