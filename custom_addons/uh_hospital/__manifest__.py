@@ -8,17 +8,18 @@
     'category': 'Healthcare',
     'depends': ['base','web', 'mail'],
 
-    'data': ['security/ir.model.access.csv',  # Access control file
-             'data/sequence.xml',
-             'views/patients_views.xml',
-             'views/patients_readonly_views.xml',
-             'views/appoinment_views.xml',
-             'views/appointment_line_views.xml',
-             'views/doctor.xml',
-             'views/nurse.xml',
-             'views/speciality_views.xml',
-             'views/department_views.xml',
-             'views/menu.xml',
+    'data': ['security/security.xml',
+            'security/ir.model.access.csv',  # Access control file
+            'data/sequence.xml',
+            'views/patients_views.xml',
+            'views/patients_readonly_views.xml',
+            'views/appoinment_views.xml',
+            'views/appointment_line_views.xml',
+            'views/doctor.xml',
+            'views/nurse.xml',
+            'views/speciality_views.xml',
+            'views/department_views.xml',
+            'views/menu.xml',
 
 
     ],

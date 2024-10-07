@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+
+        <record id="module_category_hospital"  model="ir.module.category" >
+            <field name="name">Hospital</field>
+            <field name="sequence">1</field>
+        </record>
+        <record id="group_hospital_admin" model="res.groups">
+            <field name="name">Admin</field>
+            <field name="category_id" ref="uh_hospital.module_category_hospital"/>
+            <field name="comment">Admin users with full access to all hospital-related data and features.</field>
+        </record>
+
+
+        <record id="group_hospital_receptionist" model="res.groups">
+            <field name="name">Receptionist: Manage appointments</field>
+            <field name="category_id" ref="uh_hospital.module_category_hospital"/>
+            <field name="implied_ids" eval="[(6, 0, [ref('base.group_user')])]"/>
+            <field name="comment">The user will be able to access and manage appointments for patients.</field>
+        </record>
+
+        <record id="group_hospital_doctor" model="res.groups">
+            <field name="name">Doctor</field>
+            <field name="category_id" ref="uh_hospital.module_category_hospital"/>
+            <field name="implied_ids" eval="[(6, 0, [ref('base.group_user')])]"/>
+            <field name="comment">The user will be able to access patient details.</field>
+        </record>
+
+
+    </data>
+
+</odoo>
