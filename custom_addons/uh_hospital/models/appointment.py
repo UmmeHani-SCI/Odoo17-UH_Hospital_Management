@@ -1,7 +1,6 @@
-from email.policy import default
 
 from odoo import api, fields, models
-from odoo.tools.populate import compute
+
 
 
 class HospitalAppointment(models.Model):
@@ -81,3 +80,7 @@ class HospitalAppointmentLine(models.Model):
         'product.product', string='Product', tracking=True , required=True)
     qty = fields.Float(string='Quantity', tracking=True)
 
+    def _valid_field_parameter(self, field, name):
+        if name in ('optional', 'tracking'):
+            return True
+        return super(HospitalAppointmentLine, self)._valid_field_parameter(field, name)

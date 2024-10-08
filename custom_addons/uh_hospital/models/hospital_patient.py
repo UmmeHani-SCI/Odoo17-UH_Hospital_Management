@@ -45,3 +45,8 @@ class HospitalPatient(models.Model):
     #                                   "\nAppointments existing for this patient : %s" % rec.name)
     #
     #     return super(HospitalPatient, self).unlink()  # Ensure proper inheritance call
+
+    def _valid_field_parameter(self, field, name):
+        if name in ('optional', 'tracking'):
+            return True
+        return super(HospitalPatient, self)._valid_field_parameter(field, name)

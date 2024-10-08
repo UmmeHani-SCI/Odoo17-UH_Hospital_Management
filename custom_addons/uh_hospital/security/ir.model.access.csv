@@ -1,21 +1,20 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 
-# Receptionist Access
 access_hospital_patient,hospital.patient,model_hospital_patient,uh_hospital.group_hospital_receptionist,1,1,1,1
 access_hospital_appointment,hospital.appointment,model_hospital_appointment,uh_hospital.group_hospital_receptionist,1,1,1,1
 access_hospital_appointment_line,hospital.appointment_line,model_hospital_appointment_line,uh_hospital.group_hospital_receptionist,1,1,1,1
 
-# Doctor Access
+
+access_hospital_appointment_doctor,hospital.appointment,model_hospital_appointment,uh_hospital.group_hospital_doctor,1,1,0,0
+access_hospital_appointment_line_doctor,hospital.appointment_line,model_hospital_appointment_line,uh_hospital.group_hospital_doctor,1,1,0,0
 access_hospital_doctor,hospital.doctor,model_hospital_doctor,uh_hospital.group_hospital_doctor,1,1,1,1
 access_hospital_nurse,hospital.nurse,model_hospital_nurse,uh_hospital.group_hospital_doctor,1,1,1,1
 access_hospital_speciality,hospital.speciality,model_hospital_speciality,uh_hospital.group_hospital_doctor,1,1,1,1
 access_hospital_department,hospital.department,model_hospital_department,uh_hospital.group_hospital_doctor,1,1,1,1
-access_hospital_appointment_doctor,hospital.appointment,model_hospital_appointment,uh_hospital.group_hospital_doctor,1,1,0,0
-access_hospital_appointment_line_doctor,hospital.appointment_line,model_hospital_appointment_line,uh_hospital.group_hospital_doctor,1,1,0,0
 
-# Admin Access
 access_hospital_patient_admin,hospital.patient,model_hospital_patient,uh_hospital.group_hospital_admin,1,1,1,1
 access_hospital_appointment_admin,hospital.appointment,model_hospital_appointment,uh_hospital.group_hospital_admin,1,1,1,1
+access_hospital_appointment_line_admin,hospital.appointment_line,model_hospital_appointment_line,uh_hospital.group_hospital_admin,1,1,1,1
 access_hospital_doctor_admin,hospital.doctor,model_hospital_doctor,uh_hospital.group_hospital_admin,1,1,1,1
 access_hospital_nurse_admin,hospital.nurse,model_hospital_nurse,uh_hospital.group_hospital_admin,1,1,1,1
 access_hospital_speciality_admin,hospital.speciality,model_hospital_speciality,uh_hospital.group_hospital_admin,1,1,1,1
