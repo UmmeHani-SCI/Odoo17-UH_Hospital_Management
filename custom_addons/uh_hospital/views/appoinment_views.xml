@@ -25,10 +25,13 @@
                             <field name="reference" readonly="True"/>
                             <field name="patient_id"/>
                             <field name="date_appointment"/>
+                            <field name="doctor_id"/>
                         </group>
                         <group>
                             <field name="total_qty"/>
                             <field name="dob"/>
+                            <field name="create_uid"/>
+
 
                         </group>
                         <notebook>
@@ -67,7 +70,7 @@
         </field>
     </record>
 
-    <!-- Patient Tree View -->
+    <!-- Tree View -->
     <record id="view_tree_hospital_appointment" model="ir.ui.view">
         <field name="name">hospital.appointment.tree</field>
         <field name="model">hospital.appointment</field>
@@ -75,12 +78,16 @@
             <tree string="Appointments">
                  <field name="reference"/>
                 <field name="patient_id"/>
+                <field name="doctor_id"/>
                 <field name="date_appointment" optional="show"/>
+                <field name="state"/>
+                <field name="create_uid" groups="uh_hospital.group_hospital_doctor,uh_hospital.group_hospital_admin"/>
+
             </tree>
         </field>
     </record>
 
-    <!-- Action for Patient Views -->
+    <!-- Action  Views -->
     <record id="action_hospital_appointment" model="ir.actions.act_window">
         <field name="name">Appointments</field>
         <field name="res_model">hospital.appointment</field>
@@ -88,5 +95,13 @@
         <field name="view_id" ref="view_tree_hospital_appointment"/>
 
     </record>
+    <record id="seq_hospital_appointment" model="ir.sequence">
+        <field name="name">Hospital Appointment</field>
+        <field name="code">hospital.appointment</field>
+        <field name="prefix">APP</field>
+        <field name="padding">5</field>
+        <field name="number_increment">1</field>
+    </record>
+
 
 </odoo>

@@ -28,7 +28,18 @@
             <field name="comment">Admin users with full access to all hospital-related data and features.</field>
         </record>
 
-
+        <record id="receptionist_appointment_rule" model="ir.rule">
+            <field name="name">Receptionist: View own records</field>
+            <field ref="model_hospital_appointment" name="model_id"/>
+            <field name="groups" eval="[(4, ref('uh_hospital.group_hospital_receptionist'))]"/>
+            <field name="domain_force">[('create_uid','=',user.id)]</field>
+        </record>
+        <record id="doctor_view_appointment_rule" model="ir.rule">
+            <field name="name">Doctor: View own records</field>
+            <field ref="model_hospital_appointment" name="model_id"/>
+            <field name="groups" eval="[(4, ref('uh_hospital.group_hospital_doctor'))]"/>
+            <field name="domain_force">[]</field>
+        </record>
 
     </data>
 

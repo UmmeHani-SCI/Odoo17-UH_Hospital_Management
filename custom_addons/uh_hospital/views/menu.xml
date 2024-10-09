@@ -41,7 +41,8 @@
     <menuitem id="menu_stuff"
               name="Hospital Stuff"
               parent="menu_hospital_root"
-              sequence="10"/>
+              sequence="10"
+              groups="uh_hospital.group_hospital_doctor,uh_hospital.group_hospital_admin"/>/>
 
     <!-- Example: Submenus under Doctor -->
 

@@ -4,7 +4,6 @@ access_hospital_patient,hospital.patient,model_hospital_patient,uh_hospital.grou
 access_hospital_appointment,hospital.appointment,model_hospital_appointment,uh_hospital.group_hospital_receptionist,1,1,1,1
 access_hospital_appointment_line,hospital.appointment_line,model_hospital_appointment_line,uh_hospital.group_hospital_receptionist,1,1,1,1
 
-
 access_hospital_appointment_doctor,hospital.appointment,model_hospital_appointment,uh_hospital.group_hospital_doctor,1,1,0,0
 access_hospital_appointment_line_doctor,hospital.appointment_line,model_hospital_appointment_line,uh_hospital.group_hospital_doctor,1,1,0,0
 access_hospital_doctor,hospital.doctor,model_hospital_doctor,uh_hospital.group_hospital_doctor,1,1,1,1

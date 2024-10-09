@@ -40,8 +40,8 @@
             <tree string="Patients">
                 <field name="name" />
                 <field name="age"  optional="hide"/>
-                <field name="gender" optional="hide"/>
                 <field name="phone"/>
+                <field name="gender" optional="hide"/>
             </tree>
         </field>
     </record>

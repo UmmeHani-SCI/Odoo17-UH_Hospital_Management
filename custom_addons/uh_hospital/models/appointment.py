@@ -10,6 +10,7 @@ class HospitalAppointment(models.Model):
     _rec_names_search = ['reference','patient_id']
     _rec_name = 'patient_id'
 
+    doctor_id = fields.Many2one('hospital.doctor', string='Doctor' , tracking=True)
     patient_id= fields.Many2one('hospital.patient', string='Patient', tracking=True)
     date_appointment = fields.Date(string='Date of Appointment' , tracking=True)
     note = fields.Text(string='Note' , tracking=True)
