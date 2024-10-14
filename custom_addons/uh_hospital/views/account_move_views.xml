@@ -1,0 +1,48 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+
+    <record id="view_move_form" model="ir.ui.view">
+        <field name="name">account.move.form</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_move_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='partner_id']" position="before">
+                     <field name="patient_id" options="{'no_create': True}" />
+            </xpath>
+             <!-- Hide partner_id if not needed -->
+            <xpath expr="//field[@name='partner_id']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+
+            <!-- Ensure the label is correctly linked to patient_id -->
+            <xpath expr="//label[@for='partner_id']" position="replace">
+                <label for="patient_id" string="Patient"/>
+            </xpath>
+            <xpath expr="//field[@name='invoice_date']" position="after">
+                     <field name="appointment_id" />
+            </xpath>
+             <xpath expr="//group[@name='accounting_info_group']//field[@name='auto_post']" position="attributes">
+                <attribute name="invisible">1</attribute>
+             </xpath>
+
+        </field>
+    </record>
+
+    <record id="view_move_invoice_tree" model="ir.ui.view">
+        <field name="name">account.move.form</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_out_invoice_tree"/>
+        <field name="arch" type="xml">
+
+            <!-- Add patient_id after partner_id in the tree view -->
+            <xpath expr="//field[@name='invoice_partner_display_name']" position="replace">
+                <field name="patient_id" string="Patient"/>
+            </xpath>
+
+            <xpath expr="//field[@name='invoice_date']" position="after">
+                     <field name="appointment_id" />
+            </xpath>
+
+        </field>
+    </record>
+</odoo>

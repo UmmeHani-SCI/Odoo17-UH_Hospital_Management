@@ -5,3 +5,4 @@ from . import doctor
 from . import department
 from . import speciality
 from . import nurse
+from . import account_move

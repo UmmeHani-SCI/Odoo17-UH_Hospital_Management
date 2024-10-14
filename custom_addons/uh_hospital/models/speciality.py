@@ -8,9 +8,9 @@ class HospitalSpeciality(models.Model):
     description = fields.Text(string='Description')
     department_id = fields.Many2one('hospital.department', string='Department', required=True)
     doctor_ids = fields.Many2many('hospital.doctor', string='Doctors')
-    doctor_count = fields.Integer(string='Doctor Count', compute='_compute_doctor_count', store=True)
+    doctor_count = fields.Char(string='Doctor Count', compute='_compute_doctor_count', store=True)
     nurse_ids = fields.Many2many('hospital.nurse', string='Nurses')
-    nurse_count = fields.Integer(string='Nurse Count', compute='_compute_nurse_count', store=True)
+    nurse_count = fields.Char(string='Nurse Count', compute='_compute_nurse_count', store=True)
 
 
     @api.depends('doctor_ids')

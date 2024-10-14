@@ -7,8 +7,8 @@ class HospitalDepartment(models.Model):
     name = fields.Char(string='Department Name', required=True)
     description = fields.Text(string='Description')
     speciality_ids = fields.One2many('hospital.speciality', 'department_id', string='Specialities', readonly=True)
-    doctor_count = fields.Integer(string='Doctor Count', compute='_compute_doctor_count', store=True)
-    nurse_count = fields.Integer(string='Nurse Count', compute='_compute_nurse_count', store=True)
+    doctor_count = fields.Char(string='Doctor Count', compute='_compute_doctor_count', store=True)
+    nurse_count = fields.Char(string='Nurse Count', compute='_compute_nurse_count', store=True)
 
     @api.depends('speciality_ids.doctor_ids')
     def _compute_doctor_count(self):

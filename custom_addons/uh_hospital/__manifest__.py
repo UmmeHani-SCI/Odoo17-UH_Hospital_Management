@@ -6,7 +6,7 @@
 
     'version' :"17.0.1.1",
     'category': 'Healthcare',
-    'depends': ['base','web', 'mail'],
+    'depends': ['base','web', 'mail', 'account'],
 
     'data': ['security/security.xml',
             'security/ir.model.access.csv',  # Access control file
@@ -19,6 +19,7 @@
             'views/nurse.xml',
             'views/speciality_views.xml',
             'views/department_views.xml',
+            'views/account_move_views.xml',
             'views/menu.xml',
 
 
@@ -29,8 +30,9 @@
     'auto_install': False,
     'assets': {
         'web.assets_backend': [
-
-               ],
+            'uh_hospital/static/src/css/tree_view.css',
+        ],
     },
+
 
 }

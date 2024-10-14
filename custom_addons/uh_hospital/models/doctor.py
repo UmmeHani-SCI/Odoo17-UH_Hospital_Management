@@ -12,7 +12,7 @@ class HospitalDoctor(models.Model):
         ('other', 'Other'),
     ], string='Gender', required=True, tracking=True)
     dob = fields.Date(string='Date of Birth', tracking=True)
-    age = fields.Integer(string='Age', compute='_compute_age', store=True, tracking=True)
+    age = fields.Char(string='Age', compute='_compute_age', store=True, tracking=True)
     phone = fields.Char(string='Phone Number', required=True, tracking=True)
     email = fields.Char(string='Email', tracking=True)
     address = fields.Text(string='Address', tracking=True)
